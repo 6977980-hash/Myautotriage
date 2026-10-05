@@ -1,3 +1,3 @@
 # MyAutoTriage
 
-Website / WordPress plugin source. Files in the root of the `main` branch are what gets deployed to the live site.
+WordPress theme for myautotriage.com. Files in the root of the `main` branch are deployed by Hostinger Git deployment to `public_html/wp-content/themes/myautotriage`, so anything merged to `main` goes live.
