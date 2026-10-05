@@ -210,3 +210,20 @@ function mat_icon( $name ) {
 	);
 	return isset( $icons[ $name ] ) ? $icons[ $name ] : '';
 }
+
+/**
+ * Byline used on articles and in Article schema.
+ */
+function mat_author_name() {
+	return __( 'MyAutoTriage Editorial Team', 'myautotriage' );
+}
+
+/**
+ * True when a post was edited at least a day after it was published, so
+ * the byline shows "Updated <date>" only for real revisions.
+ */
+function mat_post_was_updated( $post = null ) {
+	$published = (int) get_post_time( 'U', true, $post );
+	$modified  = (int) get_post_modified_time( 'U', true, $post );
+	return $modified - $published > DAY_IN_SECONDS;
+}

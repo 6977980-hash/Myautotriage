@@ -33,8 +33,12 @@ wp_enqueue_script( 'mat-cd', MAT_URI . '/assets/js/calculators/claim-deadline.js
 
 		<div class="mat-page__content"><?php the_content(); ?></div>
 
+		<?php mat_claim_deadline_table(); ?>
+
+		<?php mat_tool_extras( 'claim-payment-deadline-by-state' ); ?>
+
 		<?php
-		mat_faq_block( array(
+		mat_faq_block( array_merge( array(
 			array(
 				'question' => __( 'What can I do if my insurer misses these deadlines?', 'myautotriage' ),
 				'answer'   => __( "You can file a complaint with your state department of insurance, which regulates these timelines. A pattern of missed deadlines can also support a 'bad faith' claim in some states.", 'myautotriage' ),
@@ -43,7 +47,7 @@ wp_enqueue_script( 'mat-cd', MAT_URI . '/assets/js/calculators/claim-deadline.js
 				'question' => __( 'Do these deadlines apply to health or home insurance too?', 'myautotriage' ),
 				'answer'   => __( 'This tool focuses on auto insurance claims specifically. Many states use similar (sometimes identical) rules across insurance lines, but always confirm for your specific type of claim.', 'myautotriage' ),
 			),
-		) );
+		), mat_tool_extra_faqs( 'claim-payment-deadline-by-state' ) ) );
 		?>
 	</div>
 </div>

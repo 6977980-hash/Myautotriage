@@ -143,8 +143,10 @@ $variant = isset( $variants[ $slug ] ) ? $variants[ $slug ] : $variants['demand-
 
 		<div class="mat-page__content"><?php the_content(); ?></div>
 
+		<?php mat_tool_extras( get_post_field( 'post_name' ) ); ?>
+
 		<?php
-		mat_faq_block( array(
+		mat_faq_block( array_merge( array(
 			array(
 				'question' => __( 'How should I send my demand letter?', 'myautotriage' ),
 				'answer'   => __( 'Send it by email and by certified mail with return receipt requested, so you have proof of delivery and a timestamp for your deadline.', 'myautotriage' ),
@@ -157,7 +159,7 @@ $variant = isset( $variants[ $slug ] ) ? $variants[ $slug ] : $variants['demand-
 				'question' => __( "What if the insurer doesn't respond by my deadline?", 'myautotriage' ),
 				'answer'   => __( 'Follow up in writing, consider filing a complaint with your state department of insurance, and — for larger or disputed amounts — consult a consumer or personal injury attorney about next steps, including small claims court.', 'myautotriage' ),
 			),
-		) );
+		), mat_tool_extra_faqs( get_post_field( 'post_name' ) ) ) );
 		?>
 	</div>
 </div>

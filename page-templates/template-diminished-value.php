@@ -70,8 +70,10 @@ wp_enqueue_script( 'mat-dv', MAT_URI . '/assets/js/calculators/diminished-value.
 			<?php the_content(); ?>
 		</div>
 
+		<?php mat_tool_extras( 'diminished-value-calculator' ); ?>
+
 		<?php
-		mat_faq_block( array(
+		mat_faq_block( array_merge( array(
 			array(
 				'question' => __( 'What is the 17c formula?', 'myautotriage' ),
 				'answer'   => __( "The 17c formula comes from Mabry v. State Farm (Georgia, 2001) and estimates diminished value as 10% of the vehicle's value, adjusted down by a damage-severity multiplier and a mileage multiplier. It's widely used by insurers as a starting baseline.", 'myautotriage' ),
@@ -84,7 +86,7 @@ wp_enqueue_script( 'mat-dv', MAT_URI . '/assets/js/calculators/diminished-value.
 				'question' => __( 'Can I claim diminished value from my own insurance company?', 'myautotriage' ),
 				'answer'   => __( "It depends on your state and your policy. Some states allow first-party diminished value claims, others only allow you to claim it from the at-fault driver's insurer (a third-party claim), and a few restrict it entirely.", 'myautotriage' ),
 			),
-		) );
+		), mat_tool_extra_faqs( 'diminished-value-calculator' ) ) );
 		?>
 	</div>
 </div>

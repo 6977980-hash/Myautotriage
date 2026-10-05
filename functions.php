@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MAT_VERSION', '1.0.2' );
+define( 'MAT_VERSION', '1.0.3' );
 define( 'MAT_DIR', get_template_directory() );
 define( 'MAT_URI', get_template_directory_uri() );
 
@@ -80,6 +80,7 @@ function mat_register_tool_script( $handle, $src_relative, $data_handle = null, 
 require MAT_DIR . '/inc/seo.php';
 require MAT_DIR . '/inc/sitemap.php';
 require MAT_DIR . '/inc/cleanup.php';
+require MAT_DIR . '/inc/tool-extras.php';
 require MAT_DIR . '/inc/customizer.php';
 require MAT_DIR . '/inc/template-tags.php';
 require MAT_DIR . '/inc/content-seed.php';
