@@ -38,7 +38,7 @@ function mat_get_article_extras() {
 			'sources'      => array(
 				array(
 					'label' => 'Insurance Information Institute: What to do at the scene of an accident',
-					'url'   => 'https://www.iii.org/article/scene-accident',
+					'url'   => 'https://www.iii.org/article/what-to-do-at-the-scene-of-an-accident',
 				),
 				$iii_file,
 			),
@@ -123,8 +123,8 @@ function mat_get_article_extras() {
 			'short_answer' => 'Small claims court suits a modest property-damage dispute within your state\'s dollar limit, when the insurer won\'t budge or an uninsured driver stops responding. You usually sue the at-fault driver, not their insurer. Send a final written demand first, file before the statute of limitations runs out, and bring organized evidence.',
 			'sources'      => array(
 				array(
-					'label' => 'National Center for State Courts: How small is a small claims case?',
-					'url'   => 'https://www.ncsc.org/information-and-resources/trending-topics/trending-topics-landing-pg/faq-how-small-is-a-small-claims-case',
+					'label' => 'California Courts self-help guide: Small claims in California (an example of the guide every state court publishes)',
+					'url'   => 'https://www.courts.ca.gov/selfhelp-smallclaims.htm',
 				),
 			),
 		),
