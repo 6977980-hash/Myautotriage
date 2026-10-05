@@ -142,6 +142,12 @@ function mat_get_tools_registry() {
 			'seo_title' => __( 'Should I File a Claim? Deductible vs. Premium Calculator', 'myautotriage' ),
 		),
 		array(
+			'title'   => __( 'Car Insurance Refund Calculator', 'myautotriage' ),
+			'excerpt' => __( 'Estimate how much prepaid premium you get back when you cancel a policy early, pro-rata or short-rate.', 'myautotriage' ),
+			'slug'    => 'car-insurance-refund-calculator',
+			'seo_title' => __( 'Car Insurance Refund Calculator: Pro-Rata vs. Short-Rate', 'myautotriage' ),
+		),
+		array(
 			'title'   => __( 'Claim Payment Deadline Lookup', 'myautotriage' ),
 			'excerpt' => __( 'Look up how many days your state gives an insurer to acknowledge, decide, and pay your claim.', 'myautotriage' ),
 			'slug'    => 'claim-payment-deadline-by-state',

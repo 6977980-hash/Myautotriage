@@ -229,3 +229,35 @@ function mat_attach_seed_image( $post_id, $image ) {
 
 	set_post_thumbnail( $post_id, $attach_id );
 }
+
+/**
+ * Pages added after launch. Activation only runs when the theme is
+ * switched, so new tool pages are created once on the first request after
+ * a deploy (by slug, so existing pages are never touched). Bump the
+ * option value when adding another page here.
+ */
+function mat_ensure_new_pages() {
+	if ( '1' === get_option( 'mat_new_pages_version' ) ) {
+		return;
+	}
+	// Mark it done first so two simultaneous first requests can't both
+	// create the page.
+	update_option( 'mat_new_pages_version', '1' );
+	$new_slugs = array( 'car-insurance-refund-calculator' );
+	foreach ( mat_seed_pages() as $page ) {
+		if ( ! in_array( $page['slug'], $new_slugs, true ) || get_page_by_path( $page['slug'] ) ) {
+			continue;
+		}
+		$post_id = wp_insert_post( array(
+			'post_title'   => $page['title'],
+			'post_name'    => $page['slug'],
+			'post_content' => $page['content'],
+			'post_status'  => 'publish',
+			'post_type'    => 'page',
+		) );
+		if ( $post_id && ! is_wp_error( $post_id ) && ! empty( $page['template'] ) ) {
+			update_post_meta( $post_id, '_wp_page_template', $page['template'] );
+		}
+	}
+}
+add_action( 'wp_loaded', 'mat_ensure_new_pages' );

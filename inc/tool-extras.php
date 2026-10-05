@@ -124,8 +124,8 @@ function mat_get_tool_extras() {
 			),
 			'faqs' => array(
 				array(
-					'question' => __( 'Does a not-at-fault claim raise my premium?', 'myautotriage' ),
-					'answer'   => __( 'Usually much less than an at-fault claim, and some states limit surcharges for accidents you did not cause. If the other driver is clearly at fault, claim against their insurer instead of your own.', 'myautotriage' ),
+					'question' => __( 'Is it worth filing a claim for a cracked windshield?', 'myautotriage' ),
+					'answer'   => __( 'Glass is often handled differently. Many policies have a separate or zero glass deductible, and many insurers do not surcharge glass-only claims. Check your policy before paying out of pocket.', 'myautotriage' ),
 				),
 				array(
 					'question' => __( 'Should I tell my insurer about an accident even if I pay for it myself?', 'myautotriage' ),
@@ -135,6 +135,24 @@ function mat_get_tool_extras() {
 			'next' => array(
 				array( 'slug' => 'should-i-file-a-claim-minor-accident', 'label' => __( 'Read: should you file a claim for a minor accident?', 'myautotriage' ) ),
 				array( 'slug' => 'what-to-do-after-a-car-accident-checklist', 'label' => __( 'Read: what to do after a car accident, step by step', 'myautotriage' ) ),
+			),
+		),
+
+		'car-insurance-refund-calculator' => array(
+			'example' => array(
+				'title' => __( 'Worked example', 'myautotriage' ),
+				'html'  => '<p>' . __( 'You paid $1,200 for a 12-month policy that started on January 1, 2026, and you cancel on May 1, 2026.', 'myautotriage' ) . '</p>'
+					. '<ul>'
+					. '<li>' . __( 'Days in the term: 365. Days used: 120. Days left: 245.', 'myautotriage' ) . '</li>'
+					. '<li>' . __( 'Unused premium: $1,200 × 245 ÷ 365 = $805.48', 'myautotriage' ) . '</li>'
+					. '<li>' . __( 'Pro-rata refund: $805.48', 'myautotriage' ) . '</li>'
+					. '<li>' . __( 'Short-rate refund with a 10% penalty: $805.48 × 0.90 = $724.93', 'myautotriage' ) . '</li>'
+					. '</ul>'
+					. '<p>' . __( 'If the insurer also charges a $50 cancellation fee, subtract it from either figure.', 'myautotriage' ) . '</p>',
+			),
+			'next' => array(
+				array( 'slug' => 'deductible-vs-premium-calculator', 'label' => __( 'Thinking about a claim instead? Compare deductible vs. premium increase', 'myautotriage' ) ),
+				array( 'slug' => 'gap-insurance-shortfall-calculator', 'label' => __( 'Car totaled? Check what you still owe on the loan', 'myautotriage' ) ),
 			),
 		),
 
