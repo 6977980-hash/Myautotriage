@@ -343,8 +343,8 @@ function mat_schema_article() {
 		return null;
 	}
 	global $post;
-	$image = mat_get_share_image_url();
-	return array(
+	$image   = mat_get_share_image_url();
+	$article = array(
 		'@type'            => 'Article',
 		'headline'         => get_the_title(),
 		'description'      => mat_get_meta_description(),
@@ -362,6 +362,11 @@ function mat_schema_article() {
 			'@id'   => get_permalink( $post ),
 		),
 	);
+	$citations = mat_article_citations( $post );
+	if ( $citations ) {
+		$article['citation'] = $citations;
+	}
+	return $article;
 }
 
 /**
