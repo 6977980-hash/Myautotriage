@@ -1,0 +1,32 @@
+{
+	"source": "Acknowledge/accept-or-deny/pay timelines for the states below are drawn from published summaries of each state's unfair claims settlement practices rules as of 2026. All other states show the general model most states follow (based on the NAIC Unfair Claims Settlement Practices Act). Insurance regulations change and exact wording varies by state — confirm with your state department of insurance before relying on a specific number of days.",
+	"default": {
+		"acknowledge": "Around 10-15 calendar days is typical.",
+		"decide": "Around 15-40 days after you submit a complete proof of loss is typical.",
+		"pay": "Around 5-30 days after you accept a settlement is typical."
+	},
+	"all_states": {
+		"AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "AR": "Arkansas", "CA": "California",
+		"CO": "Colorado", "CT": "Connecticut", "DE": "Delaware", "DC": "Washington D.C.", "FL": "Florida",
+		"GA": "Georgia", "HI": "Hawaii", "ID": "Idaho", "IL": "Illinois", "IN": "Indiana",
+		"IA": "Iowa", "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana", "ME": "Maine",
+		"MD": "Maryland", "MA": "Massachusetts", "MI": "Michigan", "MN": "Minnesota", "MS": "Mississippi",
+		"MO": "Missouri", "MT": "Montana", "NE": "Nebraska", "NV": "Nevada", "NH": "New Hampshire",
+		"NJ": "New Jersey", "NM": "New Mexico", "NY": "New York", "NC": "North Carolina", "ND": "North Dakota",
+		"OH": "Ohio", "OK": "Oklahoma", "OR": "Oregon", "PA": "Pennsylvania", "RI": "Rhode Island",
+		"SC": "South Carolina", "SD": "South Dakota", "TN": "Tennessee", "TX": "Texas", "UT": "Utah",
+		"VT": "Vermont", "VA": "Virginia", "WA": "Washington", "WV": "West Virginia", "WI": "Wisconsin", "WY": "Wyoming"
+	},
+	"states": {
+		"CA": { "name": "California", "acknowledge": "15 calendar days", "decide": "40 calendar days after proof of loss", "pay": "30 calendar days after settlement is reached", "verified": true },
+		"TX": { "name": "Texas", "acknowledge": "15 business days", "decide": "15 business days after receiving all requested information", "pay": "5 business days after you accept a settlement offer", "verified": true },
+		"FL": { "name": "Florida", "acknowledge": "14 calendar days", "decide": "90 days to pay or deny (combined timeline)", "pay": "Included in the 90-day requirement", "verified": true },
+		"NY": { "name": "New York", "acknowledge": "15 business days", "decide": "15 business days after a properly executed proof of loss", "pay": "15 business days after the claim is settled", "verified": true },
+		"GA": { "name": "Georgia", "acknowledge": "15 calendar days", "decide": "30 days after receiving necessary information (typical)", "pay": "10 days after agreement or final judgment", "verified": true },
+		"IL": { "name": "Illinois", "acknowledge": "15 working days", "decide": "30 days after receiving proof of loss", "pay": "30 days after reaching an agreement or settlement", "verified": true },
+		"PA": { "name": "Pennsylvania", "acknowledge": "10 working days", "decide": "15 working days after receiving all requested documentation", "pay": "10 working days after agreement or settlement", "verified": true },
+		"NC": { "name": "North Carolina", "acknowledge": "30 calendar days", "decide": "30 days after receiving all relevant documents", "pay": "10 business days after acceptance or final settlement", "verified": true },
+		"OH": { "name": "Ohio", "acknowledge": "15 calendar days", "decide": "21 days after receiving proof of loss", "pay": "5 business days after claim settlement", "verified": true },
+		"AZ": { "name": "Arizona", "acknowledge": "10 working days", "decide": "30 days after receiving proof of loss", "pay": "30 days after settlement or final decision", "verified": true }
+	}
+}

@@ -1,0 +1,25 @@
+This theme, MyAutoTriage, is licensed under the GNU General Public License
+v2 (or later), the same license WordPress itself uses.
+
+    https://www.gnu.org/licenses/gpl-2.0.html
+
+Copyright (C) MyAutoTriage
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+--------------------------------------------------------------------------
+Bundled assets
+--------------------------------------------------------------------------
+All CSS and JavaScript in this theme is hand-written specifically for it
+(no third-party framework or icon library is bundled). All images
+(logo, favicon, social-share image, and blog illustrations) are original,
+procedurally generated graphics created for this theme and are covered by
+the same license as the theme code above.
