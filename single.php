@@ -38,9 +38,13 @@ while ( have_posts() ) :
 				</div>
 			<?php endif; ?>
 
+			<?php mat_article_short_answer(); ?>
+
 			<div class="mat-single-post__content">
 				<?php the_content(); ?>
 			</div>
+
+			<?php mat_article_sources(); ?>
 
 			<aside class="mat-author-box" aria-label="<?php esc_attr_e( 'About the author', 'myautotriage' ); ?>">
 				<p class="mat-author-box__name"><?php echo esc_html( mat_author_name() ); ?></p>
