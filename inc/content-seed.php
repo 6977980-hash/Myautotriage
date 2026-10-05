@@ -56,6 +56,12 @@ function mat_seed_pages() {
 			'content'  => mat_seed_tool_body_deductible(),
 		),
 		array(
+			'slug'     => 'car-insurance-refund-calculator',
+			'title'    => __( 'Car Insurance Refund Calculator', 'myautotriage' ),
+			'template' => 'page-templates/template-refund-calculator.php',
+			'content'  => '',
+		),
+		array(
 			'slug'     => 'claim-payment-deadline-by-state',
 			'title'    => __( 'Claim Payment Deadline Lookup', 'myautotriage' ),
 			'template' => 'page-templates/template-claim-deadline.php',

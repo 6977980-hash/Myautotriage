@@ -48,8 +48,10 @@ wp_enqueue_script( 'mat-tlt', MAT_URI . '/assets/js/calculators/total-loss-thres
 
 		<div class="mat-page__content"><?php the_content(); ?></div>
 
+		<?php mat_tool_extras( 'total-loss-threshold-calculator' ); ?>
+
 		<?php
-		mat_faq_block( array(
+		mat_faq_block( array_merge( array(
 			array(
 				'question' => __( "What's the difference between a percentage threshold and the Total Loss Formula?", 'myautotriage' ),
 				'answer'   => __( 'A percentage-threshold state totals a car once repairs reach a set percentage of its value (for example 75%). A Total Loss Formula (TLF) state instead adds the repair cost to the estimated salvage value and totals the car if that combined figure meets or exceeds the full value.', 'myautotriage' ),
@@ -58,7 +60,7 @@ wp_enqueue_script( 'mat-tlt', MAT_URI . '/assets/js/calculators/total-loss-thres
 				'question' => __( 'Can I ask my insurer to repair a car they want to total, or vice versa?', 'myautotriage' ),
 				'answer'   => __( 'In most states you can push back on the valuation or the repair estimate, but the insurer generally decides whether to total a car based on the numbers. An independent appraisal is the usual way to challenge that decision.', 'myautotriage' ),
 			),
-		) );
+		), mat_tool_extra_faqs( 'total-loss-threshold-calculator' ) ) );
 		?>
 	</div>
 </div>

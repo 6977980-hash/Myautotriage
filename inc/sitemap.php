@@ -80,3 +80,47 @@ function mat_robots_txt( $output, $public ) {
 	return implode( "\n", $lines ) . "\n";
 }
 add_filter( 'robots_txt', 'mat_robots_txt', 10, 2 );
+
+/**
+ * /llms.txt — a short plain-text map of the site for AI crawlers and
+ * answer engines (llmstxt.org format). Served from template_redirect on
+ * the 404 for that path, so it works without a rewrite-rule flush.
+ */
+function mat_llms_txt() {
+	global $wp;
+	if ( 'llms.txt' !== $wp->request ) {
+		return;
+	}
+
+	$lines   = array();
+	$lines[] = '# ' . get_bloginfo( 'name' );
+	$lines[] = '';
+	$lines[] = '> ' . __( 'Free, independent calculators, letter generators and plain-English guides for US car insurance claims: diminished value, total loss, GAP shortfalls, claim deadlines by state, and denied or underpaid claims. We do not sell insurance, handle claims, or take referral fees.', 'myautotriage' );
+	$lines[] = '';
+	$lines[] = '## ' . __( 'Tools', 'myautotriage' );
+	foreach ( mat_get_tools_registry() as $tool ) {
+		$page = get_page_by_path( $tool['slug'] );
+		if ( $page ) {
+			$lines[] = '- [' . $tool['title'] . '](' . get_permalink( $page ) . '): ' . $tool['excerpt'];
+		}
+	}
+	$lines[] = '';
+	$lines[] = '## ' . __( 'Guides', 'myautotriage' );
+	foreach ( get_posts( array( 'numberposts' => 50, 'post_status' => 'publish' ) ) as $p ) {
+		$lines[] = '- [' . get_the_title( $p ) . '](' . get_permalink( $p ) . ')';
+	}
+	$lines[] = '';
+	$lines[] = '## ' . __( 'About', 'myautotriage' );
+	foreach ( array( 'about-us', 'editorial-policy', 'disclaimer' ) as $slug ) {
+		$page = get_page_by_path( $slug );
+		if ( $page ) {
+			$lines[] = '- [' . get_the_title( $page ) . '](' . get_permalink( $page ) . ')';
+		}
+	}
+
+	status_header( 200 );
+	header( 'Content-Type: text/plain; charset=UTF-8' );
+	echo wp_strip_all_tags( implode( "\n", $lines ) ) . "\n"; // phpcs:ignore -- plain text
+	exit;
+}
+add_action( 'template_redirect', 'mat_llms_txt', 1 );

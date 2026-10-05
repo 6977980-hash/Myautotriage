@@ -84,6 +84,10 @@ function mat_get_meta_description() {
 		if ( $desc ) {
 			return mat_truncate_meta( wp_strip_all_tags( $desc ) );
 		}
+		$intro = is_category() ? mat_category_intro() : '';
+		if ( $intro ) {
+			return mat_truncate_meta( $intro );
+		}
 		/* translators: %s: category name */
 		return sprintf( __( '%s: plain-English car insurance claim guides, plus free calculators and letter generators to back up your numbers.', 'myautotriage' ), single_term_title( '', false ) );
 	}
@@ -347,8 +351,8 @@ function mat_schema_article() {
 		'image'            => $image,
 		'author'           => array(
 			'@type' => 'Organization',
-			'name'  => get_bloginfo( 'name' ),
-			'url'   => home_url( '/' ),
+			'name'  => mat_author_name(),
+			'url'   => mat_url_for_slug( 'editorial-policy' ) ?: home_url( '/' ),
 		),
 		'publisher'        => array( '@id' => home_url( '/#organization' ) ),
 		'datePublished'    => get_the_date( 'c', $post ),

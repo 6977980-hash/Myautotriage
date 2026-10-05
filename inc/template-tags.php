@@ -142,6 +142,12 @@ function mat_get_tools_registry() {
 			'seo_title' => __( 'Should I File a Claim? Deductible vs. Premium Calculator', 'myautotriage' ),
 		),
 		array(
+			'title'   => __( 'Car Insurance Refund Calculator', 'myautotriage' ),
+			'excerpt' => __( 'Estimate how much prepaid premium you get back when you cancel a policy early, pro-rata or short-rate.', 'myautotriage' ),
+			'slug'    => 'car-insurance-refund-calculator',
+			'seo_title' => __( 'Car Insurance Refund Calculator: Pro-Rata vs. Short-Rate', 'myautotriage' ),
+		),
+		array(
 			'title'   => __( 'Claim Payment Deadline Lookup', 'myautotriage' ),
 			'excerpt' => __( 'Look up how many days your state gives an insurer to acknowledge, decide, and pay your claim.', 'myautotriage' ),
 			'slug'    => 'claim-payment-deadline-by-state',
@@ -209,4 +215,21 @@ function mat_icon( $name ) {
 		'map'        => '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 4 4 6v14l5-2 6 2 5-2V4l-5 2-6-2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 4v14M15 6v14" stroke="currentColor" stroke-width="1.6"/></svg>',
 	);
 	return isset( $icons[ $name ] ) ? $icons[ $name ] : '';
+}
+
+/**
+ * Byline used on articles and in Article schema.
+ */
+function mat_author_name() {
+	return __( 'MyAutoTriage Editorial Team', 'myautotriage' );
+}
+
+/**
+ * True when a post was edited at least a day after it was published, so
+ * the byline shows "Updated <date>" only for real revisions.
+ */
+function mat_post_was_updated( $post = null ) {
+	$published = (int) get_post_time( 'U', true, $post );
+	$modified  = (int) get_post_modified_time( 'U', true, $post );
+	return $modified - $published > DAY_IN_SECONDS;
 }

@@ -51,8 +51,10 @@ wp_enqueue_script( 'mat-gap', MAT_URI . '/assets/js/calculators/gap-shortfall.js
 
 		<div class="mat-page__content"><?php the_content(); ?></div>
 
+		<?php mat_tool_extras( 'gap-insurance-shortfall-calculator' ); ?>
+
 		<?php
-		mat_faq_block( array(
+		mat_faq_block( array_merge( array(
 			array(
 				'question' => __( 'Does GAP insurance cover my deductible too?', 'myautotriage' ),
 				'answer'   => __( 'Some GAP policies cover a portion of your deductible (often capped around $500), most do not. Check your specific GAP contract or ask your GAP provider directly.', 'myautotriage' ),
@@ -61,7 +63,7 @@ wp_enqueue_script( 'mat-gap', MAT_URI . '/assets/js/calculators/gap-shortfall.js
 				'question' => __( "What if I don't have GAP insurance and there's a shortfall?", 'myautotriage' ),
 				'answer'   => __( "You're typically still responsible for the remaining loan balance to your lender, even though the car is gone. Some lenders will negotiate a payment plan — contact them as soon as you know the settlement amount.", 'myautotriage' ),
 			),
-		) );
+		), mat_tool_extra_faqs( 'gap-insurance-shortfall-calculator' ) ) );
 		?>
 	</div>
 </div>

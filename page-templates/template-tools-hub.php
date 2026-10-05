@@ -38,6 +38,30 @@ get_header();
 		endforeach;
 		?>
 	</div>
+
+	<?php
+	$variants = array(
+		'no-injury-demand-letter-generator'              => __( 'No-injury accident (property damage only)', 'myautotriage' ),
+		'property-damage-demand-letter-generator'        => __( 'Property damage claim', 'myautotriage' ),
+		'insurance-underpayment-demand-letter-generator' => __( 'Lowball or underpaid settlement', 'myautotriage' ),
+		'diminished-value-demand-letter-generator'       => __( 'Diminished value claim', 'myautotriage' ),
+		'small-claims-demand-letter-generator'           => __( 'Final demand before small claims court', 'myautotriage' ),
+	);
+	$links = array();
+	foreach ( $variants as $slug => $label ) {
+		$url = mat_url_for_slug( $slug );
+		if ( $url ) {
+			$links[] = '<li><a href="' . esc_url( $url ) . '">' . esc_html( $label ) . '</a></li>';
+		}
+	}
+	if ( $links ) :
+		?>
+		<section class="mat-container mat-narrow mat-page__content">
+			<h2><?php esc_html_e( 'Demand letters for your situation', 'myautotriage' ); ?></h2>
+			<p><?php esc_html_e( 'The same free generator, pre-set for the most common claim situations:', 'myautotriage' ); ?></p>
+			<ul><?php echo implode( '', $links ); // phpcs:ignore -- escaped above ?></ul>
+		</section>
+	<?php endif; ?>
 </div>
 <?php
 get_footer();

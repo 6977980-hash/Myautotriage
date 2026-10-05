@@ -48,8 +48,10 @@ wp_enqueue_script( 'mat-ded', MAT_URI . '/assets/js/calculators/deductible-vs-pr
 
 		<div class="mat-page__content"><?php the_content(); ?></div>
 
+		<?php mat_tool_extras( 'deductible-vs-premium-calculator' ); ?>
+
 		<?php
-		mat_faq_block( array(
+		mat_faq_block( array_merge( array(
 			array(
 				'question' => __( 'Will filing one small claim really raise my rate for years?', 'myautotriage' ),
 				'answer'   => __( "It depends on your insurer and state, but a single at-fault claim commonly affects your premium for 3-5 years (sometimes called a claim's 'surcharge period'), even after you've paid it off.", 'myautotriage' ),
@@ -58,7 +60,7 @@ wp_enqueue_script( 'mat-ded', MAT_URI . '/assets/js/calculators/deductible-vs-pr
 				'question' => __( 'Does a not-at-fault claim still raise my premium?', 'myautotriage' ),
 				'answer'   => __( "In most states, a claim where you weren't at fault shouldn't raise your premium — but 'claim surcharging' rules differ by state and insurer, so it's worth confirming with your agent.", 'myautotriage' ),
 			),
-		) );
+		), mat_tool_extra_faqs( 'deductible-vs-premium-calculator' ) ) );
 		?>
 	</div>
 </div>

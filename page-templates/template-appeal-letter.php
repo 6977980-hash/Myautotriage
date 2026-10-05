@@ -94,8 +94,10 @@ wp_enqueue_script( 'mat-ap', MAT_URI . '/assets/js/generators/appeal-letter.js',
 
 		<div class="mat-page__content"><?php the_content(); ?></div>
 
+		<?php mat_tool_extras( 'appeal-letter-generator' ); ?>
+
 		<?php
-		mat_faq_block( array(
+		mat_faq_block( array_merge( array(
 			array(
 				'question' => __( 'How many times can I appeal a denied claim?', 'myautotriage' ),
 				'answer'   => __( "This depends on your insurer and your state's regulations. Most insurers offer at least one internal appeal; after that, your options usually include a state insurance department complaint, mediation, arbitration (if your policy requires it), or a lawsuit.", 'myautotriage' ),
@@ -104,7 +106,7 @@ wp_enqueue_script( 'mat-ap', MAT_URI . '/assets/js/generators/appeal-letter.js',
 				'question' => __( "What if I don't have all the documentation yet?", 'myautotriage' ),
 				'answer'   => __( "Send your appeal by the deadline with what you have, note that additional documentation will follow, and continue gathering it. Missing the appeal deadline is usually worse than submitting an incomplete-but-timely appeal.", 'myautotriage' ),
 			),
-		) );
+		), mat_tool_extra_faqs( 'appeal-letter-generator' ) ) );
 		?>
 	</div>
 </div>
