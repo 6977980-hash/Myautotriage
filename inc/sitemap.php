@@ -1,11 +1,13 @@
 <?php
 /**
- * Minimal hand-written XML sitemap + robots.txt rules.
+ * Sitemap: one sitemap only, WordPress core's /wp-sitemap.xml.
  *
- * WordPress core ships its own sitemap at /wp-sitemap.xml since 5.5, which
- * is fine and left enabled — but many hosts/CDNs and older SEO checklists
- * still expect a plain /sitemap.xml, so this adds a simple, fast one built
- * directly from posts and pages, with no plugin dependency.
+ * The theme used to serve its own /sitemap.xml as well, which listed a
+ * different set of URLs (no categories) and got 301-redirected to
+ * /sitemap.xml/ by WordPress's trailing-slash canonical redirect. Two
+ * overlapping sitemaps just send search engines mixed signals, so
+ * /sitemap.xml now permanently redirects to the core sitemap (keeps any
+ * old Search Console submission working).
  *
  * @package MyAutoTriage
  */
@@ -25,71 +27,27 @@ function mat_sitemap_query_vars( $vars ) {
 }
 add_filter( 'query_vars', 'mat_sitemap_query_vars' );
 
-function mat_sitemap_output() {
+/**
+ * Priority 1 so this runs before core's redirect_canonical() adds the
+ * trailing slash.
+ */
+function mat_sitemap_redirect() {
 	if ( ! get_query_var( 'mat_sitemap' ) ) {
 		return;
 	}
-
-	header( 'Content-Type: application/xml; charset=UTF-8' );
-
-	$urls = array();
-
-	$front_page_id = (int) get_option( 'page_on_front' );
-
-	$urls[] = array( 'loc' => home_url( '/' ), 'priority' => '1.0' );
-
-	$pages = get_posts( array(
-		'post_type'      => 'page',
-		'post_status'    => 'publish',
-		'numberposts'    => -1,
-		'orderby'        => 'menu_order',
-		'order'          => 'ASC',
-	) );
-	$tool_slugs = wp_list_pluck( mat_get_tools_registry(), 'slug' );
-	foreach ( $pages as $p ) {
-		// The static front page is already added above as home_url( '/' );
-		// skip it here so it isn't listed twice in the sitemap.
-		if ( $front_page_id && $p->ID === $front_page_id ) {
-			continue;
-		}
-		$is_tool = in_array( $p->post_name, $tool_slugs, true );
-		$urls[]  = array(
-			'loc'        => get_permalink( $p ),
-			'lastmod'    => get_the_modified_date( 'c', $p ),
-			'priority'   => $is_tool ? '0.9' : '0.7',
-		);
-	}
-
-	$posts = get_posts( array(
-		'post_type'   => 'post',
-		'post_status' => 'publish',
-		'numberposts' => -1,
-	) );
-	foreach ( $posts as $p ) {
-		$urls[] = array(
-			'loc'      => get_permalink( $p ),
-			'lastmod'  => get_the_modified_date( 'c', $p ),
-			'priority' => '0.6',
-		);
-	}
-
-	echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-	echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
-	foreach ( $urls as $u ) {
-		echo "\t<url>\n";
-		echo "\t\t<loc>" . esc_url( $u['loc'] ) . "</loc>\n";
-		if ( ! empty( $u['lastmod'] ) ) {
-			echo "\t\t<lastmod>" . esc_html( $u['lastmod'] ) . "</lastmod>\n";
-		}
-		if ( ! empty( $u['priority'] ) ) {
-			echo "\t\t<priority>" . esc_html( $u['priority'] ) . "</priority>\n";
-		}
-		echo "\t</url>\n";
-	}
-	echo '</urlset>';
+	wp_safe_redirect( home_url( '/wp-sitemap.xml' ), 301 );
 	exit;
 }
-add_action( 'template_redirect', 'mat_sitemap_output' );
+add_action( 'template_redirect', 'mat_sitemap_redirect', 1 );
+
+/**
+ * Leave the users sitemap out of /wp-sitemap.xml: it only lists the author
+ * archive, which has no content of its own (see inc/cleanup.php).
+ */
+function mat_sitemap_providers( $provider, $name ) {
+	return 'users' === $name ? false : $provider;
+}
+add_filter( 'wp_sitemaps_add_provider', 'mat_sitemap_providers', 10, 2 );
 
 /**
  * Flush rewrite rules once when the theme activates so /sitemap.xml works
@@ -117,7 +75,6 @@ function mat_robots_txt( $output, $public ) {
 		'Disallow: /wp-admin/',
 		'Allow: /wp-admin/admin-ajax.php',
 		'',
-		'Sitemap: ' . home_url( '/sitemap.xml' ),
 		'Sitemap: ' . home_url( '/wp-sitemap.xml' ),
 	);
 	return implode( "\n", $lines ) . "\n";

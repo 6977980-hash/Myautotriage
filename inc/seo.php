@@ -36,6 +36,14 @@ function mat_truncate_meta( $text, $limit = 155 ) {
  * to a trimmed version of the content.
  */
 function mat_get_meta_description() {
+	// The posts page (/blog/) is is_home() but not the front page: give it
+	// its own description instead of repeating the homepage's.
+	if ( is_home() && ! is_front_page() ) {
+		$blog_id = (int) get_option( 'page_for_posts' );
+		$custom  = $blog_id ? get_post_meta( $blog_id, '_mat_meta_description', true ) : '';
+		return $custom ?: __( 'Plain-English car insurance claim guides: what to do after an accident, how to handle denials and lowball offers, total loss, GAP, and claim deadlines.', 'myautotriage' );
+	}
+
 	// Check the front page FIRST: a static front page is also is_singular()
 	// (it's a Page), so that generic branch below must not intercept it —
 	// otherwise the homepage always falls back to raw page content/excerpt
@@ -76,6 +84,8 @@ function mat_get_meta_description() {
 		if ( $desc ) {
 			return mat_truncate_meta( wp_strip_all_tags( $desc ) );
 		}
+		/* translators: %s: category name */
+		return sprintf( __( '%s: plain-English car insurance claim guides, plus free calculators and letter generators to back up your numbers.', 'myautotriage' ), single_term_title( '', false ) );
 	}
 
 	return get_bloginfo( 'description' );
@@ -90,6 +100,11 @@ function mat_get_seo_title() {
 	// (it's a Page), so the generic "page" branch below must not intercept
 	// it — otherwise the homepage's <title> always shows the raw page title
 	// ("Home | Site Name") instead of "Site Name — tagline".
+	if ( is_home() && ! is_front_page() ) {
+		$blog_id = (int) get_option( 'page_for_posts' );
+		$custom  = $blog_id ? get_post_meta( $blog_id, '_mat_meta_title', true ) : '';
+		return $custom ?: __( 'Car Insurance Claim Guides & Explainers', 'myautotriage' ) . ' | ' . get_bloginfo( 'name' );
+	}
 	if ( is_front_page() || is_home() ) {
 		return get_bloginfo( 'name' ) . ' — ' . get_bloginfo( 'description' );
 	}
@@ -98,6 +113,13 @@ function mat_get_seo_title() {
 		$custom = get_post_meta( $post->ID, '_mat_meta_title', true );
 		if ( $custom ) {
 			return $custom;
+		}
+		// Tool pages: use the search-phrased title from the tools registry
+		// (what people actually type), not the on-page tool name.
+		foreach ( mat_get_tools_registry() as $tool ) {
+			if ( $tool['slug'] === $post->post_name && ! empty( $tool['seo_title'] ) ) {
+				return $tool['seo_title'] . ' | ' . get_bloginfo( 'name' );
+			}
 		}
 		return get_the_title( $post ) . ' | ' . get_bloginfo( 'name' );
 	}
@@ -118,8 +140,11 @@ function mat_get_canonical_url() {
 	if ( is_singular() ) {
 		return get_permalink();
 	}
+	// Blog, category and paginated archives: WordPress serves these with a
+	// trailing slash and 301-redirects the slashless form, so the canonical
+	// has to carry the slash too or it points at a redirect.
 	global $wp;
-	return home_url( add_query_arg( array(), $wp->request ) );
+	return home_url( user_trailingslashit( $wp->request ) );
 }
 
 /**
@@ -157,7 +182,6 @@ function mat_head_seo() {
 	echo '<title>' . esc_html( $title ) . "</title>\n";
 	echo '<meta name="description" content="' . esc_attr( $description ) . "\" />\n";
 	echo '<link rel="canonical" href="' . esc_url( $canonical ) . "\" />\n";
-	echo '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />' . "\n";
 
 	// Open Graph
 	echo '<meta property="og:locale" content="' . esc_attr( get_locale() ) . "\" />\n";
@@ -190,6 +214,23 @@ function mat_head_seo() {
 	echo "<!-- /MyAutoTriage SEO -->\n";
 }
 add_action( 'wp_head', 'mat_head_seo', 1 );
+
+// mat_head_seo() prints the canonical tag, so WordPress core's own copy
+// would be a second (duplicate) canonical on every singular page.
+remove_action( 'wp_head', 'rel_canonical' );
+
+/**
+ * Robots directives go through core's single <meta name="robots"> tag
+ * (wp_robots), so there is one tag per page and core's noindex rules for
+ * search results and "Discourage search engines" still apply.
+ */
+function mat_wp_robots( $robots ) {
+	$robots['max-image-preview'] = 'large';
+	$robots['max-snippet']       = '-1';
+	$robots['max-video-preview'] = '-1';
+	return $robots;
+}
+add_filter( 'wp_robots', 'mat_wp_robots' );
 
 /**
  * Find a usable share image: per-post featured image, else the theme's

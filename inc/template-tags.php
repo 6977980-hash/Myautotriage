@@ -121,36 +121,43 @@ function mat_get_tools_registry() {
 			'title'   => __( 'Diminished Value (17c) Calculator', 'myautotriage' ),
 			'excerpt' => __( 'Estimate how much value your car lost after an accident, using the same 17c formula insurers reference.', 'myautotriage' ),
 			'slug'    => 'diminished-value-calculator',
+			'seo_title' => __( 'Free Diminished Value Calculator (17c Formula)', 'myautotriage' ),
 		),
 		array(
 			'title'   => __( 'Total Loss Threshold Calculator', 'myautotriage' ),
 			'excerpt' => __( "See whether your state's total loss rule means your insurer should declare your car a total loss.", 'myautotriage' ),
 			'slug'    => 'total-loss-threshold-calculator',
+			'seo_title' => __( 'Is My Car Totaled? Total Loss Threshold Calculator', 'myautotriage' ),
 		),
 		array(
 			'title'   => __( 'GAP Insurance Shortfall Calculator', 'myautotriage' ),
 			'excerpt' => __( 'Find out if GAP insurance actually covers the gap between your loan balance and your payout.', 'myautotriage' ),
 			'slug'    => 'gap-insurance-shortfall-calculator',
+			'seo_title' => __( 'GAP Insurance Calculator: Will You Still Owe Money?', 'myautotriage' ),
 		),
 		array(
 			'title'   => __( 'File-a-Claim Break-Even Calculator', 'myautotriage' ),
 			'excerpt' => __( 'Compare your deductible against paying out of pocket before you file a small claim.', 'myautotriage' ),
 			'slug'    => 'deductible-vs-premium-calculator',
+			'seo_title' => __( 'Should I File a Claim? Deductible vs. Premium Calculator', 'myautotriage' ),
 		),
 		array(
 			'title'   => __( 'Claim Payment Deadline Lookup', 'myautotriage' ),
 			'excerpt' => __( 'Look up how many days your state gives an insurer to acknowledge, decide, and pay your claim.', 'myautotriage' ),
 			'slug'    => 'claim-payment-deadline-by-state',
+			'seo_title' => __( 'How Long Does Insurance Have to Pay a Claim? By State', 'myautotriage' ),
 		),
 		array(
 			'title'   => __( 'Auto Insurance Demand Letter Generator', 'myautotriage' ),
 			'excerpt' => __( 'Generate a professional demand letter for property damage, underpayment, or diminished value in minutes.', 'myautotriage' ),
 			'slug'    => 'demand-letter-generator',
+			'seo_title' => __( 'Free Car Insurance Demand Letter Generator', 'myautotriage' ),
 		),
 		array(
 			'title'   => __( 'Claim Denial Appeal Letter Generator', 'myautotriage' ),
 			'excerpt' => __( 'Turn a denied auto insurance claim into a clear, evidence-backed written appeal.', 'myautotriage' ),
 			'slug'    => 'appeal-letter-generator',
+			'seo_title' => __( 'Insurance Claim Denied? Free Appeal Letter Generator', 'myautotriage' ),
 		),
 	);
 }
