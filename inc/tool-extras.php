@@ -64,7 +64,7 @@ function mat_get_tool_extras() {
 					. '<ul>'
 					. '<li>' . __( 'New York (75% threshold): $9,000 reaches 75%, so the car meets the total loss threshold.', 'myautotriage' ) . '</li>'
 					. '<li>' . __( 'Texas (100% threshold): $9,000 is below 100% of value, so the threshold is not met and the car would normally be repaired.', 'myautotriage' ) . '</li>'
-					. '<li>' . __( 'Georgia (Total Loss Formula): add the estimated salvage value. If salvage is $3,500, then $9,000 + $3,500 = $12,500, which exceeds $12,000, so the formula points to a total loss.', 'myautotriage' ) . '</li>'
+					. '<li>' . __( 'Pennsylvania (Total Loss Formula): add the estimated salvage value. If salvage is $3,500, then $9,000 + $3,500 = $12,500, which exceeds $12,000, so the formula points to a total loss.', 'myautotriage' ) . '</li>'
 					. '</ul>'
 					. '<p>' . __( 'Insurers can usually choose to total a car below the threshold if repairing it is not economical. The threshold tells you when they must, which matters most when you think a car is being repaired that should have been totaled, or the other way round.', 'myautotriage' ) . '</p>',
 			),
@@ -82,6 +82,7 @@ function mat_get_tool_extras() {
 				array( 'slug' => 'totaled-car-payout-too-low-negotiate', 'label' => __( 'Read: how to negotiate a total loss payout that seems too low', 'myautotriage' ) ),
 				array( 'slug' => 'insurance-underpayment-demand-letter-generator', 'label' => __( 'Dispute a low offer with an underpayment demand letter', 'myautotriage' ) ),
 				array( 'slug' => 'gap-insurance-shortfall-calculator', 'label' => __( 'Still owe on a loan? Check your GAP shortfall', 'myautotriage' ) ),
+				array( 'slug' => 'car-insurance-claim-laws', 'label' => __( 'See your state\'s total loss rule and claim deadlines, with citations', 'myautotriage' ) ),
 			),
 		),
 
@@ -322,7 +323,7 @@ function mat_claim_deadline_table() {
 		echo '<tr><th scope="row">' . $name . '</th><td>' . esc_html( $state['acknowledge'] ) . '</td><td>' . esc_html( $state['decide'] ) . '</td><td>' . esc_html( $state['pay'] ) . '</td></tr>';
 	}
 	echo '</tbody></table></div>';
-	if ( ! empty( $data['default'] ) ) {
+	if ( ! empty( $data['default'] ) && count( $states ) < count( $data['all_states'] ) ) {
 		echo '<p>' . esc_html__( 'Other states generally follow the NAIC model rules:', 'myautotriage' ) . ' '
 			. esc_html( $data['default']['acknowledge'] ) . ' '
 			. esc_html( $data['default']['decide'] ) . ' '

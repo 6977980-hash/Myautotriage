@@ -38,17 +38,7 @@ $meta = mat_state_laws_meta();
 					</thead>
 					<tbody>
 						<?php foreach ( mat_state_laws() as $state ) : ?>
-							<?php
-							$tl = $state['total_loss'];
-							if ( ! $tl ) {
-								$rule = '';
-							} elseif ( 'percentage' === $tl['type'] && ! empty( $tl['threshold'] ) ) {
-								/* translators: %d: percentage */
-								$rule = sprintf( __( '%d%% of value', 'myautotriage' ), round( $tl['threshold'] * 100 ) );
-							} else {
-								$rule = __( 'Total loss formula', 'myautotriage' );
-							}
-							?>
+							<?php $rule = mat_state_total_loss_label( $state ); ?>
 							<tr>
 								<th scope="row"><a href="<?php echo esc_url( mat_state_url( $state ) ); ?>"><?php echo esc_html( $state['name'] ); ?></a></th>
 								<td><?php echo esc_html( $state['deadlines'] ? $state['deadlines']['decide'] : __( 'See state page', 'myautotriage' ) ); ?></td>
@@ -60,7 +50,7 @@ $meta = mat_state_laws_meta();
 			</div>
 			<h2><?php esc_html_e( 'How to use these rules', 'myautotriage' ); ?></h2>
 			<p><?php esc_html_e( 'Deadlines usually run from the date the insurer receives your proof of loss, so send documents in writing and keep copies. If an insurer misses a deadline, a short written reminder that names the rule often gets things moving; if not, your state department of insurance takes complaints for free.', 'myautotriage' ); ?></p>
-			<p><?php esc_html_e( '"Total loss formula" states total a car when the repair cost plus its salvage value reaches the car\'s actual cash value. Percentage states use a fixed share of the car\'s value instead.', 'myautotriage' ); ?></p>
+			<p><?php esc_html_e( '"Total loss formula" states total a car when the repair cost plus its salvage value reaches the car\'s actual cash value. Percentage states use a fixed share of the car\'s value instead. Where state law sets no number, the insurer decides when repairs are uneconomical, and most insurers use the formula.', 'myautotriage' ); ?></p>
 		</div>
 
 		<?php mat_tool_disclaimer( __( 'State rules change and some apply only to certain claim types. Confirm anything important with your state department of insurance or a licensed attorney.', 'myautotriage' ) ); ?>

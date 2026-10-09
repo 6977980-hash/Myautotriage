@@ -1,56 +1,358 @@
 {
-	"source": "Compiled from published state total-loss threshold summaries (e.g. Policygenius, CarInsurance.com) as of 2026. Percentage-threshold states declare a total loss when repair cost reaches this percentage of actual cash value. Total Loss Formula (TLF) states instead total the car when repair cost plus estimated salvage value reaches or exceeds actual cash value. Thresholds can change — verify with your state department of insurance before relying on this.",
+	"source": "Thresholds come from each state's salvage-title or total-loss statute or regulation, read by our editorial team in October 2026; each state lists its citation. Percentage states total a car when repair cost reaches the stated share of its actual cash value. Total Loss Formula states total it when repair cost plus salvage value reaches its value. Where state law sets no number, the insurer decides when repairs are uneconomical, and most insurers apply the Total Loss Formula. Verify with your state department of insurance before relying on this.",
 	"states": {
-		"AL": { "name": "Alabama", "type": "percentage", "threshold": 0.75 },
-		"AK": { "name": "Alaska", "type": "formula" },
-		"AZ": { "name": "Arizona", "type": "formula" },
-		"AR": { "name": "Arkansas", "type": "percentage", "threshold": 0.70 },
-		"CA": { "name": "California", "type": "formula" },
-		"CO": { "name": "Colorado", "type": "percentage", "threshold": 1.00 },
-		"CT": { "name": "Connecticut", "type": "formula" },
-		"DE": { "name": "Delaware", "type": "formula" },
-		"DC": { "name": "Washington D.C.", "type": "percentage", "threshold": 0.75 },
-		"FL": { "name": "Florida", "type": "percentage", "threshold": 0.80 },
-		"GA": { "name": "Georgia", "type": "formula" },
-		"HI": { "name": "Hawaii", "type": "formula" },
-		"ID": { "name": "Idaho", "type": "formula" },
-		"IL": { "name": "Illinois", "type": "formula" },
-		"IN": { "name": "Indiana", "type": "percentage", "threshold": 0.70 },
-		"IA": { "name": "Iowa", "type": "percentage", "threshold": 0.70 },
-		"KS": { "name": "Kansas", "type": "percentage", "threshold": 0.75 },
-		"KY": { "name": "Kentucky", "type": "percentage", "threshold": 0.75 },
-		"LA": { "name": "Louisiana", "type": "percentage", "threshold": 0.75 },
-		"ME": { "name": "Maine", "type": "formula" },
-		"MD": { "name": "Maryland", "type": "percentage", "threshold": 0.75 },
-		"MA": { "name": "Massachusetts", "type": "formula" },
-		"MI": { "name": "Michigan", "type": "percentage", "threshold": 0.75 },
-		"MN": { "name": "Minnesota", "type": "percentage", "threshold": 0.70 },
-		"MS": { "name": "Mississippi", "type": "formula" },
-		"MO": { "name": "Missouri", "type": "percentage", "threshold": 0.80 },
-		"MT": { "name": "Montana", "type": "formula" },
-		"NE": { "name": "Nebraska", "type": "percentage", "threshold": 0.75 },
-		"NV": { "name": "Nevada", "type": "percentage", "threshold": 0.65 },
-		"NH": { "name": "New Hampshire", "type": "percentage", "threshold": 0.75 },
-		"NJ": { "name": "New Jersey", "type": "formula" },
-		"NM": { "name": "New Mexico", "type": "formula" },
-		"NY": { "name": "New York", "type": "percentage", "threshold": 0.75 },
-		"NC": { "name": "North Carolina", "type": "percentage", "threshold": 0.75 },
-		"ND": { "name": "North Dakota", "type": "percentage", "threshold": 0.75 },
-		"OH": { "name": "Ohio", "type": "formula" },
-		"OK": { "name": "Oklahoma", "type": "percentage", "threshold": 0.60 },
-		"OR": { "name": "Oregon", "type": "percentage", "threshold": 0.80 },
-		"PA": { "name": "Pennsylvania", "type": "formula" },
-		"RI": { "name": "Rhode Island", "type": "formula" },
-		"SC": { "name": "South Carolina", "type": "percentage", "threshold": 0.75 },
-		"SD": { "name": "South Dakota", "type": "formula" },
-		"TN": { "name": "Tennessee", "type": "percentage", "threshold": 0.75 },
-		"TX": { "name": "Texas", "type": "percentage", "threshold": 1.00 },
-		"UT": { "name": "Utah", "type": "formula" },
-		"VT": { "name": "Vermont", "type": "formula" },
-		"VA": { "name": "Virginia", "type": "percentage", "threshold": 0.75 },
-		"WA": { "name": "Washington", "type": "formula" },
-		"WV": { "name": "West Virginia", "type": "percentage", "threshold": 0.75 },
-		"WI": { "name": "Wisconsin", "type": "percentage", "threshold": 0.70 },
-		"WY": { "name": "Wyoming", "type": "percentage", "threshold": 0.75 }
-	}
+		"AL": {
+			"name": "Alabama",
+			"type": "percentage",
+			"threshold": 0.75,
+			"citation": "Ala. Code § 32-8-87(d)(1)",
+			"source_url": "https://alison.legislature.state.al.us/code-of-alabama?section=32-8-87"
+		},
+		"AK": {
+			"name": "Alaska",
+			"type": "insurer",
+			"citation": "2 AAC 92.170(c)(2)",
+			"source_url": "https://www.law.cornell.edu/regulations/alaska/2-AAC-92.170"
+		},
+		"AZ": {
+			"name": "Arizona",
+			"type": "insurer",
+			"citation": "A.R.S. § 28-2091(T)(3)",
+			"source_url": "https://www.azleg.gov/ars/28/02091.htm"
+		},
+		"AR": {
+			"name": "Arkansas",
+			"type": "percentage",
+			"threshold": 0.7,
+			"citation": "Ark. Code Ann. § 27-14-2301; DFA Rule 2007-8, 006.05.07 Ark. Code R. § 007",
+			"source_url": "https://www.law.cornell.edu/regulations/arkansas/006-05-07-Ark-Code-R-SS-007"
+		},
+		"CA": {
+			"name": "California",
+			"type": "insurer",
+			"citation": "Cal. Veh. Code § 544",
+			"source_url": "https://california.public.law/codes/vehicle_code_section_544"
+		},
+		"CO": {
+			"name": "Colorado",
+			"type": "percentage",
+			"threshold": 1.0,
+			"citation": "C.R.S. § 42-6-102(17)(a)(I)(C)",
+			"source_url": "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-42.pdf",
+			"note": "A car is also a total loss whenever the insurer declares it one."
+		},
+		"CT": {
+			"name": "Connecticut",
+			"type": "formula",
+			"citation": "Conn. Gen. Stat. § 38a-353(a)",
+			"source_url": "https://www.cga.ct.gov/current/pub/chap_700.htm"
+		},
+		"DE": {
+			"name": "Delaware",
+			"type": "insurer",
+			"citation": "21 Del. C. § 2512",
+			"source_url": "https://delcode.delaware.gov/title21/c025/index.html"
+		},
+		"DC": {
+			"name": "Washington D.C.",
+			"type": "percentage",
+			"threshold": 0.75,
+			"citation": "D.C. Code § 50-1331.01(12)(A)",
+			"source_url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-1331.01",
+			"note": "Measured against the car's retail value."
+		},
+		"FL": {
+			"name": "Florida",
+			"type": "insurer",
+			"citation": "Fla. Stat. § 319.30(3)(a)",
+			"source_url": "https://www.flsenate.gov/Laws/Statutes/2025/319.30",
+			"note": "Florida's 80% rule applies to vehicles without insurance; for insured cars the insurer decides."
+		},
+		"GA": {
+			"name": "Georgia",
+			"type": "insurer",
+			"citation": "O.C.G.A. § 40-3-2(11)",
+			"source_url": "https://law.onecle.com/georgia/title-40/40-3-2.html"
+		},
+		"HI": {
+			"name": "Hawaii",
+			"type": "insurer",
+			"citation": "Haw. Rev. Stat. § 286-2",
+			"source_url": "https://data.capitol.hawaii.gov/hrscurrent/Vol05_Ch0261-0319/HRS0286/HRS_0286-0002.htm"
+		},
+		"ID": {
+			"name": "Idaho",
+			"type": "insurer",
+			"citation": "Idaho Code § 49-123(2)(o), (s)",
+			"source_url": "https://legislature.idaho.gov/statutesrules/idstat/title49/t49ch1/sect49-123/"
+		},
+		"IL": {
+			"name": "Illinois",
+			"type": "insurer",
+			"citation": "625 ILCS 5/3-117.1(a)(1)",
+			"source_url": "https://www.ilga.gov/legislation/ilcs/fulltext.asp?DocName=062500050K3-117.1",
+			"note": "Illinois' 50% and 70% figures apply only to certain owners such as dealers, fleets and lienholders."
+		},
+		"IN": {
+			"name": "Indiana",
+			"type": "insurer",
+			"citation": "Ind. Code § 9-22-3-3(a)",
+			"source_url": "https://statecodesfiles.justia.com/indiana/2017/title-9/article-22/chapter-3/chapter-3.pdf",
+			"note": "Indiana's 70% test applies only to self-insured owners and some buyers; for insured cars the insurer decides."
+		},
+		"IA": {
+			"name": "Iowa",
+			"type": "percentage",
+			"threshold": 0.7,
+			"citation": "Iowa Code § 321.52(4)(e)",
+			"source_url": "https://www.legis.iowa.gov/docs/code/321.52.pdf"
+		},
+		"KS": {
+			"name": "Kansas",
+			"type": "percentage",
+			"threshold": 0.75,
+			"citation": "K.S.A. 8-197(b)(2)(B), (b)(6)",
+			"source_url": "https://www.ksrevisor.gov/statutes/chapters/ch08/008_001_0097.html",
+			"note": "Applies to vehicles from the current or previous six model years."
+		},
+		"KY": {
+			"name": "Kentucky",
+			"type": "percentage",
+			"threshold": 0.75,
+			"citation": "KRS 186A.520(1)(a)1.",
+			"source_url": "https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=57592"
+		},
+		"LA": {
+			"name": "Louisiana",
+			"type": "percentage",
+			"threshold": 0.75,
+			"citation": "La. R.S. 32:702(14)",
+			"source_url": "https://legis.la.gov/legis/Law.aspx?d=88513"
+		},
+		"ME": {
+			"name": "Maine",
+			"type": "insurer",
+			"citation": "29-A M.R.S. § 602(13), (19)",
+			"source_url": "https://legislature.maine.gov/statutes/29-A/title29-Asec602.html"
+		},
+		"MD": {
+			"name": "Maryland",
+			"type": "percentage",
+			"threshold": 0.75,
+			"citation": "Md. Code, Transp. § 13-506(c)(2)(ii), (c)(4)-(5)",
+			"source_url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gtr&section=13-506&enactments=false",
+			"note": "Insurers may still declare a total loss below 75%."
+		},
+		"MA": {
+			"name": "Massachusetts",
+			"type": "formula",
+			"citation": "212 CMR 2.04(1)(e)",
+			"source_url": "https://www.law.cornell.edu/regulations/massachusetts/212-CMR-2-04"
+		},
+		"MI": {
+			"name": "Michigan",
+			"type": "percentage",
+			"threshold": 0.75,
+			"citation": "Mich. Comp. Laws § 257.217c",
+			"source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-257-217c",
+			"note": "75% triggers a salvage title; 91% or more a scrap title."
+		},
+		"MN": {
+			"name": "Minnesota",
+			"type": "percentage",
+			"threshold": 0.8,
+			"citation": "Minn. Stat. § 168A.01, subd. 17b; § 168A.151, subd. 1",
+			"source_url": "https://www.revisor.mn.gov/statutes/cite/168A.01"
+		},
+		"MS": {
+			"name": "Mississippi",
+			"type": "insurer",
+			"citation": "Miss. Code Ann. § 63-21-1 et seq.; Miss. Admin. Code tit. 35, pt. VII, subpt. 6, ch. 5",
+			"source_url": "https://www.dps.ms.gov/investigation/salvage-inspection-unit"
+		},
+		"MO": {
+			"name": "Missouri",
+			"type": "percentage",
+			"threshold": 0.8,
+			"citation": "Mo. Rev. Stat. § 301.010(55)",
+			"source_url": "https://revisor.mo.gov/main/OneSection.aspx?section=301.010",
+			"note": "Applies to vehicles six model years old or newer; the insurer can also declare a total loss."
+		},
+		"MT": {
+			"name": "Montana",
+			"type": "insurer",
+			"citation": "Mont. Code Ann. § 61-3-210(8)",
+			"source_url": "https://archive.legmt.gov/bills/mca/title_0610/chapter_0030/part_0020/section_0100/0610-0030-0020-0100.html"
+		},
+		"NE": {
+			"name": "Nebraska",
+			"type": "percentage",
+			"threshold": 0.75,
+			"citation": "Neb. Rev. Stat. § 60-171(7)(a)",
+			"source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=60-171",
+			"note": "Applies to late-model vehicles."
+		},
+		"NV": {
+			"name": "Nevada",
+			"type": "percentage",
+			"threshold": 0.65,
+			"citation": "NRS 487.790(1)(b)",
+			"source_url": "https://www.leg.state.nv.us/NRS/NRS-487.html",
+			"note": "Paint, electronics and towing are left out of the repair cost."
+		},
+		"NH": {
+			"name": "New Hampshire",
+			"type": "percentage",
+			"threshold": 0.75,
+			"citation": "N.H. Rev. Stat. Ann. § 261:22, VI",
+			"source_url": "https://gc.nh.gov/rsa/html/XXI/261/261-22.htm",
+			"note": "Applies to vehicles in their model year or the four years after."
+		},
+		"NJ": {
+			"name": "New Jersey",
+			"type": "insurer",
+			"citation": "N.J.A.C. 13:21-22.3",
+			"source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-21-22-3"
+		},
+		"NM": {
+			"name": "New Mexico",
+			"type": "insurer",
+			"citation": "NMSA 1978, § 66-1-4.16(C)",
+			"source_url": "https://nmlegis.gov/Sessions/13%20Regular/bills/house/HB0008.HTML"
+		},
+		"NY": {
+			"name": "New York",
+			"type": "percentage",
+			"threshold": 0.75,
+			"citation": "N.Y. Comp. Codes R. & Regs. tit. 11, § 216.7(b)(16)(ii); 15 NYCRR 20.20(c)",
+			"source_url": "https://www.law.cornell.edu/regulations/new-york/11-NYCRR-216.7",
+			"note": "75% is the salvage-title trigger."
+		},
+		"NC": {
+			"name": "North Carolina",
+			"type": "percentage",
+			"threshold": 0.75,
+			"citation": "N.C. Gen. Stat. § 20-4.01(33)(d)",
+			"source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_20/GS_20-4.01.html",
+			"note": "Measured against the car's fair retail value."
+		},
+		"ND": {
+			"name": "North Dakota",
+			"type": "percentage",
+			"threshold": 0.75,
+			"citation": "N.D. Cent. Code § 39-05-20.2(1)",
+			"source_url": "https://ndlegis.gov/cencode/t39c05.pdf"
+		},
+		"OH": {
+			"name": "Ohio",
+			"type": "insurer",
+			"citation": "Ohio Rev. Code § 4505.11(C)",
+			"source_url": "https://codes.ohio.gov/ohio-revised-code/section-4505.11"
+		},
+		"OK": {
+			"name": "Oklahoma",
+			"type": "percentage",
+			"threshold": 0.6,
+			"citation": "47 O.S. § 1111(A)(4), (C)(1)",
+			"source_url": "https://www.oklegislature.gov/cf_pdf/2025-26%20ENR/SB/SB1920%20ENR.PDF",
+			"note": "Oklahoma's threshold rises from 60% to 70% on November 1, 2026 (SB 1920)."
+		},
+		"OR": {
+			"name": "Oregon",
+			"type": "insurer",
+			"citation": "ORS 801.527",
+			"source_url": "https://www.oregonlegislature.gov/bills_laws/ors/ors801.html",
+			"note": "Oregon's 80% rule applies to uninsured vehicles; for insured cars the insurer decides."
+		},
+		"PA": {
+			"name": "Pennsylvania",
+			"type": "formula",
+			"citation": "31 Pa. Code § 62.3(e)",
+			"source_url": "https://www.pacodeandbulletin.gov/Display/pacode?file=/secure/pacode/data/031/chapter62/s62.3.html"
+		},
+		"RI": {
+			"name": "Rhode Island",
+			"type": "percentage",
+			"threshold": 0.75,
+			"citation": "230-RICR-20-40-2.8(A)(1)-(3); R.I. Gen. Laws § 27-9.1-4(25)",
+			"source_url": "https://www.law.cornell.edu/regulations/rhode-island/230-RICR-20-40-2.8",
+			"note": "75% is a floor: an insurer cannot total a car below it without the owner's written consent."
+		},
+		"SC": {
+			"name": "South Carolina",
+			"type": "percentage",
+			"threshold": 0.75,
+			"citation": "S.C. Code Ann. § 56-19-480(G)",
+			"source_url": "https://www.scstatehouse.gov/code/t56c019.php",
+			"note": "Does not apply to vehicles worth $2,000 or less."
+		},
+		"SD": {
+			"name": "South Dakota",
+			"type": "insurer",
+			"citation": "SDCL 32-3-51.19",
+			"source_url": "https://sdlegislature.gov/Statutes/Codified_Laws/DisplayStatute.aspx?Type=Statute&Statute=32-3-51.19"
+		},
+		"TN": {
+			"name": "Tennessee",
+			"type": "percentage",
+			"threshold": 0.75,
+			"citation": "Tenn. Code Ann. § 55-3-211; Tenn. Comp. R. & Regs. 0960-01-.29(3)",
+			"source_url": "https://www.law.cornell.edu/regulations/tennessee/Tenn-Comp-R-Regs-0960-01-.29"
+		},
+		"TX": {
+			"name": "Texas",
+			"type": "percentage",
+			"threshold": 1.0,
+			"citation": "Tex. Transp. Code § 501.091(15)(A)",
+			"source_url": "https://texas.public.law/statutes/tex._transp._code_section_501.091"
+		},
+		"UT": {
+			"name": "Utah",
+			"type": "insurer",
+			"citation": "Utah Code Ann. § 41-1a-1001(8)",
+			"source_url": "https://le.utah.gov/xcode/Title41/Chapter1A/41-1a-S1001.html"
+		},
+		"VT": {
+			"name": "Vermont",
+			"type": "insurer",
+			"citation": "23 V.S.A. § 2001(13)-(14)",
+			"source_url": "https://legislature.vermont.gov/statutes/section/23/021/02001"
+		},
+		"VA": {
+			"name": "Virginia",
+			"type": "formula",
+			"citation": "Va. Code § 46.2-1600",
+			"source_url": "https://law.lis.virginia.gov/vacode/title46.2/chapter16/section46.2-1600/",
+			"note": "Virginia applies the formula to late-model vehicles; 75% is used for recovered stolen cars and rebuilt titles."
+		},
+		"WA": {
+			"name": "Washington",
+			"type": "formula",
+			"citation": "RCW 46.04.514; see also RCW 46.80.010(6)",
+			"source_url": "https://app.leg.wa.gov/RCW/default.aspx?cite=46.04.514"
+		},
+		"WV": {
+			"name": "West Virginia",
+			"type": "percentage",
+			"threshold": 0.75,
+			"citation": "W. Va. Code § 17A-4-10(a)",
+			"source_url": "https://code.wvlegislature.gov/17A-4-10/"
+		},
+		"WI": {
+			"name": "Wisconsin",
+			"type": "percentage",
+			"threshold": 0.7,
+			"citation": "Wis. Stat. § 340.01(55g)",
+			"source_url": "https://docs.legis.wisconsin.gov/statutes/statutes/340/01/55g",
+			"note": "Applies to vehicles less than seven years old."
+		},
+		"WY": {
+			"name": "Wyoming",
+			"type": "insurer",
+			"citation": "Wyo. Stat. Ann. §§ 31-2-106(a)(v), 31-2-107(a)",
+			"source_url": "https://wyoleg.gov/statutes/compress/title31.pdf",
+			"note": "Wyoming's 75% rule applies when no insurer is involved; when an insurer settles, its decision controls."
+		}
+	},
+	"reviewed": "2026-10-09"
 }

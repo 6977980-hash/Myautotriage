@@ -104,7 +104,43 @@ function mat_state_total_loss_rule( $state ) {
 		/* translators: %d: percentage */
 		return sprintf( __( 'Repairs cost %d%% or more of the car\'s actual cash value', 'myautotriage' ), round( $tl['threshold'] * 100 ) );
 	}
-	return __( 'Repair cost plus salvage value meets or exceeds the car\'s actual cash value (total loss formula)', 'myautotriage' );
+	if ( 'formula' === $tl['type'] ) {
+		return __( 'Repair cost plus salvage value meets or exceeds the car\'s actual cash value (total loss formula)', 'myautotriage' );
+	}
+	return __( 'The insurer decides when repairs are uneconomical; state law sets no fixed percentage', 'myautotriage' );
+}
+
+/**
+ * Short label for tables: "75% of value", "Total loss formula", "Insurer decides".
+ */
+function mat_state_total_loss_label( $state ) {
+	$tl = $state['total_loss'];
+	if ( ! $tl ) {
+		return '';
+	}
+	if ( 'percentage' === $tl['type'] && ! empty( $tl['threshold'] ) ) {
+		/* translators: %d: percentage */
+		return sprintf( __( '%d%% of value', 'myautotriage' ), round( $tl['threshold'] * 100 ) );
+	}
+	return 'formula' === $tl['type'] ? __( 'Total loss formula', 'myautotriage' ) : __( 'Insurer decides (no fixed %)', 'myautotriage' );
+}
+
+/**
+ * Turn a deadline value into a phrase that follows a verb:
+ * "15 calendar days" -> "within 15 calendar days",
+ * "No fixed deadline (a reasonable time)" -> "with no fixed deadline (a reasonable time)".
+ */
+function mat_state_within( $text ) {
+	if ( preg_match( '/^\d/', $text ) ) {
+		return 'within ' . $text;
+	}
+	if ( 0 === stripos( $text, 'No fixed deadline' ) ) {
+		return 'with no fixed deadline' . substr( $text, strlen( 'No fixed deadline' ) );
+	}
+	if ( 0 === stripos( $text, 'No deadline in state law' ) ) {
+		return 'with no deadline set in state law';
+	}
+	return '(' . $text . ')';
 }
 
 function mat_state_seo_title( $state ) {
@@ -116,7 +152,7 @@ function mat_state_meta_description( $state ) {
 	$d = $state['deadlines'];
 	if ( $d ) {
 		/* translators: 1: state name, 2: decision deadline, 3: total loss rule */
-		return mat_truncate_meta( sprintf( __( '%1$s car insurance claim rules: insurers must accept or deny within %2$s. Total loss when: %3$s. Citations and free tools.', 'myautotriage' ), $state['name'], $d['decide'], lcfirst( mat_state_total_loss_rule( $state ) ) ) );
+		return mat_truncate_meta( sprintf( __( '%1$s car insurance claim rules: insurers must accept or deny a claim %2$s. Total loss rule: %3$s. With legal citations.', 'myautotriage' ), $state['name'], mat_state_within( $d['decide'] ), lcfirst( mat_state_total_loss_label( $state ) ) ) );
 	}
 	/* translators: %s: state name */
 	return sprintf( __( '%s car insurance claim rules: how long insurers have to handle your claim, when a car is a total loss, and free tools to back up your claim.', 'myautotriage' ), $state['name'] );
@@ -181,7 +217,7 @@ function mat_state_faqs( $state ) {
 			/* translators: %s: state name */
 			'question' => sprintf( __( 'How long does an insurance company have to pay a claim in %s?', 'myautotriage' ), $state['name'] ),
 			/* translators: 1: state name, 2: decide, 3: pay */
-			'answer'   => sprintf( __( 'In %1$s the insurer must accept or deny the claim within %2$s, and pay within %3$s. The clock generally starts once the insurer has the proof of loss it asked for, so keep a dated record of what you sent.', 'myautotriage' ), $state['name'], $d['decide'], $d['pay'] ),
+			'answer'   => sprintf( __( 'In %1$s the insurer must accept or deny the claim %2$s, and pay %3$s. The clock generally starts once the insurer has the proof of loss it asked for, so keep a dated record of what you sent.', 'myautotriage' ), $state['name'], mat_state_within( $d['decide'] ), mat_state_within( $d['pay'] ) ),
 		);
 	}
 	if ( $state['total_loss'] ) {
@@ -189,7 +225,9 @@ function mat_state_faqs( $state ) {
 			/* translators: %s: state name */
 			'question' => sprintf( __( 'When is a car considered totaled in %s?', 'myautotriage' ), $state['name'] ),
 			/* translators: 1: state name, 2: rule */
-			'answer'   => sprintf( __( 'In %1$s a car is a total loss when: %2$s. Insurers can still choose to total a car below that point, and you can challenge the actual cash value they use.', 'myautotriage' ), $state['name'], lcfirst( mat_state_total_loss_rule( $state ) ) ),
+			'answer'   => sprintf( __( 'In %1$s: %2$s.', 'myautotriage' ), $state['name'], lcfirst( mat_state_total_loss_rule( $state ) ) )
+				. ( empty( $state['total_loss']['note'] ) ? '' : ' ' . $state['total_loss']['note'] )
+				. ' ' . __( 'You can challenge the actual cash value the insurer uses.', 'myautotriage' ),
 		);
 	}
 	$faqs[] = array(

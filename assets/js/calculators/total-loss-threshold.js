@@ -66,8 +66,16 @@
 		} else {
 			var combined = repair + salvage;
 			isTotal = combined >= acv;
-			html += '<p>' + state.name + ' uses the <strong>Total Loss Formula</strong>: your car is a total loss if repair cost + estimated salvage value reaches or exceeds its full value.</p>';
+			if ( state.type === 'formula' ) {
+				html += '<p>' + state.name + ' uses the <strong>Total Loss Formula</strong>: your car is a total loss if repair cost + estimated salvage value reaches or exceeds its full value.</p>';
+			} else {
+				html += '<p>' + state.name + ' law sets <strong>no fixed percentage</strong>: the insurer totals a car when it decides repairs are uneconomical. Most insurers use the Total Loss Formula (repair cost + salvage value vs. the car\'s value), so that test is shown here.</p>';
+			}
 			html += '<p>Repair estimate (' + formatUSD( repair ) + ') + estimated salvage value (' + formatUSD( Math.round( salvage ) ) + ( salvageInput ? '' : ', a default 18% estimate' ) + ') = <strong>' + formatUSD( Math.round( combined ) ) + '</strong> vs. a vehicle value of ' + formatUSD( acv ) + '.</p>';
+		}
+
+		if ( state.note ) {
+			html += '<p>' + state.note + '</p>';
 		}
 
 		resultBox.className = 'mat-result-box' + ( isTotal ? '' : '' );

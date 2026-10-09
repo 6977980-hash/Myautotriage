@@ -41,14 +41,19 @@ $meta  = mat_state_laws_meta();
 				<p class="mat-short-answer__label"><?php esc_html_e( 'Short answer', 'myautotriage' ); ?></p>
 				<p>
 					<?php
-					if ( $d ) {
+					$has_days = $d && ( preg_match( '/^\d/', $d['acknowledge'] ) || preg_match( '/^\d/', $d['decide'] ) || preg_match( '/^\d/', $d['pay'] ) );
+					if ( $d && ! $has_days ) {
+						/* translators: %s: state */
+						printf( esc_html__( '%s law sets no fixed number of days for an insurer to acknowledge, decide or pay a car insurance claim; it must still act promptly and in good faith.', 'myautotriage' ), esc_html( $state['name'] ) );
+						echo ' ';
+					} elseif ( $d ) {
 						/* translators: 1: state, 2: acknowledge, 3: decide, 4: pay */
-						printf( esc_html__( 'In %1$s an insurer must acknowledge your claim within %2$s, accept or deny it within %3$s, and pay within %4$s.', 'myautotriage' ), esc_html( $state['name'] ), esc_html( lcfirst( $d['acknowledge'] ) ), esc_html( lcfirst( $d['decide'] ) ), esc_html( lcfirst( $d['pay'] ) ) );
+						printf( esc_html__( 'In %1$s an insurer must acknowledge your claim %2$s, accept or deny it %3$s, and pay %4$s.', 'myautotriage' ), esc_html( $state['name'] ), esc_html( mat_state_within( $d['acknowledge'] ) ), esc_html( mat_state_within( $d['decide'] ) ), esc_html( mat_state_within( $d['pay'] ) ) );
 						echo ' ';
 					}
 					if ( $state['total_loss'] ) {
 						/* translators: %s: total loss rule */
-						printf( esc_html__( 'A car is a total loss when: %s.', 'myautotriage' ), esc_html( lcfirst( mat_state_total_loss_rule( $state ) ) ) );
+						printf( esc_html__( 'Total loss rule: %s.', 'myautotriage' ), esc_html( lcfirst( mat_state_total_loss_rule( $state ) ) ) );
 					}
 					?>
 				</p>
@@ -71,11 +76,18 @@ $meta  = mat_state_laws_meta();
 							</tbody>
 						</table>
 					</div>
+					<?php if ( ! empty( $d['note'] ) ) : ?>
+						<p><?php echo esc_html( $d['note'] ); ?></p>
+					<?php endif; ?>
 					<?php if ( ! empty( $d['citation'] ) ) : ?>
 						<p class="mat-field__hint">
 							<?php
-							/* translators: %s: legal citation */
-							printf( esc_html__( 'Rule: %s.', 'myautotriage' ), esc_html( $d['citation'] ) );
+							if ( 0 === strpos( $d['citation'], 'No ' ) ) {
+								echo esc_html( $d['citation'] ) . '.';
+							} else {
+								/* translators: %s: legal citation */
+								printf( esc_html__( 'Rule: %s.', 'myautotriage' ), esc_html( $d['citation'] ) );
+							}
 							?>
 						</p>
 					<?php endif; ?>
@@ -96,7 +108,14 @@ $meta  = mat_state_laws_meta();
 						printf( esc_html__( 'When a car is totaled in %s', 'myautotriage' ), esc_html( $state['name'] ) );
 						?>
 					</h2>
-					<p><?php echo esc_html( mat_state_total_loss_rule( $state ) ); ?>.</p>
+					<p>
+						<?php
+						echo esc_html( mat_state_total_loss_rule( $state ) ) . '.';
+						if ( ! empty( $state['total_loss']['note'] ) ) {
+							echo ' ' . esc_html( $state['total_loss']['note'] );
+						}
+						?>
+					</p>
 					<?php
 					$tl = $state['total_loss'];
 					if ( 'percentage' === $tl['type'] && ! empty( $tl['threshold'] ) ) :
@@ -108,8 +127,10 @@ $meta  = mat_state_laws_meta();
 							printf( esc_html__( 'Example: for a car worth $15,000, a repair estimate of %2$s or more (%1$d%%) makes it a total loss.', 'myautotriage' ), (int) round( $tl['threshold'] * 100 ), esc_html( '$' . number_format_i18n( $limit ) ) );
 							?>
 						</p>
-					<?php else : ?>
+					<?php elseif ( 'formula' === $tl['type'] ) : ?>
 						<p><?php esc_html_e( 'Example: a car worth $15,000 with $3,000 of salvage value is a total loss once the repair estimate reaches $12,000, because $12,000 + $3,000 equals its value.', 'myautotriage' ); ?></p>
+					<?php else : ?>
+						<p><?php esc_html_e( 'In practice most insurers apply the total loss formula: a car worth $15,000 with $3,000 of salvage value is usually totaled once repairs reach about $12,000. Ask the adjuster which test they used and for the valuation report.', 'myautotriage' ); ?></p>
 					<?php endif; ?>
 					<?php if ( ! empty( $tl['citation'] ) ) : ?>
 						<p class="mat-field__hint">

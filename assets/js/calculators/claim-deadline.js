@@ -48,6 +48,12 @@
 			html += '<tr><th scope="row">Accept or deny it</th><td>' + state.decide + '</td></tr>';
 			html += '<tr><th scope="row">Pay after agreement</th><td>' + state.pay + '</td></tr>';
 			html += '</tbody></table>';
+			if ( state.note ) {
+				html += '<p>' + state.note + '</p>';
+			}
+			if ( state.citation ) {
+				html += '<p style="font-size:.9rem;">' + ( state.citation.indexOf( 'No ' ) === 0 ? '' : 'Rule: ' ) + state.citation + '.</p>';
+			}
 		} else {
 			var name = ( document.getElementById( 'mat-cd-state' ).selectedOptions[0] || {} ).textContent || 'Your state';
 			html += '<h3 style="margin-top:0;">' + name + ' — general model</h3>';
