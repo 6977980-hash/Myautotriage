@@ -283,3 +283,5 @@ button, input, select, textarea { font-family: inherit; font-size: 1rem; }
 .mat-sources h2 { font-size: 1.1rem; margin: 0 0 0.5em; }
 .mat-sources ul { margin: 0; padding-left: 1.2em; }
 .mat-sources li { margin-bottom: 0.35em; }
+.mat-state-list { list-style: none; margin: 0; padding: 0; columns: 4 10em; column-gap: 1.5em; }
+.mat-state-list li { margin: 0 0 0.35em; break-inside: avoid; }

@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MAT_VERSION', '1.0.4' );
+define( 'MAT_VERSION', '1.0.5' );
 define( 'MAT_DIR', get_template_directory() );
 define( 'MAT_URI', get_template_directory_uri() );
 
@@ -82,6 +82,7 @@ require MAT_DIR . '/inc/sitemap.php';
 require MAT_DIR . '/inc/cleanup.php';
 require MAT_DIR . '/inc/tool-extras.php';
 require MAT_DIR . '/inc/article-extras.php';
+require MAT_DIR . '/inc/state-laws.php';
 require MAT_DIR . '/inc/customizer.php';
 require MAT_DIR . '/inc/template-tags.php';
 require MAT_DIR . '/inc/content-seed.php';

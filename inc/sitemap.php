@@ -110,6 +110,14 @@ function mat_llms_txt() {
 		$lines[] = '- [' . get_the_title( $p ) . '](' . get_permalink( $p ) . ')';
 	}
 	$lines[] = '';
+	$lines[] = '## ' . __( 'Claim laws by state', 'myautotriage' );
+	if ( get_page_by_path( MAT_STATE_HUB_SLUG ) ) {
+		$lines[] = '- [' . __( 'Car insurance claim laws by state', 'myautotriage' ) . '](' . mat_state_hub_url() . ')';
+		foreach ( mat_state_laws() as $state ) {
+			$lines[] = '- [' . mat_state_seo_title( $state ) . '](' . mat_state_url( $state ) . ')';
+		}
+	}
+	$lines[] = '';
 	$lines[] = '## ' . __( 'About', 'myautotriage' );
 	foreach ( array( 'about-us', 'editorial-policy', 'disclaimer' ) as $slug ) {
 		$page = get_page_by_path( $slug );

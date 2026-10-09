@@ -57,6 +57,23 @@ if ( ! $tagline ) {
 	</div>
 </section>
 
+<?php if ( get_page_by_path( MAT_STATE_HUB_SLUG ) ) : ?>
+<section class="mat-section" aria-labelledby="mat-states-title">
+	<div class="mat-container">
+		<h2 class="mat-section__title" id="mat-states-title"><?php esc_html_e( 'Car insurance claim laws by state', 'myautotriage' ); ?></h2>
+		<p class="mat-section__lead">
+			<?php esc_html_e( 'Claim deadlines and total loss rules for every state, with the law behind each one.', 'myautotriage' ); ?>
+			<a href="<?php echo esc_url( mat_state_hub_url() ); ?>"><?php esc_html_e( 'Compare all states', 'myautotriage' ); ?></a>
+		</p>
+		<ul class="mat-state-list">
+			<?php foreach ( mat_state_laws() as $state ) : ?>
+				<li><a href="<?php echo esc_url( mat_state_url( $state ) ); ?>"><?php echo esc_html( $state['name'] ); ?></a></li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+</section>
+<?php endif; ?>
+
 <section class="mat-section mat-section--alt" aria-label="<?php esc_attr_e( 'How it works', 'myautotriage' ); ?>">
 	<div class="mat-container">
 		<h2 class="mat-section__title"><?php esc_html_e( 'Three steps to triage any claim', 'myautotriage' ); ?></h2>

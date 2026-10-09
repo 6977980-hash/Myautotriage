@@ -12,7 +12,7 @@ wp_enqueue_script( 'mat-tlt', MAT_URI . '/assets/js/calculators/total-loss-thres
 	<div class="mat-container mat-narrow">
 		<div class="mat-tool__intro">
 			<h1><?php the_title(); ?></h1>
-			<p><?php esc_html_e( "See whether your car is likely to be declared a total loss, using your state's actual rule — either a percentage threshold or the Total Loss Formula.", 'myautotriage' ); ?></p>
+			<p><?php esc_html_e( "See whether your car is likely to be declared a total loss, using your state's actual rule: a percentage threshold, the Total Loss Formula, or (where state law sets no number) the test most insurers use.", 'myautotriage' ); ?></p>
 		</div>
 
 		<form id="mat-tlt-form" class="mat-tool-panel" data-json="<?php echo esc_url( MAT_URI . '/assets/js/data/total-loss-thresholds.json' ); ?>" novalidate>
@@ -54,7 +54,7 @@ wp_enqueue_script( 'mat-tlt', MAT_URI . '/assets/js/calculators/total-loss-thres
 		mat_faq_block( array_merge( array(
 			array(
 				'question' => __( "What's the difference between a percentage threshold and the Total Loss Formula?", 'myautotriage' ),
-				'answer'   => __( 'A percentage-threshold state totals a car once repairs reach a set percentage of its value (for example 75%). A Total Loss Formula (TLF) state instead adds the repair cost to the estimated salvage value and totals the car if that combined figure meets or exceeds the full value.', 'myautotriage' ),
+				'answer'   => __( 'A percentage-threshold state totals a car once repairs reach a set percentage of its value (for example 75%). A Total Loss Formula (TLF) state instead adds the repair cost to the estimated salvage value and totals the car if that combined figure meets or exceeds the full value. Where state law sets no number, the insurer decides when repairs are uneconomical, and most insurers use the Total Loss Formula.', 'myautotriage' ),
 			),
 			array(
 				'question' => __( 'Can I ask my insurer to repair a car they want to total, or vice versa?', 'myautotriage' ),

@@ -1,32 +1,529 @@
 {
-	"source": "Acknowledge/accept-or-deny/pay timelines for the states below are drawn from published summaries of each state's unfair claims settlement practices rules as of 2026. All other states show the general model most states follow (based on the NAIC Unfair Claims Settlement Practices Act). Insurance regulations change and exact wording varies by state — confirm with your state department of insurance before relying on a specific number of days.",
+	"source": "Deadlines for every state come from that state's unfair claims settlement practices statute or regulation, read by our editorial team in October 2026; each state lists its citation. \"No fixed deadline\" means the law requires reasonable promptness without a number of days. Rules change; confirm with your state department of insurance before relying on a specific number of days.",
 	"default": {
 		"acknowledge": "Around 10-15 calendar days is typical.",
 		"decide": "Around 15-40 days after you submit a complete proof of loss is typical.",
 		"pay": "Around 5-30 days after you accept a settlement is typical."
 	},
 	"all_states": {
-		"AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "AR": "Arkansas", "CA": "California",
-		"CO": "Colorado", "CT": "Connecticut", "DE": "Delaware", "DC": "Washington D.C.", "FL": "Florida",
-		"GA": "Georgia", "HI": "Hawaii", "ID": "Idaho", "IL": "Illinois", "IN": "Indiana",
-		"IA": "Iowa", "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana", "ME": "Maine",
-		"MD": "Maryland", "MA": "Massachusetts", "MI": "Michigan", "MN": "Minnesota", "MS": "Mississippi",
-		"MO": "Missouri", "MT": "Montana", "NE": "Nebraska", "NV": "Nevada", "NH": "New Hampshire",
-		"NJ": "New Jersey", "NM": "New Mexico", "NY": "New York", "NC": "North Carolina", "ND": "North Dakota",
-		"OH": "Ohio", "OK": "Oklahoma", "OR": "Oregon", "PA": "Pennsylvania", "RI": "Rhode Island",
-		"SC": "South Carolina", "SD": "South Dakota", "TN": "Tennessee", "TX": "Texas", "UT": "Utah",
-		"VT": "Vermont", "VA": "Virginia", "WA": "Washington", "WV": "West Virginia", "WI": "Wisconsin", "WY": "Wyoming"
+		"AL": "Alabama",
+		"AK": "Alaska",
+		"AZ": "Arizona",
+		"AR": "Arkansas",
+		"CA": "California",
+		"CO": "Colorado",
+		"CT": "Connecticut",
+		"DE": "Delaware",
+		"DC": "Washington D.C.",
+		"FL": "Florida",
+		"GA": "Georgia",
+		"HI": "Hawaii",
+		"ID": "Idaho",
+		"IL": "Illinois",
+		"IN": "Indiana",
+		"IA": "Iowa",
+		"KS": "Kansas",
+		"KY": "Kentucky",
+		"LA": "Louisiana",
+		"ME": "Maine",
+		"MD": "Maryland",
+		"MA": "Massachusetts",
+		"MI": "Michigan",
+		"MN": "Minnesota",
+		"MS": "Mississippi",
+		"MO": "Missouri",
+		"MT": "Montana",
+		"NE": "Nebraska",
+		"NV": "Nevada",
+		"NH": "New Hampshire",
+		"NJ": "New Jersey",
+		"NM": "New Mexico",
+		"NY": "New York",
+		"NC": "North Carolina",
+		"ND": "North Dakota",
+		"OH": "Ohio",
+		"OK": "Oklahoma",
+		"OR": "Oregon",
+		"PA": "Pennsylvania",
+		"RI": "Rhode Island",
+		"SC": "South Carolina",
+		"SD": "South Dakota",
+		"TN": "Tennessee",
+		"TX": "Texas",
+		"UT": "Utah",
+		"VT": "Vermont",
+		"VA": "Virginia",
+		"WA": "Washington",
+		"WV": "West Virginia",
+		"WI": "Wisconsin",
+		"WY": "Wyoming"
 	},
 	"states": {
-		"CA": { "name": "California", "acknowledge": "15 calendar days", "decide": "40 calendar days after proof of loss", "pay": "30 calendar days after settlement is reached", "verified": true },
-		"TX": { "name": "Texas", "acknowledge": "15 business days", "decide": "15 business days after receiving all requested information", "pay": "5 business days after you accept a settlement offer", "verified": true },
-		"FL": { "name": "Florida", "acknowledge": "14 calendar days", "decide": "90 days to pay or deny (combined timeline)", "pay": "Included in the 90-day requirement", "verified": true },
-		"NY": { "name": "New York", "acknowledge": "15 business days", "decide": "15 business days after a properly executed proof of loss", "pay": "15 business days after the claim is settled", "verified": true },
-		"GA": { "name": "Georgia", "acknowledge": "15 calendar days", "decide": "30 days after receiving necessary information (typical)", "pay": "10 days after agreement or final judgment", "verified": true },
-		"IL": { "name": "Illinois", "acknowledge": "15 working days", "decide": "30 days after receiving proof of loss", "pay": "30 days after reaching an agreement or settlement", "verified": true },
-		"PA": { "name": "Pennsylvania", "acknowledge": "10 working days", "decide": "15 working days after receiving all requested documentation", "pay": "10 working days after agreement or settlement", "verified": true },
-		"NC": { "name": "North Carolina", "acknowledge": "30 calendar days", "decide": "30 days after receiving all relevant documents", "pay": "10 business days after acceptance or final settlement", "verified": true },
-		"OH": { "name": "Ohio", "acknowledge": "15 calendar days", "decide": "21 days after receiving proof of loss", "pay": "5 business days after claim settlement", "verified": true },
-		"AZ": { "name": "Arizona", "acknowledge": "10 working days", "decide": "30 days after receiving proof of loss", "pay": "30 days after settlement or final decision", "verified": true }
-	}
+		"AL": {
+			"name": "Alabama",
+			"acknowledge": "15 calendar days",
+			"decide": "30 calendar days after proof of loss",
+			"pay": "30 calendar days after agreeing the amount",
+			"citation": "Ala. Admin. Code r. 482-1-125-.03(c), 482-1-125-.06, 482-1-125-.07(1), (6)",
+			"source_url": "https://www.law.cornell.edu/regulations/alabama/Ala-Admin-Code-r-482-1-125-.07",
+			"verified": true
+		},
+		"AK": {
+			"name": "Alaska",
+			"acknowledge": "10 working days",
+			"decide": "15 working days after proof of loss",
+			"pay": "30 working days after proof of loss (undisputed part)",
+			"citation": "3 AAC 26.040(a)(1)-(2); 3 AAC 26.070(a)(1)-(2)",
+			"source_url": "https://www.law.cornell.edu/regulations/alaska/3-AAC-26.070",
+			"verified": true
+		},
+		"AZ": {
+			"name": "Arizona",
+			"acknowledge": "10 working days",
+			"decide": "15 working days after proof of loss",
+			"pay": "30 days after proof of loss (interest if late)",
+			"citation": "Ariz. Admin. Code R20-6-801(E), (G); A.R.S. § 20-462",
+			"source_url": "https://www.law.cornell.edu/regulations/arizona/Ariz-Admin-Code-SS-R20-6-801",
+			"verified": true
+		},
+		"AR": {
+			"name": "Arkansas",
+			"acknowledge": "15 working days",
+			"decide": "15 working days after proof of loss",
+			"pay": "10 working days after the claim is ready for payment",
+			"citation": "Ark. Ins. Dept. Rule 43, 054.00.15 Ark. Code R. § 005, §§ 7(a), 7(c), 8, 9(a), 9(f); Ark. Code Ann. § 23-66-206(13)",
+			"source_url": "https://www.law.cornell.edu/regulations/arkansas/054-00-15-Ark-Code-R-SS-005",
+			"verified": true
+		},
+		"CA": {
+			"name": "California",
+			"acknowledge": "15 calendar days",
+			"decide": "40 calendar days after proof of claim",
+			"pay": "30 calendar days after accepting the claim",
+			"citation": "Cal. Code Regs. tit. 10, §§ 2695.5(b), (e); 2695.7(b), (h)",
+			"source_url": "https://www.law.cornell.edu/regulations/california/10-CCR-2695.7",
+			"verified": true
+		},
+		"CO": {
+			"name": "Colorado",
+			"acknowledge": "No fixed deadline (reasonably promptly)",
+			"decide": "60 calendar days after a complete claim",
+			"pay": "60 calendar days after a complete claim (decision and payment)",
+			"citation": "C.R.S. § 10-3-1104(1)(h)(II), (V); 3 CCR 702-5, Reg. 5-1-14 § 4(A)(1), (A)(7); 3 CCR 702-5, Reg. 5-2-15 § 5(B)(3)",
+			"source_url": "https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12672&fileName=3%20CCR%20702-5",
+			"verified": true,
+			"note": "For third-party total-loss claims, payment is due 3 business days after you accept in writing and the insurer has the title."
+		},
+		"CT": {
+			"name": "Connecticut",
+			"acknowledge": "No fixed deadline (reasonably promptly)",
+			"decide": "No fixed deadline (a reasonable time)",
+			"pay": "No fixed deadline (a reasonable time)",
+			"citation": "Conn. Gen. Stat. § 38a-816(6)(B), (E), (F)",
+			"source_url": "https://www.cga.ct.gov/current/pub/chap_704.htm",
+			"verified": true
+		},
+		"DE": {
+			"name": "Delaware",
+			"acknowledge": "15 working days",
+			"decide": "30 days after proof of loss",
+			"pay": "No fixed deadline (a reasonable time)",
+			"citation": "18 Del. Admin. Code § 902-3.0",
+			"source_url": "https://www.law.cornell.edu/regulations/delaware/18-Del-Admin-Code-SS-902-3.0",
+			"verified": true
+		},
+		"DC": {
+			"name": "Washington D.C.",
+			"acknowledge": "No fixed deadline (reasonably promptly)",
+			"decide": "No fixed deadline (a reasonable time)",
+			"pay": "No fixed deadline (a reasonable time)",
+			"citation": "D.C. Code § 31-2231.17(b)(2), (5), (6)",
+			"source_url": "https://code.dccouncil.gov/us/dc/council/code/sections/31-2231.17",
+			"verified": true
+		},
+		"FL": {
+			"name": "Florida",
+			"acknowledge": "14 calendar days",
+			"decide": "30 days after proof of loss, if you ask in writing",
+			"pay": "20 days after a written settlement agreement",
+			"citation": "Fla. Admin. Code r. 69O-166.024(1); Fla. Stat. §§ 626.9541(1)(i)3.e., 627.4265",
+			"source_url": "https://www.law.cornell.edu/regulations/florida/Fla-Admin-Code-Ann-R-69O-166-024",
+			"verified": true,
+			"note": "The 7-day and 60-day rules in Fla. Stat. § 627.70131 apply to home insurance, not auto claims."
+		},
+		"GA": {
+			"name": "Georgia",
+			"acknowledge": "15 days",
+			"decide": "15 days after proof of loss (60 days from notice at most)",
+			"pay": "10 days after the amount is agreed",
+			"citation": "Ga. Comp. R. & Regs. R. 120-2-52-.03(1)-(5); O.C.G.A. § 33-6-34",
+			"source_url": "https://www.law.cornell.edu/regulations/georgia/Ga-Comp-R-Regs-R-120-2-52-.03",
+			"verified": true
+		},
+		"HI": {
+			"name": "Hawaii",
+			"acknowledge": "15 working days",
+			"decide": "No fixed deadline (a reasonable time)",
+			"pay": "30 calendar days after liability is accepted",
+			"citation": "Haw. Rev. Stat. § 431:13-103(a)(11)(B), (E), (F), (G)",
+			"source_url": "https://data.capitol.hawaii.gov/hrscurrent/Vol09_Ch0431-0435H/HRS0431/HRS_0431-0013-0103.htm",
+			"verified": true
+		},
+		"ID": {
+			"name": "Idaho",
+			"acknowledge": "No fixed deadline (reasonably promptly)",
+			"decide": "No fixed deadline (a reasonable time)",
+			"pay": "No fixed deadline (a reasonable time); attorney's fees risk after 30 days",
+			"citation": "Idaho Code §§ 41-1329(2), (5), (6); 41-1839(1)",
+			"source_url": "https://legislature.idaho.gov/statutesrules/idstat/title41/t41ch13/sect41-1329/",
+			"verified": true
+		},
+		"IL": {
+			"name": "Illinois",
+			"acknowledge": "15 working days",
+			"decide": "No fixed deadline (a reasonable time); written delay notice after 40 days",
+			"pay": "30 days after liability is accepted",
+			"citation": "Ill. Admin. Code tit. 50, §§ 919.40, 919.50(a), 919.80(b)(2)",
+			"source_url": "https://www.law.cornell.edu/regulations/illinois/Ill-Admin-Code-tit-50-SS-919.50",
+			"verified": true
+		},
+		"IN": {
+			"name": "Indiana",
+			"acknowledge": "No fixed deadline (reasonably promptly)",
+			"decide": "No fixed deadline (a reasonable time)",
+			"pay": "No fixed deadline (a reasonable time)",
+			"citation": "Ind. Code § 27-4-1-4.5(2), (5), (6)",
+			"source_url": "https://statecodesfiles.justia.com/indiana/2017/title-27/article-4/chapter-1/chapter-1.pdf",
+			"verified": true
+		},
+		"IA": {
+			"name": "Iowa",
+			"acknowledge": "15 days",
+			"decide": "30 days after proof of loss",
+			"pay": "30 days after liability is accepted",
+			"citation": "Iowa Admin. Code r. 191-15.41(2), (3), (6); 191-15.42(1), (3)",
+			"source_url": "https://www.legis.iowa.gov/docs/iac/chapter/191.15.pdf",
+			"verified": true
+		},
+		"KS": {
+			"name": "Kansas",
+			"acknowledge": "10 working days",
+			"decide": "15 working days after proof of loss",
+			"pay": "No fixed deadline (a reasonable time)",
+			"citation": "K.A.R. 40-1-34 (adopting NAIC Unfair Claims Settlement Practices Model Regulation, Jan. 1981 ed.), §§ 6(a), 6(c), 8(a), 8(c)",
+			"source_url": "https://insurance.ks.gov/documents/department/regulations-adopted/article-1/40-1-34-attachment1.pdf",
+			"verified": true
+		},
+		"KY": {
+			"name": "Kentucky",
+			"acknowledge": "15 business days",
+			"decide": "30 calendar days after proof of loss",
+			"pay": "30 calendar days after proof of loss",
+			"citation": "806 KAR 12:095, §§ 1(5), 5(1), 5(3), 6(1)(a), 6(1)(c), 6(5)",
+			"source_url": "https://www.law.cornell.edu/regulations/kentucky/806-KAR-12-095",
+			"verified": true
+		},
+		"LA": {
+			"name": "Louisiana",
+			"acknowledge": "14 days (the insurer must start adjusting the claim)",
+			"decide": "30 days after proof of loss (written offer)",
+			"pay": "30 days after proof of loss",
+			"citation": "La. R.S. 22:1892(A)(1)-(4), (B)(1)",
+			"source_url": "https://legis.la.gov/Legis/Law.aspx?d=509041",
+			"verified": true
+		},
+		"ME": {
+			"name": "Maine",
+			"acknowledge": "No fixed deadline (reasonably promptly)",
+			"decide": "No fixed deadline (a reasonable time)",
+			"pay": "30 days after the amount is agreed (interest if late)",
+			"citation": "24-A M.R.S. §§ 2164-D(3)(B), (F), (K); 2436-A(1)(B), (D); 2436(1), (3)",
+			"source_url": "https://legislature.maine.gov/statutes/24-A/title24-Asec2436.html",
+			"verified": true
+		},
+		"MD": {
+			"name": "Maryland",
+			"acknowledge": "15 working days",
+			"decide": "15 working days after proof of loss",
+			"pay": "No fixed deadline (a reasonable time)",
+			"citation": "COMAR 31.15.07.03B(10), (12), (14), (15); 31.15.07.04B; 31.15.07.07",
+			"source_url": "https://www.law.cornell.edu/regulations/maryland/COMAR-31-15-07-03",
+			"verified": true
+		},
+		"MA": {
+			"name": "Massachusetts",
+			"acknowledge": "No fixed deadline (reasonably promptly)",
+			"decide": "No fixed deadline (a reasonable time)",
+			"pay": "No fixed deadline (a reasonable time)",
+			"citation": "Mass. Gen. Laws ch. 176D, § 3(9)(b), (e), (f); 212 CMR 2.04(1)",
+			"source_url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXII/Chapter176D/Section3",
+			"verified": true
+		},
+		"MI": {
+			"name": "Michigan",
+			"acknowledge": "No fixed deadline (promptly)",
+			"decide": "No fixed deadline (a reasonable time)",
+			"pay": "60 days after proof of loss (12% interest if late)",
+			"citation": "Mich. Comp. Laws §§ 500.2006(1), (3), (4); 500.2026(1)(b), (e)",
+			"source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-500-2006",
+			"verified": true
+		},
+		"MN": {
+			"name": "Minnesota",
+			"acknowledge": "10 business days",
+			"decide": "30 business days after notice of claim",
+			"pay": "5 business days after the settlement agreement",
+			"citation": "Minn. Stat. § 72A.201, subd. 4(1)-(3), (11); subd. 5(5)",
+			"source_url": "https://www.revisor.mn.gov/statutes/cite/72A.201",
+			"verified": true
+		},
+		"MS": {
+			"name": "Mississippi",
+			"acknowledge": "No deadline in state law",
+			"decide": "No deadline in state law",
+			"pay": "No deadline in state law",
+			"citation": "No Mississippi statute or regulation sets auto claim deadlines",
+			"source_url": "https://www.robinskaplan.com/newsroom/insights/claims-handling-practices-mississippi",
+			"verified": true,
+			"note": "Mississippi has no statute or regulation setting auto claim deadlines; claims must still be handled promptly and in good faith."
+		},
+		"MO": {
+			"name": "Missouri",
+			"acknowledge": "10 working days",
+			"decide": "15 working days after claim forms are submitted",
+			"pay": "No fixed deadline (a reasonable time)",
+			"citation": "20 CSR 100-1.030(1)(A)-(B), (3); 20 CSR 100-1.050(1)(A), (C)",
+			"source_url": "https://www.sos.mo.gov/cmsimages/adrules/csr/current/20csr/20c100-1.pdf",
+			"verified": true
+		},
+		"MT": {
+			"name": "Montana",
+			"acknowledge": "No fixed deadline (reasonably promptly)",
+			"decide": "30 days after proof of loss (60 if more information requested)",
+			"pay": "30 days after proof of loss (60 if more information requested)",
+			"citation": "Mont. Code Ann. §§ 33-18-232(1)-(2); 33-18-201(2), (5)",
+			"source_url": "https://archive.legmt.gov/bills/mca/title_0330/chapter_0180/part_0020/section_0320/0330-0180-0020-0320.html",
+			"verified": true
+		},
+		"NE": {
+			"name": "Nebraska",
+			"acknowledge": "15 working days",
+			"decide": "15 working days after proof of loss",
+			"pay": "15 working days after you accept the offer",
+			"citation": "210 Neb. Admin. Code ch. 60, §§ 003.05, 006.01, 006.03, 008.01, 008.02, 008.04",
+			"source_url": "https://doi.nebraska.gov/sites/default/files/doc/Chapter%2060.pdf",
+			"verified": true
+		},
+		"NV": {
+			"name": "Nevada",
+			"acknowledge": "20 working days",
+			"decide": "30 calendar days after the claim is received",
+			"pay": "30 calendar days after the claim is approved",
+			"citation": "NAC 686A.665(1), (3); NAC 686A.675(1), (3); NRS 690B.012",
+			"source_url": "https://www.leg.state.nv.us/NAC/NAC-686A.html",
+			"verified": true,
+			"note": "Nevada's regulation allows 30 working days after proof of loss, but the statute's 30 calendar days from receipt of the claim is stricter."
+		},
+		"NH": {
+			"name": "New Hampshire",
+			"acknowledge": "10 working days",
+			"decide": "30 calendar days after notice of claim",
+			"pay": "5 working days after agreement",
+			"citation": "N.H. Code Admin. R. Ins 1002.03, 1002.04(b), 1002.05(a)-(f)",
+			"source_url": "https://gc.nh.gov/rules/state_agencies/ins1000.html",
+			"verified": true
+		},
+		"NJ": {
+			"name": "New Jersey",
+			"acknowledge": "10 working days",
+			"decide": "30 calendar days after notice of loss (auto physical damage)",
+			"pay": "10 working days after the settlement agreement",
+			"citation": "N.J.A.C. 11:2-17.6(b), (e); 11:2-17.7(c), (f); 11:3-10.5(a), (b)",
+			"source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-3-10-5",
+			"verified": true
+		},
+		"NM": {
+			"name": "New Mexico",
+			"acknowledge": "No fixed deadline (reasonably promptly)",
+			"decide": "No fixed deadline (a reasonable time)",
+			"pay": "No fixed deadline (a reasonable time); interest after 45 days",
+			"citation": "NMSA 1978, § 59A-16-20(B), (D), (E); § 59A-16-21(B)",
+			"source_url": "https://www.nmlegis.gov/Sessions/25%20Regular/bills/senate/SB0221.html",
+			"verified": true
+		},
+		"NY": {
+			"name": "New York",
+			"acknowledge": "15 business days",
+			"decide": "15 business days after proof of loss",
+			"pay": "5 business days after the settlement agreement",
+			"citation": "N.Y. Comp. Codes R. & Regs. tit. 11, §§ 216.4(a)-(b), 216.6(c), 216.6(f)",
+			"source_url": "https://www.law.cornell.edu/regulations/new-york/11-NYCRR-216.6",
+			"verified": true
+		},
+		"NC": {
+			"name": "North Carolina",
+			"acknowledge": "No fixed deadline (reasonably promptly)",
+			"decide": "No fixed deadline (a reasonable time)",
+			"pay": "10 business days after settlement",
+			"citation": "N.C. Gen. Stat. § 58-63-15(11)(b), (e), (f); 11 NCAC 04 .0421(b)(1); 11 NCAC 04 .0419(c)(2)",
+			"source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_58/GS_58-63-15.html",
+			"verified": true
+		},
+		"ND": {
+			"name": "North Dakota",
+			"acknowledge": "No fixed deadline (reasonably promptly)",
+			"decide": "No fixed deadline (a reasonable time)",
+			"pay": "No fixed deadline (a reasonable time)",
+			"citation": "N.D. Cent. Code § 26.1-04-03(9)(b), (d), (j)",
+			"source_url": "https://ndlegis.gov/cencode/t26-1c04.pdf",
+			"verified": true
+		},
+		"OH": {
+			"name": "Ohio",
+			"acknowledge": "15 calendar days",
+			"decide": "21 calendar days after proof of loss",
+			"pay": "10 calendar days after accepting the claim",
+			"citation": "Ohio Adm. Code 3901-1-54(F)(2)-(3), (G)(1), (G)(6)",
+			"source_url": "https://codes.ohio.gov/ohio-administrative-code/rule-3901-1-54",
+			"verified": true
+		},
+		"OK": {
+			"name": "Oklahoma",
+			"acknowledge": "30 days",
+			"decide": "60 days after proof of loss",
+			"pay": "No fixed deadline (a reasonable time)",
+			"citation": "36 O.S. §§ 1250.5(4), 1250.6(A), 1250.7(A), (C); see also Okla. Admin. Code 365:15-3-5, 365:15-3-7",
+			"source_url": "https://www.oscn.net/applications/oscn/DeliverDocument.asp?CiteID=86448",
+			"verified": true,
+			"note": "Oklahoma's department rule says 30 and 45 business days; the statute's 30 and 60 days are shown."
+		},
+		"OR": {
+			"name": "Oregon",
+			"acknowledge": "30 calendar days",
+			"decide": "30 calendar days after proof of loss",
+			"pay": "No fixed deadline (a reasonable time)",
+			"citation": "Or. Admin. R. 836-080-0225(1), (3); 836-080-0230; 836-080-0235(1), (4); ORS 746.230",
+			"source_url": "https://www.law.cornell.edu/regulations/oregon/Or-Admin-Code-SS-836-080-0235",
+			"verified": true
+		},
+		"PA": {
+			"name": "Pennsylvania",
+			"acknowledge": "10 working days",
+			"decide": "15 working days after proof of loss",
+			"pay": "No fixed deadline (a reasonable time)",
+			"citation": "31 Pa. Code §§ 146.5(a), (c); 146.6; 146.7(a), (c)",
+			"source_url": "https://www.pacodeandbulletin.gov/Display/pacode?file=/secure/pacode/data/031/chapter146/s146.7.html",
+			"verified": true
+		},
+		"RI": {
+			"name": "Rhode Island",
+			"acknowledge": "15 calendar days",
+			"decide": "21 calendar days after proof of loss",
+			"pay": "30 calendar days after liability is accepted",
+			"citation": "230-RICR-20-40-2.6(A), (D); 230-RICR-20-40-2.7(A), (F); 230-RICR-20-40-2.3",
+			"source_url": "https://www.law.cornell.edu/regulations/rhode-island/230-RICR-20-40-2.7",
+			"verified": true
+		},
+		"SC": {
+			"name": "South Carolina",
+			"acknowledge": "No fixed deadline (reasonably promptly)",
+			"decide": "No fixed deadline (a reasonable time)",
+			"pay": "No fixed deadline (a reasonable time)",
+			"citation": "S.C. Code Ann. § 38-59-20(2)-(4); see also § 38-59-40",
+			"source_url": "https://www.scstatehouse.gov/code/t38c059.php",
+			"verified": true
+		},
+		"SD": {
+			"name": "South Dakota",
+			"acknowledge": "30 calendar days",
+			"decide": "No fixed deadline (a reasonable time)",
+			"pay": "No fixed deadline (a reasonable time)",
+			"citation": "SDCL 58-33-67(1), (3), (4)",
+			"source_url": "https://sdlegislature.gov/Statutes/Codified_Laws/DisplayStatute.aspx?Type=Statute&Statute=58-33-67",
+			"verified": true
+		},
+		"TN": {
+			"name": "Tennessee",
+			"acknowledge": "30 days",
+			"decide": "60 days after proof of loss",
+			"pay": "30 days after liability is accepted",
+			"citation": "Tenn. Comp. R. & Regs. 0780-01-05-.07(1), (3); 0780-01-05-.08(1), (2), (6)",
+			"source_url": "https://www.law.cornell.edu/regulations/tennessee/Tenn-Comp-R-Regs-0780-01-05-.08",
+			"verified": true
+		},
+		"TX": {
+			"name": "Texas",
+			"acknowledge": "15 calendar days",
+			"decide": "15 business days after final proof of loss",
+			"pay": "5 business days after the insurer says it will pay",
+			"citation": "Tex. Ins. Code §§ 542.055, 542.056, 542.057, 542.058",
+			"source_url": "https://texas.public.law/statutes/tex._ins._code_section_542.056",
+			"verified": true
+		},
+		"UT": {
+			"name": "Utah",
+			"acknowledge": "15 days",
+			"decide": "30 days after a complete proof of loss",
+			"pay": "30 days after proof of the loss and its amount",
+			"citation": "Utah Admin. Code R590-190-6(1), (3); R590-190-10(2); R590-190-9(21)",
+			"source_url": "https://www.law.cornell.edu/regulations/utah/Utah-Admin-Code-R590-190-10",
+			"verified": true
+		},
+		"VT": {
+			"name": "Vermont",
+			"acknowledge": "10 business days",
+			"decide": "15 business days after proof of loss",
+			"pay": "10 business days after settlement",
+			"citation": "Vt. Ins. Reg. I-79-2 (Fair Claims Practices), 21-020-008 Code Vt. R. §§ 5(A)-(B), 6(A), 6(C), 6(G); 8 V.S.A. § 4724(9)",
+			"source_url": "https://www.law.cornell.edu/regulations/vermont/21-008-Code-Vt-R-21-020-008-X",
+			"verified": true
+		},
+		"VA": {
+			"name": "Virginia",
+			"acknowledge": "15 calendar days",
+			"decide": "15 calendar days after proof of loss",
+			"pay": "No fixed deadline (a reasonable time)",
+			"citation": "14VAC5-400-50(A), (C); 14VAC5-400-60(A), (B); 14VAC5-400-70; Va. Code § 38.2-510(A)",
+			"source_url": "https://law.lis.virginia.gov/admincode/title14/agency5/chapter400/section60/",
+			"verified": true
+		},
+		"WA": {
+			"name": "Washington",
+			"acknowledge": "10 business days",
+			"decide": "30 calendar days after notice of claim (from Oct 18, 2026)",
+			"pay": "15 business days after settlement documents",
+			"citation": "WAC 284-30-360(1), (3); WAC 284-30-370; WAC 284-30-380(1), (3); WAC 284-30-330(16)",
+			"source_url": "https://app.leg.wa.gov/WAC/default.aspx?cite=284-30-380",
+			"verified": true,
+			"note": "Before October 18, 2026 the rule was 15 working days after a complete proof of loss."
+		},
+		"WV": {
+			"name": "West Virginia",
+			"acknowledge": "15 working days",
+			"decide": "10 working days after the investigation ends",
+			"pay": "15 working days after the settlement agreement",
+			"citation": "W. Va. Code R. §§ 114-14-5.1, 5.3, 6.2, 6.3, 6.7, 6.11",
+			"source_url": "https://www.law.cornell.edu/regulations/west-virginia/W-Va-C-S-R-SS-114-14-6",
+			"verified": true
+		},
+		"WI": {
+			"name": "Wisconsin",
+			"acknowledge": "10 days",
+			"decide": "No fixed deadline (a reasonable time)",
+			"pay": "30 days after written notice of the loss and amount",
+			"citation": "Wis. Admin. Code Ins § 6.11(3)(a)1., 7., (4); Wis. Stat. § 628.46(1)",
+			"source_url": "https://docs.legis.wisconsin.gov/code/admin_code/ins/6/11",
+			"verified": true
+		},
+		"WY": {
+			"name": "Wyoming",
+			"acknowledge": "No fixed deadline (reasonably promptly)",
+			"decide": "45 days after the claim and bills (decide and pay)",
+			"pay": "45 days after the claim and bills (decide and pay)",
+			"citation": "Wyo. Stat. Ann. §§ 26-15-124(b)-(c); 26-13-124(a)(ii), (v)",
+			"source_url": "https://wyoleg.gov/statutes/compress/title26.pdf",
+			"verified": true
+		}
+	},
+	"reviewed": "2026-10-09"
 }

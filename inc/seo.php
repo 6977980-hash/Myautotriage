@@ -65,6 +65,13 @@ function mat_get_meta_description() {
 		if ( $custom ) {
 			return $custom;
 		}
+		$state = mat_current_state( $post );
+		if ( $state ) {
+			return mat_state_meta_description( $state );
+		}
+		if ( MAT_STATE_HUB_SLUG === $post->post_name ) {
+			return __( 'Car insurance claim laws for all 50 states and DC: how many days insurers have to acknowledge, decide and pay a claim, and each state\'s total loss threshold, with citations.', 'myautotriage' );
+		}
 		if ( has_excerpt( $post ) ) {
 			return mat_truncate_meta( wp_strip_all_tags( get_the_excerpt( $post ) ) );
 		}
@@ -117,6 +124,13 @@ function mat_get_seo_title() {
 		$custom = get_post_meta( $post->ID, '_mat_meta_title', true );
 		if ( $custom ) {
 			return $custom;
+		}
+		$state = mat_current_state( $post );
+		if ( $state ) {
+			return mat_state_seo_title( $state ) . ' | ' . get_bloginfo( 'name' );
+		}
+		if ( MAT_STATE_HUB_SLUG === $post->post_name ) {
+			return __( 'Car Insurance Claim Laws by State: Deadlines & Total Loss Rules', 'myautotriage' ) . ' | ' . get_bloginfo( 'name' );
 		}
 		// Tool pages: use the search-phrased title from the tools registry
 		// (what people actually type), not the on-page tool name.
@@ -320,6 +334,14 @@ function mat_schema_breadcrumbs() {
 			'item'     => get_permalink(),
 		);
 	} elseif ( is_page() && ! is_front_page() ) {
+		foreach ( array_reverse( get_post_ancestors( get_the_ID() ) ) as $ancestor_id ) {
+			$items[] = array(
+				'@type'    => 'ListItem',
+				'position' => $position++,
+				'name'     => get_the_title( $ancestor_id ),
+				'item'     => get_permalink( $ancestor_id ),
+			);
+		}
 		$items[] = array(
 			'@type'    => 'ListItem',
 			'position' => $position++,
