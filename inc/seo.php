@@ -127,10 +127,11 @@ function mat_get_seo_title() {
 		}
 		$state = mat_current_state( $post );
 		if ( $state ) {
-			return mat_state_seo_title( $state ) . ' | ' . get_bloginfo( 'name' );
+			// Long state names would push the site name past what search results show.
+			return mat_state_seo_title( $state );
 		}
 		if ( MAT_STATE_HUB_SLUG === $post->post_name ) {
-			return __( 'Car Insurance Claim Laws by State: Deadlines & Total Loss Rules', 'myautotriage' ) . ' | ' . get_bloginfo( 'name' );
+			return __( 'Car Insurance Claim Laws by State: Deadlines & Total Loss Rules', 'myautotriage' );
 		}
 		// Tool pages: use the search-phrased title from the tools registry
 		// (what people actually type), not the on-page tool name.

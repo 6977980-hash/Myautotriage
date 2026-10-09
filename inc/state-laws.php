@@ -145,7 +145,7 @@ function mat_state_within( $text ) {
 
 function mat_state_seo_title( $state ) {
 	/* translators: %s: state name */
-	return sprintf( __( '%s Car Insurance Claim Laws: Deadlines & Total Loss Rules', 'myautotriage' ), $state['name'] );
+	return sprintf( __( '%s Car Insurance Claim Laws: Deadlines & Total Loss', 'myautotriage' ), $state['name'] );
 }
 
 function mat_state_meta_description( $state ) {
