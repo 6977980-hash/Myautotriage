@@ -152,25 +152,9 @@ function mat_article_short_answer() {
 
 function mat_article_sources() {
 	$extras = mat_article_extras();
-	if ( empty( $extras['sources'] ) ) {
-		return;
+	if ( ! empty( $extras['sources'] ) ) {
+		mat_render_sources( $extras['sources'] );
 	}
-	?>
-	<section class="mat-sources" aria-labelledby="mat-sources-title">
-		<h2 id="mat-sources-title"><?php esc_html_e( 'Sources', 'myautotriage' ); ?></h2>
-		<ul>
-			<?php foreach ( $extras['sources'] as $source ) : ?>
-				<li>
-					<?php if ( ! empty( $source['url'] ) ) : ?>
-						<a href="<?php echo esc_url( $source['url'] ); ?>" rel="noopener" target="_blank"><?php echo esc_html( $source['label'] ); ?></a>
-					<?php else : ?>
-						<?php echo esc_html( $source['label'] ); ?>
-					<?php endif; ?>
-				</li>
-			<?php endforeach; ?>
-		</ul>
-	</section>
-	<?php
 }
 
 /**

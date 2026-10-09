@@ -313,8 +313,13 @@ function mat_claim_deadline_table() {
 	echo '<h2>' . esc_html__( 'Claim deadlines by state', 'myautotriage' ) . '</h2>';
 	echo '<div class="mat-table-wrap"><table class="mat-table">';
 	echo '<thead><tr><th scope="col">' . esc_html__( 'State', 'myautotriage' ) . '</th><th scope="col">' . esc_html__( 'Acknowledge your claim', 'myautotriage' ) . '</th><th scope="col">' . esc_html__( 'Accept or deny', 'myautotriage' ) . '</th><th scope="col">' . esc_html__( 'Pay after settlement', 'myautotriage' ) . '</th></tr></thead><tbody>';
+	$hub_exists = (bool) get_page_by_path( MAT_STATE_HUB_SLUG );
 	foreach ( $states as $state ) {
-		echo '<tr><th scope="row">' . esc_html( $state['name'] ) . '</th><td>' . esc_html( $state['acknowledge'] ) . '</td><td>' . esc_html( $state['decide'] ) . '</td><td>' . esc_html( $state['pay'] ) . '</td></tr>';
+		$name = esc_html( $state['name'] );
+		if ( $hub_exists ) {
+			$name = '<a href="' . esc_url( mat_state_url( array( 'slug' => sanitize_title( $state['name'] ) ) ) ) . '">' . $name . '</a>';
+		}
+		echo '<tr><th scope="row">' . $name . '</th><td>' . esc_html( $state['acknowledge'] ) . '</td><td>' . esc_html( $state['decide'] ) . '</td><td>' . esc_html( $state['pay'] ) . '</td></tr>';
 	}
 	echo '</tbody></table></div>';
 	if ( ! empty( $data['default'] ) ) {

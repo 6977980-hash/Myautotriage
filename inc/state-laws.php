@@ -1,0 +1,245 @@
+<?php
+/**
+ * State claim-law pages: /car-insurance-claim-laws/ and one child page per
+ * state (/car-insurance-claim-laws/california/ ...).
+ *
+ * The pages are ordinary WordPress pages, so they get the sitemap,
+ * canonical and breadcrumbs for free; their content comes from the two
+ * state data files the tools already use (claim deadlines and total-loss
+ * thresholds), so a correction to the data updates the tool and the page
+ * together.
+ *
+ * @package MyAutoTriage
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+define( 'MAT_STATE_HUB_SLUG', 'car-insurance-claim-laws' );
+
+/**
+ * Merged per-state data, keyed by state code and sorted by name.
+ */
+function mat_state_laws() {
+	static $laws = null;
+	if ( null !== $laws ) {
+		return $laws;
+	}
+	$laws      = array();
+	$deadlines = mat_read_theme_json( 'assets/js/data/claim-deadlines.json' );
+	$totals    = mat_read_theme_json( 'assets/js/data/total-loss-thresholds.json' );
+	if ( empty( $deadlines['all_states'] ) ) {
+		return $laws;
+	}
+	foreach ( $deadlines['all_states'] as $code => $name ) {
+		$laws[ $code ] = array(
+			'code'       => $code,
+			'name'       => $name,
+			'slug'       => sanitize_title( $name ),
+			'deadlines'  => isset( $deadlines['states'][ $code ] ) ? $deadlines['states'][ $code ] : null,
+			'total_loss' => isset( $totals['states'][ $code ] ) ? $totals['states'][ $code ] : null,
+		);
+	}
+	uasort( $laws, function ( $a, $b ) {
+		return strcmp( $a['name'], $b['name'] );
+	} );
+	return $laws;
+}
+
+function mat_read_theme_json( $relative ) {
+	$file = MAT_DIR . '/' . $relative;
+	if ( ! is_readable( $file ) ) {
+		return array();
+	}
+	$data = json_decode( file_get_contents( $file ), true ); // phpcs:ignore -- local theme file
+	return is_array( $data ) ? $data : array();
+}
+
+function mat_state_laws_meta() {
+	$deadlines = mat_read_theme_json( 'assets/js/data/claim-deadlines.json' );
+	return array(
+		'reviewed' => isset( $deadlines['reviewed'] ) ? $deadlines['reviewed'] : '',
+		'default'  => isset( $deadlines['default'] ) ? $deadlines['default'] : array(),
+	);
+}
+
+/**
+ * The state shown on the current page, or null when this isn't a state page.
+ */
+function mat_current_state( $post = null ) {
+	$post = get_post( $post );
+	if ( ! $post || 'page' !== $post->post_type || ! $post->post_parent ) {
+		return null;
+	}
+	$parent = get_post( $post->post_parent );
+	if ( ! $parent || MAT_STATE_HUB_SLUG !== $parent->post_name ) {
+		return null;
+	}
+	foreach ( mat_state_laws() as $state ) {
+		if ( $state['slug'] === $post->post_name ) {
+			return $state;
+		}
+	}
+	return null;
+}
+
+function mat_state_url( $state ) {
+	return home_url( user_trailingslashit( MAT_STATE_HUB_SLUG . '/' . $state['slug'] ) );
+}
+
+function mat_state_hub_url() {
+	return home_url( user_trailingslashit( MAT_STATE_HUB_SLUG ) );
+}
+
+/**
+ * Plain-English total-loss rule for a state, e.g. "75% of actual cash value".
+ */
+function mat_state_total_loss_rule( $state ) {
+	$tl = $state['total_loss'];
+	if ( ! $tl ) {
+		return '';
+	}
+	if ( 'percentage' === $tl['type'] && ! empty( $tl['threshold'] ) ) {
+		/* translators: %d: percentage */
+		return sprintf( __( 'Repairs cost %d%% or more of the car\'s actual cash value', 'myautotriage' ), round( $tl['threshold'] * 100 ) );
+	}
+	return __( 'Repair cost plus salvage value meets or exceeds the car\'s actual cash value (total loss formula)', 'myautotriage' );
+}
+
+function mat_state_seo_title( $state ) {
+	/* translators: %s: state name */
+	return sprintf( __( '%s Car Insurance Claim Laws: Deadlines & Total Loss Rules', 'myautotriage' ), $state['name'] );
+}
+
+function mat_state_meta_description( $state ) {
+	$d = $state['deadlines'];
+	if ( $d ) {
+		/* translators: 1: state name, 2: decision deadline, 3: total loss rule */
+		return mat_truncate_meta( sprintf( __( '%1$s car insurance claim rules: insurers must accept or deny within %2$s. Total loss when: %3$s. Citations and free tools.', 'myautotriage' ), $state['name'], $d['decide'], lcfirst( mat_state_total_loss_rule( $state ) ) ) );
+	}
+	/* translators: %s: state name */
+	return sprintf( __( '%s car insurance claim rules: how long insurers have to handle your claim, when a car is a total loss, and free tools to back up your claim.', 'myautotriage' ), $state['name'] );
+}
+
+/**
+ * Create the hub page and the 51 state pages once. Runs on wp_loaded like
+ * mat_ensure_new_pages(), so deploying the theme is enough.
+ */
+function mat_ensure_state_pages() {
+	if ( '1' === get_option( 'mat_state_pages_version' ) ) {
+		return;
+	}
+	update_option( 'mat_state_pages_version', '1' );
+
+	$hub = get_page_by_path( MAT_STATE_HUB_SLUG );
+	if ( ! $hub ) {
+		$hub_id = wp_insert_post( array(
+			'post_title'   => __( 'Car Insurance Claim Laws by State', 'myautotriage' ),
+			'post_name'    => MAT_STATE_HUB_SLUG,
+			'post_content' => '',
+			'post_status'  => 'publish',
+			'post_type'    => 'page',
+		) );
+		if ( ! $hub_id || is_wp_error( $hub_id ) ) {
+			return;
+		}
+	} else {
+		$hub_id = $hub->ID;
+	}
+	update_post_meta( $hub_id, '_wp_page_template', 'page-templates/template-state-hub.php' );
+
+	foreach ( mat_state_laws() as $state ) {
+		if ( get_page_by_path( MAT_STATE_HUB_SLUG . '/' . $state['slug'] ) ) {
+			continue;
+		}
+		$post_id = wp_insert_post( array(
+			/* translators: %s: state name */
+			'post_title'   => sprintf( __( '%s Car Insurance Claim Laws', 'myautotriage' ), $state['name'] ),
+			'post_name'    => $state['slug'],
+			'post_parent'  => $hub_id,
+			'post_content' => '',
+			'post_status'  => 'publish',
+			'post_type'    => 'page',
+			'menu_order'   => 0,
+		) );
+		if ( $post_id && ! is_wp_error( $post_id ) ) {
+			update_post_meta( $post_id, '_wp_page_template', 'page-templates/template-state-laws.php' );
+		}
+	}
+}
+add_action( 'wp_loaded', 'mat_ensure_state_pages' );
+
+/**
+ * FAQ entries for a state page, built from its data.
+ */
+function mat_state_faqs( $state ) {
+	$faqs = array();
+	$d    = $state['deadlines'];
+	if ( $d ) {
+		$faqs[] = array(
+			/* translators: %s: state name */
+			'question' => sprintf( __( 'How long does an insurance company have to pay a claim in %s?', 'myautotriage' ), $state['name'] ),
+			/* translators: 1: state name, 2: decide, 3: pay */
+			'answer'   => sprintf( __( 'In %1$s the insurer must accept or deny the claim within %2$s, and pay within %3$s. The clock generally starts once the insurer has the proof of loss it asked for, so keep a dated record of what you sent.', 'myautotriage' ), $state['name'], $d['decide'], $d['pay'] ),
+		);
+	}
+	if ( $state['total_loss'] ) {
+		$faqs[] = array(
+			/* translators: %s: state name */
+			'question' => sprintf( __( 'When is a car considered totaled in %s?', 'myautotriage' ), $state['name'] ),
+			/* translators: 1: state name, 2: rule */
+			'answer'   => sprintf( __( 'In %1$s a car is a total loss when: %2$s. Insurers can still choose to total a car below that point, and you can challenge the actual cash value they use.', 'myautotriage' ), $state['name'], lcfirst( mat_state_total_loss_rule( $state ) ) ),
+		);
+	}
+	$faqs[] = array(
+		/* translators: %s: state name */
+		'question' => sprintf( __( 'What can I do if my insurer misses a deadline in %s?', 'myautotriage' ), $state['name'] ),
+		/* translators: %s: state name */
+		'answer'   => sprintf( __( 'Send a written follow-up citing the rule and asking for a decision by a specific date. If that fails, file a free complaint with the %s department of insurance; a pattern of missed deadlines can also support a bad-faith claim.', 'myautotriage' ), $state['name'] ),
+	);
+	return $faqs;
+}
+
+/**
+ * Sources list for a state page.
+ */
+function mat_state_sources( $state ) {
+	$sources = array();
+	foreach ( array( 'deadlines', 'total_loss' ) as $key ) {
+		$item = $state[ $key ];
+		if ( $item && ! empty( $item['citation'] ) ) {
+			$sources[] = array(
+				'label' => $item['citation'],
+				'url'   => isset( $item['source_url'] ) ? $item['source_url'] : '',
+			);
+		}
+	}
+	$sources[] = array(
+		'label' => __( 'NAIC: How to file a complaint with your state insurance department', 'myautotriage' ),
+		'url'   => 'https://content.naic.org/consumer/how-to-file-complaint',
+	);
+	return $sources;
+}
+
+function mat_render_sources( $sources ) {
+	if ( empty( $sources ) ) {
+		return;
+	}
+	?>
+	<section class="mat-sources" aria-labelledby="mat-sources-title">
+		<h2 id="mat-sources-title"><?php esc_html_e( 'Sources', 'myautotriage' ); ?></h2>
+		<ul>
+			<?php foreach ( $sources as $source ) : ?>
+				<li>
+					<?php if ( ! empty( $source['url'] ) ) : ?>
+						<a href="<?php echo esc_url( $source['url'] ); ?>" rel="noopener" target="_blank"><?php echo esc_html( $source['label'] ); ?></a>
+					<?php else : ?>
+						<?php echo esc_html( $source['label'] ); ?>
+					<?php endif; ?>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</section>
+	<?php
+}
