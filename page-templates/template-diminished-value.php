@@ -6,7 +6,7 @@
  */
 
 get_header();
-wp_enqueue_script( 'mat-dv', MAT_URI . '/assets/js/calculators/diminished-value.js', array(), MAT_VERSION, true );
+wp_enqueue_script( 'mat-dv', MAT_URI . '/assets/js/calculators/diminished-value.js', array( 'mat-tools' ), MAT_VERSION, true );
 ?>
 <div class="mat-tool">
 	<div class="mat-container mat-narrow">
@@ -15,7 +15,13 @@ wp_enqueue_script( 'mat-dv', MAT_URI . '/assets/js/calculators/diminished-value.
 			<p><?php esc_html_e( "Estimate what your car's resale value dropped after an accident, using the industry-standard 17c formula — the same starting point insurers and independent appraisers use.", 'myautotriage' ); ?></p>
 		</div>
 
-		<form id="mat-dv-form" class="mat-tool-panel" novalidate>
+		<?php
+		$dv_letter_url = mat_url_for_slug( 'diminished-value-demand-letter-generator' );
+		if ( ! $dv_letter_url && mat_url_for_slug( 'demand-letter-generator' ) ) {
+			$dv_letter_url = add_query_arg( 'type', 'diminished-value', mat_url_for_slug( 'demand-letter-generator' ) );
+		}
+		?>
+		<form id="mat-dv-form" class="mat-tool-panel" data-letter-url="<?php echo esc_url( $dv_letter_url ); ?>" novalidate>
 			<div class="mat-field-row">
 				<div class="mat-field">
 					<label for="mat-dv-value"><?php esc_html_e( 'Pre-accident market value (USD)', 'myautotriage' ); ?></label>
@@ -40,13 +46,6 @@ wp_enqueue_script( 'mat-dv', MAT_URI . '/assets/js/calculators/diminished-value.
 				<span class="mat-field__hint"><?php esc_html_e( 'Base this on the body shop or adjuster damage report, not how it feels to drive.', 'myautotriage' ); ?></span>
 			</div>
 
-			<div class="mat-field">
-				<label class="mat-checkbox">
-					<input type="checkbox" id="mat-dv-prior">
-					<?php esc_html_e( 'This vehicle had unrelated prior accident damage or repairs', 'myautotriage' ); ?>
-				</label>
-			</div>
-
 			<div class="mat-tool-actions">
 				<button type="submit" class="mat-btn mat-btn--primary mat-btn--lg"><?php esc_html_e( 'Calculate diminished value', 'myautotriage' ); ?></button>
 			</div>
@@ -54,13 +53,10 @@ wp_enqueue_script( 'mat-dv', MAT_URI . '/assets/js/calculators/diminished-value.
 
 		<div id="mat-dv-result" class="mat-result-box" hidden></div>
 
-		<?php
-		$dl_page = get_page_by_path( 'demand-letter-generator' );
-		if ( $dl_page ) :
-			?>
+		<?php if ( $dv_letter_url ) : ?>
 			<div class="mat-cta">
 				<p class="mat-cta__title"><?php esc_html_e( 'Got your number? Put it in writing.', 'myautotriage' ); ?></p>
-				<a class="mat-btn mat-btn--accent" href="<?php echo esc_url( add_query_arg( 'type', 'diminished-value', get_permalink( $dl_page ) ) ); ?>"><?php esc_html_e( 'Generate a diminished value demand letter', 'myautotriage' ); ?></a>
+				<a class="mat-btn mat-btn--accent" href="<?php echo esc_url( $dv_letter_url ); ?>"><?php esc_html_e( 'Generate a diminished value demand letter', 'myautotriage' ); ?></a>
 			</div>
 		<?php endif; ?>
 

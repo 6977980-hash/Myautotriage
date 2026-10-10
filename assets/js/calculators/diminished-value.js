@@ -19,6 +19,7 @@
 	}
 
 	var resultBox = document.getElementById( 'mat-dv-result' );
+	var letterUrl = form.getAttribute( 'data-letter-url' );
 
 	var DAMAGE_MULTIPLIERS = {
 		severe: { label: 'Severe structural / frame damage', value: 1.0 },
@@ -37,44 +38,36 @@
 		return 0;
 	}
 
-	function formatUSD( n ) {
-		return n.toLocaleString( 'en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 } );
-	}
-
 	form.addEventListener( 'submit', function ( e ) {
 		e.preventDefault();
 
-		var value = parseFloat( document.getElementById( 'mat-dv-value' ).value );
-		var damageKey = document.getElementById( 'mat-dv-damage' ).value;
-		var miles = parseFloat( document.getElementById( 'mat-dv-mileage' ).value );
-		var priorDamage = document.getElementById( 'mat-dv-prior' ).checked;
-
-		if ( isNaN( value ) || value <= 0 || isNaN( miles ) || miles < 0 ) {
-			resultBox.innerHTML = '<p role="alert">Please enter a valid pre-accident value and mileage.</p>';
-			resultBox.hidden = false;
+		var r = MAT.nums( {
+			value: [ 'mat-dv-value', { label: 'The pre-accident value', required: true } ],
+			miles: [ 'mat-dv-mileage', { label: 'The mileage', required: true } ],
+		} );
+		if ( r.error ) {
+			MAT.showError( resultBox, r );
 			return;
 		}
-
-		var damage = DAMAGE_MULTIPLIERS[ damageKey ] || DAMAGE_MULTIPLIERS.moderate;
+		var value = r.values.value;
+		var miles = r.values.miles;
+		var damage = DAMAGE_MULTIPLIERS[ document.getElementById( 'mat-dv-damage' ).value ] || DAMAGE_MULTIPLIERS.moderate;
 		var mileageMult = mileageMultiplier( miles );
 		var baseCapped = value * 0.10;
-		var diminishedValue = baseCapped * damage.value * mileageMult;
-
-		if ( priorDamage ) {
-			diminishedValue *= 0.5; // Insurers commonly halve DV when there is unrelated prior damage/repair history.
-		}
-
-		diminishedValue = Math.round( diminishedValue );
+		var diminishedValue = Math.round( baseCapped * damage.value * mileageMult );
 
 		var html = '';
-		html += '<p class="mat-result-box__figure">' + formatUSD( diminishedValue ) + '</p>';
-		html += '<p>Estimated diminished value using the 17c formula (10% value cap &times; ' + Math.round( damage.value * 100 ) + '% damage factor &times; ' + Math.round( mileageMult * 100 ) + '% mileage factor' + ( priorDamage ? ' &times; 50% prior-damage adjustment' : '' ) + ').</p>';
-		html += '<p style="margin-bottom:0;font-size:.9rem;">10% cap of vehicle value: ' + formatUSD( baseCapped ) + '. Many public adjusters and independent appraisers argue the true diminished value on a well-documented claim is higher than this baseline — use this number as your starting point, not your ceiling.</p>';
+		html += '<p class="mat-result-box__figure">' + MAT.usd( diminishedValue ) + '</p>';
+		html += '<p>Estimated diminished value using the 17c formula: ' + MAT.usd( baseCapped ) + ' (10% of the car\'s value) &times; ' + MAT.pct( damage.value ) + ' damage factor &times; ' + MAT.pct( mileageMult ) + ' mileage factor.</p>';
+		if ( mileageMult === 0 ) {
+			html += '<p>The 17c formula gives nothing at 100,000 miles or more. An independent appraisal based on comparable sales is the only way to show a loss on a high-mileage car.</p>';
+		}
+		html += '<p style="font-size:.9rem;">Many public adjusters and independent appraisers argue the true diminished value on a well-documented claim is higher than this baseline, so use it as your starting point, not your ceiling. If the car already had accident history, expect the insurer to argue for less; there is no standard deduction for that.</p>';
+		if ( letterUrl && diminishedValue > 0 ) {
+			html += '<p style="margin-bottom:0;"><a class="mat-btn mat-btn--accent" href="' + MAT.escape( letterUrl ) + '">Put ' + MAT.usd( diminishedValue ) + ' in a diminished value demand letter</a></p>';
+		}
 
-		resultBox.innerHTML = html;
-		resultBox.hidden = false;
-		resultBox.setAttribute( 'tabindex', '-1' );
-		resultBox.focus();
+		MAT.showResult( resultBox, html );
 
 		// Hand the figure to the demand-letter generator via sessionStorage so
 		// a visitor who clicks through doesn't have to re-type it.

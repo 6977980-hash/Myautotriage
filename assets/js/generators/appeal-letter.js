@@ -12,6 +12,7 @@
 	var previewWrap = document.getElementById( 'mat-ap-preview-wrap' );
 	var printBtn = document.getElementById( 'mat-ap-print' );
 	var copyBtn = document.getElementById( 'mat-ap-copy' );
+	var errorBox = document.getElementById( 'mat-ap-error' );
 
 	function todayFormatted() {
 		return new Date().toLocaleDateString( 'en-US', { year: 'numeric', month: 'long', day: 'numeric' } );
@@ -46,16 +47,20 @@
 		return lines.join( '\n' );
 	}
 
-	function formatUSD( n ) {
-		var num = parseFloat( n );
-		if ( isNaN( num ) || num <= 0 ) {
-			return '';
-		}
-		return num.toLocaleString( 'en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 } );
-	}
 
 	form.addEventListener( 'submit', function ( e ) {
 		e.preventDefault();
+		var r = MAT.nums( {
+			amount: [ 'mat-ap-amount', { label: 'The amount' } ],
+			deadline: [ 'mat-ap-deadline', { label: 'The response deadline', fallback: 30, integer: true } ],
+		} );
+		if ( r.error ) {
+			errorBox.hidden = false;
+			errorBox.textContent = r.error;
+			r.field.focus();
+			return;
+		}
+		errorBox.hidden = true;
 		var f = {
 			yourName: document.getElementById( 'mat-ap-name' ).value.trim() || '[Your Name]',
 			yourAddress: document.getElementById( 'mat-ap-address' ).value.trim() || '[Your Address]',
@@ -63,12 +68,12 @@
 			insurerName: document.getElementById( 'mat-ap-insurer' ).value.trim() || '[Insurance Company Name and Address]',
 			claimNumber: document.getElementById( 'mat-ap-claim' ).value.trim(),
 			policyNumber: document.getElementById( 'mat-ap-policy' ).value.trim(),
-			denialDate: document.getElementById( 'mat-ap-denialdate' ).value,
+			denialDate: MAT.longDate( document.getElementById( 'mat-ap-denialdate' ).value ),
 			denialReason: document.getElementById( 'mat-ap-reason' ).value.trim(),
 			rebuttal: document.getElementById( 'mat-ap-rebuttal' ).value.trim(),
 			evidence: document.getElementById( 'mat-ap-evidence' ).value.trim(),
-			amountFormatted: formatUSD( document.getElementById( 'mat-ap-amount' ).value ),
-			deadlineDays: document.getElementById( 'mat-ap-deadline' ).value || '30',
+			amountFormatted: r.values.amount ? MAT.usd( r.values.amount ) : '',
+			deadlineDays: String( r.values.deadline ),
 		};
 
 		preview.textContent = buildLetter( f );

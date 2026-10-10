@@ -6,7 +6,7 @@
  */
 
 get_header();
-wp_enqueue_script( 'mat-tlt', MAT_URI . '/assets/js/calculators/total-loss-threshold.js', array(), MAT_VERSION, true );
+wp_enqueue_script( 'mat-tlt', MAT_URI . '/assets/js/calculators/total-loss-threshold.js', array( 'mat-tools' ), MAT_VERSION, true );
 ?>
 <div class="mat-tool">
 	<div class="mat-container mat-narrow">
@@ -15,7 +15,7 @@ wp_enqueue_script( 'mat-tlt', MAT_URI . '/assets/js/calculators/total-loss-thres
 			<p><?php esc_html_e( "See whether your car is likely to be declared a total loss, using your state's actual rule: a percentage threshold, the Total Loss Formula, or (where state law sets no number) the test most insurers use.", 'myautotriage' ); ?></p>
 		</div>
 
-		<form id="mat-tlt-form" class="mat-tool-panel" data-json="<?php echo esc_url( MAT_URI . '/assets/js/data/total-loss-thresholds.json' ); ?>" novalidate>
+		<form id="mat-tlt-form" class="mat-tool-panel" data-json="<?php echo esc_url( MAT_URI . '/assets/js/data/total-loss-thresholds.json' ); ?>" data-hub-url="<?php echo esc_url( get_page_by_path( MAT_STATE_HUB_SLUG ) ? trailingslashit( mat_state_hub_url() ) : '' ); ?>" data-gap-url="<?php echo esc_url( mat_url_for_slug( 'gap-insurance-shortfall-calculator' ) ); ?>" novalidate>
 			<div class="mat-field">
 				<label for="mat-tlt-state"><?php esc_html_e( 'Your state', 'myautotriage' ); ?></label>
 				<select id="mat-tlt-state" required>

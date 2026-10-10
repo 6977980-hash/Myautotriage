@@ -11,47 +11,44 @@
 		return;
 	}
 	var resultBox = document.getElementById( 'mat-gap-result' );
-
-	function formatUSD( n ) {
-		return n.toLocaleString( 'en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 } );
-	}
+	var usd = MAT.usd;
 
 	form.addEventListener( 'submit', function ( e ) {
 		e.preventDefault();
 
-		var payoff = parseFloat( document.getElementById( 'mat-gap-payoff' ).value );
-		var acv = parseFloat( document.getElementById( 'mat-gap-acv' ).value );
-		var deductible = parseFloat( document.getElementById( 'mat-gap-deductible' ).value ) || 0;
-		var hasGap = document.getElementById( 'mat-gap-has-gap' ).value;
-
-		if ( isNaN( payoff ) || payoff <= 0 || isNaN( acv ) || acv < 0 ) {
-			resultBox.innerHTML = '<p role="alert">Please enter your loan payoff balance and the insurer\'s settlement value.</p>';
-			resultBox.hidden = false;
+		var r = MAT.nums( {
+			payoff: [ 'mat-gap-payoff', { label: 'Your loan payoff balance', required: true } ],
+			acv: [ 'mat-gap-acv', { label: 'The insurer\'s settlement value', required: true } ],
+			deductible: [ 'mat-gap-deductible', { label: 'Your deductible', fallback: 0 } ],
+		} );
+		if ( r.error ) {
+			MAT.showError( resultBox, r );
 			return;
 		}
+		var v = r.values;
+		var hasGap = document.getElementById( 'mat-gap-has-gap' ).value;
 
-		var insurerPayout = Math.max( 0, acv - deductible );
-		var shortfall = payoff - insurerPayout;
+		var insurerPayout = Math.max( 0, v.acv - v.deductible );
+		var shortfall = v.payoff - insurerPayout;
 
 		var html = '';
-		html += '<p>Insurer payout after your deductible: <strong>' + formatUSD( insurerPayout ) + '</strong> (' + formatUSD( acv ) + ' ACV &minus; ' + formatUSD( deductible ) + ' deductible).</p>';
+		var detail = '<p>Insurer payout after your deductible: <strong>' + usd( insurerPayout ) + '</strong> (' + usd( v.acv ) + ' actual cash value &minus; ' + usd( v.deductible ) + ' deductible).</p>';
 
 		if ( shortfall <= 0 ) {
-			html = '<p class="mat-result-box__figure">' + formatUSD( 0 ) + ' shortfall</p>' + html +
-				'<p>Your insurance settlement covers your loan payoff. You likely don\'t need GAP coverage on this claim.</p>';
+			html += '<p class="mat-result-box__figure">' + usd( 0 ) + ' shortfall</p>' + detail;
+			html += '<p>Your insurance settlement covers your loan payoff' + ( shortfall < 0 ? ', with about ' + usd( -shortfall ) + ' left over for you' : '' ) + '. GAP coverage isn\'t needed on this claim.</p>';
 		} else {
-			html = '<p class="mat-result-box__figure">' + formatUSD( Math.round( shortfall ) ) + ' shortfall</p>' + html +
-				'<p>This is the gap between what you owe and what your insurer is paying.</p>';
+			html += '<p class="mat-result-box__figure">' + usd( Math.round( shortfall ) ) + ' shortfall</p>' + detail;
+			html += '<p>This is the gap between what you owe and what your insurer is paying.</p>';
 			if ( hasGap === 'yes' ) {
-				html += '<p style="margin-bottom:0;font-size:.9rem;">If you have GAP coverage, this is generally the amount it should cover — minus any common exclusions in your GAP contract, such as unpaid finance charges, extended warranties rolled into the loan, past-due payments, or your deductible (some GAP policies do cover the deductible up to a small cap, some don\'t). Read your GAP contract\'s exclusions section before filing.</p>';
+				html += '<p style="margin-bottom:0;font-size:.9rem;">GAP coverage should generally pay this, minus common exclusions in your GAP contract: unpaid finance charges, extended warranties rolled into the loan, past-due payments, and often your deductible (some GAP policies cover the deductible up to a small cap, many don\'t). Read the exclusions section before filing.</p>';
+			} else if ( hasGap === 'unsure' ) {
+				html += '<p style="margin-bottom:0;font-size:.9rem;">Check before you assume you owe this. GAP is often sold inside the loan or lease contract under another name, such as "GAP waiver", "debt cancellation" or "guaranteed asset protection", and many leases include it automatically. Look at your finance contract or call the lender and ask whether the loan has GAP.</p>';
 			} else {
-				html += '<p style="margin-bottom:0;font-size:.9rem;">Without GAP coverage, this shortfall is generally your responsibility to pay off with your lender directly.</p>';
+				html += '<p style="margin-bottom:0;font-size:.9rem;">Without GAP coverage, this shortfall is generally yours to pay to the lender. Ask the lender for a payment plan as soon as you know the settlement amount.</p>';
 			}
 		}
 
-		resultBox.innerHTML = html;
-		resultBox.hidden = false;
-		resultBox.setAttribute( 'tabindex', '-1' );
-		resultBox.focus();
+		MAT.showResult( resultBox, html );
 	} );
 })();

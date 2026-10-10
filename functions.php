@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MAT_VERSION', '1.0.7' );
+define( 'MAT_VERSION', '1.0.8' );
 define( 'MAT_DIR', get_template_directory() );
 define( 'MAT_URI', get_template_directory_uri() );
 
@@ -59,6 +59,8 @@ add_action( 'after_setup_theme', 'mat_setup' );
 function mat_assets() {
 	wp_enqueue_style( 'mat-main', MAT_URI . '/assets/css/main.css', array(), MAT_VERSION );
 	wp_enqueue_script( 'mat-main', MAT_URI . '/assets/js/main.js', array(), MAT_VERSION, true );
+	// Shared validation/formatting helpers; tool templates list it as a dependency.
+	wp_register_script( 'mat-tools', MAT_URI . '/assets/js/tool-utils.js', array(), MAT_VERSION, true );
 
 	// Per-page tool scripts are enqueued individually from each page template
 	// so a visitor reading a blog post never downloads calculator code they

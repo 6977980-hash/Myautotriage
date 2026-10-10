@@ -6,7 +6,7 @@
  */
 
 get_header();
-wp_enqueue_script( 'mat-ded', MAT_URI . '/assets/js/calculators/deductible-vs-premium.js', array(), MAT_VERSION, true );
+wp_enqueue_script( 'mat-ded', MAT_URI . '/assets/js/calculators/deductible-vs-premium.js', array( 'mat-tools' ), MAT_VERSION, true );
 ?>
 <div class="mat-tool">
 	<div class="mat-container mat-narrow">

@@ -231,6 +231,8 @@ button, input, select, textarea { font-family: inherit; font-size: 1rem; }
 @media (min-width: 640px) { .mat-field-row { grid-template-columns: 1fr 1fr; } }
 .mat-radio-group { display: flex; gap: 1.4em; flex-wrap: wrap; }
 .mat-radio-group label { display: inline-flex; align-items: center; gap: .4em; font-weight: 500; }
+.mat-field [aria-invalid="true"] { border-color: #b42318; box-shadow: 0 0 0 2px rgba(180, 35, 24, .15); }
+.mat-form-error { color: #b42318; font-weight: 600; margin: 1em 0 0; }
 .mat-tool-actions { display: flex; gap: 1em; flex-wrap: wrap; align-items: center; margin-top: 1.4em; }
 
 /* Letter preview / print */
@@ -239,9 +241,15 @@ button, input, select, textarea { font-family: inherit; font-size: 1rem; }
 	padding: 40px; max-width: 720px; margin: 0 auto; font-family: Georgia, 'Times New Roman', serif; line-height: 1.7; white-space: pre-wrap;
 }
 @media print {
-	.mat-site-header, .mat-site-footer, .mat-breadcrumbs, .mat-tool-panel, .mat-tool__intro, .mat-disclaimer, .mat-tool-actions, .mat-cta, .mat-related, .mat-faq { display: none !important; }
-	.mat-letter-preview { border: 0; box-shadow: none; padding: 0; }
-	body { font-size: 12pt; }
+	.mat-site-header, .mat-site-footer, .mat-breadcrumbs, .mat-skip-link, .mat-tool-panel, .mat-tool__intro, .mat-disclaimer, .mat-tool-actions, .mat-cta, .mat-related, .mat-faq { display: none !important; }
+	/* On a letter page, print the letter only: everything else around it
+	   (worked examples, next steps, sources) used to spill onto page 2. */
+	.mat-container:has(> [id$="-preview-wrap"]) > :not([id$="-preview-wrap"]),
+	[id$="-preview-wrap"] > h2 { display: none !important; }
+	.mat-tool { padding: 0; }
+	.mat-letter-preview { border: 0; box-shadow: none; padding: 0; max-width: none; font-size: 11pt; line-height: 1.45; }
+	body { font-size: 11pt; }
+	@page { margin: 0.75in; }
 }
 
 /* ---- Data table (state lookups) ----------------------------------------- */

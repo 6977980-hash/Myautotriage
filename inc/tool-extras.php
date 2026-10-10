@@ -34,7 +34,7 @@ function mat_get_tool_extras() {
 					. '<li>' . __( 'Damage factor (moderate): $2,400 × 0.50 = $1,200', 'myautotriage' ) . '</li>'
 					. '<li>' . __( 'Mileage factor (20,000–39,999 miles): $1,200 × 0.80 = $960', 'myautotriage' ) . '</li>'
 					. '</ul>'
-					. '<p>' . __( 'The 17c estimate is $960. The same car with 12,000 miles and major damage would come out at $2,400 × 0.75 × 1.00 = $1,800. If the car already had unrelated accident history, insurers commonly halve the figure, so $960 becomes $480.', 'myautotriage' ) . '</p>'
+					. '<p>' . __( 'The 17c estimate is $960. The same car with 12,000 miles and major damage would come out at $2,400 × 0.75 × 1.00 = $1,800. If the car already had accident history before this crash, expect the insurer to argue for less. There is no standard deduction for that, so ask them to show how they got their number.', 'myautotriage' ) . '</p>'
 					. '<p>' . __( 'Treat the result as a floor for your negotiation, not a ceiling. On newer or low-mileage cars, an independent appraisal based on real resale comparisons often supports a higher number.', 'myautotriage' ) . '</p>',
 			),
 			'faqs' => array(

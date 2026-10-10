@@ -6,7 +6,7 @@
  */
 
 get_header();
-wp_enqueue_script( 'mat-cd', MAT_URI . '/assets/js/calculators/claim-deadline.js', array(), MAT_VERSION, true );
+wp_enqueue_script( 'mat-cd', MAT_URI . '/assets/js/calculators/claim-deadline.js', array( 'mat-tools' ), MAT_VERSION, true );
 ?>
 <div class="mat-tool">
 	<div class="mat-container mat-narrow">
@@ -15,7 +15,7 @@ wp_enqueue_script( 'mat-cd', MAT_URI . '/assets/js/calculators/claim-deadline.js
 			<p><?php esc_html_e( 'Look up how many days your state gives an insurer to acknowledge, decide on, and pay your claim.', 'myautotriage' ); ?></p>
 		</div>
 
-		<form id="mat-cd-form" class="mat-tool-panel" data-json="<?php echo esc_url( MAT_URI . '/assets/js/data/claim-deadlines.json' ); ?>" novalidate>
+		<form id="mat-cd-form" class="mat-tool-panel" data-json="<?php echo esc_url( MAT_URI . '/assets/js/data/claim-deadlines.json' ); ?>" data-hub-url="<?php echo esc_url( get_page_by_path( MAT_STATE_HUB_SLUG ) ? trailingslashit( mat_state_hub_url() ) : '' ); ?>" data-appeal-url="<?php echo esc_url( mat_url_for_slug( 'appeal-letter-generator' ) ); ?>" novalidate>
 			<div class="mat-field">
 				<label for="mat-cd-state"><?php esc_html_e( 'Your state', 'myautotriage' ); ?></label>
 				<select id="mat-cd-state" required>

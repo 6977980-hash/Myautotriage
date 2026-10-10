@@ -13,11 +13,16 @@
 	}
 	var resultBox = document.getElementById( 'mat-tlt-result' );
 	var dataUrl = form.getAttribute( 'data-json' );
+	var hubUrl = form.getAttribute( 'data-hub-url' );
+	var gapUrl = form.getAttribute( 'data-gap-url' );
 	var stateData = null;
+	var usd = MAT.usd;
+	var esc = MAT.escape;
 
 	fetch( dataUrl ).then( function ( r ) { return r.json(); } ).then( function ( json ) {
 		stateData = json;
 		var select = document.getElementById( 'mat-tlt-state' );
+		select.options[0].textContent = 'Choose your state';
 		var codes = Object.keys( json.states ).sort( function ( a, b ) {
 			return json.states[ a ].name.localeCompare( json.states[ b ].name );
 		} );
@@ -28,13 +33,8 @@
 			select.appendChild( opt );
 		} );
 	} ).catch( function () {
-		resultBox.innerHTML = '<p role="alert">Could not load state data. Please refresh the page.</p>';
-		resultBox.hidden = false;
+		MAT.showError( resultBox, 'Could not load state data. Please refresh the page.' );
 	} );
-
-	function formatUSD( n ) {
-		return n.toLocaleString( 'en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 } );
-	}
 
 	form.addEventListener( 'submit', function ( e ) {
 		e.preventDefault();
@@ -42,17 +42,32 @@
 			return;
 		}
 
-		var stateCode = document.getElementById( 'mat-tlt-state' ).value;
-		var acv = parseFloat( document.getElementById( 'mat-tlt-acv' ).value );
-		var repair = parseFloat( document.getElementById( 'mat-tlt-repair' ).value );
-		var salvageInput = document.getElementById( 'mat-tlt-salvage' ).value;
-		var salvage = salvageInput ? parseFloat( salvageInput ) : acv * 0.18; // default estimate ~18% of ACV
-
-		if ( ! stateCode || isNaN( acv ) || acv <= 0 || isNaN( repair ) || repair < 0 ) {
-			resultBox.innerHTML = '<p role="alert">Please choose a state and enter your vehicle value and repair estimate.</p>';
-			resultBox.hidden = false;
+		var select = document.getElementById( 'mat-tlt-state' );
+		var stateCode = select.value;
+		if ( ! stateCode ) {
+			select.setAttribute( 'aria-invalid', 'true' );
+			MAT.showError( resultBox, { error: 'Please choose your state.', field: select } );
 			return;
 		}
+		select.removeAttribute( 'aria-invalid' );
+
+		var r = MAT.nums( {
+			acv: [ 'mat-tlt-acv', { label: 'The vehicle value', required: true } ],
+			repair: [ 'mat-tlt-repair', { label: 'The repair estimate', required: true } ],
+			salvage: [ 'mat-tlt-salvage', { label: 'The salvage value' } ],
+		} );
+		if ( r.error ) {
+			MAT.showError( resultBox, r );
+			return;
+		}
+		var acv = r.values.acv;
+		var repair = r.values.repair;
+		var salvageGiven = r.values.salvage !== null;
+		if ( salvageGiven && r.values.salvage >= acv ) {
+			MAT.showError( resultBox, { error: 'The salvage value should be less than the vehicle\'s value.', field: document.getElementById( 'mat-tlt-salvage' ) } );
+			return;
+		}
+		var salvage = salvageGiven ? r.values.salvage : acv * 0.18; // default estimate ~18% of ACV
 
 		var state = stateData.states[ stateCode ];
 		var html = '';
@@ -61,30 +76,45 @@
 
 		if ( state.type === 'percentage' ) {
 			isTotal = ratio >= state.threshold;
-			html += '<p>' + state.name + ' uses a <strong>' + Math.round( state.threshold * 100 ) + '% threshold</strong>: your car is a total loss if repair costs reach ' + Math.round( state.threshold * 100 ) + '% of its value.</p>';
-			html += '<p>Your repair estimate is <strong>' + Math.round( ratio * 100 ) + '%</strong> of the vehicle value (' + formatUSD( repair ) + ' of ' + formatUSD( acv ) + ').</p>';
+			html += '<p>' + esc( state.name ) + ' uses a <strong>' + MAT.pct( state.threshold ) + ' threshold</strong>: your car is a total loss if repair costs reach ' + MAT.pct( state.threshold ) + ' of its value.</p>';
+			html += '<p>Your repair estimate is <strong>' + MAT.pct( ratio ) + '</strong> of the vehicle value (' + usd( repair ) + ' of ' + usd( acv ) + ').</p>';
+			if ( ! isTotal ) {
+				html += '<p>Repairs would need to reach ' + usd( Math.ceil( acv * state.threshold ) ) + ' for the threshold to apply.</p>';
+			}
 		} else {
 			var combined = repair + salvage;
 			isTotal = combined >= acv;
 			if ( state.type === 'formula' ) {
-				html += '<p>' + state.name + ' uses the <strong>Total Loss Formula</strong>: your car is a total loss if repair cost + estimated salvage value reaches or exceeds its full value.</p>';
+				html += '<p>' + esc( state.name ) + ' uses the <strong>Total Loss Formula</strong>: your car is a total loss if repair cost + estimated salvage value reaches or exceeds its full value.</p>';
 			} else {
-				html += '<p>' + state.name + ' law sets <strong>no fixed percentage</strong>: the insurer totals a car when it decides repairs are uneconomical. Most insurers use the Total Loss Formula (repair cost + salvage value vs. the car\'s value), so that test is shown here.</p>';
+				html += '<p>' + esc( state.name ) + ' law sets <strong>no fixed percentage</strong>: the insurer totals a car when it decides repairs are uneconomical. Most insurers use the Total Loss Formula (repair cost + salvage value vs. the car\'s value), so that test is shown here.</p>';
 			}
-			html += '<p>Repair estimate (' + formatUSD( repair ) + ') + estimated salvage value (' + formatUSD( Math.round( salvage ) ) + ( salvageInput ? '' : ', a default 18% estimate' ) + ') = <strong>' + formatUSD( Math.round( combined ) ) + '</strong> vs. a vehicle value of ' + formatUSD( acv ) + '.</p>';
+			html += '<p>Repair estimate (' + usd( repair ) + ') + estimated salvage value (' + usd( Math.round( salvage ) ) + ( salvageGiven ? '' : ', a default 18% estimate' ) + ') = <strong>' + usd( Math.round( combined ) ) + '</strong> vs. a vehicle value of ' + usd( acv ) + '.</p>';
 		}
 
 		if ( state.note ) {
-			html += '<p>' + state.note + '</p>';
+			html += '<p>' + esc( state.note ) + '</p>';
+		}
+		if ( state.citation ) {
+			var cite = state.source_url
+				? '<a href="' + esc( state.source_url ) + '" rel="noopener" target="_blank">' + esc( state.citation ) + '</a>'
+				: esc( state.citation );
+			html += '<p style="font-size:.9rem;">' + ( state.type === 'insurer' ? 'Law: ' : 'Rule: ' ) + cite + '.</p>';
 		}
 
-		resultBox.className = 'mat-result-box' + ( isTotal ? '' : '' );
-		resultBox.innerHTML =
+		var links = [];
+		if ( hubUrl ) {
+			links.push( '<a href="' + esc( hubUrl + MAT.slug( state.name ) + '/' ) + '">' + esc( state.name ) + ' claim deadlines and total loss rules</a>' );
+		}
+		if ( isTotal && gapUrl ) {
+			links.push( '<a href="' + esc( gapUrl ) + '">Still owe on a loan? Check your GAP shortfall</a>' );
+		}
+
+		resultBox.className = 'mat-result-box';
+		MAT.showResult( resultBox,
 			'<p class="mat-result-box__figure">' + ( isTotal ? 'Likely a total loss' : 'Likely repairable' ) + '</p>' +
 			html +
-			'<p style="margin-bottom:0;font-size:.9rem;">This is an estimate based on published state rules — your insurer makes the final call using its own valuation and repair estimate, which can differ from yours.</p>';
-		resultBox.hidden = false;
-		resultBox.setAttribute( 'tabindex', '-1' );
-		resultBox.focus();
+			'<p style="font-size:.9rem;">This is an estimate based on published state rules. Your insurer makes the final call using its own valuation and repair estimate, which can differ from yours.</p>' +
+			( links.length ? '<p style="margin-bottom:0;">' + links.join( '<br>' ) + '</p>' : '' ) );
 	} );
 })();
