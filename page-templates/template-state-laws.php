@@ -28,6 +28,9 @@ $meta  = mat_state_laws_meta();
 						<?php
 						/* translators: %s: date */
 						printf( esc_html__( 'Last reviewed %s by the MyAutoTriage Editorial Team.', 'myautotriage' ), esc_html( date_i18n( get_option( 'date_format' ), strtotime( $meta['reviewed'] ) ) ) );
+						if ( mat_reviewer_byline() ) {
+							echo ' ' . mat_reviewer_byline() . '.'; // phpcs:ignore -- escaped in mat_reviewer_byline()
+						}
 						?>
 					</p>
 				<?php endif; ?>

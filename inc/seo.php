@@ -284,7 +284,7 @@ function mat_get_share_image_url() {
 
 function mat_schema_organization() {
 	$logo = MAT_URI . '/assets/images/logo-schema.png';
-	return array(
+	$org  = array(
 		'@type' => 'Organization',
 		'@id'   => home_url( '/#organization' ),
 		'name'  => get_bloginfo( 'name' ),
@@ -296,6 +296,32 @@ function mat_schema_organization() {
 			'height' => 512,
 		),
 	);
+	$same_as = mat_brand_same_as();
+	if ( $same_as ) {
+		$org['sameAs'] = $same_as;
+	}
+	return $org;
+}
+
+/**
+ * schema.org Person for the expert reviewer, or null.
+ */
+function mat_schema_reviewer() {
+	$r = mat_reviewer();
+	if ( ! $r ) {
+		return null;
+	}
+	$person = array(
+		'@type' => 'Person',
+		'name'  => $r['name'],
+	);
+	if ( $r['credentials'] ) {
+		$person['jobTitle'] = $r['credentials'];
+	}
+	if ( $r['url'] ) {
+		$person['url'] = $r['url'];
+	}
+	return $person;
 }
 
 function mat_schema_website() {
@@ -395,6 +421,10 @@ function mat_schema_article() {
 			'@id'   => get_permalink( $post ),
 		),
 	);
+	$reviewer = mat_schema_reviewer();
+	if ( $reviewer ) {
+		$article['mainEntityOfPage']['reviewedBy'] = $reviewer;
+	}
 	$citations = mat_article_citations( $post );
 	if ( $citations ) {
 		$article['citation'] = $citations;

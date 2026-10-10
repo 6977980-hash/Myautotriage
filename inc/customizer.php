@@ -82,8 +82,104 @@ function mat_customize_register( $wp_customize ) {
 			'type'    => 'url',
 		) );
 	}
+
+	$wp_customize->add_setting( 'mat_brand_profiles', array(
+		'default'           => '',
+		'sanitize_callback' => 'mat_sanitize_url_lines',
+	) );
+	$wp_customize->add_control( 'mat_brand_profiles', array(
+		'label'       => __( 'Other official profiles (one URL per line)', 'myautotriage' ),
+		'description' => __( 'LinkedIn company page, Crunchbase, Google Business Profile and similar. Added to the Organization schema as sameAs so search engines connect them to this site.', 'myautotriage' ),
+		'section'     => 'mat_site_settings',
+		'type'        => 'textarea',
+	) );
+
+	// Expert reviewer: nothing about a reviewer is shown anywhere until a
+	// name is entered here.
+	$wp_customize->add_section( 'mat_reviewer', array(
+		'title'       => __( 'Expert Reviewer', 'myautotriage' ),
+		'description' => __( 'A licensed adjuster, attorney or agent who fact-checks the guides and state pages. Leave the name empty to hide all reviewer details.', 'myautotriage' ),
+		'priority'    => 31,
+	) );
+	$fields = array(
+		'mat_reviewer_name'        => array( __( 'Reviewer name', 'myautotriage' ), 'text', 'sanitize_text_field' ),
+		'mat_reviewer_credentials' => array( __( 'Credentials (e.g. Licensed P&C adjuster, Texas)', 'myautotriage' ), 'text', 'sanitize_text_field' ),
+		'mat_reviewer_url'         => array( __( 'Profile URL (LinkedIn, firm bio or license lookup)', 'myautotriage' ), 'url', 'esc_url_raw' ),
+		'mat_reviewer_bio'         => array( __( 'Short bio (one or two sentences)', 'myautotriage' ), 'textarea', 'sanitize_textarea_field' ),
+	);
+	foreach ( $fields as $id => $field ) {
+		$wp_customize->add_setting( $id, array(
+			'default'           => '',
+			'sanitize_callback' => $field[2],
+		) );
+		$wp_customize->add_control( $id, array(
+			'label'   => $field[0],
+			'section' => 'mat_reviewer',
+			'type'    => $field[1],
+		) );
+	}
 }
 add_action( 'customize_register', 'mat_customize_register' );
+
+function mat_sanitize_url_lines( $value ) {
+	$urls = array();
+	foreach ( preg_split( '/\s+/', (string) $value ) as $line ) {
+		$url = esc_url_raw( trim( $line ) );
+		if ( $url ) {
+			$urls[] = $url;
+		}
+	}
+	return implode( "\n", array_unique( $urls ) );
+}
+
+/**
+ * The expert reviewer, or null when none is set.
+ */
+function mat_reviewer() {
+	$name = trim( (string) get_theme_mod( 'mat_reviewer_name' ) );
+	if ( '' === $name ) {
+		return null;
+	}
+	return array(
+		'name'        => $name,
+		'credentials' => trim( (string) get_theme_mod( 'mat_reviewer_credentials' ) ),
+		'url'         => (string) get_theme_mod( 'mat_reviewer_url' ),
+		'bio'         => trim( (string) get_theme_mod( 'mat_reviewer_bio' ) ),
+	);
+}
+
+/**
+ * "Reviewed by Jane Doe, Licensed P&C adjuster" with a link when a profile
+ * URL is set. Empty string when there is no reviewer.
+ */
+function mat_reviewer_byline() {
+	$r = mat_reviewer();
+	if ( ! $r ) {
+		return '';
+	}
+	$name = $r['url'] ? '<a href="' . esc_url( $r['url'] ) . '" rel="noopener">' . esc_html( $r['name'] ) . '</a>' : esc_html( $r['name'] );
+	return esc_html__( 'Reviewed by', 'myautotriage' ) . ' ' . $name . ( $r['credentials'] ? ', ' . esc_html( $r['credentials'] ) : '' );
+}
+
+/**
+ * Official profile URLs for Organization sameAs: the social links plus the
+ * extra profiles list.
+ */
+function mat_brand_same_as() {
+	$urls = array();
+	foreach ( array( 'facebook', 'twitter', 'youtube', 'instagram' ) as $network ) {
+		$url = get_theme_mod( "mat_social_{$network}" );
+		if ( $url ) {
+			$urls[] = $url;
+		}
+	}
+	foreach ( preg_split( '/\s+/', (string) get_theme_mod( 'mat_brand_profiles' ) ) as $url ) {
+		if ( $url ) {
+			$urls[] = $url;
+		}
+	}
+	return array_values( array_unique( array_filter( array_map( 'esc_url_raw', $urls ) ) ) );
+}
 
 /**
  * Output GA4 / Search Console / AdSense snippets. Each is genuinely

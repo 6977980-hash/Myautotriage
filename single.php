@@ -21,6 +21,10 @@ while ( have_posts() ) :
 				<h1><?php the_title(); ?></h1>
 				<div class="mat-single-post__meta">
 					<span><?php esc_html_e( 'By', 'myautotriage' ); ?> <a href="<?php echo esc_url( mat_url_for_slug( 'editorial-policy' ) ?: home_url( '/' ) ); ?>"><?php echo esc_html( mat_author_name() ); ?></a></span>
+					<?php if ( mat_reviewer_byline() ) : ?>
+						<span aria-hidden="true">&middot;</span>
+						<span><?php echo mat_reviewer_byline(); // phpcs:ignore -- escaped in mat_reviewer_byline() ?></span>
+					<?php endif; ?>
 					<span aria-hidden="true">&middot;</span>
 					<?php if ( mat_post_was_updated() ) : ?>
 						<span><?php esc_html_e( 'Updated', 'myautotriage' ); ?> <time datetime="<?php echo esc_attr( get_the_modified_date( 'c' ) ); ?>"><?php echo esc_html( get_the_modified_date() ); ?></time></span>
@@ -54,6 +58,13 @@ while ( have_posts() ) :
 				<p class="mat-author-box__name"><?php echo esc_html( mat_author_name() ); ?></p>
 				<p><?php esc_html_e( 'MyAutoTriage guides are written and updated by our editorial team from state insurance regulations, policy language and published claim-handling rules. We are independent: we do not sell insurance, handle claims or take referral fees from law firms or appraisers.', 'myautotriage' ); ?>
 				<a href="<?php echo esc_url( mat_url_for_slug( 'editorial-policy' ) ?: home_url( '/' ) ); ?>"><?php esc_html_e( 'How we research and update content', 'myautotriage' ); ?></a></p>
+				<?php $reviewer = mat_reviewer(); ?>
+				<?php if ( $reviewer ) : ?>
+					<p class="mat-author-box__reviewer">
+						<?php echo mat_reviewer_byline(); // phpcs:ignore -- escaped in mat_reviewer_byline() ?>.
+						<?php echo esc_html( $reviewer['bio'] ); ?>
+					</p>
+				<?php endif; ?>
 			</aside>
 
 			<div class="mat-single-post__footer">
