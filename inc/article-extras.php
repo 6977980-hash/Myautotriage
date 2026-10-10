@@ -34,6 +34,7 @@ function mat_get_article_extras() {
 
 	return array(
 		'what-to-do-after-a-car-accident-checklist' => array(
+			'tools'        => array( 'property-damage-demand-letter-generator', 'deductible-vs-premium-calculator', 'claim-payment-deadline-by-state' ),
 			'short_answer' => 'Check for injuries and call 911 if anyone is hurt, move to safety, then call the police and get a report number. Photograph both cars and the scene, swap license, insurance and contact details without discussing fault, get witness names, and notify your insurer promptly, even if you may not claim.',
 			'sources'      => array(
 				array(
@@ -44,12 +45,15 @@ function mat_get_article_extras() {
 			),
 		),
 		'should-i-file-a-claim-minor-accident' => array(
+			'tools'        => array( 'deductible-vs-premium-calculator', 'no-injury-demand-letter-generator' ),
 			'short_answer' => 'Compare what the insurer would actually pay (repair cost minus your deductible) with the rate increase an at-fault claim usually brings, which often lasts three to five years. If the surcharge over that period is larger, paying out of pocket is usually cheaper. Injuries or the other driver being at fault change the answer.',
 			'sources'      => array(
 				$iii_file,
 			),
 		),
 		'car-insurance-claim-denied-what-to-do' => array(
+			'tools'        => array( 'appeal-letter-generator', 'claim-payment-deadline-by-state' ),
+			'states'       => true,
 			'short_answer' => 'Read the exact reason and policy section the denial cites, then gather evidence that answers that specific reason. Send a written appeal with the evidence and a response deadline. If the insurer won\'t move, file a free complaint with your state department of insurance; unreasonable denials can amount to bad faith.',
 			'sources'      => array(
 				$ca_2695_7,
@@ -58,6 +62,7 @@ function mat_get_article_extras() {
 			),
 		),
 		'how-to-file-diminished-value-claim' => array(
+			'tools'        => array( 'diminished-value-calculator', 'diminished-value-demand-letter-generator' ),
 			'short_answer' => 'Diminished value is the resale value a car loses because an accident is on its history report, even after a perfect repair. Most states only allow it as a claim against the at-fault driver\'s insurer. Get an independent appraisal or use the 17c formula as a floor, then send a written demand with your evidence.',
 			'sources'      => array(
 				array(
@@ -68,6 +73,8 @@ function mat_get_article_extras() {
 			),
 		),
 		'totaled-car-payout-too-low-negotiate' => array(
+			'tools'        => array( 'total-loss-threshold-calculator', 'gap-insurance-shortfall-calculator', 'insurance-underpayment-demand-letter-generator' ),
+			'states'       => true,
 			'short_answer' => 'Ask for the full valuation report, check the mileage, trim, options and condition it used, and find three or more comparable cars for sale near you. Send a written counter-offer with those listings. If you still disagree, your policy\'s appraisal clause lets each side hire an appraiser, with an umpire deciding.',
 			'sources'      => array(
 				array(
@@ -78,6 +85,7 @@ function mat_get_article_extras() {
 			),
 		),
 		'gap-insurance-total-loss-still-owe-money' => array(
+			'tools'        => array( 'gap-insurance-shortfall-calculator', 'total-loss-threshold-calculator' ),
 			'short_answer' => 'Your insurer pays the car\'s actual cash value, not your loan balance. Subtract the settlement (after your deductible) from your payoff amount to see the shortfall. GAP coverage is meant to pay that difference, but many contracts exclude the deductible, past-due payments or add-ons rolled into the loan, and you usually can\'t buy GAP after a loss.',
 			'sources'      => array(
 				array(
@@ -91,6 +99,7 @@ function mat_get_article_extras() {
 			),
 		),
 		'how-to-negotiate-insurance-adjuster' => array(
+			'tools'        => array( 'insurance-underpayment-demand-letter-generator', 'property-damage-demand-letter-generator', 'demand-letter-generator' ),
 			'short_answer' => 'Work out your own number first from repair estimates, comparable listings and receipts. Keep calls factual, avoid guessing or admitting fault, and answer a low offer with specific evidence instead of frustration. Put every counter-offer and verbal agreement in writing, and escalate to a supervisor or your state insurance department if it stalls.',
 			'sources'      => array(
 				$naic_900,
@@ -99,6 +108,7 @@ function mat_get_article_extras() {
 			),
 		),
 		'uninsured-motorist-claim-guide' => array(
+			'tools'        => array( 'small-claims-demand-letter-generator', 'claim-payment-deadline-by-state' ),
 			'short_answer' => 'Uninsured motorist coverage pays when the at-fault driver has no insurance and, in many states, in a hit-and-run; underinsured coverage pays when their limits run out. File a police report, notify your own insurer quickly, and document damages as for any claim. Check your policy for arbitration and deadlines, which can differ from a normal claim.',
 			'sources'      => array(
 				array(
@@ -112,6 +122,8 @@ function mat_get_article_extras() {
 			),
 		),
 		'how-long-insurance-company-must-pay-claim' => array(
+			'tools'        => array( 'claim-payment-deadline-by-state', 'appeal-letter-generator', 'demand-letter-generator' ),
+			'states'       => true,
 			'short_answer' => 'It depends on your state. Most states set three deadlines: acknowledging the claim, accepting or denying it, and paying once it\'s settled. California, for example, requires a decision within 40 days of proof of claim. The clock usually starts when the insurer has complete proof of loss, so get that confirmed in writing.',
 			'sources'      => array(
 				$naic_900,
@@ -120,6 +132,7 @@ function mat_get_article_extras() {
 			),
 		),
 		'small-claims-court-vs-insurance-claim' => array(
+			'tools'        => array( 'small-claims-demand-letter-generator', 'property-damage-demand-letter-generator' ),
 			'short_answer' => 'Small claims court suits a modest property-damage dispute within your state\'s dollar limit, when the insurer won\'t budge or an uninsured driver stops responding. You usually sue the at-fault driver, not their insurer. Send a final written demand first, file before the statute of limitations runs out, and bring organized evidence.',
 			'sources'      => array(
 				array(
@@ -154,6 +167,40 @@ function mat_article_sources() {
 	$extras = mat_article_extras();
 	if ( ! empty( $extras['sources'] ) ) {
 		mat_render_sources( $extras['sources'] );
+	}
+}
+
+/**
+ * "Free tools for this" links, using each tool page's own title.
+ */
+function mat_article_tools() {
+	$extras = mat_article_extras();
+	if ( empty( $extras['tools'] ) ) {
+		return;
+	}
+	$links = array();
+	foreach ( $extras['tools'] as $slug ) {
+		$page = get_page_by_path( $slug );
+		if ( $page ) {
+			$links[] = '<li><a href="' . esc_url( get_permalink( $page ) ) . '">' . esc_html( get_the_title( $page ) ) . '</a></li>';
+		}
+	}
+	if ( ! $links ) {
+		return;
+	}
+	echo '<section class="mat-page__content mat-next-steps" aria-label="' . esc_attr__( 'Free tools for this', 'myautotriage' ) . '">';
+	echo '<h2>' . esc_html__( 'Free tools for this', 'myautotriage' ) . '</h2>';
+	echo '<ul>' . implode( '', $links ) . '</ul>'; // phpcs:ignore -- escaped above
+	echo '</section>';
+}
+
+/**
+ * Articles whose answer depends on the state link to every state page.
+ */
+function mat_article_state_rules() {
+	$extras = mat_article_extras();
+	if ( ! empty( $extras['states'] ) ) {
+		mat_state_rules_block();
 	}
 }
 

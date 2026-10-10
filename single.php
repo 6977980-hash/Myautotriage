@@ -44,6 +44,10 @@ while ( have_posts() ) :
 				<?php the_content(); ?>
 			</div>
 
+			<?php mat_article_tools(); ?>
+
+			<?php mat_article_state_rules(); ?>
+
 			<?php mat_article_sources(); ?>
 
 			<aside class="mat-author-box" aria-label="<?php esc_attr_e( 'About the author', 'myautotriage' ); ?>">

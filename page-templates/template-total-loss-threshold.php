@@ -50,6 +50,8 @@ wp_enqueue_script( 'mat-tlt', MAT_URI . '/assets/js/calculators/total-loss-thres
 
 		<?php mat_tool_extras( 'total-loss-threshold-calculator' ); ?>
 
+		<?php mat_state_rules_block( __( 'Total loss rules by state', 'myautotriage' ) ); ?>
+
 		<?php
 		mat_faq_block( array_merge( array(
 			array(

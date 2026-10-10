@@ -55,6 +55,9 @@
 					?>
 					<li><a href="<?php echo esc_url( get_permalink( $page ) ); ?>"><?php echo esc_html( $tool['title'] ); ?></a></li>
 				<?php endforeach; ?>
+				<?php if ( get_page_by_path( MAT_STATE_HUB_SLUG ) ) : ?>
+					<li><a href="<?php echo esc_url( mat_state_hub_url() ); ?>"><?php esc_html_e( 'Claim Laws by State', 'myautotriage' ); ?></a></li>
+				<?php endif; ?>
 			</ul>
 		</nav>
 

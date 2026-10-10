@@ -269,7 +269,7 @@ add_action( 'wp_loaded', 'mat_ensure_new_pages' );
  * re-run.
  */
 function mat_apply_content_fixes() {
-	$version = '1';
+	$version = '2';
 	if ( $version === get_option( 'mat_content_fixes_version' ) ) {
 		return;
 	}
@@ -281,6 +281,82 @@ function mat_apply_content_fixes() {
 		wp_update_post( array(
 			'ID'           => $tools->ID,
 			'post_content' => str_replace( 'Seven free, no-signup tools', 'Free, no-signup tools', $tools->post_content ),
+		) );
+	}
+
+	mat_add_primary_menu_links();
+}
+
+/**
+ * The primary menu was built at launch (Home, Tools, About, Contact), so it
+ * had no link to the state laws hub or the guides. Insert both after
+ * "Tools", unless the menu already links to them.
+ */
+function mat_add_primary_menu_links() {
+	$locations = get_nav_menu_locations();
+	if ( empty( $locations['primary'] ) ) {
+		return; // The fallback menu (mat_default_primary_menu) already has them.
+	}
+	$menu_id = $locations['primary'];
+	$items   = wp_get_nav_menu_items( $menu_id );
+	if ( ! is_array( $items ) ) {
+		return;
+	}
+
+	$wanted = array();
+	$hub    = get_page_by_path( MAT_STATE_HUB_SLUG );
+	if ( $hub ) {
+		$wanted[ $hub->ID ] = __( 'State Laws', 'myautotriage' );
+	}
+	$blog_id = (int) get_option( 'page_for_posts' );
+	if ( $blog_id ) {
+		$wanted[ $blog_id ] = __( 'Guides', 'myautotriage' );
+	}
+	foreach ( $items as $item ) {
+		unset( $wanted[ (int) $item->object_id ] );
+	}
+	if ( ! $wanted ) {
+		return;
+	}
+
+	// New order: everything up to and including "Tools", the new links,
+	// then the rest.
+	$tools  = get_page_by_path( 'tools' );
+	$before = array();
+	$after  = array();
+	$seen   = ! $tools;
+	foreach ( $items as $item ) {
+		if ( $seen ) {
+			$after[] = $item;
+		} else {
+			$before[] = $item;
+			$seen     = $tools && (int) $item->object_id === $tools->ID;
+		}
+	}
+	$position = 1;
+	foreach ( $before as $item ) {
+		mat_set_menu_item_order( $item, $position++ );
+	}
+	foreach ( $wanted as $page_id => $label ) {
+		wp_update_nav_menu_item( $menu_id, 0, array(
+			'menu-item-title'     => $label,
+			'menu-item-object'    => 'page',
+			'menu-item-object-id' => $page_id,
+			'menu-item-type'      => 'post_type',
+			'menu-item-status'    => 'publish',
+			'menu-item-position'  => $position++,
+		) );
+	}
+	foreach ( $after as $item ) {
+		mat_set_menu_item_order( $item, $position++ );
+	}
+}
+
+function mat_set_menu_item_order( $item, $position ) {
+	if ( (int) $item->menu_order !== $position ) {
+		wp_update_post( array(
+			'ID'         => $item->ID,
+			'menu_order' => $position,
 		) );
 	}
 }

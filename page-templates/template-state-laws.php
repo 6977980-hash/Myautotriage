@@ -154,6 +154,29 @@ $meta  = mat_state_laws_meta();
 					</li>
 				</ol>
 
+				<?php
+				$neighbors = array();
+				$laws      = mat_state_laws();
+				$map       = mat_state_neighbors();
+				foreach ( isset( $map[ $state['code'] ] ) ? $map[ $state['code'] ] : array() as $code ) {
+					if ( isset( $laws[ $code ] ) ) {
+						$neighbors[] = $laws[ $code ];
+					}
+				}
+				if ( $neighbors ) :
+					?>
+					<h2><?php esc_html_e( 'Claim laws in nearby states', 'myautotriage' ); ?></h2>
+					<p><?php esc_html_e( 'If the accident happened in another state, or the other driver is insured there, these rules may matter too:', 'myautotriage' ); ?></p>
+					<ul>
+						<?php foreach ( $neighbors as $neighbor ) : ?>
+							<li>
+								<a href="<?php echo esc_url( mat_state_url( $neighbor ) ); ?>"><?php echo esc_html( $neighbor['name'] ); ?></a>:
+								<?php echo esc_html( mat_state_total_loss_label( $neighbor ) ); ?><?php echo $neighbor['deadlines'] ? esc_html( '; decision ' . mat_state_within( $neighbor['deadlines']['decide'] ) ) : ''; ?>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				<?php endif; ?>
+
 				<h2><?php esc_html_e( 'Free tools for your claim', 'myautotriage' ); ?></h2>
 				<ul>
 					<?php
@@ -163,6 +186,7 @@ $meta  = mat_state_laws_meta();
 						'demand-letter-generator'         => __( 'Demand letter generator', 'myautotriage' ),
 						'appeal-letter-generator'         => __( 'Claim denial appeal letter generator', 'myautotriage' ),
 						'diminished-value-calculator'     => __( 'Diminished value calculator', 'myautotriage' ),
+						'gap-insurance-shortfall-calculator' => __( 'GAP shortfall calculator', 'myautotriage' ),
 					);
 					foreach ( $tool_links as $slug => $label ) :
 						$url = mat_url_for_slug( $slug );
