@@ -118,6 +118,14 @@ function mat_llms_txt() {
 		}
 	}
 	$lines[] = '';
+	if ( get_page_by_path( MAT_ADJUSTER_HUB_SLUG ) ) {
+		$lines[] = '## ' . __( 'What the adjuster said', 'myautotriage' );
+		$lines[] = '- [' . __( 'Common adjuster phrases decoded', 'myautotriage' ) . '](' . mat_adjuster_hub_url() . ')';
+		foreach ( mat_adjuster_phrases() as $phrase ) {
+			$lines[] = '- [' . $phrase['seo_title'] . '](' . mat_adjuster_url( $phrase ) . '): ' . $phrase['short'];
+		}
+		$lines[] = '';
+	}
 	$lines[] = '## ' . __( 'About', 'myautotriage' );
 	foreach ( array( 'about-us', 'editorial-policy', 'disclaimer' ) as $slug ) {
 		$page = get_page_by_path( $slug );
