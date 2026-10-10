@@ -1,0 +1,664 @@
+{
+	"reviewed": "2026-10-10",
+	"sources": {
+		"fault": {
+			"label": "Matthiesen, Wickert & Lehrer: Contributory negligence and comparative fault laws in all 50 states (updated June 10, 2026)",
+			"url": "https://www.mwl-law.com/wp-content/uploads/2018/02/CONTRIBUTORY-NEGLIGENCE-COMPARATIVE-FAULT-LAWS-CHART-3.pdf"
+		},
+		"lawsuit_deadline": {
+			"label": "Matthiesen, Wickert & Lehrer: Statutes of limitation in all 50 states",
+			"url": "https://www.mwl-law.com/wp-content/uploads/2018/02/SOL-CHART-3.pdf"
+		}
+	},
+	"states": {
+		"AK": {
+			"fault": {
+				"rule": "pure_comparative",
+				"citation": "Alaska Stat. § 09.17.080"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "Alaska Stat. § 09.10.070",
+				"property_years": 2
+			},
+			"small_claims": {
+				"limit": 10000,
+				"citation": "Alaska Stat. § 22.15.040",
+				"source_url": "https://public.courts.alaska.gov/web/forms/docs/sc-95.pdf"
+			}
+		},
+		"AL": {
+			"fault": {
+				"rule": "pure_contributory",
+				"citation": "Cowley & Bros. v. Brown, 569 So.2d 375 (Ala. 1990)"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "Ala. Code § 6-2-38(l)"
+			},
+			"small_claims": {
+				"limit": 6000,
+				"citation": "Ala. Code § 12-12-31"
+			}
+		},
+		"AR": {
+			"fault": {
+				"rule": "bar_50",
+				"citation": "Ark. Code § 16-64-122"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "Ark. Code §§ 16-56-105, 16-116-103",
+				"property_years": 3
+			}
+		},
+		"AZ": {
+			"fault": {
+				"rule": "pure_comparative",
+				"citation": "A.R.S. § 12-2505"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "A.R.S. § 12-542",
+				"property_years": 2
+			},
+			"small_claims": {
+				"limit": 5000,
+				"citation": "A.R.S. § 22-503",
+				"source_url": "https://www.azleg.gov/ars/22/00503.htm"
+			}
+		},
+		"CA": {
+			"fault": {
+				"rule": "pure_comparative",
+				"citation": "Li v. Yellow Cab Co., 13 Cal.3d 804 (1975)"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "Cal. Civ. Proc. Code §§ 335.1, 338(c)",
+				"property_years": 3
+			},
+			"small_claims": {
+				"limit": 12500,
+				"citation": "Cal. Civ. Proc. Code § 116.221",
+				"source_url": "https://selfhelp.courts.ca.gov/small-claims-california",
+				"note": "for individuals; $6,250 for businesses"
+			}
+		},
+		"CO": {
+			"fault": {
+				"rule": "bar_50",
+				"citation": "C.R.S. § 13-21-111"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "C.R.S. § 13-80-101(1)(n)",
+				"property_years": 3,
+				"note": "Colorado's three-year period is specific to motor vehicle accidents; most other injury claims there have two years."
+			},
+			"small_claims": {
+				"limit": 7500,
+				"citation": "C.R.S. § 13-6-403",
+				"source_url": "https://coloradojudicial.gov/sites/default/files/2023-07/JDF248.pdf"
+			}
+		},
+		"CT": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "Conn. Gen. Stat. § 52-572h"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "Conn. Gen. Stat. § 52-584",
+				"property_years": 2
+			},
+			"small_claims": {
+				"limit": 5000,
+				"citation": "Conn. Gen. Stat. § 51-15(d)",
+				"source_url": "https://jud.ct.gov/faq/smallclaims.html"
+			}
+		},
+		"DC": {
+			"fault": {
+				"rule": "pure_contributory",
+				"citation": "Wingfield v. People's Drug Store, 379 A.2d 685 (D.C. 1977)",
+				"note": "Since 2016, pedestrians and cyclists are barred only if more at fault than the driver (Motor Vehicle Collision Recovery Act of 2016)."
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "D.C. Code § 12-301",
+				"property_years": 3
+			},
+			"small_claims": {
+				"limit": 10000,
+				"citation": "D.C. Code § 11-1321",
+				"source_url": "https://code.dccouncil.gov/us/dc/council/code/sections/11-1321"
+			}
+		},
+		"DE": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "10 Del. C. § 8132"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "10 Del. C. §§ 8107, 8119",
+				"property_years": 2
+			},
+			"small_claims": {
+				"limit": 25000,
+				"citation": "10 Del. C. § 9301",
+				"source_url": "https://delcode.delaware.gov/title10/c093/index.html",
+				"note": "in the Justice of the Peace Court"
+			}
+		},
+		"FL": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "Fla. Stat. § 768.81(6)",
+				"note": "Applies to negligence lawsuits filed after March 24, 2023; earlier cases used pure comparative fault."
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "Fla. Stat. § 95.11(4)(a)",
+				"property_years": 2,
+				"note": "Two years applies to negligence claims that arose after March 24, 2023; older claims kept the four-year period."
+			},
+			"small_claims": {
+				"limit": 8000,
+				"citation": "Fla. Sm. Cl. R. 7.010(b)",
+				"source_url": "https://www-media.floridabar.org/uploads/2026/08/2026_01-JUL-Small-Claims-Rules-7-1-2026-1.pdf"
+			}
+		},
+		"GA": {
+			"fault": {
+				"rule": "bar_50",
+				"citation": "O.C.G.A. § 51-12-33"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "O.C.G.A. §§ 9-3-33, 9-3-31",
+				"property_years": 4
+			}
+		},
+		"HI": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "Haw. Rev. Stat. § 663-31"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "Haw. Rev. Stat. § 657-7",
+				"property_years": 2
+			}
+		},
+		"IA": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "Iowa Code § 668.3"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "Iowa Code § 614.1(2), (4)",
+				"property_years": 5
+			}
+		},
+		"ID": {
+			"fault": {
+				"rule": "bar_50",
+				"citation": "Idaho Code § 6-801"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "Idaho Code §§ 5-219, 5-218",
+				"property_years": 3
+			}
+		},
+		"IL": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "735 ILCS 5/2-1116"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "735 ILCS 5/13-202, 5/13-205",
+				"property_years": 5
+			}
+		},
+		"IN": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "Ind. Code § 34-51-2-6",
+				"note": "Claims against government drivers or agencies still use pure contributory negligence."
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "Ind. Code § 34-11-2-4",
+				"property_years": 2
+			}
+		},
+		"KS": {
+			"fault": {
+				"rule": "bar_50",
+				"citation": "K.S.A. § 60-258a"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "K.S.A. § 60-513",
+				"property_years": 2
+			}
+		},
+		"KY": {
+			"fault": {
+				"rule": "pure_comparative",
+				"citation": "KRS § 411.182"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "KRS §§ 304.39-230(6), 413.125",
+				"property_years": 2,
+				"note": "For car accidents Kentucky's no-fault law gives two years from the accident or from the last no-fault (PIP) payment, whichever is later."
+			}
+		},
+		"LA": {
+			"fault": {
+				"rule": "pure_comparative",
+				"citation": "La. Civ. Code art. 2323",
+				"note": "For accidents on or after January 1, 2026, Louisiana bars recovery if you are more than 50% at fault; the pure rule applies only to earlier accidents."
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "La. Civ. Code art. 3493.1",
+				"property_years": 2,
+				"note": "Two years applies to accidents after July 1, 2024; earlier accidents had one year."
+			}
+		},
+		"MA": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "M.G.L. c. 231, § 85"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "M.G.L. c. 260, § 2A",
+				"property_years": 3
+			}
+		},
+		"MD": {
+			"fault": {
+				"rule": "pure_contributory",
+				"citation": "Coleman v. Soccer Ass'n of Columbia, 69 A.3d 1149 (Md. 2013)"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "Md. Code, Cts. & Jud. Proc. § 5-101",
+				"property_years": 3
+			}
+		},
+		"ME": {
+			"fault": {
+				"rule": "bar_50",
+				"citation": "14 M.R.S. § 156"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 6,
+				"citation": "14 M.R.S. § 752",
+				"property_years": 6
+			}
+		},
+		"MI": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "MCL § 600.2959",
+				"explain": "Your recovery is cut by your share of the fault. If you are more than 50% at fault you can still recover reduced economic damages, such as medical bills, but not pain-and-suffering damages."
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "MCL § 600.5805",
+				"property_years": 3,
+				"note": "Michigan is a no-fault state: you can sue the other driver for injury only past the serious-injury threshold, damage to your car can be claimed from the at-fault driver only up to $3,000 (the \"mini-tort\", MCL § 500.3135(3)(e)), and a claim for no-fault benefits from your own insurer generally must be made within one year (MCL § 500.3145)."
+			},
+			"small_claims": {
+				"limit": 7000,
+				"citation": "MCL § 600.8401",
+				"source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-600-8401"
+			}
+		},
+		"MN": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "Minn. Stat. § 604.01"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 6,
+				"citation": "Minn. Stat. § 541.05",
+				"property_years": 6
+			}
+		},
+		"MO": {
+			"fault": {
+				"rule": "pure_comparative",
+				"citation": "Gustafson v. Benda, 661 S.W.2d 11 (Mo. 1983)"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 5,
+				"citation": "Mo. Rev. Stat. § 516.120",
+				"property_years": 5
+			}
+		},
+		"MS": {
+			"fault": {
+				"rule": "pure_comparative",
+				"citation": "Miss. Code § 11-7-15"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "Miss. Code § 15-1-49",
+				"property_years": 3
+			}
+		},
+		"MT": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "Mont. Code § 27-1-702"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "Mont. Code §§ 27-2-204, 27-2-207",
+				"property_years": 2
+			}
+		},
+		"NC": {
+			"fault": {
+				"rule": "pure_contributory",
+				"citation": "Smith v. Fiber Controls Corp., 268 S.E.2d 504 (N.C. 1980)"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "N.C. Gen. Stat. § 1-52",
+				"property_years": 3
+			}
+		},
+		"ND": {
+			"fault": {
+				"rule": "bar_50",
+				"citation": "N.D.C.C. § 32-03.2-02"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 6,
+				"citation": "N.D.C.C. § 28-01-16",
+				"property_years": 6
+			}
+		},
+		"NE": {
+			"fault": {
+				"rule": "bar_50",
+				"citation": "Neb. Rev. Stat. § 25-21,185.09"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 4,
+				"citation": "Neb. Rev. Stat. § 25-207",
+				"property_years": 4
+			},
+			"small_claims": {
+				"limit": 7500,
+				"citation": "Neb. Rev. Stat. § 25-2802",
+				"source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=25-2802"
+			}
+		},
+		"NH": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "RSA 507:7-d"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "RSA 508:4",
+				"property_years": 3
+			}
+		},
+		"NJ": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "N.J.S.A. 2A:15-5.1"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "N.J.S.A. 2A:14-2, 2A:14-1",
+				"property_years": 6
+			}
+		},
+		"NM": {
+			"fault": {
+				"rule": "pure_comparative",
+				"citation": "Scott v. Rizzo, 634 P.2d 1234 (N.M. 1981)"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "NMSA §§ 37-1-8, 37-1-4",
+				"property_years": 4
+			}
+		},
+		"NV": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "NRS § 41.141"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "NRS § 11.190",
+				"property_years": 3
+			}
+		},
+		"NY": {
+			"fault": {
+				"rule": "pure_comparative",
+				"citation": "N.Y. CPLR § 1411",
+				"note": "Injury lawsuits under the no-fault law (Insurance Law Article 51) started on or after May 26, 2026 are barred if you are more at fault than the other side."
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "N.Y. CPLR § 214",
+				"property_years": 3
+			}
+		},
+		"OH": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "Ohio Rev. Code § 2315.33"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "Ohio Rev. Code § 2305.10",
+				"property_years": 2
+			}
+		},
+		"OK": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "23 O.S. § 13"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "12 O.S. § 95",
+				"property_years": 2
+			}
+		},
+		"OR": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "ORS 31.600"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "ORS 12.110, 12.080",
+				"property_years": 6
+			}
+		},
+		"PA": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "42 Pa.C.S. § 7102"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "42 Pa.C.S. § 5524",
+				"property_years": 2
+			}
+		},
+		"RI": {
+			"fault": {
+				"rule": "pure_comparative",
+				"citation": "R.I. Gen. Laws § 9-20-4"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "R.I. Gen. Laws §§ 9-1-14, 9-1-13",
+				"property_years": 10
+			},
+			"small_claims": {
+				"limit": 5000,
+				"citation": "R.I. Gen. Laws § 10-16-1",
+				"source_url": "https://webserver.rilegislature.gov/Statutes/TITLE10/10-16/10-16-1.htm"
+			}
+		},
+		"SC": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "Nelson v. Concrete Supply Co., 399 S.E.2d 783 (S.C. 1991)"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "S.C. Code § 15-3-530",
+				"property_years": 3
+			}
+		},
+		"SD": {
+			"fault": {
+				"rule": "slight_gross",
+				"citation": "SDCL § 20-9-2"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "SDCL §§ 15-2-14, 15-2-13",
+				"property_years": 6
+			}
+		},
+		"TN": {
+			"fault": {
+				"rule": "bar_50",
+				"citation": "McIntyre v. Balentine, 833 S.W.2d 52 (Tenn. 1992)"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 1,
+				"citation": "Tenn. Code §§ 28-3-104, 28-3-105",
+				"property_years": 3,
+				"note": "Tennessee gives two years for injury instead of one when the at-fault driver is charged with certain crimes, such as vehicular assault or DUI (Tenn. Code § 28-3-104(a)(2))."
+			}
+		},
+		"TX": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "Tex. Civ. Prac. & Rem. Code § 33.001"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "Tex. Civ. Prac. & Rem. Code § 16.003",
+				"property_years": 2
+			},
+			"small_claims": {
+				"limit": 20000,
+				"citation": "Tex. Gov't Code § 27.031",
+				"source_url": "https://statutes.capitol.texas.gov/Docs/GV/htm/GV.27.htm",
+				"note": "in justice court"
+			}
+		},
+		"UT": {
+			"fault": {
+				"rule": "bar_50",
+				"citation": "Utah Code § 78B-5-818"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 4,
+				"citation": "Utah Code §§ 78B-2-307, 78B-2-305",
+				"property_years": 3
+			},
+			"small_claims": {
+				"limit": 20000,
+				"citation": "Utah Code § 78A-8-102",
+				"source_url": "https://le.utah.gov/xcode/Title78A/Chapter8/78A-8-S102.html"
+			}
+		},
+		"VA": {
+			"fault": {
+				"rule": "pure_contributory",
+				"citation": "Baskett v. Banks, 45 S.E.2d 173 (Va. 1947)"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "Va. Code § 8.01-243",
+				"property_years": 5
+			}
+		},
+		"VT": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "12 V.S.A. § 1036"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "12 V.S.A. § 512",
+				"property_years": 3
+			},
+			"small_claims": {
+				"limit": 10000,
+				"citation": "12 V.S.A. § 5531",
+				"source_url": "https://legislature.vermont.gov/statutes/section/12/187/05531"
+			}
+		},
+		"WA": {
+			"fault": {
+				"rule": "pure_comparative",
+				"citation": "RCW 4.22.005"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "RCW 4.16.080",
+				"property_years": 3
+			}
+		},
+		"WI": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "Wis. Stat. § 895.045"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 3,
+				"citation": "Wis. Stat. §§ 893.54, 893.52(2)",
+				"property_years": 3
+			}
+		},
+		"WV": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "W. Va. Code § 55-7-13a"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 2,
+				"citation": "W. Va. Code § 55-2-12",
+				"property_years": 2
+			}
+		},
+		"WY": {
+			"fault": {
+				"rule": "bar_51",
+				"citation": "Wyo. Stat. § 1-1-109"
+			},
+			"lawsuit_deadline": {
+				"injury_years": 4,
+				"citation": "Wyo. Stat. § 1-3-105",
+				"property_years": 4
+			}
+		}
+	}
+}
