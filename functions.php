@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MAT_VERSION', '1.0.6' );
+define( 'MAT_VERSION', '1.0.7' );
 define( 'MAT_DIR', get_template_directory() );
 define( 'MAT_URI', get_template_directory_uri() );
 
@@ -79,6 +79,7 @@ function mat_register_tool_script( $handle, $src_relative, $data_handle = null, 
  * ---------------------------------------------------------------------- */
 require MAT_DIR . '/inc/seo.php';
 require MAT_DIR . '/inc/sitemap.php';
+require MAT_DIR . '/inc/indexnow.php';
 require MAT_DIR . '/inc/cleanup.php';
 require MAT_DIR . '/inc/tool-extras.php';
 require MAT_DIR . '/inc/article-extras.php';
@@ -110,6 +111,7 @@ remove_action( 'wp_head', 'rsd_link' );
 remove_action( 'wp_head', 'wlwmanifest_link' );
 remove_action( 'wp_head', 'wp_generator' );
 remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+remove_action( 'template_redirect', 'wp_shortlink_header', 11 );
 
 // Lazy-load is native in modern WordPress core; make sure it stays on.
 add_filter( 'wp_lazy_loading_enabled', '__return_true' );
@@ -127,6 +129,22 @@ function mat_security_headers( $wp ) {
 	header( 'Permissions-Policy: geolocation=(), microphone=(), camera=()' );
 }
 add_action( 'send_headers', 'mat_security_headers' );
+
+/**
+ * Keep cached HTML short-lived. The host's CDN was holding pages for 7 days
+ * (max-age=604800), so a deploy took up to a week to reach visitors and
+ * crawlers. An hour is still plenty of caching for a site this size.
+ * Theme assets keep their long cache: their URLs change with MAT_VERSION.
+ */
+function mat_html_cache_headers() {
+	$method = isset( $_SERVER['REQUEST_METHOD'] ) ? $_SERVER['REQUEST_METHOD'] : 'GET';
+	if ( is_user_logged_in() || ! in_array( $method, array( 'GET', 'HEAD' ), true ) ) {
+		return;
+	}
+	header( 'Cache-Control: public, max-age=3600' );
+	header_remove( 'Expires' );
+}
+add_action( 'template_redirect', 'mat_html_cache_headers', 0 );
 
 /* ------------------------------------------------------------------------
  * Nicer defaults for a tool/calculator site
