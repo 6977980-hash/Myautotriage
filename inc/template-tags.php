@@ -174,6 +174,13 @@ function mat_get_tools_registry() {
 			'seo_title' => __( 'Loss of Use Calculator: Claim for Days Without Your Car', 'myautotriage' ),
 		),
 		array(
+			'title'   => __( 'Late Claim Payment Interest Calculator', 'myautotriage' ),
+			'excerpt' => __( 'Estimate the interest owed when an insurer pays your claim after the legal deadline.', 'myautotriage' ),
+			'slug'    => 'insurance-late-payment-interest-calculator',
+			'meta'    => __( "Insurance company paid your claim late? Calculate late-payment interest, including Texas's 18% and Michigan's 12% statutory rates, and the total to ask for.", 'myautotriage' ),
+			'seo_title' => __( 'Late Insurance Claim Payment Interest Calculator', 'myautotriage' ),
+		),
+		array(
 			'title'   => __( 'Claim Payment Deadline Lookup', 'myautotriage' ),
 			'excerpt' => __( 'Look up how many days your state gives an insurer to acknowledge, decide, and pay your claim.', 'myautotriage' ),
 			'slug'    => 'claim-payment-deadline-by-state',

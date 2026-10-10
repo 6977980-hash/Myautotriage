@@ -74,6 +74,12 @@ function mat_seed_pages() {
 			'content'  => '',
 		),
 		array(
+			'slug'     => 'insurance-late-payment-interest-calculator',
+			'title'    => __( 'Late Claim Payment Interest Calculator', 'myautotriage' ),
+			'template' => 'page-templates/template-late-interest.php',
+			'content'  => '',
+		),
+		array(
 			'slug'     => 'car-insurance-refund-calculator',
 			'title'    => __( 'Car Insurance Refund Calculator', 'myautotriage' ),
 			'template' => 'page-templates/template-refund-calculator.php',

@@ -181,6 +181,7 @@ function mat_get_tool_extras() {
 				array( 'slug' => 'demand-letter-generator', 'label' => __( 'Insurer missed a deadline? Send a demand letter', 'myautotriage' ) ),
 				array( 'slug' => 'appeal-letter-generator', 'label' => __( 'Claim denied? Write an appeal letter', 'myautotriage' ) ),
 				array( 'slug' => 'car-accident-lawsuit-deadline-calculator', 'label' => __( 'Work out the last day to sue after your accident', 'myautotriage' ) ),
+				array( 'slug' => 'insurance-late-payment-interest-calculator', 'label' => __( 'Paid late? Calculate the interest owed', 'myautotriage' ) ),
 				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'doi-complaint' ), 'label' => __( 'Draft a complaint to your state department of insurance', 'myautotriage' ) ),
 				array( 'slug' => 'car-insurance-claim-laws', 'label' => __( 'Claim laws by state: deadlines and total loss rules side by side', 'myautotriage' ) ),
 			),
@@ -226,6 +227,19 @@ function mat_get_tool_extras() {
 				array( 'slug' => 'property-damage-demand-letter-generator', 'label' => __( 'Claim it in a property damage demand letter', 'myautotriage' ) ),
 				array( 'slug' => 'diminished-value-calculator', 'label' => __( 'Also check your car\'s diminished value', 'myautotriage' ) ),
 				array( 'slug' => 'car-insurance-claim-laws', 'label' => __( 'Your state\'s claim deadlines and small claims limit', 'myautotriage' ) ),
+			),
+		),
+
+		'insurance-late-payment-interest-calculator' => array(
+			'example' => array(
+				'title' => __( 'Worked example', 'myautotriage' ),
+				'html'  => '<p>' . __( 'Your Texas insurer agreed to pay $8,500 and the payment was due on March 1, 2026, but it arrived on May 15, 2026: 75 days late.', 'myautotriage' ) . '</p>'
+					. '<p>' . __( 'Interest at 18% a year: $8,500 × 18% × 75/365 = $314.38, on top of the claim and reasonable attorney\'s fees.', 'myautotriage' ) . '</p>',
+			),
+			'next' => array(
+				array( 'slug' => 'claim-payment-deadline-by-state', 'label' => __( 'Work out when your claim payment was due', 'myautotriage' ) ),
+				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'doi-complaint' ), 'label' => __( 'Draft a complaint to your state department of insurance', 'myautotriage' ) ),
+				array( 'slug' => 'car-insurance-claim-laws', 'label' => __( 'Claim laws by state, with citations', 'myautotriage' ) ),
 			),
 		),
 
