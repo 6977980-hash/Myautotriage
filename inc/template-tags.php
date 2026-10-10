@@ -118,6 +118,13 @@ function mat_related_posts( $post_id, $count = 3 ) {
 function mat_get_tools_registry() {
 	return array(
 		array(
+			'title'   => __( 'Claim Triage: What Should I Do Next?', 'myautotriage' ),
+			'excerpt' => __( 'Answer three questions to get your next step, the right tool or letter, and your state\'s deadlines.', 'myautotriage' ),
+			'slug'    => 'claim-triage',
+			'meta'    => __( 'Not sure what to do next on your car insurance claim? Answer three questions to get the next step, the right tool or letter, and your state\'s claim deadlines.', 'myautotriage' ),
+			'seo_title' => __( 'Car Insurance Claim: What to Do Next (Free Triage Tool)', 'myautotriage' ),
+		),
+		array(
 			'title'   => __( 'Diminished Value (17c) Calculator', 'myautotriage' ),
 			'excerpt' => __( 'Estimate how much value your car lost after an accident, using the same 17c formula insurers reference.', 'myautotriage' ),
 			'slug'    => 'diminished-value-calculator',

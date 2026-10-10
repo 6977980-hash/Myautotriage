@@ -18,10 +18,18 @@ if ( ! $tagline ) {
 		<h1 class="mat-hero__title"><?php esc_html_e( 'Triage your car insurance claim before the insurer does.', 'myautotriage' ); ?></h1>
 		<p class="mat-hero__subtitle"><?php echo esc_html( $tagline ); ?></p>
 		<div class="mat-hero__actions">
-			<a class="mat-btn mat-btn--primary mat-btn--lg" href="<?php echo esc_url( home_url( '/tools/' ) ); ?>"><?php esc_html_e( 'Browse all free tools', 'myautotriage' ); ?></a>
-			<a class="mat-btn mat-btn--ghost mat-btn--lg" href="<?php echo esc_url( home_url( '/blog/' ) ); ?>"><?php esc_html_e( 'Read the claim guides', 'myautotriage' ); ?></a>
+			<a class="mat-btn mat-btn--primary mat-btn--lg" href="#mat-triage-title"><?php esc_html_e( 'Find my next step', 'myautotriage' ); ?></a>
+			<a class="mat-btn mat-btn--ghost mat-btn--lg" href="<?php echo esc_url( home_url( '/tools/' ) ); ?>"><?php esc_html_e( 'Browse all free tools', 'myautotriage' ); ?></a>
 		</div>
 		<p class="mat-hero__trust"><?php esc_html_e( 'No sign-up. No email wall on the calculators. Just answers.', 'myautotriage' ); ?></p>
+	</div>
+</section>
+
+<section class="mat-section mat-section--alt" aria-labelledby="mat-triage-title">
+	<div class="mat-container mat-narrow">
+		<h2 class="mat-section__title" id="mat-triage-title"><?php esc_html_e( 'Where does your claim stand?', 'myautotriage' ); ?></h2>
+		<p class="mat-section__lead"><?php esc_html_e( 'Answer three questions to get the one thing to do next, the right tool or letter, and your state\'s deadlines.', 'myautotriage' ); ?></p>
+		<?php mat_claim_triage_form(); ?>
 	</div>
 </section>
 

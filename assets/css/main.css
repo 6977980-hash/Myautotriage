@@ -338,3 +338,16 @@ button, input, select, textarea { font-family: inherit; font-size: 1rem; }
 .mat-adj-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1em; }
 .mat-adj-list a { font-weight: 700; font-size: 1.1rem; }
 .mat-adj-list span { display: block; color: var(--mat-ink-soft); font-size: .95rem; margin-top: .2em; }
+
+/* Claim triage */
+.mat-triage { margin-bottom: 1.2em; text-align: left; }
+.mat-triage-result { background: #fff; border: 1px solid var(--mat-line); border-top: 4px solid var(--mat-brand); border-radius: var(--mat-radius); padding: 22px 24px; margin-bottom: 2em; text-align: left; }
+.mat-triage-result:focus { outline: none; }
+.mat-triage-result__label { font-weight: 700; text-transform: uppercase; letter-spacing: .04em; font-size: .8rem; color: var(--mat-ink-soft); margin: 0; }
+.mat-triage-result__title { margin: .2em 0 .6em; font-size: 1.5rem; }
+.mat-triage-result__first { display: flex; flex-direction: column; align-items: flex-start; gap: .7em; padding-bottom: 1em; border-bottom: 1px solid var(--mat-line); }
+.mat-triage-result__first p { margin: 0; }
+.mat-triage-result h3 { font-size: 1.05rem; margin: 1.2em 0 .4em; }
+.mat-triage-result ul { margin: 0; padding-left: 1.2em; }
+.mat-triage-result li { margin-bottom: .35em; }
+.mat-triage-result__note { font-size: .92rem; color: var(--mat-ink-soft); margin: 1em 0 0; }

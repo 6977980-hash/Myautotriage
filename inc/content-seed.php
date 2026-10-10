@@ -74,6 +74,12 @@ function mat_seed_pages() {
 			'content'  => '',
 		),
 		array(
+			'slug'     => 'claim-triage',
+			'title'    => __( 'Claim Triage: What Should I Do Next?', 'myautotriage' ),
+			'template' => 'page-templates/template-claim-triage.php',
+			'content'  => '',
+		),
+		array(
 			'slug'     => 'total-loss-valuation-checker',
 			'title'    => __( 'Total Loss Valuation Checker', 'myautotriage' ),
 			'template' => 'page-templates/template-valuation-checker.php',
