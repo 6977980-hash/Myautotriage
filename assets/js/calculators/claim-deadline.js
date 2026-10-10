@@ -1,5 +1,9 @@
 /**
  * Claim Payment Deadline Lookup.
+ *
+ * With the optional dates it also turns "15 business days after proof of
+ * loss" into a calendar date, picking the start date from what the rule
+ * counts from (the claim report, proof of loss, or the agreed settlement).
  */
 (function () {
 	'use strict';
@@ -31,6 +35,64 @@
 		MAT.showError( resultBox, 'Could not load state data. Please refresh the page.' );
 	} );
 
+	function parseDate( value ) {
+		var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec( value || '' );
+		return m ? new Date( Date.UTC( +m[1], +m[2] - 1, +m[3] ) ) : null;
+	}
+
+	function addDays( date, n, businessOnly ) {
+		var d = new Date( date.getTime() );
+		while ( n > 0 ) {
+			d.setUTCDate( d.getUTCDate() + 1 );
+			var dow = d.getUTCDay();
+			if ( ! businessOnly || ( dow !== 0 && dow !== 6 ) ) {
+				n--;
+			}
+		}
+		return d;
+	}
+
+	function formatDate( d ) {
+		return d.toLocaleDateString( 'en-US', { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' } );
+	}
+
+	/**
+	 * Which of the entered dates a rule counts from, or null.
+	 */
+	function startFor( field, text, dates ) {
+		var t = text.toLowerCase();
+		if ( /proof/.test( t ) ) {
+			return dates.proof ? { date: dates.proof, from: 'proof of loss' } : null;
+		}
+		if ( /settlement|agree|accept|approved|liability|will pay|ready for payment/.test( t ) ) {
+			return dates.agreed ? { date: dates.agreed, from: 'the agreed settlement' } : null;
+		}
+		if ( /notice|claim is received|claim forms|complete claim|claim and bills/.test( t ) || ( field === 'acknowledge' && ! /after/.test( t ) ) ) {
+			return dates.notice ? { date: dates.notice, from: 'your claim report' } : null;
+		}
+		return null;
+	}
+
+	function dueDate( field, text, dates ) {
+		var m = /^(\d+) (calendar |business |working )?days/.exec( text );
+		if ( ! m ) {
+			return '';
+		}
+		var start = startFor( field, text, dates );
+		if ( ! start ) {
+			return '';
+		}
+		var business = m[2] === 'business ' || m[2] === 'working ';
+		var due = addDays( start.date, parseInt( m[1], 10 ), business );
+		var late = due < today() ? ' <strong>(passed)</strong>' : '';
+		return '<br><span style="font-size:.9rem;">Due by <strong>' + formatDate( due ) + '</strong>' + late + ', counted from ' + start.from + '.</span>';
+	}
+
+	function today() {
+		var n = new Date();
+		return new Date( Date.UTC( n.getFullYear(), n.getMonth(), n.getDate() ) );
+	}
+
 	form.addEventListener( 'submit', function ( e ) {
 		e.preventDefault();
 		if ( ! claimData ) {
@@ -44,14 +106,29 @@
 		}
 		var state = claimData.states[ code ];
 		var html = '';
+		var dates = {
+			notice: parseDate( document.getElementById( 'mat-cd-notice' ).value ),
+			proof: parseDate( document.getElementById( 'mat-cd-proof' ).value ),
+			agreed: parseDate( document.getElementById( 'mat-cd-agreed' ).value ),
+		};
+		var anyDate = dates.notice || dates.proof || dates.agreed;
+		var anyDue = false;
+		function row( label, field, text ) {
+			var due = anyDate ? dueDate( field, text, dates ) : '';
+			anyDue = anyDue || !! due;
+			return '<tr><th scope="row">' + label + '</th><td>' + text + due + '</td></tr>';
+		}
 
 		if ( state ) {
 			html += '<h3 style="margin-top:0;">' + state.name + '</h3>';
 			html += '<table class="mat-table"><tbody>';
-			html += '<tr><th scope="row">Acknowledge your claim</th><td>' + state.acknowledge + '</td></tr>';
-			html += '<tr><th scope="row">Accept or deny it</th><td>' + state.decide + '</td></tr>';
-			html += '<tr><th scope="row">Pay after agreement</th><td>' + state.pay + '</td></tr>';
+			html += row( 'Acknowledge your claim', 'acknowledge', state.acknowledge );
+			html += row( 'Accept or deny it', 'decide', state.decide );
+			html += row( 'Pay after agreement', 'pay', state.pay );
 			html += '</tbody></table>';
+			if ( anyDate && ! anyDue ) {
+				html += '<p style="font-size:.9rem;">None of these rules count from the dates you entered, or the state sets no fixed number of days, so there is no exact due date to show.</p>';
+			}
 			if ( state.note ) {
 				html += '<p>' + state.note + '</p>';
 			}

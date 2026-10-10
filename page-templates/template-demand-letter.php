@@ -40,8 +40,84 @@ $variants = array(
 	),
 );
 
+// What each letter page says that the others don't: what to include and
+// questions specific to that kind of claim, so the six pages are not
+// copies of one another.
+$variant_guides = array(
+	'demand-letter-generator' => array(
+		'heading' => __( 'What a strong demand letter includes', 'myautotriage' ),
+		'tips'    => array(
+			__( 'The accident date, place and the other driver\'s name, so the claim can be matched to the right file.', 'myautotriage' ),
+			__( 'One clear number, with the repair estimate, rental receipts and other bills that add up to it.', 'myautotriage' ),
+			__( 'A response deadline, usually 14 to 30 days, and how to reach you.', 'myautotriage' ),
+		),
+		'faqs'    => array(),
+	),
+	'no-injury-demand-letter-generator' => array(
+		'heading' => __( 'When to use a no-injury demand letter', 'myautotriage' ),
+		'tips'    => array(
+			__( 'Nobody was hurt and you only want the car fixed, a rental covered and your out-of-pocket costs paid.', 'myautotriage' ),
+			__( 'Saying plainly that you are not claiming injury usually speeds up the property damage adjuster.', 'myautotriage' ),
+			__( 'If pain shows up later, see a doctor and keep the records; ask a lawyer before you sign any release that covers injuries.', 'myautotriage' ),
+		),
+		'faqs'    => array(
+			array( 'question' => __( 'Can I claim injury later if I send a no-injury letter?', 'myautotriage' ), 'answer' => __( 'The letter itself is not a release, but anything you sign to settle may be. Do not sign a general release covering bodily injury until you are sure you were not hurt.', 'myautotriage' ) ),
+			array( 'question' => __( 'What can I include besides repairs?', 'myautotriage' ), 'answer' => __( 'A rental car or loss of use for the days you were without the car, towing and storage, and personal items damaged in the crash, each backed by a receipt.', 'myautotriage' ) ),
+		),
+	),
+	'property-damage-demand-letter-generator' => array(
+		'heading' => __( 'Evidence that supports a property damage demand', 'myautotriage' ),
+		'tips'    => array(
+			__( 'At least one written repair estimate from a shop you choose, not only the insurer\'s estimate.', 'myautotriage' ),
+			__( 'Photos of the damage and the scene, and the police or crash report number if there is one.', 'myautotriage' ),
+			__( 'Receipts for towing, storage and a rental car, and the dates you had no car.', 'myautotriage' ),
+		),
+		'faqs'    => array(
+			array( 'question' => __( 'Do I have to use the at-fault insurer\'s repair shop?', 'myautotriage' ), 'answer' => __( 'No. In most states you can choose your own shop; the insurer can inspect the car and may pay only a reasonable price, so a written estimate from your shop helps.', 'myautotriage' ) ),
+			array( 'question' => __( 'Can I ask for a rental car in the demand?', 'myautotriage' ), 'answer' => __( 'Yes. The at-fault driver\'s insurer is usually responsible for a comparable rental or loss of use for the reasonable repair time, so list the dates and daily rate.', 'myautotriage' ) ),
+		),
+	),
+	'insurance-underpayment-demand-letter-generator' => array(
+		'heading' => __( 'How to dispute an underpaid settlement', 'myautotriage' ),
+		'tips'    => array(
+			__( 'Quote the offer and claim number, then show line by line where it falls short: labor rate, parts, missed damage or a low car value.', 'myautotriage' ),
+			__( 'Attach a second estimate or comparable cars for sale, not just your opinion of the value.', 'myautotriage' ),
+			__( 'Ask for the insurer\'s estimate or valuation report in writing if you don\'t have it.', 'myautotriage' ),
+		),
+		'faqs'    => array(
+			array( 'question' => __( 'Should I cash a check for the lower amount?', 'myautotriage' ), 'answer' => __( 'Read anything that comes with the check. Cashing a check marked full and final settlement can end the claim in some states, so ask in writing whether it is a partial, undisputed payment first.', 'myautotriage' ) ),
+			array( 'question' => __( 'What if the insurer won\'t move on the number?', 'myautotriage' ), 'answer' => __( 'For your own policy, ask about the appraisal clause; for any insurer, you can file a complaint with your state department of insurance. Both are free.', 'myautotriage' ) ),
+		),
+	),
+	'diminished-value-demand-letter-generator' => array(
+		'heading' => __( 'What makes a diminished value claim stronger', 'myautotriage' ),
+		'tips'    => array(
+			__( 'The car\'s value before the accident and an estimate of what it is worth now, repaired, with an accident on its history report.', 'myautotriage' ),
+			__( 'An independent diminished value appraisal, if the amount is large enough to justify the fee.', 'myautotriage' ),
+			__( 'Proof that the other driver was at fault: most states allow diminished value only against the at-fault driver\'s insurer.', 'myautotriage' ),
+		),
+		'faqs'    => array(
+			array( 'question' => __( 'Can I claim diminished value from my own insurer?', 'myautotriage' ), 'answer' => __( 'Usually not. Most states allow it only as a third-party claim against the at-fault driver; Georgia is a well-known exception that also allows it under your own policy in some cases.', 'myautotriage' ) ),
+			array( 'question' => __( 'How is diminished value calculated?', 'myautotriage' ), 'answer' => __( 'Insurers often start with the 17c formula, which caps the loss at 10% of the car\'s value. Use our calculator for a first estimate and an appraisal to argue for more.', 'myautotriage' ) ),
+		),
+	),
+	'small-claims-demand-letter-generator' => array(
+		'heading' => __( 'Before you file in small claims court', 'myautotriage' ),
+		'tips'    => array(
+			__( 'Check your state\'s small claims limit and the deadline to sue; both are on our state pages.', 'myautotriage' ),
+			__( 'Sue the at-fault driver by name; the insurer usually defends and pays if it loses.', 'myautotriage' ),
+			__( 'Keep proof this letter was received, because many judges expect a written demand first.', 'myautotriage' ),
+		),
+		'faqs'    => array(
+			array( 'question' => __( 'Who do I sue in small claims after a car accident?', 'myautotriage' ), 'answer' => __( 'Usually the at-fault driver (and the owner, if different), not their insurance company. Their insurer is normally notified and handles the defense.', 'myautotriage' ) ),
+			array( 'question' => __( 'How much does small claims court cost?', 'myautotriage' ), 'answer' => __( 'Filing fees are typically modest and depend on the state and amount claimed; you can usually add them to what you ask the court to award.', 'myautotriage' ) ),
+		),
+	),
+);
+
 $slug    = get_post_field( 'post_name' );
 $variant = isset( $variants[ $slug ] ) ? $variants[ $slug ] : $variants['demand-letter-generator'];
+$guide   = isset( $variant_guides[ $slug ] ) ? $variant_guides[ $slug ] : $variant_guides['demand-letter-generator'];
 ?>
 <div class="mat-tool">
 	<div class="mat-container mat-narrow">
@@ -146,12 +222,20 @@ $variant = isset( $variants[ $slug ] ) ? $variants[ $slug ] : $variants['demand-
 
 		<?php mat_tool_disclaimer( __( 'This generator produces a first draft based on what you enter. Review it carefully, attach your supporting documents, and consider legal review before sending a large or disputed claim.', 'myautotriage' ) ); ?>
 
-		<div class="mat-page__content"><?php the_content(); ?></div>
+		<div class="mat-page__content">
+			<?php the_content(); ?>
+			<h2><?php echo esc_html( $guide['heading'] ); ?></h2>
+			<ul>
+				<?php foreach ( $guide['tips'] as $tip ) : ?>
+					<li><?php echo esc_html( $tip ); ?></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
 
 		<?php mat_tool_extras( get_post_field( 'post_name' ) ); ?>
 
 		<?php
-		mat_faq_block( array_merge( array(
+		mat_faq_block( array_merge( $guide['faqs'], array(
 			array(
 				'question' => __( 'How should I send my demand letter?', 'myautotriage' ),
 				'answer'   => __( 'Send it by email and by certified mail with return receipt requested, so you have proof of delivery and a timestamp for your deadline.', 'myautotriage' ),

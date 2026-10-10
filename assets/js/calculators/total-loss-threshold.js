@@ -107,7 +107,7 @@
 			links.push( '<a href="' + esc( hubUrl + MAT.slug( state.name ) + '/' ) + '">' + esc( state.name ) + ' claim deadlines and total loss rules</a>' );
 		}
 		if ( isTotal && gapUrl ) {
-			links.push( '<a href="' + esc( gapUrl ) + '">Still owe on a loan? Check your GAP shortfall</a>' );
+			links.push( '<a href="' + esc( MAT.toolLink( gapUrl, { 'gap-acv': acv } ) ) + '">Still owe on a loan? Check your GAP shortfall with this car value</a>' );
 		}
 
 		resultBox.className = 'mat-result-box';

@@ -302,3 +302,15 @@ button, input, select, textarea { font-family: inherit; font-size: 1rem; }
 .mat-result-table td { padding: .35rem 0; border-bottom: 1px solid var(--mat-line); }
 .mat-result-table td:last-child { text-align: right; white-space: nowrap; padding-left: 1rem; }
 .mat-result-table tr.mat-result-table__total td { font-weight: 700; border-bottom: 0; }
+
+/* Print / share buttons under a calculator result */
+.mat-btn--sm { padding: .45em .9em; font-size: .9rem; }
+.mat-result-actions { display: flex; flex-wrap: wrap; gap: .6em; margin: 1em 0 0; }
+@media print {
+	.mat-result-actions { display: none !important; }
+	/* "Print result": the page title and the result only. */
+	body.mat-print-result .mat-tool > .mat-container > :not(.mat-tool__intro):not(.mat-result-box) { display: none !important; }
+	body.mat-print-result .mat-tool__intro { display: block !important; }
+	body.mat-print-result .mat-tool__intro > :not(h1) { display: none !important; }
+	body.mat-print-result .mat-result-box { border: 1px solid #999; background: #fff; color: #000; }
+}
