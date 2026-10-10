@@ -167,6 +167,13 @@ function mat_get_tools_registry() {
 			'seo_title' => __( 'Comparative Negligence Calculator: Partly at Fault Payout', 'myautotriage' ),
 		),
 		array(
+			'title'   => __( 'Loss of Use Calculator', 'myautotriage' ),
+			'excerpt' => __( 'Work out what the at-fault insurer owes for the days you were without your car, rental or not.', 'myautotriage' ),
+			'slug'    => 'loss-of-use-calculator',
+			'meta'    => __( "Without your car after an accident? Calculate the loss of use to claim from the at-fault driver's insurer: days without the car times a comparable rental rate.", 'myautotriage' ),
+			'seo_title' => __( 'Loss of Use Calculator: Claim for Days Without Your Car', 'myautotriage' ),
+		),
+		array(
 			'title'   => __( 'Claim Payment Deadline Lookup', 'myautotriage' ),
 			'excerpt' => __( 'Look up how many days your state gives an insurer to acknowledge, decide, and pay your claim.', 'myautotriage' ),
 			'slug'    => 'claim-payment-deadline-by-state',

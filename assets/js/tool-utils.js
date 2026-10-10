@@ -80,7 +80,7 @@ window.MAT = ( function () {
 
 	// Calculator forms whose inputs can go in a shareable link. Letter
 	// generators are left out: their fields hold names and addresses.
-	var SHAREABLE = [ 'mat-cd-form', 'mat-sol-form', 'mat-cf-form', 'mat-ded-form', 'mat-dv-form', 'mat-gap-form', 'mat-rf-form', 'mat-tlt-form' ];
+	var SHAREABLE = [ 'mat-cd-form', 'mat-sol-form', 'mat-cf-form', 'mat-lu-form', 'mat-ded-form', 'mat-dv-form', 'mat-gap-form', 'mat-rf-form', 'mat-tlt-form' ];
 
 	function shareableForm() {
 		for ( var i = 0; i < SHAREABLE.length; i++ ) {

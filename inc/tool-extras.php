@@ -54,6 +54,7 @@ function mat_get_tool_extras() {
 			'next' => array(
 				array( 'slug' => 'diminished-value-demand-letter-generator', 'label' => __( 'Turn your number into a diminished value demand letter', 'myautotriage' ) ),
 				array( 'slug' => 'how-to-file-diminished-value-claim', 'label' => __( 'Read: how to file a diminished value claim, step by step', 'myautotriage' ) ),
+				array( 'slug' => 'loss-of-use-calculator', 'label' => __( 'Were you without your car? Add loss of use to the claim', 'myautotriage' ) ),
 			),
 		),
 
@@ -212,6 +213,19 @@ function mat_get_tool_extras() {
 				array( 'slug' => 'car-insurance-claim-laws', 'label' => __( 'Fault rule and claim laws for every state, with citations', 'myautotriage' ) ),
 				array( 'slug' => 'appeal-letter-generator', 'label' => __( 'Dispute the insurer\'s fault decision with an appeal letter', 'myautotriage' ) ),
 				array( 'slug' => 'car-accident-lawsuit-deadline-calculator', 'label' => __( 'Check the deadline to sue', 'myautotriage' ) ),
+			),
+		),
+
+		'loss-of-use-calculator' => array(
+			'example' => array(
+				'title' => __( 'Worked example', 'myautotriage' ),
+				'html'  => '<p>' . __( 'Your car was in the shop from June 2 to June 23 (21 days). The at-fault insurer paid a rental for 14 days, a comparable rental costs $48 a day, and you spent $36 on rideshares before the rental started.', 'myautotriage' ) . '</p>'
+					. '<p>' . __( 'Loss of use still owed: (21 − 14) × $48 + $36 = $372.', 'myautotriage' ) . '</p>',
+			),
+			'next' => array(
+				array( 'slug' => 'property-damage-demand-letter-generator', 'label' => __( 'Claim it in a property damage demand letter', 'myautotriage' ) ),
+				array( 'slug' => 'diminished-value-calculator', 'label' => __( 'Also check your car\'s diminished value', 'myautotriage' ) ),
+				array( 'slug' => 'car-insurance-claim-laws', 'label' => __( 'Your state\'s claim deadlines and small claims limit', 'myautotriage' ) ),
 			),
 		),
 
