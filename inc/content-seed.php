@@ -68,6 +68,12 @@ function mat_seed_pages() {
 			'content'  => '',
 		),
 		array(
+			'slug'     => 'loss-of-use-calculator',
+			'title'    => __( 'Loss of Use Calculator', 'myautotriage' ),
+			'template' => 'page-templates/template-loss-of-use.php',
+			'content'  => '',
+		),
+		array(
 			'slug'     => 'car-insurance-refund-calculator',
 			'title'    => __( 'Car Insurance Refund Calculator', 'myautotriage' ),
 			'template' => 'page-templates/template-refund-calculator.php',
