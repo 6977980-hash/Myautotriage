@@ -22,6 +22,25 @@ wp_enqueue_script( 'mat-cd', MAT_URI . '/assets/js/calculators/claim-deadline.js
 					<option value=""><?php esc_html_e( 'Loading states…', 'myautotriage' ); ?></option>
 				</select>
 			</div>
+			<details class="mat-more-fields">
+				<summary><?php esc_html_e( 'Work out the actual due dates (optional)', 'myautotriage' ); ?></summary>
+				<p class="mat-field__hint"><?php esc_html_e( 'Enter the dates you know and we\'ll count the days for each deadline. Business and working days skip weekends but not holidays.', 'myautotriage' ); ?></p>
+				<div class="mat-field-row">
+					<div class="mat-field">
+						<label for="mat-cd-notice"><?php esc_html_e( 'Date you reported the claim', 'myautotriage' ); ?></label>
+						<input type="date" id="mat-cd-notice">
+					</div>
+					<div class="mat-field">
+						<label for="mat-cd-proof"><?php esc_html_e( 'Date the insurer got your proof of loss', 'myautotriage' ); ?></label>
+						<input type="date" id="mat-cd-proof">
+						<span class="mat-field__hint"><?php esc_html_e( 'The estimate, photos and forms the adjuster asked for. Keep the email or mail receipt.', 'myautotriage' ); ?></span>
+					</div>
+				</div>
+				<div class="mat-field">
+					<label for="mat-cd-agreed"><?php esc_html_e( 'Date you agreed the settlement amount', 'myautotriage' ); ?></label>
+					<input type="date" id="mat-cd-agreed">
+				</div>
+			</details>
 			<div class="mat-tool-actions">
 				<button type="submit" class="mat-btn mat-btn--primary mat-btn--lg"><?php esc_html_e( 'Look up deadlines', 'myautotriage' ); ?></button>
 			</div>

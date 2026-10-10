@@ -78,8 +78,159 @@ window.MAT = ( function () {
 		}
 	}
 
+	// Calculator forms whose inputs can go in a shareable link. Letter
+	// generators are left out: their fields hold names and addresses.
+	var SHAREABLE = [ 'mat-cd-form', 'mat-ded-form', 'mat-dv-form', 'mat-gap-form', 'mat-rf-form', 'mat-tlt-form' ];
+
+	function shareableForm() {
+		for ( var i = 0; i < SHAREABLE.length; i++ ) {
+			var f = document.getElementById( SHAREABLE[ i ] );
+			if ( f ) {
+				return f;
+			}
+		}
+		return null;
+	}
+
+	function formFields( form ) {
+		return Array.prototype.filter.call( form.querySelectorAll( 'input[id], select[id]' ), function ( el ) {
+			return el.type !== 'submit' && el.type !== 'button';
+		} );
+	}
+
+	/** This page's URL with the form's filled-in fields as query args. */
+	function shareUrl( form ) {
+		var params = new URLSearchParams();
+		formFields( form ).forEach( function ( el ) {
+			var value = el.type === 'checkbox' ? ( el.checked ? '1' : '' ) : String( el.value ).trim();
+			if ( value !== '' ) {
+				params.set( el.id.replace( /^mat-/, '' ), value );
+			}
+		} );
+		params.set( 'calc', '1' );
+		return window.location.origin + window.location.pathname + '?' + params.toString();
+	}
+
+	function resultActions( box, form ) {
+		var wrap = document.createElement( 'p' );
+		wrap.className = 'mat-result-actions';
+		var print = document.createElement( 'button' );
+		print.type = 'button';
+		print.className = 'mat-btn mat-btn--ghost mat-btn--sm';
+		print.textContent = 'Print result';
+		print.addEventListener( 'click', function () {
+			document.body.classList.add( 'mat-print-result' );
+			window.print();
+		} );
+		var copy = document.createElement( 'button' );
+		copy.type = 'button';
+		copy.className = 'mat-btn mat-btn--ghost mat-btn--sm';
+		copy.textContent = 'Copy link to this result';
+		copy.addEventListener( 'click', function () {
+			var url = shareUrl( form );
+			var done = function () {
+				copy.textContent = 'Link copied';
+				setTimeout( function () { copy.textContent = 'Copy link to this result'; }, 1800 );
+			};
+			if ( navigator.clipboard && navigator.clipboard.writeText ) {
+				navigator.clipboard.writeText( url ).then( done, function () { window.prompt( 'Copy this link:', url ); } );
+			} else {
+				window.prompt( 'Copy this link:', url );
+			}
+		} );
+		wrap.appendChild( print );
+		wrap.appendChild( copy );
+		box.appendChild( wrap );
+	}
+
+	window.addEventListener( 'afterprint', function () {
+		document.body.classList.remove( 'mat-print-result' );
+	} );
+
+	/**
+	 * Fill a calculator from its link (?gap-payoff=21000&calc=1) and run it.
+	 * Also how one tool hands numbers to the next. Selects filled from JSON
+	 * (the state list) may not have their options yet, so wait for them.
+	 */
+	function prefillFromUrl() {
+		var form = shareableForm();
+		if ( ! form || ! window.location.search ) {
+			return;
+		}
+		var params = new URLSearchParams( window.location.search );
+		var pending = [];
+		formFields( form ).forEach( function ( el ) {
+			var key = el.id.replace( /^mat-/, '' );
+			if ( ! params.has( key ) ) {
+				return;
+			}
+			var value = params.get( key );
+			if ( el.type === 'checkbox' ) {
+				el.checked = value === '1';
+			} else if ( el.tagName === 'SELECT' && ! el.querySelector( 'option[value="' + value.replace( /"/g, '' ) + '"]' ) ) {
+				pending.push( [ el, value ] );
+			} else {
+				el.value = value;
+			}
+			var details = el.closest( 'details' );
+			if ( details ) {
+				details.open = true;
+			}
+		} );
+		if ( params.get( 'calc' ) !== '1' ) {
+			return;
+		}
+		var tries = 0;
+		( function run() {
+			pending = pending.filter( function ( p ) {
+				if ( p[0].querySelector( 'option[value="' + p[1].replace( /"/g, '' ) + '"]' ) ) {
+					p[0].value = p[1];
+					return false;
+				}
+				return true;
+			} );
+			if ( pending.length && tries++ < 30 ) {
+				setTimeout( run, 100 );
+				return;
+			}
+			if ( form.requestSubmit ) {
+				form.requestSubmit();
+			} else {
+				form.dispatchEvent( new Event( 'submit', { cancelable: true } ) );
+			}
+		}() );
+	}
+
+	if ( document.readyState === 'complete' ) {
+		setTimeout( prefillFromUrl, 0 );
+	} else {
+		window.addEventListener( 'load', prefillFromUrl );
+	}
+
+	/**
+	 * Link to another calculator with some of its fields filled in. With
+	 * run, the calculator also runs on arrival (only when every required
+	 * field is in the link).
+	 */
+	function toolLink( url, fields, run ) {
+		var params = new URLSearchParams();
+		Object.keys( fields ).forEach( function ( k ) {
+			if ( fields[ k ] !== null && fields[ k ] !== undefined && fields[ k ] !== '' ) {
+				params.set( k, fields[ k ] );
+			}
+		} );
+		if ( run ) {
+			params.set( 'calc', '1' );
+		}
+		return url + ( url.indexOf( '?' ) === -1 ? '?' : '&' ) + params.toString();
+	}
+
 	function showResult( box, html ) {
 		box.innerHTML = html;
+		var form = shareableForm();
+		if ( form && box.id.indexOf( form.id.replace( /-form$/, '' ) + '-' ) === 0 ) {
+			resultActions( box, form );
+		}
 		box.hidden = false;
 		box.setAttribute( 'tabindex', '-1' );
 		box.focus();
@@ -124,5 +275,5 @@ window.MAT = ( function () {
 		} );
 	}
 
-	return { num: num, nums: nums, showError: showError, showResult: showResult, usd: usd, pct: pct, longDate: longDate, slug: slug, escape: escape };
+	return { num: num, nums: nums, showError: showError, showResult: showResult, usd: usd, pct: pct, longDate: longDate, slug: slug, escape: escape, toolLink: toolLink };
 }() );
