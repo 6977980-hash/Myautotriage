@@ -197,7 +197,8 @@ function mat_default_primary_menu() {
 	$links = array(
 		home_url( '/' )                => __( 'Home', 'myautotriage' ),
 		home_url( '/tools/' )          => __( 'Tools', 'myautotriage' ),
-		home_url( '/blog/' )           => __( 'Blog', 'myautotriage' ),
+		home_url( '/' . MAT_STATE_HUB_SLUG . '/' ) => __( 'State Laws', 'myautotriage' ),
+		home_url( '/blog/' )           => __( 'Guides', 'myautotriage' ),
 		home_url( '/about-us/' )       => __( 'About', 'myautotriage' ),
 		home_url( '/contact/' )        => __( 'Contact', 'myautotriage' ),
 	);

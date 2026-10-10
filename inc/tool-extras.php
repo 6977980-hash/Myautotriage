@@ -110,6 +110,8 @@ function mat_get_tool_extras() {
 			'next' => array(
 				array( 'slug' => 'gap-insurance-total-loss-still-owe-money', 'label' => __( 'Read: GAP insurance and total loss, will you still owe money?', 'myautotriage' ) ),
 				array( 'slug' => 'total-loss-threshold-calculator', 'label' => __( 'Check whether your car should be totaled', 'myautotriage' ) ),
+				array( 'slug' => 'totaled-car-payout-too-low-negotiate', 'label' => __( 'Read: how to push back on a low total loss payout', 'myautotriage' ) ),
+				array( 'slug' => 'insurance-underpayment-demand-letter-generator', 'label' => __( 'Dispute a low actual cash value with an underpayment demand letter', 'myautotriage' ) ),
 			),
 		),
 
@@ -136,6 +138,7 @@ function mat_get_tool_extras() {
 			'next' => array(
 				array( 'slug' => 'should-i-file-a-claim-minor-accident', 'label' => __( 'Read: should you file a claim for a minor accident?', 'myautotriage' ) ),
 				array( 'slug' => 'what-to-do-after-a-car-accident-checklist', 'label' => __( 'Read: what to do after a car accident, step by step', 'myautotriage' ) ),
+				array( 'slug' => 'no-injury-demand-letter-generator', 'label' => __( 'Other driver at fault? Send a no-injury demand letter', 'myautotriage' ) ),
 			),
 		),
 
@@ -154,6 +157,7 @@ function mat_get_tool_extras() {
 			'next' => array(
 				array( 'slug' => 'deductible-vs-premium-calculator', 'label' => __( 'Thinking about a claim instead? Compare deductible vs. premium increase', 'myautotriage' ) ),
 				array( 'slug' => 'gap-insurance-shortfall-calculator', 'label' => __( 'Car totaled? Check what you still owe on the loan', 'myautotriage' ) ),
+				array( 'slug' => 'car-insurance-claim-laws', 'label' => __( 'Car insurance claim laws in your state', 'myautotriage' ) ),
 			),
 		),
 
@@ -171,6 +175,8 @@ function mat_get_tool_extras() {
 			'next' => array(
 				array( 'slug' => 'how-long-insurance-company-must-pay-claim', 'label' => __( 'Read: how long does an insurance company have to pay your claim?', 'myautotriage' ) ),
 				array( 'slug' => 'demand-letter-generator', 'label' => __( 'Insurer missed a deadline? Send a demand letter', 'myautotriage' ) ),
+				array( 'slug' => 'appeal-letter-generator', 'label' => __( 'Claim denied? Write an appeal letter', 'myautotriage' ) ),
+				array( 'slug' => 'car-insurance-claim-laws', 'label' => __( 'Claim laws by state: deadlines and total loss rules side by side', 'myautotriage' ) ),
 			),
 		),
 

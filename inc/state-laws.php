@@ -281,3 +281,69 @@ function mat_render_sources( $sources ) {
 	</section>
 	<?php
 }
+
+/**
+ * Up to three bordering states for each state (by state code), used for
+ * the "Nearby states" links on state pages. Alaska and Hawaii, which border
+ * no state, point to the closest West Coast states.
+ */
+function mat_state_neighbors() {
+	return array(
+		'AL' => array( 'GA', 'FL', 'MS' ), 'AK' => array( 'WA', 'OR', 'HI' ), 'AZ' => array( 'CA', 'NV', 'NM' ),
+		'AR' => array( 'TX', 'LA', 'MO' ), 'CA' => array( 'OR', 'NV', 'AZ' ), 'CO' => array( 'UT', 'NM', 'KS' ),
+		'CT' => array( 'NY', 'MA', 'RI' ), 'DE' => array( 'MD', 'PA', 'NJ' ), 'DC' => array( 'MD', 'VA', 'DE' ),
+		'FL' => array( 'GA', 'AL', 'SC' ), 'GA' => array( 'FL', 'SC', 'AL' ), 'HI' => array( 'CA', 'OR', 'AK' ),
+		'ID' => array( 'WA', 'OR', 'MT' ), 'IL' => array( 'IN', 'WI', 'MO' ), 'IN' => array( 'IL', 'OH', 'MI' ),
+		'IA' => array( 'IL', 'MN', 'NE' ), 'KS' => array( 'MO', 'NE', 'OK' ), 'KY' => array( 'OH', 'TN', 'IN' ),
+		'LA' => array( 'TX', 'MS', 'AR' ), 'ME' => array( 'NH', 'MA', 'VT' ), 'MD' => array( 'VA', 'PA', 'DE' ),
+		'MA' => array( 'NY', 'CT', 'NH' ), 'MI' => array( 'OH', 'IN', 'WI' ), 'MN' => array( 'WI', 'IA', 'ND' ),
+		'MS' => array( 'LA', 'AL', 'TN' ), 'MO' => array( 'IL', 'KS', 'AR' ), 'MT' => array( 'ID', 'WY', 'ND' ),
+		'NE' => array( 'IA', 'KS', 'CO' ), 'NV' => array( 'CA', 'AZ', 'UT' ), 'NH' => array( 'MA', 'VT', 'ME' ),
+		'NJ' => array( 'NY', 'PA', 'DE' ), 'NM' => array( 'TX', 'AZ', 'CO' ), 'NY' => array( 'NJ', 'PA', 'CT' ),
+		'NC' => array( 'SC', 'VA', 'GA' ), 'ND' => array( 'MN', 'SD', 'MT' ), 'OH' => array( 'PA', 'MI', 'IN' ),
+		'OK' => array( 'TX', 'KS', 'AR' ), 'OR' => array( 'WA', 'CA', 'ID' ), 'PA' => array( 'NY', 'NJ', 'OH' ),
+		'RI' => array( 'MA', 'CT', 'NY' ), 'SC' => array( 'NC', 'GA', 'TN' ), 'SD' => array( 'ND', 'NE', 'MN' ),
+		'TN' => array( 'KY', 'GA', 'NC' ), 'TX' => array( 'OK', 'LA', 'NM' ), 'UT' => array( 'CO', 'NV', 'AZ' ),
+		'VT' => array( 'NH', 'NY', 'MA' ), 'VA' => array( 'MD', 'NC', 'DC' ), 'WA' => array( 'OR', 'ID', 'CA' ),
+		'WV' => array( 'VA', 'PA', 'OH' ), 'WI' => array( 'MN', 'IL', 'MI' ), 'WY' => array( 'MT', 'CO', 'UT' ),
+	);
+}
+
+/**
+ * Compact list of links to every state page (or just $codes), e.g. on
+ * articles and tool pages that apply to every state.
+ */
+function mat_state_link_list( $codes = null ) {
+	if ( ! get_page_by_path( MAT_STATE_HUB_SLUG ) ) {
+		return;
+	}
+	$laws = mat_state_laws();
+	echo '<ul class="mat-state-list">';
+	foreach ( $laws as $code => $state ) {
+		if ( null !== $codes && ! in_array( $code, $codes, true ) ) {
+			continue;
+		}
+		echo '<li><a href="' . esc_url( mat_state_url( $state ) ) . '">' . esc_html( $state['name'] ) . '</a></li>';
+	}
+	echo '</ul>';
+}
+
+/**
+ * "Rules in your state" block: the hub link plus every state, for pages
+ * whose answer depends on the state.
+ */
+function mat_state_rules_block( $heading = '' ) {
+	if ( ! get_page_by_path( MAT_STATE_HUB_SLUG ) ) {
+		return;
+	}
+	?>
+	<section class="mat-page__content mat-state-rules" aria-labelledby="mat-state-rules-title">
+		<h2 id="mat-state-rules-title"><?php echo esc_html( $heading ?: __( 'The rules in your state', 'myautotriage' ) ); ?></h2>
+		<p>
+			<?php esc_html_e( 'Claim deadlines and total loss rules for every state, with the law behind each one:', 'myautotriage' ); ?>
+			<a href="<?php echo esc_url( mat_state_hub_url() ); ?>"><?php esc_html_e( 'compare all states', 'myautotriage' ); ?></a>.
+		</p>
+		<?php mat_state_link_list(); ?>
+	</section>
+	<?php
+}
