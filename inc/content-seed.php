@@ -56,6 +56,12 @@ function mat_seed_pages() {
 			'content'  => mat_seed_tool_body_deductible(),
 		),
 		array(
+			'slug'     => 'car-accident-lawsuit-deadline-calculator',
+			'title'    => __( 'Car Accident Lawsuit Deadline Calculator', 'myautotriage' ),
+			'template' => 'page-templates/template-lawsuit-deadline.php',
+			'content'  => '',
+		),
+		array(
 			'slug'     => 'car-insurance-refund-calculator',
 			'title'    => __( 'Car Insurance Refund Calculator', 'myautotriage' ),
 			'template' => 'page-templates/template-refund-calculator.php',

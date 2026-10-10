@@ -237,13 +237,15 @@ function mat_attach_seed_image( $post_id, $image ) {
  * option value when adding another page here.
  */
 function mat_ensure_new_pages() {
-	if ( '1' === get_option( 'mat_new_pages_version' ) ) {
+	// Bump the version when adding a slug below.
+	$version = '2';
+	if ( $version === get_option( 'mat_new_pages_version' ) ) {
 		return;
 	}
 	// Mark it done first so two simultaneous first requests can't both
 	// create the page.
-	update_option( 'mat_new_pages_version', '1' );
-	$new_slugs = array( 'car-insurance-refund-calculator' );
+	update_option( 'mat_new_pages_version', $version );
+	$new_slugs = array( 'car-insurance-refund-calculator', 'car-accident-lawsuit-deadline-calculator' );
 	foreach ( mat_seed_pages() as $page ) {
 		if ( ! in_array( $page['slug'], $new_slugs, true ) || get_page_by_path( $page['slug'] ) ) {
 			continue;

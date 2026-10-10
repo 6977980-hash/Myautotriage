@@ -179,8 +179,22 @@ function mat_get_tool_extras() {
 				array( 'slug' => 'how-long-insurance-company-must-pay-claim', 'label' => __( 'Read: how long does an insurance company have to pay your claim?', 'myautotriage' ) ),
 				array( 'slug' => 'demand-letter-generator', 'label' => __( 'Insurer missed a deadline? Send a demand letter', 'myautotriage' ) ),
 				array( 'slug' => 'appeal-letter-generator', 'label' => __( 'Claim denied? Write an appeal letter', 'myautotriage' ) ),
+				array( 'slug' => 'car-accident-lawsuit-deadline-calculator', 'label' => __( 'Work out the last day to sue after your accident', 'myautotriage' ) ),
 				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'doi-complaint' ), 'label' => __( 'Draft a complaint to your state department of insurance', 'myautotriage' ) ),
 				array( 'slug' => 'car-insurance-claim-laws', 'label' => __( 'Claim laws by state: deadlines and total loss rules side by side', 'myautotriage' ) ),
+			),
+		),
+
+		'car-accident-lawsuit-deadline-calculator' => array(
+			'example' => array(
+				'title' => __( 'Worked example', 'myautotriage' ),
+				'html'  => '<p>' . __( 'Your car was hit in Georgia on March 3, 2026. Georgia gives 2 years for injury lawsuits and 4 years for damage to property, so the last day to sue for injuries is March 3, 2028 and for car damage March 3, 2030.', 'myautotriage' ) . '</p>'
+					. '<p>' . __( 'If the at-fault insurer is still negotiating in late 2027, that is the time to get a lawyer\'s view, not after March 2028.', 'myautotriage' ) . '</p>',
+			),
+			'next' => array(
+				array( 'slug' => 'car-insurance-claim-laws', 'label' => __( 'Your state\'s fault rule, claim deadlines and small claims limit', 'myautotriage' ) ),
+				array( 'slug' => 'small-claims-demand-letter-generator', 'label' => __( 'Send a final demand before small claims court', 'myautotriage' ) ),
+				array( 'slug' => 'claim-payment-deadline-by-state', 'label' => __( 'How long the insurer has to decide and pay your claim', 'myautotriage' ) ),
 			),
 		),
 
