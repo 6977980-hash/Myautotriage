@@ -261,3 +261,27 @@ function mat_ensure_new_pages() {
 	}
 }
 add_action( 'wp_loaded', 'mat_ensure_new_pages' );
+
+/**
+ * One-off corrections to content that lives in the database (seeded pages
+ * are only written once, so fixing the seed alone doesn't change the live
+ * page). Bump the version when adding a fix; each fix must be safe to
+ * re-run.
+ */
+function mat_apply_content_fixes() {
+	$version = '1';
+	if ( $version === get_option( 'mat_content_fixes_version' ) ) {
+		return;
+	}
+	update_option( 'mat_content_fixes_version', $version );
+
+	// The tools hub said "Seven" tools after the refund calculator made eight.
+	$tools = get_page_by_path( 'tools' );
+	if ( $tools && false !== strpos( $tools->post_content, 'Seven free, no-signup tools' ) ) {
+		wp_update_post( array(
+			'ID'           => $tools->ID,
+			'post_content' => str_replace( 'Seven free, no-signup tools', 'Free, no-signup tools', $tools->post_content ),
+		) );
+	}
+}
+add_action( 'wp_loaded', 'mat_apply_content_fixes' );

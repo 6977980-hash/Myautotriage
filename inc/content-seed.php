@@ -29,7 +29,7 @@ function mat_seed_pages() {
 			'slug'     => 'tools',
 			'title'    => __( 'Free Auto Insurance Claim Tools', 'myautotriage' ),
 			'template' => 'page-templates/template-tools-hub.php',
-			'content'  => '<p>' . __( 'Seven free, no-signup tools to help you triage a car insurance claim from start to finish — figure out what your claim is worth, what your state requires, and what to say when an insurer underpays or denies it.', 'myautotriage' ) . '</p>',
+			'content'  => '<p>' . __( 'Free, no-signup tools to help you triage a car insurance claim from start to finish — figure out what your claim is worth, what your state requires, and what to say when an insurer underpays or denies it.', 'myautotriage' ) . '</p>',
 		),
 		array(
 			'slug'     => 'diminished-value-calculator',
