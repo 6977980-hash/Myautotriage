@@ -351,3 +351,27 @@ button, input, select, textarea { font-family: inherit; font-size: 1rem; }
 .mat-triage-result ul { margin: 0; padding-left: 1.2em; }
 .mat-triage-result li { margin-bottom: .35em; }
 .mat-triage-result__note { font-size: .92rem; color: var(--mat-ink-soft); margin: 1em 0 0; }
+
+/* Claim diary */
+.mat-diary-privacy { background: var(--mat-bg-alt); border: 1px solid var(--mat-line); border-radius: var(--mat-radius-sm); padding: .8em 1em; font-size: .92rem; }
+.mat-diary-alerts { margin-bottom: 2em; }
+.mat-diary-alerts h2, .mat-diary-log h2 { font-size: 1.3rem; }
+.mat-diary-alerts__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .6rem; }
+.mat-diary-alert { background: #fff; border: 1px solid var(--mat-line); border-left: 4px solid var(--mat-brand); border-radius: var(--mat-radius-sm); padding: .7rem .9rem; }
+.mat-diary-alert--soon { border-left-color: #b54708; }
+.mat-diary-alert--warn { border-left-color: #b42318; background: #fff8f7; }
+.mat-diary-alert strong { display: block; }
+.mat-diary-alert p { margin: .3em 0 0; font-size: .92rem; color: var(--mat-ink-soft); }
+.mat-diary-list { list-style: none; padding: 0; margin: 0 0 1em; border-left: 2px solid var(--mat-line); }
+.mat-diary-item { position: relative; padding: .2em 0 1em 1.2em; }
+.mat-diary-item::before { content: ''; position: absolute; left: -6px; top: .55em; width: 10px; height: 10px; border-radius: 50%; background: var(--mat-brand); }
+.mat-diary-item p { margin: 0 0 .25em; }
+.mat-diary-item__meta { font-size: .85rem; color: var(--mat-ink-soft); }
+.mat-diary-item__meta span { font-weight: 700; color: var(--mat-ink); font-variant-numeric: tabular-nums; }
+.mat-diary-item__promise { font-size: .92rem; font-weight: 600; }
+.mat-diary-item__delete { background: none; border: 0; padding: 0; color: var(--mat-ink-soft); text-decoration: underline; cursor: pointer; font-size: .85rem; }
+.mat-diary-import { position: relative; overflow: hidden; cursor: pointer; }
+.mat-diary-import input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.mat-diary-confirm { display: flex; flex-wrap: wrap; gap: .6em; align-items: center; margin-top: 1em; font-weight: 600; }
+.mat-diary-timeline { width: 100%; min-height: 220px; margin-top: 1em; padding: .8em; border: 1px solid var(--mat-line); border-radius: var(--mat-radius-sm); font-family: inherit; }
+#mat-diary [hidden] { display: none !important; }
