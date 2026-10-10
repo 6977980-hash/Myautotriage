@@ -259,6 +259,7 @@ $meta  = mat_state_laws_meta();
 					$tool_links = array(
 						'total-loss-threshold-calculator' => __( 'Total loss threshold calculator', 'myautotriage' ),
 						'claim-payment-deadline-by-state' => __( 'Claim deadline lookup for every state', 'myautotriage' ),
+						'car-accident-lawsuit-deadline-calculator' => __( 'Lawsuit deadline calculator (statute of limitations)', 'myautotriage' ),
 						'demand-letter-generator'         => __( 'Demand letter generator', 'myautotriage' ),
 						'appeal-letter-generator'         => __( 'Claim denial appeal letter generator', 'myautotriage' ),
 						'diminished-value-calculator'     => __( 'Diminished value calculator', 'myautotriage' ),

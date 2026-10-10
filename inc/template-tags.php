@@ -153,6 +153,13 @@ function mat_get_tools_registry() {
 			'seo_title' => __( 'Car Insurance Refund Calculator: Pro-Rata vs. Short-Rate', 'myautotriage' ),
 		),
 		array(
+			'title'   => __( 'Car Accident Lawsuit Deadline Calculator', 'myautotriage' ),
+			'excerpt' => __( 'Find the last day to sue after a car accident in your state, for injuries or car damage, and how many days are left.', 'myautotriage' ),
+			'slug'    => 'car-accident-lawsuit-deadline-calculator',
+			'meta'    => __( "How long do you have to sue after a car accident? Enter your state and accident date to get the statute of limitations deadline for injury and car damage.", 'myautotriage' ),
+			'seo_title' => __( 'Car Accident Statute of Limitations Calculator by State', 'myautotriage' ),
+		),
+		array(
 			'title'   => __( 'Claim Payment Deadline Lookup', 'myautotriage' ),
 			'excerpt' => __( 'Look up how many days your state gives an insurer to acknowledge, decide, and pay your claim.', 'myautotriage' ),
 			'slug'    => 'claim-payment-deadline-by-state',
