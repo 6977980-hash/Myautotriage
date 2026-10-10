@@ -172,6 +172,16 @@
 		// Same for the total loss valuation checker: its fair value and the
 		// points it found go into a total loss letter the visitor hasn't
 		// started filling in.
+		// The claim diary hands over its dated timeline for a complaint.
+		if ( typeSelect.value === 'doi-complaint' ) {
+			try {
+				var timeline = sessionStorage.getItem( 'mat_diary_timeline' );
+				var narrativeEl = document.getElementById( 'mat-dl-narrative' );
+				if ( timeline && ! narrativeEl.value ) {
+					narrativeEl.value = 'Here is the timeline of my claim:\n\n' + timeline;
+				}
+			} catch ( err ) { /* ignore */ }
+		}
 		if ( typeSelect.value === 'total-loss' ) {
 			try {
 				var tlAmount = sessionStorage.getItem( 'mat_tlv_amount' );

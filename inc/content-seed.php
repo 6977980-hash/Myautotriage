@@ -80,6 +80,12 @@ function mat_seed_pages() {
 			'content'  => '',
 		),
 		array(
+			'slug'     => 'claim-diary',
+			'title'    => __( 'Claim Diary', 'myautotriage' ),
+			'template' => 'page-templates/template-claim-diary.php',
+			'content'  => '',
+		),
+		array(
 			'slug'     => 'total-loss-valuation-checker',
 			'title'    => __( 'Total Loss Valuation Checker', 'myautotriage' ),
 			'template' => 'page-templates/template-valuation-checker.php',

@@ -125,6 +125,13 @@ function mat_get_tools_registry() {
 			'seo_title' => __( 'Car Insurance Claim: What to Do Next (Free Triage Tool)', 'myautotriage' ),
 		),
 		array(
+			'title'   => __( 'Claim Diary', 'myautotriage' ),
+			'excerpt' => __( 'Log every call and email on your claim, see your state\'s deadlines as dates, and get a timeline for a complaint.', 'myautotriage' ),
+			'slug'    => 'claim-diary',
+			'meta'    => __( 'Free car insurance claim log: record every call, email and promise, see your state\'s claim deadlines as real dates, get warned when the adjuster goes quiet, and export a timeline for a complaint.', 'myautotriage' ),
+			'seo_title' => __( 'Insurance Claim Diary: Free Claim Log With Deadline Alerts', 'myautotriage' ),
+		),
+		array(
 			'title'   => __( 'Diminished Value (17c) Calculator', 'myautotriage' ),
 			'excerpt' => __( 'Estimate how much value your car lost after an accident, using the same 17c formula insurers reference.', 'myautotriage' ),
 			'slug'    => 'diminished-value-calculator',

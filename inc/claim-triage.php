@@ -41,6 +41,7 @@ function mat_claim_triage_situations() {
 			'title'   => __( 'Put the deadline in writing', 'myautotriage' ),
 			'first'   => array( 'slug' => 'claim-payment-deadline-by-state', 'label' => __( 'Look up the exact deadlines for your claim', 'myautotriage' ), 'why' => __( 'A written follow-up that names the rule and the date usually gets a file moving.', 'myautotriage' ) ),
 			'then'    => array(
+				array( 'slug' => 'claim-diary', 'label' => __( 'Log every call and email in a claim diary with deadline alerts', 'myautotriage' ) ),
 				array( 'slug' => 'demand-letter-generator', 'label' => __( 'Send a demand letter with a response date', 'myautotriage' ) ),
 				array( 'slug' => 'insurance-late-payment-interest-calculator', 'label' => __( 'Paid late? Work out the interest', 'myautotriage' ) ),
 				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'doi-complaint' ), 'label' => __( 'Still nothing? Complain to your state insurance department', 'myautotriage' ) ),

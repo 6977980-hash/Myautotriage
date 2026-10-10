@@ -232,6 +232,15 @@ function mat_get_tool_extras() {
 			),
 		),
 
+		'claim-diary' => array(
+			'next' => array(
+				array( 'slug' => 'claim-payment-deadline-by-state', 'label' => __( 'Claim deadlines by state, with citations', 'myautotriage' ) ),
+				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'doi-complaint' ), 'label' => __( 'Draft a complaint to your state department of insurance', 'myautotriage' ) ),
+				array( 'slug' => 'insurance-late-payment-interest-calculator', 'label' => __( 'Paid late? Calculate the interest owed', 'myautotriage' ) ),
+				array( 'slug' => 'what-the-adjuster-said', 'label' => __( 'What the adjuster said, decoded', 'myautotriage' ) ),
+			),
+		),
+
 		'total-loss-valuation-checker' => array(
 			'example' => array(
 				'title' => __( 'Worked example', 'myautotriage' ),
