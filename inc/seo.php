@@ -74,6 +74,13 @@ function mat_get_meta_description() {
 				return $tool['meta'];
 			}
 		}
+		$adjuster = mat_current_adjuster_phrase( $post );
+		if ( $adjuster ) {
+			return $adjuster['meta'];
+		}
+		if ( MAT_ADJUSTER_HUB_SLUG === $post->post_name && ! $post->post_parent ) {
+			return __( 'What adjusters mean when they say "final offer", "recorded statement", "aftermarket parts", "betterment" and more, with the claim-handling rule behind each and a reply to copy.', 'myautotriage' );
+		}
 		if ( MAT_STATE_HUB_SLUG === $post->post_name ) {
 			return __( 'Car insurance claim laws for all 50 states and DC: how many days insurers have to acknowledge, decide and pay a claim, and each state\'s total loss threshold, with citations.', 'myautotriage' );
 		}
@@ -137,6 +144,13 @@ function mat_get_seo_title() {
 		}
 		if ( MAT_STATE_HUB_SLUG === $post->post_name ) {
 			return __( 'Car Insurance Claim Laws by State: Deadlines & Total Loss Rules', 'myautotriage' );
+		}
+		$adjuster = mat_current_adjuster_phrase( $post );
+		if ( $adjuster ) {
+			return $adjuster['seo_title'];
+		}
+		if ( MAT_ADJUSTER_HUB_SLUG === $post->post_name && ! $post->post_parent ) {
+			return __( 'What the Insurance Adjuster Said, Decoded: Phrases and Replies', 'myautotriage' ) . ' | ' . get_bloginfo( 'name' );
 		}
 		// Tool pages: use the search-phrased title from the tools registry
 		// (what people actually type), not the on-page tool name.

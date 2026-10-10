@@ -37,4 +37,31 @@
 			}
 		} catch ( err ) { /* ignore malformed hrefs */ }
 	} );
+
+	// "Copy" buttons: data-mat-copy names the element whose text to copy.
+	document.querySelectorAll( '[data-mat-copy]' ).forEach( function ( btn ) {
+		btn.addEventListener( 'click', function () {
+			var el = document.getElementById( btn.getAttribute( 'data-mat-copy' ) );
+			if ( ! el ) {
+				return;
+			}
+			var label = btn.textContent;
+			var done = function () {
+				btn.textContent = 'Copied';
+				setTimeout( function () { btn.textContent = label; }, 1800 );
+			};
+			var select = function () {
+				var range = document.createRange();
+				range.selectNodeContents( el );
+				var sel = window.getSelection();
+				sel.removeAllRanges();
+				sel.addRange( range );
+			};
+			if ( navigator.clipboard && navigator.clipboard.writeText ) {
+				navigator.clipboard.writeText( el.textContent.trim() ).then( done, select );
+			} else {
+				select();
+			}
+		} );
+	} );
 })();

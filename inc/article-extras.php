@@ -99,7 +99,7 @@ function mat_get_article_extras() {
 			),
 		),
 		'how-to-negotiate-insurance-adjuster' => array(
-			'tools'        => array( 'insurance-underpayment-demand-letter-generator', 'property-damage-demand-letter-generator', 'demand-letter-generator' ),
+			'tools'        => array( MAT_ADJUSTER_HUB_SLUG, 'insurance-underpayment-demand-letter-generator', 'property-damage-demand-letter-generator', 'demand-letter-generator' ),
 			'short_answer' => 'Work out your own number first from repair estimates, comparable listings and receipts. Keep calls factual, avoid guessing or admitting fault, and answer a low offer with specific evidence instead of frustration. Put every counter-offer and verbal agreement in writing, and escalate to a supervisor or your state insurance department if it stalls.',
 			'sources'      => array(
 				$naic_900,
