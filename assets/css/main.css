@@ -314,3 +314,16 @@ button, input, select, textarea { font-family: inherit; font-size: 1rem; }
 	body.mat-print-result .mat-tool__intro > :not(h1) { display: none !important; }
 	body.mat-print-result .mat-result-box { border: 1px solid #999; background: #fff; color: #000; }
 }
+
+/* Total loss valuation checker */
+.mat-tool-panel__heading { font-size: 1.15rem; margin: 1.4em 0 .4em; }
+.mat-tool-panel__heading:first-child { margin-top: 0; }
+.mat-tlv-comp { border: 1px solid var(--mat-line); border-radius: var(--mat-radius-sm); padding: .75rem 1rem 0; margin: 0 0 1rem; min-width: 0; }
+.mat-tlv-comp legend { font-weight: 700; padding: 0 .3em; }
+.mat-field--check label { display: inline-flex; align-items: flex-start; gap: .5em; font-weight: 500; }
+.mat-field--check input { margin-top: .3em; }
+.mat-tlv-issues { list-style: none; padding: 0; margin: .75rem 0; display: flex; flex-direction: column; gap: .6rem; }
+.mat-tlv-issues li { background: #fff; color: var(--mat-ink); border: 1px solid var(--mat-line); border-left: 4px solid #b54708; border-radius: var(--mat-radius-sm); padding: .7rem .9rem; }
+.mat-tlv-issues li.is-ok { border-left-color: #2e7d32; }
+.mat-tlv-issues li strong { display: block; }
+.mat-tlv-issues li p { margin: .3em 0 0; font-size: .92rem; }

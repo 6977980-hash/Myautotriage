@@ -169,6 +169,22 @@
 				}
 			} catch ( err ) { /* ignore */ }
 		}
+		// Same for the total loss valuation checker: its fair value and the
+		// points it found go into a total loss letter the visitor hasn't
+		// started filling in.
+		if ( typeSelect.value === 'total-loss' ) {
+			try {
+				var tlAmount = sessionStorage.getItem( 'mat_tlv_amount' );
+				var tlPoints = sessionStorage.getItem( 'mat_tlv_narrative' );
+				var narrativeField = document.getElementById( 'mat-dl-narrative' );
+				if ( tlAmount && Number( tlAmount ) > 0 && ! amountField.value ) {
+					amountField.value = tlAmount;
+				}
+				if ( tlPoints && ! narrativeField.value ) {
+					narrativeField.value = tlPoints;
+				}
+			} catch ( err ) { /* ignore */ }
+		}
 	}
 
 	form.addEventListener( 'submit', function ( e ) {
