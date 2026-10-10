@@ -160,6 +160,13 @@ function mat_get_tools_registry() {
 			'seo_title' => __( 'Car Accident Statute of Limitations Calculator by State', 'myautotriage' ),
 		),
 		array(
+			'title'   => __( 'Comparative Fault Payout Calculator', 'myautotriage' ),
+			'excerpt' => __( 'Partly at fault? See how much you can still recover from the other driver under your state\'s fault rule.', 'myautotriage' ),
+			'slug'    => 'comparative-fault-calculator',
+			'meta'    => __( "Partly at fault for a car accident? Enter your state, damages and fault percentage to see what you can recover under comparative or contributory negligence.", 'myautotriage' ),
+			'seo_title' => __( 'Comparative Negligence Calculator: Partly at Fault Payout', 'myautotriage' ),
+		),
+		array(
 			'title'   => __( 'Claim Payment Deadline Lookup', 'myautotriage' ),
 			'excerpt' => __( 'Look up how many days your state gives an insurer to acknowledge, decide, and pay your claim.', 'myautotriage' ),
 			'slug'    => 'claim-payment-deadline-by-state',
