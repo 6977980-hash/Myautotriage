@@ -62,6 +62,12 @@ function mat_seed_pages() {
 			'content'  => '',
 		),
 		array(
+			'slug'     => 'comparative-fault-calculator',
+			'title'    => __( 'Comparative Fault Payout Calculator', 'myautotriage' ),
+			'template' => 'page-templates/template-fault-payout.php',
+			'content'  => '',
+		),
+		array(
 			'slug'     => 'car-insurance-refund-calculator',
 			'title'    => __( 'Car Insurance Refund Calculator', 'myautotriage' ),
 			'template' => 'page-templates/template-refund-calculator.php',

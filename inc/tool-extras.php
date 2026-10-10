@@ -198,6 +198,23 @@ function mat_get_tool_extras() {
 			),
 		),
 
+		'comparative-fault-calculator' => array(
+			'example' => array(
+				'title' => __( 'Worked example', 'myautotriage' ),
+				'html'  => '<p>' . __( 'You have $15,000 in damages and the adjuster puts you at 30% fault.', 'myautotriage' ) . '</p>'
+					. '<ul>'
+					. '<li>' . __( 'California (pure comparative): $15,000 × 70% = $10,500.', 'myautotriage' ) . '</li>'
+					. '<li>' . __( 'Texas (51% bar): also $10,500, but at 51% fault it would be $0.', 'myautotriage' ) . '</li>'
+					. '<li>' . __( 'Virginia (pure contributory): $0, because any fault can bar recovery.', 'myautotriage' ) . '</li>'
+					. '</ul>',
+			),
+			'next' => array(
+				array( 'slug' => 'car-insurance-claim-laws', 'label' => __( 'Fault rule and claim laws for every state, with citations', 'myautotriage' ) ),
+				array( 'slug' => 'appeal-letter-generator', 'label' => __( 'Dispute the insurer\'s fault decision with an appeal letter', 'myautotriage' ) ),
+				array( 'slug' => 'car-accident-lawsuit-deadline-calculator', 'label' => __( 'Check the deadline to sue', 'myautotriage' ) ),
+			),
+		),
+
 		'demand-letter-generator' => array(
 			'faqs' => array(
 				array(
