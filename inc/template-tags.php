@@ -174,6 +174,13 @@ function mat_get_tools_registry() {
 			'seo_title' => __( 'Loss of Use Calculator: Claim for Days Without Your Car', 'myautotriage' ),
 		),
 		array(
+			'title'   => __( 'Total Loss Valuation Checker', 'myautotriage' ),
+			'excerpt' => __( 'Check the comparables, adjustments, tax and fees in your total loss valuation report and see how much is in question.', 'myautotriage' ),
+			'slug'    => 'total-loss-valuation-checker',
+			'meta'    => __( 'Total loss offer too low? Enter the numbers from your CCC, Mitchell or Audatex valuation report to find negotiation adjustments, distant comparables, condition deductions and missing tax and fees, then send a counter-offer.', 'myautotriage' ),
+			'seo_title' => __( 'Total Loss Valuation Checker: Is Your Totaled Car Offer Too Low?', 'myautotriage' ),
+		),
+		array(
 			'title'   => __( 'Late Claim Payment Interest Calculator', 'myautotriage' ),
 			'excerpt' => __( 'Estimate the interest owed when an insurer pays your claim after the legal deadline.', 'myautotriage' ),
 			'slug'    => 'insurance-late-payment-interest-calculator',

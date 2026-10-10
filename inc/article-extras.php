@@ -73,7 +73,7 @@ function mat_get_article_extras() {
 			),
 		),
 		'totaled-car-payout-too-low-negotiate' => array(
-			'tools'        => array( 'total-loss-threshold-calculator', 'gap-insurance-shortfall-calculator', 'insurance-underpayment-demand-letter-generator' ),
+			'tools'        => array( 'total-loss-valuation-checker', 'total-loss-threshold-calculator', 'gap-insurance-shortfall-calculator' ),
 			'states'       => true,
 			'short_answer' => 'Ask for the full valuation report, check the mileage, trim, options and condition it used, and find three or more comparable cars for sale near you. Send a written counter-offer with those listings. If you still disagree, your policy\'s appraisal clause lets each side hire an appraiser, with an umpire deciding.',
 			'sources'      => array(

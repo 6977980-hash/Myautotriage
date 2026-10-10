@@ -74,6 +74,12 @@ function mat_seed_pages() {
 			'content'  => '',
 		),
 		array(
+			'slug'     => 'total-loss-valuation-checker',
+			'title'    => __( 'Total Loss Valuation Checker', 'myautotriage' ),
+			'template' => 'page-templates/template-valuation-checker.php',
+			'content'  => '',
+		),
+		array(
 			'slug'     => 'insurance-late-payment-interest-calculator',
 			'title'    => __( 'Late Claim Payment Interest Calculator', 'myautotriage' ),
 			'template' => 'page-templates/template-late-interest.php',

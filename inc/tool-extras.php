@@ -80,6 +80,7 @@ function mat_get_tool_extras() {
 				),
 			),
 			'next' => array(
+				array( 'slug' => 'total-loss-valuation-checker', 'label' => __( 'Totaled? Check the valuation report behind the offer', 'myautotriage' ) ),
 				array( 'slug' => 'totaled-car-payout-too-low-negotiate', 'label' => __( 'Read: how to negotiate a total loss payout that seems too low', 'myautotriage' ) ),
 				array( 'slug' => 'insurance-underpayment-demand-letter-generator', 'label' => __( 'Dispute a low offer with an underpayment demand letter', 'myautotriage' ) ),
 				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'total-loss' ), 'label' => __( 'Counter a low total loss valuation with comparable cars', 'myautotriage' ) ),
@@ -112,6 +113,7 @@ function mat_get_tool_extras() {
 			),
 			'next' => array(
 				array( 'slug' => 'gap-insurance-total-loss-still-owe-money', 'label' => __( 'Read: GAP insurance and total loss, will you still owe money?', 'myautotriage' ) ),
+				array( 'slug' => 'total-loss-valuation-checker', 'label' => __( 'Check the total loss valuation for money taken off', 'myautotriage' ) ),
 				array( 'slug' => 'total-loss-threshold-calculator', 'label' => __( 'Check whether your car should be totaled', 'myautotriage' ) ),
 				array( 'slug' => 'totaled-car-payout-too-low-negotiate', 'label' => __( 'Read: how to push back on a low total loss payout', 'myautotriage' ) ),
 				array( 'slug' => 'insurance-underpayment-demand-letter-generator', 'label' => __( 'Dispute a low actual cash value with an underpayment demand letter', 'myautotriage' ) ),
@@ -227,6 +229,28 @@ function mat_get_tool_extras() {
 				array( 'slug' => 'property-damage-demand-letter-generator', 'label' => __( 'Claim it in a property damage demand letter', 'myautotriage' ) ),
 				array( 'slug' => 'diminished-value-calculator', 'label' => __( 'Also check your car\'s diminished value', 'myautotriage' ) ),
 				array( 'slug' => 'car-insurance-claim-laws', 'label' => __( 'Your state\'s claim deadlines and small claims limit', 'myautotriage' ) ),
+			),
+		),
+
+		'total-loss-valuation-checker' => array(
+			'example' => array(
+				'title' => __( 'Worked example', 'myautotriage' ),
+				'html'  => '<p>' . __( 'A report sets a base value of $16,400 from three comparables advertised at an average of $17,200, each cut by an average $800 "projected sold" adjustment. It takes $650 off for condition, includes no sales tax or fees, and subtracts a $500 deductible: an offer of $15,250.', 'myautotriage' ) . '</p>'
+					. '<ul>'
+					. '<li>' . __( 'Negotiation adjustments: $800 in question.', 'myautotriage' ) . '</li>'
+					. '<li>' . __( 'Condition deduction with no itemization: $650 in question.', 'myautotriage' ) . '</li>'
+					. '<li>' . __( 'Sales tax at 7% on $15,750: $1,102.50 missing.', 'myautotriage' ) . '</li>'
+					. '<li>' . __( 'Title and registration fees: missing, amount depends on your state.', 'myautotriage' ) . '</li>'
+					. '</ul>'
+					. '<p>' . __( 'Up to $2,552.50 is in question, so the opening counter-offer is $17,802.50 plus fees. The letter asks for a value of $17,200 plus tax and fees, and lists each point.', 'myautotriage' ) . '</p>',
+			),
+			'next' => array(
+				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'total-loss' ), 'label' => __( 'Send a total loss counter-offer letter', 'myautotriage' ) ),
+				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'appraisal' ), 'label' => __( 'Still can\'t agree on the value? Invoke your policy\'s appraisal clause', 'myautotriage' ) ),
+				array( 'slug' => 'totaled-car-payout-too-low-negotiate', 'label' => __( 'Read: how to negotiate a total loss payout that seems too low', 'myautotriage' ) ),
+				array( 'slug' => 'gap-insurance-shortfall-calculator', 'label' => __( 'Still owe on a loan? Check your GAP shortfall', 'myautotriage' ) ),
+				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'doi-complaint' ), 'label' => __( 'Draft a complaint to your state department of insurance', 'myautotriage' ) ),
+				array( 'slug' => 'car-insurance-claim-laws', 'label' => __( 'See your state\'s total loss rule, with citations', 'myautotriage' ) ),
 			),
 		),
 
