@@ -1,7 +1,7 @@
 /**
  * Auto Insurance Demand Letter Generator.
  *
- * Builds a complete, ready-to-send demand letter from form inputs. Six
+ * Builds a complete, ready-to-send demand letter from form inputs. The
  * "type" variants share this one engine (see the opening-paragraph and
  * closing-paragraph templates below) so /demand-letter-generator/?type=...
  * can serve several distinct search intents without duplicating code.
@@ -36,6 +36,15 @@
 		'diminished-value': function ( f ) {
 			return 'I am writing to demand compensation for the diminished value of my vehicle following the accident on ' + f.accidentDate + ', which was caused by your insured, ' + f.atFaultName + '. Even after full repair, my vehicle is now worth less on the resale market than it was before the accident, and this diminished value is a legitimate component of my property damage claim. ' + f.narrative;
 		},
+		'total-loss': function ( f ) {
+			return 'I am writing in response to your total loss valuation of my vehicle on claim number ' + ( f.claimNumber || '[claim number]' ) + ', following the loss on ' + f.accidentDate + '. I do not accept the actual cash value you offered, because it does not reflect what it would cost to buy a comparable vehicle in my area. ' + f.narrative;
+		},
+		'appraisal': function ( f ) {
+			return 'We have been unable to agree on the amount of loss on claim number ' + ( f.claimNumber || '[claim number]' ) + ', arising from the loss on ' + f.accidentDate + '. Under the Appraisal provision of my policy, this letter is my written demand for appraisal of the amount of loss. ' + f.narrative;
+		},
+		'doi-complaint': function ( f ) {
+			return 'I am filing a complaint against ' + f.companyName + ' regarding claim number ' + ( f.claimNumber || '[claim number]' ) + ', arising from the accident on ' + f.accidentDate + ' at ' + f.accidentLocation + '. ' + f.narrative;
+		},
 		'small-claims': function ( f ) {
 			return 'This letter is a final demand for payment before I file a small claims action. On ' + f.accidentDate + ', at ' + f.accidentLocation + ', your insured, ' + f.atFaultName + ', caused damage to my vehicle. ' + f.narrative;
 		},
@@ -57,9 +66,25 @@
 		'diminished-value': function ( f ) {
 			return 'I am requesting payment of ' + f.amountFormatted + ' to compensate for this diminished value, in addition to any repair costs already covered. Please respond in writing within ' + f.deadlineDays + ' days of the date of this letter.';
 		},
+		'total-loss': function ( f ) {
+			return 'Based on the enclosed listings of comparable vehicles for sale near me and the condition, mileage and options of my vehicle, I am requesting a revised actual cash value of ' + f.amountFormatted + ', plus the sales tax, title and registration fees my policy and state law provide for. Please also send me a complete copy of the valuation report you relied on, including the comparable vehicles used and every condition adjustment, and respond in writing within ' + f.deadlineDays + ' days of the date of this letter.';
+		},
+		'appraisal': function ( f ) {
+			return 'My position on the amount of loss is ' + f.amountFormatted + '. I have selected [name and contact details of my appraiser] as my appraiser. Please name your appraiser in writing within ' + f.deadlineDays + ' days of the date of this letter, or within any shorter time my policy sets, so the appraisers can proceed. This demand concerns only the amount of the loss; it does not waive any of my other rights under the policy or the law.';
+		},
+		'doi-complaint': function ( f ) {
+			return 'The amount in dispute is ' + f.amountFormatted + '. I have tried to resolve this directly with the company, including in writing, without success. I ask the Department to review the company\'s handling of my claim and to require a written response explaining its position and the reasons for any delay or reduced payment.';
+		},
 		'small-claims': function ( f ) {
 			return 'I am requesting payment of ' + f.amountFormatted + ' within ' + f.deadlineDays + ' days of the date of this letter. If I do not receive payment or a written response by that date, I intend to file a claim in small claims court without further notice.';
 		},
+	};
+
+	var ENCLOSURES = {
+		'general': 'Enclosed with this letter you will find supporting documentation, including repair estimates, photographs, and/or other records relevant to this claim. Please contact me at the phone number or email above if you require any additional information.',
+		'total-loss': 'Enclosed are listings of comparable vehicles, records of recent maintenance and upgrades, and photographs of my vehicle before the loss. Please contact me at the phone number or email above if you need anything else to reconsider the valuation.',
+		'appraisal': 'Enclosed are my repair estimate or valuation, photographs, and our correspondence on the amount of loss. Please contact me at the phone number or email above with your appraiser\'s name and contact details.',
+		'doi-complaint': 'Enclosed are copies of my policy declarations page, the claim correspondence, the company\'s offer or denial, and my own estimates. Please contact me at the phone number or email above if the Department needs anything else.',
 	};
 
 	function formatUSD( n ) {
@@ -82,16 +107,23 @@
 		lines.push( '' );
 		lines.push( todayFormatted() );
 		lines.push( '' );
-		lines.push( f.insurerName );
-		lines.push( 'Re: Claim No. ' + ( f.claimNumber || '[Claim number]' ) + ( f.adjusterName ? ' — Attn: ' + f.adjusterName : '' ) );
-		lines.push( '' );
-		lines.push( 'Dear Claims Representative' + ( f.adjusterName ? ', ' + f.adjusterName : '' ) + ':' );
+		if ( f.type === 'doi-complaint' ) {
+			lines.push( '[Your state] Department of Insurance, Consumer Services' );
+			lines.push( 'Re: Complaint against ' + f.companyName + ', Claim No. ' + ( f.claimNumber || '[Claim number]' ) );
+			lines.push( '' );
+			lines.push( 'Dear Consumer Services Representative:' );
+		} else {
+			lines.push( f.insurerName );
+			lines.push( 'Re: Claim No. ' + ( f.claimNumber || '[Claim number]' ) + ( f.adjusterName ? ' — Attn: ' + f.adjusterName : '' ) );
+			lines.push( '' );
+			lines.push( 'Dear Claims Representative' + ( f.adjusterName ? ', ' + f.adjusterName : '' ) + ':' );
+		}
 		lines.push( '' );
 		lines.push( opener.trim() );
 		lines.push( '' );
 		lines.push( closer );
 		lines.push( '' );
-		lines.push( 'Enclosed with this letter you will find supporting documentation, including repair estimates, photographs, and/or other records relevant to this claim. Please contact me at the phone number or email above if you require any additional information.' );
+		lines.push( ENCLOSURES[ f.type ] || ENCLOSURES.general );
 		lines.push( '' );
 		lines.push( 'Sincerely,' );
 		lines.push( '' );
@@ -107,6 +139,7 @@
 			yourAddress: document.getElementById( 'mat-dl-address' ).value.trim() || '[Your Address]',
 			yourContact: document.getElementById( 'mat-dl-contact' ).value.trim() || '[Your Phone / Email]',
 			insurerName: document.getElementById( 'mat-dl-insurer' ).value.trim() || '[Insurance Company Name and Address]',
+			companyName: document.getElementById( 'mat-dl-insurer' ).value.trim().split( ',' )[0] || '[Insurance Company Name]',
 			claimNumber: document.getElementById( 'mat-dl-claim' ).value.trim(),
 			adjusterName: document.getElementById( 'mat-dl-adjuster' ).value.trim(),
 			atFaultName: document.getElementById( 'mat-dl-atfault' ).value.trim() || 'the other driver',

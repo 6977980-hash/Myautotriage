@@ -293,3 +293,12 @@ button, input, select, textarea { font-family: inherit; font-size: 1rem; }
 .mat-sources li { margin-bottom: 0.35em; }
 .mat-state-list { list-style: none; margin: 0; padding: 0; columns: 4 8em; column-gap: 1.5em; }
 .mat-state-list li { margin: 0 0 0.35em; break-inside: avoid; }
+
+/* Optional extra fields inside a tool form */
+.mat-more-fields { margin: 0 0 1.25rem; border: 1px solid var(--mat-line); border-radius: var(--mat-radius-sm); padding: .75rem 1rem; }
+.mat-more-fields summary { cursor: pointer; font-weight: 700; }
+.mat-more-fields[open] summary { margin-bottom: .75rem; }
+.mat-result-table { width: 100%; border-collapse: collapse; margin: .75rem 0; font-size: .95rem; }
+.mat-result-table td { padding: .35rem 0; border-bottom: 1px solid var(--mat-line); }
+.mat-result-table td:last-child { text-align: right; white-space: nowrap; padding-left: 1rem; }
+.mat-result-table tr.mat-result-table__total td { font-weight: 700; border-bottom: 0; }

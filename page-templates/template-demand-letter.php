@@ -60,7 +60,11 @@ $variant = isset( $variants[ $slug ] ) ? $variants[ $slug ] : $variants['demand-
 					<option value="underpayment" <?php selected( $variant['type'], 'underpayment' ); ?>><?php esc_html_e( 'Disputing an underpaid settlement', 'myautotriage' ); ?></option>
 					<option value="diminished-value" <?php selected( $variant['type'], 'diminished-value' ); ?>><?php esc_html_e( 'Diminished value claim', 'myautotriage' ); ?></option>
 					<option value="small-claims" <?php selected( $variant['type'], 'small-claims' ); ?>><?php esc_html_e( 'Final demand before small claims court', 'myautotriage' ); ?></option>
+					<option value="total-loss" <?php selected( $variant['type'], 'total-loss' ); ?>><?php esc_html_e( 'Total loss counter-offer (dispute the car\'s value)', 'myautotriage' ); ?></option>
+					<option value="appraisal" <?php selected( $variant['type'], 'appraisal' ); ?>><?php esc_html_e( 'Invoke the appraisal clause', 'myautotriage' ); ?></option>
+					<option value="doi-complaint" <?php selected( $variant['type'], 'doi-complaint' ); ?>><?php esc_html_e( 'Complaint to the state department of insurance', 'myautotriage' ); ?></option>
 				</select>
+				<span class="mat-field__hint"><?php esc_html_e( 'Appraisal applies to claims under your own policy, when you and the insurer agree the loss is covered but disagree on the amount. Most insurance departments also take complaints through an online form; the letter text works there too.', 'myautotriage' ); ?></span>
 			</div>
 
 			<h2 style="font-size:1.05rem;"><?php esc_html_e( 'Your information', 'myautotriage' ); ?></h2>

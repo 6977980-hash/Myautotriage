@@ -41,6 +41,16 @@ wp_enqueue_script( 'mat-rf', MAT_URI . '/assets/js/calculators/refund.js', array
 				</div>
 			</div>
 			<div class="mat-field">
+				<label for="mat-rf-state"><?php esc_html_e( 'State (optional)', 'myautotriage' ); ?></label>
+				<select id="mat-rf-state">
+					<option value=""><?php esc_html_e( 'Choose your state', 'myautotriage' ); ?></option>
+					<?php foreach ( mat_state_laws() as $state ) : ?>
+						<option value="<?php echo esc_attr( $state['code'] ); ?>"><?php echo esc_html( $state['name'] ); ?></option>
+					<?php endforeach; ?>
+				</select>
+				<span class="mat-field__hint"><?php esc_html_e( 'Some states limit or ban short-rate refunds; we apply the rule when we know it.', 'myautotriage' ); ?></span>
+			</div>
+			<div class="mat-field">
 				<label for="mat-rf-method"><?php esc_html_e( 'How your insurer calculates refunds', 'myautotriage' ); ?></label>
 				<select id="mat-rf-method">
 					<option value="prorata" selected><?php esc_html_e( 'Pro-rata (full unused premium back)', 'myautotriage' ); ?></option>
@@ -73,6 +83,12 @@ wp_enqueue_script( 'mat-rf', MAT_URI . '/assets/js/calculators/refund.js', array
 			<h2><?php esc_html_e( 'Pro-rata vs. short-rate cancellation', 'myautotriage' ); ?></h2>
 			<p><?php esc_html_e( 'A pro-rata refund returns the full unused part of your premium: if you cancel a $1,200 annual policy exactly halfway through, you get $600 back. A short-rate refund keeps a penalty on top of the premium you used, often around 10% of the unused premium, so the same cancellation returns about $540.', 'myautotriage' ); ?></p>
 			<p><?php esc_html_e( 'Which one applies is set by your policy and state rules. Short-rate usually only applies when you cancel; when the insurer cancels or non-renews, the refund is normally pro-rata.', 'myautotriage' ); ?></p>
+			<h2><?php esc_html_e( 'States that limit short-rate refunds', 'myautotriage' ); ?></h2>
+			<ul>
+				<li><?php esc_html_e( 'Texas: for personal auto policies cancelled on or after September 1, 2026, the insurer must refund the full unearned premium, calculated pro rata. Short-rate penalties are not allowed, though an insurer may keep a minimum retained premium that is part of its filed rates (28 TAC § 5.7015).', 'myautotriage' ); ?></li>
+				<li><?php esc_html_e( 'Florida: short-rate tables that return less than 90% of the pro-rata unearned premium are prohibited unless the insurer has filed actuarial or other justification (Fla. Admin. Code R. 69O-170.010).', 'myautotriage' ); ?></li>
+			</ul>
+			<p><?php esc_html_e( 'In other states, the cancellation clause in your policy and the insurer\'s filed rules decide. Ask the insurer which method it uses before you cancel.', 'myautotriage' ); ?></p>
 			<h2><?php esc_html_e( 'If you pay monthly', 'myautotriage' ); ?></h2>
 			<p><?php esc_html_e( 'With monthly payments you have usually prepaid only the current month, so the refund is the unused days of that month, minus any fee. Enter that month\'s payment as the premium and use the billing period dates instead of the full term.', 'myautotriage' ); ?></p>
 			<h2><?php esc_html_e( 'Before you cancel', 'myautotriage' ); ?></h2>

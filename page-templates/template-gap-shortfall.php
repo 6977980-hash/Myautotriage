@@ -40,6 +40,33 @@ wp_enqueue_script( 'mat-gap', MAT_URI . '/assets/js/calculators/gap-shortfall.js
 					</select>
 				</div>
 			</div>
+			<details class="mat-more-fields">
+				<summary><?php esc_html_e( 'Why GAP might not pay it all (optional details)', 'myautotriage' ); ?></summary>
+				<p class="mat-field__hint"><?php esc_html_e( 'Fill in what you know from your loan statement and GAP contract to see what GAP should pay and what may be left for you.', 'myautotriage' ); ?></p>
+				<div class="mat-field-row">
+					<div class="mat-field">
+						<label for="mat-gap-pastdue"><?php esc_html_e( 'Past-due payments and late fees (USD)', 'myautotriage' ); ?></label>
+						<input type="number" id="mat-gap-pastdue" min="0" step="1" placeholder="e.g. 0">
+					</div>
+					<div class="mat-field">
+						<label for="mat-gap-addons"><?php esc_html_e( 'Refunds due on add-ons in the loan (USD)', 'myautotriage' ); ?></label>
+						<input type="number" id="mat-gap-addons" min="0" step="1" placeholder="e.g. 900">
+						<span class="mat-field__hint"><?php esc_html_e( 'Extended warranty, service contract or credit insurance financed in the loan. GAP subtracts the refund you get when they are cancelled.', 'myautotriage' ); ?></span>
+					</div>
+				</div>
+				<div class="mat-field-row">
+					<div class="mat-field">
+						<label for="mat-gap-ltv"><?php esc_html_e( 'GAP limit as % of car value (LTV cap)', 'myautotriage' ); ?></label>
+						<input type="number" id="mat-gap-ltv" min="100" max="200" step="1" placeholder="e.g. 125">
+						<span class="mat-field__hint"><?php esc_html_e( 'Many GAP contracts only cover a loan up to 125% to 150% of the car\'s value. Leave blank if yours has no cap.', 'myautotriage' ); ?></span>
+					</div>
+					<div class="mat-field">
+						<label for="mat-gap-dedcap"><?php esc_html_e( 'Deductible GAP will cover, up to (USD)', 'myautotriage' ); ?></label>
+						<input type="number" id="mat-gap-dedcap" min="0" step="1" placeholder="e.g. 0">
+						<span class="mat-field__hint"><?php esc_html_e( 'Enter 0 if your GAP contract does not cover the deductible.', 'myautotriage' ); ?></span>
+					</div>
+				</div>
+			</details>
 			<div class="mat-tool-actions">
 				<button type="submit" class="mat-btn mat-btn--primary mat-btn--lg"><?php esc_html_e( 'Calculate my shortfall', 'myautotriage' ); ?></button>
 			</div>
