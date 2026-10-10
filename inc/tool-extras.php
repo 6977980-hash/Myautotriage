@@ -81,6 +81,8 @@ function mat_get_tool_extras() {
 			'next' => array(
 				array( 'slug' => 'totaled-car-payout-too-low-negotiate', 'label' => __( 'Read: how to negotiate a total loss payout that seems too low', 'myautotriage' ) ),
 				array( 'slug' => 'insurance-underpayment-demand-letter-generator', 'label' => __( 'Dispute a low offer with an underpayment demand letter', 'myautotriage' ) ),
+				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'total-loss' ), 'label' => __( 'Counter a low total loss valuation with comparable cars', 'myautotriage' ) ),
+				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'appraisal' ), 'label' => __( 'Still can\'t agree on the value? Invoke your policy\'s appraisal clause', 'myautotriage' ) ),
 				array( 'slug' => 'gap-insurance-shortfall-calculator', 'label' => __( 'Still owe on a loan? Check your GAP shortfall', 'myautotriage' ) ),
 				array( 'slug' => 'car-insurance-claim-laws', 'label' => __( 'See your state\'s total loss rule and claim deadlines, with citations', 'myautotriage' ) ),
 			),
@@ -112,6 +114,7 @@ function mat_get_tool_extras() {
 				array( 'slug' => 'total-loss-threshold-calculator', 'label' => __( 'Check whether your car should be totaled', 'myautotriage' ) ),
 				array( 'slug' => 'totaled-car-payout-too-low-negotiate', 'label' => __( 'Read: how to push back on a low total loss payout', 'myautotriage' ) ),
 				array( 'slug' => 'insurance-underpayment-demand-letter-generator', 'label' => __( 'Dispute a low actual cash value with an underpayment demand letter', 'myautotriage' ) ),
+				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'total-loss' ), 'label' => __( 'A higher car value shrinks the gap: send a total loss counter-offer', 'myautotriage' ) ),
 			),
 		),
 
@@ -176,6 +179,7 @@ function mat_get_tool_extras() {
 				array( 'slug' => 'how-long-insurance-company-must-pay-claim', 'label' => __( 'Read: how long does an insurance company have to pay your claim?', 'myautotriage' ) ),
 				array( 'slug' => 'demand-letter-generator', 'label' => __( 'Insurer missed a deadline? Send a demand letter', 'myautotriage' ) ),
 				array( 'slug' => 'appeal-letter-generator', 'label' => __( 'Claim denied? Write an appeal letter', 'myautotriage' ) ),
+				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'doi-complaint' ), 'label' => __( 'Draft a complaint to your state department of insurance', 'myautotriage' ) ),
 				array( 'slug' => 'car-insurance-claim-laws', 'label' => __( 'Claim laws by state: deadlines and total loss rules side by side', 'myautotriage' ) ),
 			),
 		),
@@ -194,6 +198,7 @@ function mat_get_tool_extras() {
 			'next' => array(
 				array( 'slug' => 'how-to-negotiate-insurance-adjuster', 'label' => __( 'Read: how to negotiate with an insurance adjuster', 'myautotriage' ) ),
 				array( 'slug' => 'small-claims-court-vs-insurance-claim', 'label' => __( 'Read: small claims court vs. your insurance company', 'myautotriage' ) ),
+				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'doi-complaint' ), 'label' => __( 'No answer? Draft a complaint to your state department of insurance', 'myautotriage' ) ),
 			),
 		),
 
@@ -220,6 +225,7 @@ function mat_get_tool_extras() {
 			'next' => array(
 				array( 'slug' => 'car-insurance-claim-denied-what-to-do', 'label' => __( 'Read: car insurance claim denied? Here is what to do', 'myautotriage' ) ),
 				array( 'slug' => 'claim-payment-deadline-by-state', 'label' => __( "Check your state's claim deadlines", 'myautotriage' ) ),
+				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'doi-complaint' ), 'label' => __( 'Appeal ignored? Draft a complaint to your state department of insurance', 'myautotriage' ) ),
 			),
 		),
 	);
@@ -281,10 +287,13 @@ function mat_tool_extras( $slug ) {
 	if ( ! empty( $tool['next'] ) ) {
 		$links = array();
 		foreach ( $tool['next'] as $next ) {
-			if ( $next['slug'] === $slug ) {
+			if ( $next['slug'] === $slug && empty( $next['query'] ) ) {
 				continue;
 			}
 			$url = mat_url_for_slug( $next['slug'] );
+			if ( $url && ! empty( $next['query'] ) ) {
+				$url = add_query_arg( $next['query'], $url );
+			}
 			if ( $url ) {
 				$links[] = '<li><a href="' . esc_url( $url ) . '">' . esc_html( $next['label'] ) . '</a></li>';
 			}
