@@ -6,7 +6,7 @@
  */
 
 get_header();
-wp_enqueue_script( 'mat-ap', MAT_URI . '/assets/js/generators/appeal-letter.js', array(), MAT_VERSION, true );
+wp_enqueue_script( 'mat-ap', MAT_URI . '/assets/js/generators/appeal-letter.js', array( 'mat-tools' ), MAT_VERSION, true );
 ?>
 <div class="mat-tool">
 	<div class="mat-container mat-narrow">
@@ -76,6 +76,7 @@ wp_enqueue_script( 'mat-ap', MAT_URI . '/assets/js/generators/appeal-letter.js',
 				</div>
 			</div>
 
+			<p id="mat-ap-error" class="mat-form-error" role="alert" hidden></p>
 			<div class="mat-tool-actions">
 				<button type="submit" class="mat-btn mat-btn--primary mat-btn--lg"><?php esc_html_e( 'Generate my appeal letter', 'myautotriage' ); ?></button>
 			</div>

@@ -18,6 +18,7 @@
 	var printBtn = document.getElementById( 'mat-dl-print' );
 	var copyBtn = document.getElementById( 'mat-dl-copy' );
 	var typeSelect = document.getElementById( 'mat-dl-type' );
+	var errorBox = document.getElementById( 'mat-dl-error' );
 
 	var OPENERS = {
 		'general': function ( f ) {
@@ -30,7 +31,7 @@
 			return 'This letter is a formal demand for payment of property damage to my vehicle arising from the accident on ' + f.accidentDate + ' at ' + f.accidentLocation + ', caused by your insured, ' + f.atFaultName + '. ' + f.narrative;
 		},
 		'underpayment': function ( f ) {
-			return 'I am writing to dispute the settlement amount offered on claim number ' + f.claimNumber + '. The amount offered does not reasonably reflect the actual cost to repair or replace my vehicle following the accident on ' + f.accidentDate + '. ' + f.narrative;
+			return 'I am writing to dispute the settlement amount offered on claim number ' + ( f.claimNumber || '[claim number]' ) + '. The amount offered does not reasonably reflect the actual cost to repair or replace my vehicle following the accident on ' + f.accidentDate + '. ' + f.narrative;
 		},
 		'diminished-value': function ( f ) {
 			return 'I am writing to demand compensation for the diminished value of my vehicle following the accident on ' + f.accidentDate + ', which was caused by your insured, ' + f.atFaultName + '. Even after full repair, my vehicle is now worth less on the resale market than it was before the accident, and this diminished value is a legitimate component of my property damage claim. ' + f.narrative;
@@ -62,11 +63,7 @@
 	};
 
 	function formatUSD( n ) {
-		var num = parseFloat( n );
-		if ( isNaN( num ) ) {
-			return '$0';
-		}
-		return num.toLocaleString( 'en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 } );
+		return n ? MAT.usd( n ) : '[amount]';
 	}
 
 	function todayFormatted() {
@@ -90,7 +87,7 @@
 		lines.push( '' );
 		lines.push( 'Dear Claims Representative' + ( f.adjusterName ? ', ' + f.adjusterName : '' ) + ':' );
 		lines.push( '' );
-		lines.push( opener );
+		lines.push( opener.trim() );
 		lines.push( '' );
 		lines.push( closer );
 		lines.push( '' );
@@ -103,8 +100,7 @@
 		return lines.join( '\n' );
 	}
 
-	function collectFields() {
-		var amount = document.getElementById( 'mat-dl-amount' ).value;
+	function collectFields( amount, deadline ) {
 		return {
 			type: typeSelect.value,
 			yourName: document.getElementById( 'mat-dl-name' ).value.trim() || '[Your Name]',
@@ -114,11 +110,11 @@
 			claimNumber: document.getElementById( 'mat-dl-claim' ).value.trim(),
 			adjusterName: document.getElementById( 'mat-dl-adjuster' ).value.trim(),
 			atFaultName: document.getElementById( 'mat-dl-atfault' ).value.trim() || 'the other driver',
-			accidentDate: document.getElementById( 'mat-dl-date' ).value || '[date of accident]',
+			accidentDate: MAT.longDate( document.getElementById( 'mat-dl-date' ).value ) || '[date of accident]',
 			accidentLocation: document.getElementById( 'mat-dl-location' ).value.trim() || '[location of accident]',
 			narrative: document.getElementById( 'mat-dl-narrative' ).value.trim(),
 			amountFormatted: formatUSD( amount ),
-			deadlineDays: document.getElementById( 'mat-dl-deadline' ).value || '14',
+			deadlineDays: String( deadline ),
 		};
 	}
 
@@ -128,11 +124,15 @@
 		if ( type && typeSelect.querySelector( 'option[value="' + type + '"]' ) ) {
 			typeSelect.value = type;
 		}
-		if ( type === 'diminished-value' ) {
+		// The diminished value calculator stores its last estimate; use it on
+		// any diminished value letter (the dedicated page or ?type=), unless
+		// the visitor already typed an amount.
+		var amountField = document.getElementById( 'mat-dl-amount' );
+		if ( typeSelect.value === 'diminished-value' && ! amountField.value ) {
 			try {
 				var dv = sessionStorage.getItem( 'mat_dv_estimate' );
-				if ( dv ) {
-					document.getElementById( 'mat-dl-amount' ).value = dv;
+				if ( dv && Number( dv ) > 0 ) {
+					amountField.value = dv;
 				}
 			} catch ( err ) { /* ignore */ }
 		}
@@ -140,7 +140,18 @@
 
 	form.addEventListener( 'submit', function ( e ) {
 		e.preventDefault();
-		var fields = collectFields();
+		var r = MAT.nums( {
+			amount: [ 'mat-dl-amount', { label: 'The amount' } ],
+			deadline: [ 'mat-dl-deadline', { label: 'The response deadline', fallback: 14, integer: true } ],
+		} );
+		if ( r.error ) {
+			errorBox.hidden = false;
+			errorBox.textContent = r.error;
+			r.field.focus();
+			return;
+		}
+		errorBox.hidden = true;
+		var fields = collectFields( r.values.amount, r.values.deadline );
 		var letter = buildLetter( fields );
 		preview.textContent = letter;
 		previewWrap.hidden = false;

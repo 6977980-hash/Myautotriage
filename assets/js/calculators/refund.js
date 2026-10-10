@@ -16,7 +16,7 @@
 	var DAY = 24 * 60 * 60 * 1000;
 
 	function formatUSD( n ) {
-		return n.toLocaleString( 'en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 2 } );
+		return MAT.usd( n, true );
 	}
 
 	// Parse yyyy-mm-dd as a UTC date so day counts ignore DST changes.
@@ -47,18 +47,23 @@
 	form.addEventListener( 'submit', function ( e ) {
 		e.preventDefault();
 
-		var premium = parseFloat( document.getElementById( 'mat-rf-premium' ).value );
+		var r = MAT.nums( {
+			premium: [ 'mat-rf-premium', { label: 'The premium you paid', required: true } ],
+			penalty: [ 'mat-rf-penalty', { label: 'The short-rate penalty', fallback: 0 } ],
+			fee: [ 'mat-rf-fee', { label: 'The cancellation fee', fallback: 0 } ],
+		} );
+		if ( r.error ) {
+			MAT.showError( resultBox, r );
+			return;
+		}
+		var premium = r.values.premium;
+		var penalty = r.values.penalty / 100;
+		var fee = r.values.fee;
 		var term = parseInt( document.getElementById( 'mat-rf-term' ).value, 10 ) || 12;
 		var start = parseDate( document.getElementById( 'mat-rf-start' ).value );
 		var cancel = parseDate( document.getElementById( 'mat-rf-cancel' ).value );
 		var method = document.getElementById( 'mat-rf-method' ).value;
-		var penalty = Math.min( Math.max( parseFloat( document.getElementById( 'mat-rf-penalty' ).value ) || 0, 0 ), 50 ) / 100;
-		var fee = Math.max( parseFloat( document.getElementById( 'mat-rf-fee' ).value ) || 0, 0 );
 
-		if ( isNaN( premium ) || premium <= 0 ) {
-			showError( 'Please enter the premium you paid for the policy term.' );
-			return;
-		}
 		if ( start === null || cancel === null ) {
 			showError( 'Please enter both the policy start date and the cancellation date.' );
 			return;
@@ -85,19 +90,16 @@
 		var html = '';
 		if ( method === 'shortrate' ) {
 			html += '<p class="mat-result-box__figure">' + formatUSD( shortRate ) + '</p>';
-			html += '<p>Estimated short-rate refund: ' + formatUSD( unused ) + ' unused premium, minus a ' + Math.round( penalty * 100 ) + '% penalty' + ( fee ? ' and a ' + formatUSD( fee ) + ' fee' : '' ) + '.</p>';
+			html += '<p>Estimated short-rate refund: ' + formatUSD( unused ) + ' unused premium, minus a ' + MAT.pct( penalty ) + ' penalty' + ( fee ? ' and a ' + formatUSD( fee ) + ' fee' : '' ) + '.</p>';
 		} else if ( method === 'both' ) {
 			html += '<p class="mat-result-box__figure">' + formatUSD( shortRate ) + ' – ' + formatUSD( proRata ) + '</p>';
-			html += '<p><strong>Pro-rata:</strong> ' + formatUSD( proRata ) + '<br><strong>Short-rate (' + Math.round( penalty * 100 ) + '% penalty):</strong> ' + formatUSD( shortRate ) + '</p>';
+			html += '<p><strong>Pro-rata:</strong> ' + formatUSD( proRata ) + '<br><strong>Short-rate (' + MAT.pct( penalty ) + ' penalty):</strong> ' + formatUSD( shortRate ) + '</p>';
 		} else {
 			html += '<p class="mat-result-box__figure">' + formatUSD( proRata ) + '</p>';
 			html += '<p>Estimated pro-rata refund: the full unused premium' + ( fee ? ', minus a ' + formatUSD( fee ) + ' fee' : '' ) + '.</p>';
 		}
 		html += '<p style="margin-bottom:0;font-size:.9rem;">You used ' + usedDays + ' of ' + totalDays + ' days (' + leftDays + ' days left), so ' + formatUSD( unused ) + ' of your ' + formatUSD( premium ) + ' premium is unused.</p>';
 
-		resultBox.innerHTML = html;
-		resultBox.hidden = false;
-		resultBox.setAttribute( 'tabindex', '-1' );
-		resultBox.focus();
+		MAT.showResult( resultBox, html );
 	} );
 })();

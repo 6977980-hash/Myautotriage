@@ -6,7 +6,7 @@
  */
 
 get_header();
-wp_enqueue_script( 'mat-rf', MAT_URI . '/assets/js/calculators/refund.js', array(), MAT_VERSION, true );
+wp_enqueue_script( 'mat-rf', MAT_URI . '/assets/js/calculators/refund.js', array( 'mat-tools' ), MAT_VERSION, true );
 ?>
 <div class="mat-tool">
 	<div class="mat-container mat-narrow">

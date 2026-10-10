@@ -11,7 +11,7 @@
  */
 
 get_header();
-wp_enqueue_script( 'mat-dl', MAT_URI . '/assets/js/generators/demand-letter.js', array(), MAT_VERSION, true );
+wp_enqueue_script( 'mat-dl', MAT_URI . '/assets/js/generators/demand-letter.js', array( 'mat-tools' ), MAT_VERSION, true );
 
 $variants = array(
 	'demand-letter-generator' => array(
@@ -125,6 +125,7 @@ $variant = isset( $variants[ $slug ] ) ? $variants[ $slug ] : $variants['demand-
 				</div>
 			</div>
 
+			<p id="mat-dl-error" class="mat-form-error" role="alert" hidden></p>
 			<div class="mat-tool-actions">
 				<button type="submit" class="mat-btn mat-btn--primary mat-btn--lg"><?php esc_html_e( 'Generate my letter', 'myautotriage' ); ?></button>
 			</div>
