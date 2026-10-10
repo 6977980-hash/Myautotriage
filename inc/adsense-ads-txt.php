@@ -27,18 +27,22 @@ function mat_ads_txt_output() {
 	if ( ! get_query_var( 'mat_ads_txt' ) ) {
 		return;
 	}
-	header( 'Content-Type: text/plain; charset=UTF-8' );
-
 	$client_id = get_theme_mod( 'mat_adsense_client_id' );
-	if ( $client_id ) {
-		// Publisher ID is usually "ca-pub-XXXXXXXXXXXXXXXX" — ads.txt wants
-		// just the numeric "pub-XXXXXXXXXXXXXXXX" part.
-		$pub = str_replace( 'ca-', '', $client_id );
-		echo "google.com, {$pub}, DIRECT, f08c47fec0942fa0\n";
-	} else {
-		echo "# Add your AdSense Publisher ID in Appearance > Customize > MyAutoTriage Settings\n";
-		echo "# to generate this file automatically once your AdSense account exists.\n";
+	if ( ! $client_id ) {
+		// No AdSense account yet: a placeholder file only draws "invalid
+		// ads.txt" warnings, so answer as if the file doesn't exist.
+		status_header( 404 );
+		nocache_headers();
+		header( 'Content-Type: text/plain; charset=UTF-8' );
+		exit;
 	}
+	header( 'Content-Type: text/plain; charset=UTF-8' );
+	// Publisher ID is usually "ca-pub-XXXXXXXXXXXXXXXX" — ads.txt wants
+	// just the numeric "pub-XXXXXXXXXXXXXXXX" part.
+	$pub = str_replace( 'ca-', '', $client_id );
+	echo "google.com, {$pub}, DIRECT, f08c47fec0942fa0\n";
 	exit;
 }
-add_action( 'template_redirect', 'mat_ads_txt_output' );
+// Priority 1: before core's redirect_canonical(), which otherwise sends
+// /ads.txt to /ads.txt/ with a 301.
+add_action( 'template_redirect', 'mat_ads_txt_output', 1 );

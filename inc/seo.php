@@ -69,6 +69,11 @@ function mat_get_meta_description() {
 		if ( $state ) {
 			return mat_state_meta_description( $state );
 		}
+		foreach ( mat_get_tools_registry() as $tool ) {
+			if ( $tool['slug'] === $post->post_name && ! empty( $tool['meta'] ) ) {
+				return $tool['meta'];
+			}
+		}
 		if ( MAT_STATE_HUB_SLUG === $post->post_name ) {
 			return __( 'Car insurance claim laws for all 50 states and DC: how many days insurers have to acknowledge, decide and pay a claim, and each state\'s total loss threshold, with citations.', 'myautotriage' );
 		}
@@ -244,6 +249,11 @@ remove_action( 'wp_head', 'rel_canonical' );
  * search results and "Discourage search engines" still apply.
  */
 function mat_wp_robots( $robots ) {
+	// Date archives (/2026/, /2026/10/) only repeat the blog list.
+	if ( is_date() ) {
+		$robots['noindex'] = true;
+		$robots['follow']  = true;
+	}
 	$robots['max-image-preview'] = 'large';
 	$robots['max-snippet']       = '-1';
 	$robots['max-video-preview'] = '-1';
@@ -457,6 +467,18 @@ function mat_schema_faq() {
 	);
 }
 
+/**
+ * Titles and the site tagline come out of WordPress already HTML-encoded
+ * (get_the_title() texturizes "'" to &#8217;, get_bloginfo() turns "&" into
+ * &amp;). JSON-LD is not HTML, so those entities would be read literally.
+ */
+function mat_schema_plain_text( $value ) {
+	if ( is_array( $value ) ) {
+		return array_map( 'mat_schema_plain_text', $value );
+	}
+	return is_string( $value ) ? html_entity_decode( $value, ENT_QUOTES | ENT_HTML5, 'UTF-8' ) : $value;
+}
+
 function mat_output_schema() {
 	$graph = array_filter( array(
 		mat_schema_organization(),
@@ -471,12 +493,13 @@ function mat_output_schema() {
 		return;
 	}
 
-	$data = array(
+	$data = mat_schema_plain_text( array(
 		'@context' => 'https://schema.org',
 		'@graph'   => array_values( $graph ),
-	);
+	) );
 
-	echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . "</script>\n";
+	// JSON_HEX_TAG keeps a decoded "<" or ">" from closing the script tag.
+	echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG ) . "</script>\n";
 }
 add_action( 'wp_footer', 'mat_output_schema', 5 );
 
