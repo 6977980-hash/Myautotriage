@@ -34,6 +34,7 @@ $meta = mat_state_laws_meta();
 							<th scope="col"><?php esc_html_e( 'State', 'myautotriage' ); ?></th>
 							<th scope="col"><?php esc_html_e( 'Accept or deny a claim', 'myautotriage' ); ?></th>
 							<th scope="col"><?php esc_html_e( 'Total loss rule', 'myautotriage' ); ?></th>
+							<th scope="col"><?php esc_html_e( 'Injury lawsuit deadline', 'myautotriage' ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -43,6 +44,7 @@ $meta = mat_state_laws_meta();
 								<th scope="row"><a href="<?php echo esc_url( mat_state_url( $state ) ); ?>"><?php echo esc_html( $state['name'] ); ?></a></th>
 								<td><?php echo esc_html( $state['deadlines'] ? $state['deadlines']['decide'] : __( 'See state page', 'myautotriage' ) ); ?></td>
 								<td><?php echo esc_html( $rule ); ?></td>
+								<td><?php echo empty( $state['facts']['lawsuit_deadline']['injury_years'] ) ? '' : esc_html( mat_years( $state['facts']['lawsuit_deadline']['injury_years'] ) ); ?></td>
 							</tr>
 						<?php endforeach; ?>
 					</tbody>

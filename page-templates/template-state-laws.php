@@ -55,6 +55,11 @@ $meta  = mat_state_laws_meta();
 						/* translators: %s: total loss rule */
 						printf( esc_html__( 'Total loss rule: %s.', 'myautotriage' ), esc_html( lcfirst( mat_state_total_loss_rule( $state ) ) ) );
 					}
+					if ( ! empty( $state['facts']['lawsuit_deadline']['injury_years'] ) ) {
+						echo ' ';
+						/* translators: %s: years */
+						printf( esc_html__( 'Deadline to file an injury lawsuit: %s.', 'myautotriage' ), esc_html( mat_years( $state['facts']['lawsuit_deadline']['injury_years'] ) ) );
+					}
 					?>
 				</p>
 			</div>
@@ -153,6 +158,74 @@ $meta  = mat_state_laws_meta();
 						?>
 					</li>
 				</ol>
+
+				<?php
+				$facts = $state['facts'];
+				$sol   = isset( $facts['lawsuit_deadline'] ) ? $facts['lawsuit_deadline'] : array();
+				$small = isset( $facts['small_claims'] ) ? $facts['small_claims'] : array();
+				if ( mat_state_fault_rule( $state ) || $sol ) :
+					?>
+					<h2>
+						<?php
+						/* translators: %s: state name */
+						printf( esc_html__( 'If you have to sue the other driver in %s', 'myautotriage' ), esc_html( $state['name'] ) );
+						?>
+					</h2>
+					<p><?php esc_html_e( 'Most claims settle without a lawsuit, but these rules decide how much leverage you have when you claim against the at-fault driver\'s insurer.', 'myautotriage' ); ?></p>
+					<div class="mat-table-wrap">
+						<table class="mat-table">
+							<tbody>
+								<?php if ( mat_state_fault_rule( $state ) ) : ?>
+									<tr><th scope="row"><?php esc_html_e( 'If you were partly at fault', 'myautotriage' ); ?></th><td><?php echo esc_html( mat_state_fault_rule( $state ) ); ?></td></tr>
+								<?php endif; ?>
+								<?php if ( ! empty( $sol['injury_years'] ) ) : ?>
+									<tr><th scope="row"><?php esc_html_e( 'Deadline to sue for injuries', 'myautotriage' ); ?></th><td><?php echo esc_html( mat_years( $sol['injury_years'] ) ); ?></td></tr>
+								<?php endif; ?>
+								<?php if ( ! empty( $sol['property_years'] ) ) : ?>
+									<tr><th scope="row"><?php esc_html_e( 'Deadline to sue for car damage', 'myautotriage' ); ?></th><td><?php echo esc_html( mat_years( $sol['property_years'] ) ); ?></td></tr>
+								<?php endif; ?>
+								<?php if ( ! empty( $small['limit'] ) ) : ?>
+									<tr><th scope="row"><?php esc_html_e( 'Small claims court limit', 'myautotriage' ); ?></th><td><?php echo esc_html( '$' . number_format_i18n( $small['limit'] ) ); ?><?php echo empty( $small['note'] ) ? '' : ' (' . esc_html( $small['note'] ) . ')'; ?></td></tr>
+								<?php endif; ?>
+							</tbody>
+						</table>
+					</div>
+					<?php if ( mat_state_fault_rule( $state ) ) : ?>
+						<p>
+							<?php
+							echo esc_html( mat_state_fault_rule( $state, true ) );
+							if ( ! empty( $facts['fault']['note'] ) ) {
+								echo ' ' . esc_html( $facts['fault']['note'] );
+							}
+							?>
+						</p>
+					<?php endif; ?>
+					<?php if ( $sol ) : ?>
+						<p>
+							<?php
+							esc_html_e( 'The lawsuit deadline (statute of limitations) usually runs from the accident date, and an open insurance claim does not pause it.', 'myautotriage' );
+							if ( ! empty( $sol['note'] ) ) {
+								echo ' ' . esc_html( $sol['note'] );
+							}
+							?>
+						</p>
+					<?php endif; ?>
+					<?php if ( ! empty( $small['limit'] ) ) : ?>
+						<p><?php esc_html_e( 'Small claims court is a cheap way to recover a deductible, a rental bill or diminished value without a lawyer, as long as the amount fits under the limit.', 'myautotriage' ); ?></p>
+					<?php endif; ?>
+					<p class="mat-field__hint">
+						<?php
+						$cites = array();
+						foreach ( array( 'fault', 'lawsuit_deadline', 'small_claims' ) as $key ) {
+							if ( ! empty( $facts[ $key ]['citation'] ) ) {
+								$cites[] = $facts[ $key ]['citation'];
+							}
+						}
+						/* translators: %s: legal citations */
+						printf( esc_html__( 'Rules: %s.', 'myautotriage' ), esc_html( implode( '; ', $cites ) ) );
+						?>
+					</p>
+				<?php endif; ?>
 
 				<?php
 				$neighbors = array();

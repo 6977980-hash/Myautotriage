@@ -29,6 +29,7 @@ function mat_state_laws() {
 	$laws      = array();
 	$deadlines = mat_read_theme_json( 'assets/js/data/claim-deadlines.json' );
 	$totals    = mat_read_theme_json( 'assets/js/data/total-loss-thresholds.json' );
+	$facts     = mat_read_theme_json( 'assets/js/data/state-claim-facts.json' );
 	if ( empty( $deadlines['all_states'] ) ) {
 		return $laws;
 	}
@@ -39,6 +40,7 @@ function mat_state_laws() {
 			'slug'       => sanitize_title( $name ),
 			'deadlines'  => isset( $deadlines['states'][ $code ] ) ? $deadlines['states'][ $code ] : null,
 			'total_loss' => isset( $totals['states'][ $code ] ) ? $totals['states'][ $code ] : null,
+			'facts'      => isset( $facts['states'][ $code ] ) ? $facts['states'][ $code ] : array(),
 		);
 	}
 	uasort( $laws, function ( $a, $b ) {
@@ -123,6 +125,54 @@ function mat_state_total_loss_label( $state ) {
 		return sprintf( __( '%d%% of value', 'myautotriage' ), round( $tl['threshold'] * 100 ) );
 	}
 	return 'formula' === $tl['type'] ? __( 'Total loss formula', 'myautotriage' ) : __( 'Insurer decides (no fixed %)', 'myautotriage' );
+}
+
+/**
+ * Fault rule for suing the other driver: a short label for tables and a
+ * sentence that explains what it means for the reader.
+ */
+function mat_state_fault_rule( $state, $long = false ) {
+	if ( empty( $state['facts']['fault']['rule'] ) ) {
+		return '';
+	}
+	$rules = array(
+		'pure_contributory' => array(
+			__( 'Pure contributory negligence', 'myautotriage' ),
+			__( 'If you are even slightly at fault (as little as 1%), you can be barred from recovering anything from the other driver.', 'myautotriage' ),
+		),
+		'pure_comparative'  => array(
+			__( 'Pure comparative fault', 'myautotriage' ),
+			__( 'You can recover from the other driver even if you were mostly at fault, minus your share of the blame: 30% at fault means 70% of your damages.', 'myautotriage' ),
+		),
+		'bar_50'            => array(
+			__( 'Modified comparative fault (50% bar)', 'myautotriage' ),
+			__( 'Your recovery is cut by your share of the fault, and you get nothing if you are 50% or more at fault.', 'myautotriage' ),
+		),
+		'bar_51'            => array(
+			__( 'Modified comparative fault (51% bar)', 'myautotriage' ),
+			__( 'Your recovery is cut by your share of the fault, and you get nothing if you are more at fault than the other side (51% or more).', 'myautotriage' ),
+		),
+		'slight_gross'      => array(
+			__( 'Slight/gross negligence comparison', 'myautotriage' ),
+			__( 'You can recover only if your own negligence was slight compared with the other driver\'s, and your recovery is reduced by it.', 'myautotriage' ),
+		),
+	);
+	if ( $long && ! empty( $state['facts']['fault']['explain'] ) ) {
+		return $state['facts']['fault']['explain'];
+	}
+	$rule = $state['facts']['fault']['rule'];
+	if ( ! isset( $rules[ $rule ] ) ) {
+		return '';
+	}
+	return $rules[ $rule ][ $long ? 1 : 0 ];
+}
+
+/**
+ * "2 years" / "1 year" for the lawsuit-deadline table.
+ */
+function mat_years( $years ) {
+	/* translators: %d: number of years */
+	return sprintf( _n( '%d year', '%d years', (int) $years, 'myautotriage' ), (int) $years );
 }
 
 /**
@@ -230,6 +280,35 @@ function mat_state_faqs( $state ) {
 				. ' ' . __( 'You can challenge the actual cash value the insurer uses.', 'myautotriage' ),
 		);
 	}
+	$facts = $state['facts'];
+	if ( ! empty( $facts['lawsuit_deadline']['injury_years'] ) ) {
+		$sol    = $facts['lawsuit_deadline'];
+		$answer = sprintf(
+			/* translators: 1: state name, 2: years */
+			__( 'In %1$s you generally have %2$s from the accident to file an injury lawsuit', 'myautotriage' ),
+			$state['name'],
+			mat_years( $sol['injury_years'] )
+		);
+		if ( ! empty( $sol['property_years'] ) ) {
+			/* translators: %s: years */
+			$answer .= sprintf( __( ' and %s to sue for damage to your car', 'myautotriage' ), mat_years( $sol['property_years'] ) );
+		}
+		$answer .= '. ' . __( 'An insurance claim does not pause this deadline, so if talks drag on, check the date and speak to a lawyer well before it passes.', 'myautotriage' );
+		$faqs[]  = array(
+			/* translators: %s: state name */
+			'question' => sprintf( __( 'How long do I have to sue after a car accident in %s?', 'myautotriage' ), $state['name'] ),
+			'answer'   => $answer,
+		);
+	}
+	if ( mat_state_fault_rule( $state ) ) {
+		$faqs[] = array(
+			/* translators: %s: state name */
+			'question' => sprintf( __( 'Can I recover if I was partly at fault in %s?', 'myautotriage' ), $state['name'] ),
+			/* translators: 1: state name, 2: rule name, 3: explanation */
+			'answer'   => sprintf( __( '%1$s follows %2$s. %3$s', 'myautotriage' ), $state['name'], lcfirst( mat_state_fault_rule( $state ) ), mat_state_fault_rule( $state, true ) )
+				. ( empty( $facts['fault']['note'] ) ? '' : ' ' . $facts['fault']['note'] ),
+		);
+	}
 	$faqs[] = array(
 		/* translators: %s: state name */
 		'question' => sprintf( __( 'What can I do if my insurer misses a deadline in %s?', 'myautotriage' ), $state['name'] ),
@@ -251,6 +330,21 @@ function mat_state_sources( $state ) {
 				'label' => $item['citation'],
 				'url'   => isset( $item['source_url'] ) ? $item['source_url'] : '',
 			);
+		}
+	}
+	$facts = $state['facts'];
+	foreach ( array( 'fault', 'lawsuit_deadline', 'small_claims' ) as $key ) {
+		if ( ! empty( $facts[ $key ]['citation'] ) ) {
+			$sources[] = array(
+				'label' => $facts[ $key ]['citation'],
+				'url'   => isset( $facts[ $key ]['source_url'] ) ? $facts[ $key ]['source_url'] : '',
+			);
+		}
+	}
+	$all = mat_read_theme_json( 'assets/js/data/state-claim-facts.json' );
+	foreach ( array( 'fault', 'lawsuit_deadline' ) as $key ) {
+		if ( ! empty( $facts[ $key ] ) && ! empty( $all['sources'][ $key ] ) ) {
+			$sources[] = $all['sources'][ $key ];
 		}
 	}
 	$sources[] = array(
