@@ -126,6 +126,13 @@ function mat_llms_txt() {
 		}
 		$lines[] = '';
 	}
+	$lowball = get_page_by_path( MAT_OUTCOMES_INDEX_SLUG );
+	if ( $lowball ) {
+		$lines[] = '## ' . __( 'Claim outcome data', 'myautotriage' );
+		$lines[] = '- [' . __( 'The Lowball Index', 'myautotriage' ) . '](' . get_permalink( $lowball ) . '): ' . __( 'How much car insurance claim offers move from the first offer to the final payment, from anonymous reader reports.', 'myautotriage' );
+		$lines[] = '- [' . __( 'Claim Outcome Survey', 'myautotriage' ) . '](' . mat_outcomes_survey_url() . ')';
+		$lines[] = '';
+	}
 	$lines[] = '## ' . __( 'About', 'myautotriage' );
 	foreach ( array( 'about-us', 'editorial-policy', 'disclaimer' ) as $slug ) {
 		$page = get_page_by_path( $slug );
