@@ -362,6 +362,7 @@ function mat_url_for_slug( $slug ) {
  * Print the worked example and the next-step links for a tool page.
  */
 function mat_tool_extras( $slug ) {
+	mat_outcomes_cta();
 	$extras = mat_get_tool_extras();
 	$key    = mat_tool_extras_key( $slug );
 	if ( empty( $extras[ $key ] ) ) {

@@ -265,7 +265,7 @@ function mat_seed_page_privacy() {
 	return '<p><em>' . sprintf( __( 'Last updated: %s', 'myautotriage' ), gmdate( 'F Y' ) ) . '</em></p>'
 	. '<p>' . sprintf( __( '%s ("we", "us") respects your privacy. This policy explains what information we collect and how we use it.', 'myautotriage' ), esc_html( $site ) ) . '</p>'
 	. '<h2>' . __( 'Information our tools handle', 'myautotriage' ) . '</h2>'
-	. '<p>' . __( 'Our calculators and letter generators run entirely in your browser. The figures and details you type into them (vehicle values, claim numbers, names, addresses, letter text) are not transmitted to our servers, stored in a database, or shared with anyone — they exist only on your device for as long as the page is open.', 'myautotriage' ) . '</p>'
+	. '<p>' . __( 'Our calculators and letter generators run entirely in your browser. The figures and details you type into them (vehicle values, claim numbers, names, addresses, letter text) are not transmitted to our servers, stored in a database, or shared with anyone — they stay on your device. The one exception is the claim outcome survey described below, which sends only the answers you choose to give it.', 'myautotriage' ) . '</p>'
 	. '<h2>' . __( 'Cookies and advertising', 'myautotriage' ) . '</h2>'
 	. '<p>' . __( 'We may use cookies and similar technologies for basic site analytics and to serve advertising, including through Google AdSense. Google and its partners may use cookies to serve ads based on your prior visits to this or other websites. You can opt out of personalized advertising by visiting Google\'s Ads Settings, or generally by visiting www.aboutads.info.', 'myautotriage' ) . '</p>'
 	. '<h2>' . __( 'Third-party links', 'myautotriage' ) . '</h2>'

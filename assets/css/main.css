@@ -375,3 +375,14 @@ button, input, select, textarea { font-family: inherit; font-size: 1rem; }
 .mat-diary-confirm { display: flex; flex-wrap: wrap; gap: .6em; align-items: center; margin-top: 1em; font-weight: 600; }
 .mat-diary-timeline { width: 100%; min-height: 220px; margin-top: 1em; padding: .8em; border: 1px solid var(--mat-line); border-radius: var(--mat-radius-sm); font-family: inherit; }
 #mat-diary [hidden] { display: none !important; }
+
+/* Claim outcome survey and Lowball Index */
+.mat-out-steps { border: 1px solid var(--mat-line); border-radius: var(--mat-radius-sm); padding: .8em 1em; margin: 0 0 1.2em; }
+.mat-out-steps legend { float: left; width: 100%; padding: 0; margin: 0 0 .4em; font-weight: 700; }
+.mat-out-steps legend + * { clear: both; }
+.mat-out-steps label { display: flex; gap: .5em; align-items: flex-start; margin: .35em 0; font-weight: 400; }
+.mat-out-steps input { margin-top: .3em; }
+.mat-out-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+#mat-out-thanks:focus { outline: none; }
+.mat-outcomes-cta { margin: 1.5em 0 0; padding: .8em 1em; background: var(--mat-bg-alt); border: 1px solid var(--mat-line); border-radius: var(--mat-radius-sm); font-size: .95rem; }
+[hidden].mat-triage-result, #mat-out-form[hidden] { display: none !important; }
