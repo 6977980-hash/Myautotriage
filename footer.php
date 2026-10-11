@@ -61,6 +61,9 @@
 				<?php if ( get_page_by_path( MAT_ADJUSTER_HUB_SLUG ) ) : ?>
 					<li><a href="<?php echo esc_url( mat_adjuster_hub_url() ); ?>"><?php esc_html_e( 'What the Adjuster Said', 'myautotriage' ); ?></a></li>
 				<?php endif; ?>
+				<?php if ( get_page_by_path( MAT_INSURER_HUB_SLUG ) ) : ?>
+					<li><a href="<?php echo esc_url( mat_insurer_hub_url() ); ?>"><?php esc_html_e( 'Insurer Complaint Ratings', 'myautotriage' ); ?></a></li>
+				<?php endif; ?>
 				<?php if ( get_page_by_path( MAT_OUTCOMES_INDEX_SLUG ) ) : ?>
 					<li><a href="<?php echo esc_url( home_url( user_trailingslashit( MAT_OUTCOMES_INDEX_SLUG ) ) ); ?>"><?php esc_html_e( 'The Lowball Index', 'myautotriage' ); ?></a></li>
 				<?php endif; ?>

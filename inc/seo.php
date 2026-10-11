@@ -78,6 +78,13 @@ function mat_get_meta_description() {
 		if ( $adjuster ) {
 			return $adjuster['meta'];
 		}
+		$insurer = mat_current_insurer( $post );
+		if ( $insurer ) {
+			return mat_insurer_meta( $insurer );
+		}
+		if ( MAT_INSURER_HUB_SLUG === $post->post_name && ! $post->post_parent ) {
+			return __( 'Which car insurance companies get the most complaints for their size? State Farm, Progressive, GEICO, Allstate, USAA and more, rated with Texas and New York regulator data.', 'myautotriage' );
+		}
 		if ( MAT_ADJUSTER_HUB_SLUG === $post->post_name && ! $post->post_parent ) {
 			return __( 'What adjusters mean when they say "final offer", "recorded statement", "aftermarket parts", "betterment" and more, with the claim-handling rule behind each and a reply to copy.', 'myautotriage' );
 		}
@@ -148,6 +155,13 @@ function mat_get_seo_title() {
 		$adjuster = mat_current_adjuster_phrase( $post );
 		if ( $adjuster ) {
 			return $adjuster['seo_title'];
+		}
+		$insurer = mat_current_insurer( $post );
+		if ( $insurer ) {
+			return mat_insurer_seo_title( $insurer ) . ' | ' . get_bloginfo( 'name' );
+		}
+		if ( MAT_INSURER_HUB_SLUG === $post->post_name && ! $post->post_parent ) {
+			return __( 'Car Insurance Company Complaint Ratings by State Regulators', 'myautotriage' ) . ' | ' . get_bloginfo( 'name' );
 		}
 		if ( MAT_ADJUSTER_HUB_SLUG === $post->post_name && ! $post->post_parent ) {
 			return __( 'What the Insurance Adjuster Said, Decoded: Phrases and Replies', 'myautotriage' ) . ' | ' . get_bloginfo( 'name' );

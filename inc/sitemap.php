@@ -126,6 +126,14 @@ function mat_llms_txt() {
 		}
 		$lines[] = '';
 	}
+	if ( get_page_by_path( MAT_INSURER_HUB_SLUG ) ) {
+		$lines[] = '## ' . __( 'Insurer complaint ratings', 'myautotriage' );
+		$lines[] = '- [' . __( 'Car insurance company complaint ratings (Texas and New York regulator data)', 'myautotriage' ) . '](' . mat_insurer_hub_url() . ')';
+		foreach ( mat_insurers() as $insurer ) {
+			$lines[] = '- [' . mat_insurer_seo_title( $insurer ) . '](' . mat_insurer_url( $insurer ) . '): ' . mat_insurer_summary( $insurer );
+		}
+		$lines[] = '';
+	}
 	$lowball = get_page_by_path( MAT_OUTCOMES_INDEX_SLUG );
 	if ( $lowball ) {
 		$lines[] = '## ' . __( 'Claim outcome data', 'myautotriage' );

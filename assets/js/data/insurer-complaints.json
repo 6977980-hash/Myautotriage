@@ -1,0 +1,1762 @@
+{
+ "built": "2026-10-11",
+ "tx_year": "2025",
+ "ny_year": "2024",
+ "tx_market": {
+  "complaints": 10155,
+  "confirmed": 2537,
+  "claim_complaints": 8180,
+  "claim_paid": 4625,
+  "reasons": [
+   {
+    "reason": "Poor claim handling or communication",
+    "count": 6378
+   },
+   {
+    "reason": "Claim delays",
+    "count": 5074
+   },
+   {
+    "reason": "Low settlement offer",
+    "count": 3199
+   },
+   {
+    "reason": "Claim denied",
+    "count": 1387
+   },
+   {
+    "reason": "Policy service problems",
+    "count": 1246
+   }
+  ],
+  "policies": 15057105,
+  "confirmed_indexed": 2481,
+  "companies": 493
+ },
+ "ny_market": {
+  "upheld": 629,
+  "premium_millions": 18428.2,
+  "ratio": 0.0341,
+  "companies": 128
+ },
+ "groups": [
+  {
+   "slug": "state-farm",
+   "name": "State Farm",
+   "companies": [
+    {
+     "state": "TX",
+     "name": "STATE FARM COUNTY MUTUAL INSURANCE COMPANY OF TEXAS",
+     "naic": "26816",
+     "policies": 155206,
+     "confirmed": 26,
+     "index": 1.02
+    },
+    {
+     "state": "TX",
+     "name": "STATE FARM FIRE AND CASUALTY COMPANY",
+     "naic": "25143",
+     "policies": 3,
+     "confirmed": 1,
+     "index": 2022.99
+    },
+    {
+     "state": "TX",
+     "name": "STATE FARM MUTUAL AUTOMOBILE INSURANCE COMPANY",
+     "naic": "25178",
+     "policies": 4040188,
+     "confirmed": 201,
+     "index": 0.3
+    },
+    {
+     "state": "NY",
+     "name": "State Farm Mutual Automobile Insurance Company",
+     "naic": "25178",
+     "premium_millions": 2731.5,
+     "upheld": 91,
+     "rank": 71
+    },
+    {
+     "state": "NY",
+     "name": "State Farm Fire and Casualty Company",
+     "naic": "25143",
+     "premium_millions": 312.8,
+     "upheld": 14,
+     "rank": 81
+    }
+   ],
+   "tx": {
+    "index_confirmed": 228,
+    "policies": 4195397,
+    "index": 0.33,
+    "complaints": 1172,
+    "confirmed": 201,
+    "claim_complaints": 991,
+    "claim_paid": 555,
+    "reasons": [
+     {
+      "reason": "Poor claim handling or communication",
+      "count": 744
+     },
+     {
+      "reason": "Low settlement offer",
+      "count": 538
+     },
+     {
+      "reason": "Claim delays",
+      "count": 526
+     },
+     {
+      "reason": "Claim denied",
+      "count": 119
+     },
+     {
+      "reason": "Disputed who was at fault",
+      "count": 117
+     }
+    ]
+   },
+   "ny": {
+    "upheld": 105,
+    "total": 944,
+    "premium_millions": 3044.3,
+    "ratio": 0.0345,
+    "index": 1.01
+   }
+  },
+  {
+   "slug": "progressive",
+   "name": "Progressive",
+   "companies": [
+    {
+     "state": "TX",
+     "name": "PROGRESSIVE COUNTY MUTUAL INSURANCE COMPANY",
+     "naic": "29203",
+     "policies": 3306121,
+     "confirmed": 362,
+     "index": 0.66
+    },
+    {
+     "state": "NY",
+     "name": "Progressive Specialty Insurance Company",
+     "naic": "32786",
+     "premium_millions": 327.6,
+     "upheld": 2,
+     "rank": 48
+    },
+    {
+     "state": "NY",
+     "name": "Progressive Advanced Insurance Company",
+     "naic": "11851",
+     "premium_millions": 698.9,
+     "upheld": 11,
+     "rank": 57
+    },
+    {
+     "state": "NY",
+     "name": "Progressive Max Insurance Company",
+     "naic": "24279",
+     "premium_millions": 284.1,
+     "upheld": 5,
+     "rank": 61
+    },
+    {
+     "state": "NY",
+     "name": "Progressive Northwestern Insurance Company",
+     "naic": "42919",
+     "premium_millions": 45.3,
+     "upheld": 1,
+     "rank": 62
+    },
+    {
+     "state": "NY",
+     "name": "Progressive Casualty Insurance Company",
+     "naic": "24260",
+     "premium_millions": 683.5,
+     "upheld": 40,
+     "rank": 85
+    },
+    {
+     "state": "NY",
+     "name": "Progressive Direct Insurance Company",
+     "naic": "16322",
+     "premium_millions": 24.5,
+     "upheld": 3,
+     "rank": 101
+    }
+   ],
+   "tx": {
+    "index_confirmed": 362,
+    "policies": 3306121,
+    "index": 0.66,
+    "complaints": 1470,
+    "confirmed": 336,
+    "claim_complaints": 1168,
+    "claim_paid": 657,
+    "reasons": [
+     {
+      "reason": "Poor claim handling or communication",
+      "count": 885
+     },
+     {
+      "reason": "Claim delays",
+      "count": 642
+     },
+     {
+      "reason": "Low settlement offer",
+      "count": 511
+     },
+     {
+      "reason": "Claim denied",
+      "count": 211
+     },
+     {
+      "reason": "Policy service problems",
+      "count": 208
+     }
+    ]
+   },
+   "ny": {
+    "upheld": 62,
+    "total": 728,
+    "premium_millions": 2063.9,
+    "ratio": 0.03,
+    "index": 0.88
+   }
+  },
+  {
+   "slug": "geico",
+   "name": "GEICO",
+   "companies": [
+    {
+     "state": "TX",
+     "name": "GEICO TEXAS COUNTY MUTUAL INSURANCE COMPANY",
+     "naic": "27863",
+     "policies": 855054,
+     "confirmed": 84,
+     "index": 0.6
+    },
+    {
+     "state": "TX",
+     "name": "GOVERNMENT EMPLOYEES INSURANCE COMPANY",
+     "naic": "22063",
+     "policies": 71227,
+     "confirmed": 8,
+     "index": 0.68
+    },
+    {
+     "state": "TX",
+     "name": "GEICO GENERAL INSURANCE COMPANY",
+     "naic": "35882",
+     "policies": 7007,
+     "confirmed": 1,
+     "index": 0.87
+    },
+    {
+     "state": "TX",
+     "name": "GEICO INDEMNITY COMPANY",
+     "naic": "22055",
+     "policies": 69269,
+     "confirmed": 1,
+     "index": 0.09
+    },
+    {
+     "state": "TX",
+     "name": "GEICO COUNTY MUTUAL INSURANCE COMPANY",
+     "naic": "29181",
+     "policies": 308449,
+     "confirmed": 69,
+     "index": 1.36
+    },
+    {
+     "state": "TX",
+     "name": "GEICO ADVANTAGE INSURANCE COMPANY",
+     "naic": "14138",
+     "policies": 14570,
+     "confirmed": 1,
+     "index": 0.42
+    },
+    {
+     "state": "NY",
+     "name": "GEICO General Insurance Company",
+     "naic": "35882",
+     "premium_millions": 3249.6,
+     "upheld": 24,
+     "rank": 49
+    },
+    {
+     "state": "NY",
+     "name": "Government Employees Insurance Company",
+     "naic": "22063",
+     "premium_millions": 859.9,
+     "upheld": 7,
+     "rank": 51
+    },
+    {
+     "state": "NY",
+     "name": "GEICO Indemnity Company",
+     "naic": "22055",
+     "premium_millions": 1187.1,
+     "upheld": 17,
+     "rank": 56
+    }
+   ],
+   "tx": {
+    "index_confirmed": 164,
+    "policies": 1325576,
+    "index": 0.75,
+    "complaints": 736,
+    "confirmed": 183,
+    "claim_complaints": 555,
+    "claim_paid": 317,
+    "reasons": [
+     {
+      "reason": "Poor claim handling or communication",
+      "count": 419
+     },
+     {
+      "reason": "Claim delays",
+      "count": 291
+     },
+     {
+      "reason": "Low settlement offer",
+      "count": 228
+     },
+     {
+      "reason": "Policy service problems",
+      "count": 119
+     },
+     {
+      "reason": "Claim denied",
+      "count": 101
+     }
+    ]
+   },
+   "ny": {
+    "upheld": 48,
+    "total": 859,
+    "premium_millions": 5296.6,
+    "ratio": 0.0091,
+    "index": 0.27
+   }
+  },
+  {
+   "slug": "allstate",
+   "name": "Allstate",
+   "companies": [
+    {
+     "state": "TX",
+     "name": "ALLSTATE INDEMNITY COMPANY",
+     "naic": "19240",
+     "policies": 55258,
+     "confirmed": 4,
+     "index": 0.44
+    },
+    {
+     "state": "TX",
+     "name": "ALLSTATE INSURANCE COMPANY",
+     "naic": "19232",
+     "policies": 6738,
+     "confirmed": 3,
+     "index": 2.7
+    },
+    {
+     "state": "TX",
+     "name": "ALLSTATE FIRE AND CASUALTY INSURANCE COMPANY",
+     "naic": "29688",
+     "policies": 505836,
+     "confirmed": 97,
+     "index": 1.16
+    },
+    {
+     "state": "TX",
+     "name": "ESURANCE INSURANCE COMPANY",
+     "naic": "25712",
+     "policies": 7728,
+     "confirmed": 2,
+     "index": 1.57
+    },
+    {
+     "state": "TX",
+     "name": "ALLSTATE COUNTY MUTUAL INSURANCE COMPANY",
+     "naic": "29335",
+     "policies": 203656,
+     "confirmed": 8,
+     "index": 0.24
+    },
+    {
+     "state": "TX",
+     "name": "ALLSTATE PROPERTY AND CASUALTY INSURANCE COMPANY",
+     "naic": "17230",
+     "policies": 53784,
+     "confirmed": 1,
+     "index": 0.11
+    },
+    {
+     "state": "TX",
+     "name": "ENCOMPASS INDEMNITY COMPANY",
+     "naic": "15130",
+     "policies": 20,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "ENCOMPASS HOME AND AUTO INSURANCE COMPANY",
+     "naic": "11252",
+     "policies": 4,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "ENCOMPASS PROPERTY AND CASUALTY COMPANY",
+     "naic": "10072",
+     "policies": 1,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "ESURANCE PROPERTY AND CASUALTY INSURANCE COMPANY",
+     "naic": "30210",
+     "policies": 84,
+     "confirmed": 1,
+     "index": 72.25
+    },
+    {
+     "state": "NY",
+     "name": "Allstate Indemnity Company",
+     "naic": "19240",
+     "premium_millions": 41.5,
+     "upheld": 0,
+     "rank": 4
+    },
+    {
+     "state": "NY",
+     "name": "Encompass Insurance Company of America",
+     "naic": "10071",
+     "premium_millions": 3.1,
+     "upheld": 0,
+     "rank": 36
+    },
+    {
+     "state": "NY",
+     "name": "Encompass Property and Casualty Company",
+     "naic": "10072",
+     "premium_millions": 1.4,
+     "upheld": 0,
+     "rank": 47
+    },
+    {
+     "state": "NY",
+     "name": "Allstate Fire and Casualty Insurance Company",
+     "naic": "29688",
+     "premium_millions": 1623.7,
+     "upheld": 37,
+     "rank": 63
+    },
+    {
+     "state": "NY",
+     "name": "Allstate Property and Casualty Insurance Company",
+     "naic": "17230",
+     "premium_millions": 139.9,
+     "upheld": 4,
+     "rank": 69
+    },
+    {
+     "state": "NY",
+     "name": "Encompass Home and Auto Insurance Company",
+     "naic": "11252",
+     "premium_millions": 22.8,
+     "upheld": 1,
+     "rank": 80
+    },
+    {
+     "state": "NY",
+     "name": "Allstate Insurance Company",
+     "naic": "19232",
+     "premium_millions": 476.6,
+     "upheld": 24,
+     "rank": 84
+    },
+    {
+     "state": "NY",
+     "name": "Esurance Property and Casualty Insurance Company",
+     "naic": "30210",
+     "premium_millions": 41.8,
+     "upheld": 6,
+     "rank": 105
+    },
+    {
+     "state": "NY",
+     "name": "Esurance Insurance Company",
+     "naic": "25712",
+     "premium_millions": 55.9,
+     "upheld": 14,
+     "rank": 118
+    },
+    {
+     "state": "NY",
+     "name": "Encompass Indemnity Company",
+     "naic": "15130",
+     "premium_millions": 2.5,
+     "upheld": 1,
+     "rank": 121
+    }
+   ],
+   "tx": {
+    "index_confirmed": 116,
+    "policies": 833109,
+    "index": 0.85,
+    "complaints": 547,
+    "confirmed": 108,
+    "claim_complaints": 436,
+    "claim_paid": 226,
+    "reasons": [
+     {
+      "reason": "Poor claim handling or communication",
+      "count": 317
+     },
+     {
+      "reason": "Low settlement offer",
+      "count": 225
+     },
+     {
+      "reason": "Claim delays",
+      "count": 213
+     },
+     {
+      "reason": "Claim denied",
+      "count": 84
+     },
+     {
+      "reason": "Policy service problems",
+      "count": 75
+     }
+    ]
+   },
+   "ny": {
+    "upheld": 87,
+    "total": 654,
+    "premium_millions": 2409.2,
+    "ratio": 0.0361,
+    "index": 1.06
+   }
+  },
+  {
+   "slug": "usaa",
+   "name": "USAA",
+   "companies": [
+    {
+     "state": "TX",
+     "name": "UNITED SERVICES AUTOMOBILE ASSOCIATION",
+     "naic": "25941",
+     "policies": 241317,
+     "confirmed": 47,
+     "index": 1.18
+    },
+    {
+     "state": "TX",
+     "name": "USAA GENERAL INDEMNITY COMPANY",
+     "naic": "18600",
+     "policies": 208828,
+     "confirmed": 54,
+     "index": 1.57
+    },
+    {
+     "state": "TX",
+     "name": "GARRISON PROPERTY AND CASUALTY INSURANCE COMPANY",
+     "naic": "21253",
+     "policies": 182037,
+     "confirmed": 51,
+     "index": 1.7
+    },
+    {
+     "state": "TX",
+     "name": "USAA CASUALTY INSURANCE COMPANY",
+     "naic": "25968",
+     "policies": 254367,
+     "confirmed": 59,
+     "index": 1.41
+    },
+    {
+     "state": "NY",
+     "name": "United Services Automobile Association",
+     "naic": "25941",
+     "premium_millions": 138.4,
+     "upheld": 6,
+     "rank": 79
+    },
+    {
+     "state": "NY",
+     "name": "USAA General Indemnity Company",
+     "naic": "18600",
+     "premium_millions": 128.9,
+     "upheld": 13,
+     "rank": 98
+    },
+    {
+     "state": "NY",
+     "name": "USAA Casualty Insurance Company",
+     "naic": "25968",
+     "premium_millions": 167.9,
+     "upheld": 20,
+     "rank": 100
+    },
+    {
+     "state": "NY",
+     "name": "Garrison Property and Casualty Insurance Company",
+     "naic": "21253",
+     "premium_millions": 113.6,
+     "upheld": 18,
+     "rank": 108
+    }
+   ],
+   "tx": {
+    "index_confirmed": 211,
+    "policies": 886549,
+    "index": 1.44,
+    "complaints": 581,
+    "confirmed": 191,
+    "claim_complaints": 514,
+    "claim_paid": 293,
+    "reasons": [
+     {
+      "reason": "Poor claim handling or communication",
+      "count": 399
+     },
+     {
+      "reason": "Claim delays",
+      "count": 305
+     },
+     {
+      "reason": "Low settlement offer",
+      "count": 261
+     },
+     {
+      "reason": "Claim denied",
+      "count": 63
+     },
+     {
+      "reason": "Policy service problems",
+      "count": 48
+     }
+    ]
+   },
+   "ny": {
+    "upheld": 57,
+    "total": 271,
+    "premium_millions": 548.8,
+    "ratio": 0.1039,
+    "index": 3.04
+   }
+  },
+  {
+   "slug": "liberty-mutual",
+   "name": "Liberty Mutual",
+   "companies": [
+    {
+     "state": "TX",
+     "name": "LIBERTY MUTUAL FIRE INSURANCE COMPANY",
+     "naic": "23035",
+     "policies": 474,
+     "confirmed": 5,
+     "index": 64.02
+    },
+    {
+     "state": "TX",
+     "name": "LIBERTY MUTUAL INSURANCE COMPANY",
+     "naic": "23043",
+     "policies": 162,
+     "confirmed": 1,
+     "index": 37.46
+    },
+    {
+     "state": "TX",
+     "name": "FIRST LIBERTY INSURANCE CORPORATION, THE",
+     "naic": "33588",
+     "policies": 120,
+     "confirmed": 1,
+     "index": 50.57
+    },
+    {
+     "state": "TX",
+     "name": "LM INSURANCE CORPORATION",
+     "naic": "33600",
+     "policies": 68,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "LIBERTY COUNTY MUTUAL INSURANCE COMPANY",
+     "naic": "19544",
+     "policies": 229570,
+     "confirmed": 46,
+     "index": 1.22
+    },
+    {
+     "state": "NY",
+     "name": "First Liberty Insurance Corporation",
+     "naic": "33588",
+     "premium_millions": 5.5,
+     "upheld": 0,
+     "rank": 25
+    },
+    {
+     "state": "NY",
+     "name": "Liberty Mutual Fire Insurance Company",
+     "naic": "23035",
+     "premium_millions": 105.0,
+     "upheld": 7,
+     "rank": 90
+    },
+    {
+     "state": "NY",
+     "name": "LM General Insurance Company",
+     "naic": "36447",
+     "premium_millions": 643.2,
+     "upheld": 45,
+     "rank": 91
+    },
+    {
+     "state": "NY",
+     "name": "American States Insurance Company",
+     "naic": "19704",
+     "premium_millions": 203.4,
+     "upheld": 16,
+     "rank": 92
+    },
+    {
+     "state": "NY",
+     "name": "SAFECO Insurance Company of Indiana",
+     "naic": "11215",
+     "premium_millions": 10.9,
+     "upheld": 1,
+     "rank": 96
+    },
+    {
+     "state": "NY",
+     "name": "LM Insurance Corporation",
+     "naic": "33600",
+     "premium_millions": 9.3,
+     "upheld": 1,
+     "rank": 99
+    },
+    {
+     "state": "NY",
+     "name": "Liberty Mutual Insurance Company",
+     "naic": "23043",
+     "premium_millions": 0.5,
+     "upheld": 20,
+     "rank": 128
+    }
+   ],
+   "tx": {
+    "index_confirmed": 53,
+    "policies": 230394,
+    "index": 1.4,
+    "complaints": 212,
+    "confirmed": 38,
+    "claim_complaints": 169,
+    "claim_paid": 91,
+    "reasons": [
+     {
+      "reason": "Poor claim handling or communication",
+      "count": 129
+     },
+     {
+      "reason": "Claim delays",
+      "count": 90
+     },
+     {
+      "reason": "Low settlement offer",
+      "count": 83
+     },
+     {
+      "reason": "Policy service problems",
+      "count": 32
+     },
+     {
+      "reason": "Claim denied",
+      "count": 28
+     }
+    ]
+   },
+   "ny": {
+    "upheld": 90,
+    "total": 450,
+    "premium_millions": 977.8,
+    "ratio": 0.092,
+    "index": 2.7
+   }
+  },
+  {
+   "slug": "farmers",
+   "name": "Farmers",
+   "companies": [
+    {
+     "state": "TX",
+     "name": "21ST CENTURY CENTENNIAL INSURANCE COMPANY",
+     "naic": "34789",
+     "policies": 658,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "FARMERS GROUP PROPERTY AND CASUALTY INSURANCE COMPANY",
+     "naic": "34339",
+     "policies": 395,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "FARMERS CASUALTY INSURANCE COMPANY",
+     "naic": "40169",
+     "policies": 228,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "FARMERS PROPERTY AND CASUALTY INSURANCE COMPANY",
+     "naic": "26298",
+     "policies": 22719,
+     "confirmed": 4,
+     "index": 1.07
+    },
+    {
+     "state": "TX",
+     "name": "MID-CENTURY INSURANCE COMPANY",
+     "naic": "21687",
+     "policies": 369,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "FOREMOST COUNTY MUTUAL INSURANCE COMPANY",
+     "naic": "29254",
+     "policies": 267286,
+     "confirmed": 29,
+     "index": 0.66
+    },
+    {
+     "state": "TX",
+     "name": "FOREMOST INSURANCE COMPANY GRAND RAPIDS, MICHIGAN",
+     "naic": "11185",
+     "policies": 44291,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "FARMERS TEXAS COUNTY MUTUAL INSURANCE COMPANY",
+     "naic": "24392",
+     "policies": 164219,
+     "confirmed": 31,
+     "index": 1.15
+    },
+    {
+     "state": "TX",
+     "name": "MID-CENTURY INSURANCE COMPANY OF TEXAS",
+     "naic": "28673",
+     "policies": 184315,
+     "confirmed": 14,
+     "index": 0.46
+    },
+    {
+     "state": "TX",
+     "name": "FARMERS LLOYDS INSURANCE COMPANY OF TEXAS",
+     "naic": "13938",
+     "policies": 5348,
+     "confirmed": 2,
+     "index": 2.27
+    },
+    {
+     "state": "NY",
+     "name": "Farmers Casualty Insurance Company",
+     "naic": "40169",
+     "premium_millions": 36.3,
+     "upheld": 0,
+     "rank": 6
+    },
+    {
+     "state": "NY",
+     "name": "Mid-Century Insurance Company",
+     "naic": "21687",
+     "premium_millions": 31.7,
+     "upheld": 1,
+     "rank": 70
+    },
+    {
+     "state": "NY",
+     "name": "Foremost Signature Insurance Company",
+     "naic": "41513",
+     "premium_millions": 27.5,
+     "upheld": 1,
+     "rank": 73
+    },
+    {
+     "state": "NY",
+     "name": "Farmers Group Property and Casualty Insurance Company",
+     "naic": "34339",
+     "premium_millions": 122.3,
+     "upheld": 5,
+     "rank": 76
+    },
+    {
+     "state": "NY",
+     "name": "Farmers Property and Casualty Insurance Company",
+     "naic": "26298",
+     "premium_millions": 116.6,
+     "upheld": 5,
+     "rank": 77
+    },
+    {
+     "state": "NY",
+     "name": "Foremost Insurance Company Grand Rapids, Michigan",
+     "naic": "11185",
+     "premium_millions": 11.8,
+     "upheld": 1,
+     "rank": 95
+    },
+    {
+     "state": "NY",
+     "name": "21st Century Centennial Insurance Company",
+     "naic": "34789",
+     "premium_millions": 14.2,
+     "upheld": 2,
+     "rank": 104
+    }
+   ],
+   "tx": {
+    "index_confirmed": 80,
+    "policies": 689828,
+    "index": 0.7,
+    "complaints": 281,
+    "confirmed": 63,
+    "claim_complaints": 212,
+    "claim_paid": 105,
+    "reasons": [
+     {
+      "reason": "Poor claim handling or communication",
+      "count": 147
+     },
+     {
+      "reason": "Low settlement offer",
+      "count": 108
+     },
+     {
+      "reason": "Claim delays",
+      "count": 93
+     },
+     {
+      "reason": "Claim denied",
+      "count": 52
+     },
+     {
+      "reason": "Policy service problems",
+      "count": 45
+     }
+    ]
+   },
+   "ny": {
+    "upheld": 15,
+    "total": 107,
+    "premium_millions": 360.4,
+    "ratio": 0.0416,
+    "index": 1.22
+   }
+  },
+  {
+   "slug": "nationwide",
+   "name": "Nationwide",
+   "companies": [
+    {
+     "state": "TX",
+     "name": "NATIONWIDE AFFINITY INSURANCE COMPANY OF AMERICA",
+     "naic": "26093",
+     "policies": 74,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "NATIONWIDE GENERAL INSURANCE COMPANY",
+     "naic": "23760",
+     "policies": 8,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "NATIONWIDE MUTUAL INSURANCE COMPANY",
+     "naic": "23787",
+     "policies": 14774,
+     "confirmed": 1,
+     "index": 0.41
+    },
+    {
+     "state": "TX",
+     "name": "NATIONWIDE INSURANCE COMPANY OF AMERICA",
+     "naic": "25453",
+     "policies": 24,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "NATIONWIDE ASSURANCE COMPANY",
+     "naic": "10723",
+     "policies": 154,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "NY",
+     "name": "Nationwide Mutual Insurance Company",
+     "naic": "23787",
+     "premium_millions": 38.8,
+     "upheld": 0,
+     "rank": 5
+    },
+    {
+     "state": "NY",
+     "name": "Nationwide Insurance Company of America",
+     "naic": "25453",
+     "premium_millions": 19.9,
+     "upheld": 0,
+     "rank": 10
+    },
+    {
+     "state": "NY",
+     "name": "Nationwide Assurance Company",
+     "naic": "10723",
+     "premium_millions": 2.4,
+     "upheld": 0,
+     "rank": 41
+    },
+    {
+     "state": "NY",
+     "name": "Nationwide General Insurance Company",
+     "naic": "23760",
+     "premium_millions": 122.3,
+     "upheld": 1,
+     "rank": 52
+    },
+    {
+     "state": "NY",
+     "name": "Nationwide Affinity Insurance Company of America",
+     "naic": "26093",
+     "premium_millions": 57.0,
+     "upheld": 1,
+     "rank": 60
+    }
+   ],
+   "tx": {
+    "index_confirmed": 1,
+    "policies": 15034,
+    "index": 0.4,
+    "complaints": 5,
+    "confirmed": 1,
+    "claim_complaints": 3,
+    "claim_paid": 1,
+    "reasons": [
+     {
+      "reason": "Premium refund",
+      "count": 2
+     },
+     {
+      "reason": "Poor claim handling or communication",
+      "count": 2
+     },
+     {
+      "reason": "Claim Recoding/Bundling",
+      "count": 1
+     },
+     {
+      "reason": "Low settlement offer",
+      "count": 1
+     },
+     {
+      "reason": "Claim delays",
+      "count": 1
+     }
+    ]
+   },
+   "ny": {
+    "upheld": 2,
+    "total": 58,
+    "premium_millions": 240.4,
+    "ratio": 0.0083,
+    "index": 0.24
+   }
+  },
+  {
+   "slug": "travelers",
+   "name": "Travelers",
+   "companies": [
+    {
+     "state": "TX",
+     "name": "TRAVELERS CASUALTY INSURANCE COMPANY OF AMERICA",
+     "naic": "19046",
+     "policies": 5109,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "TRAVELERS PROPERTY CASUALTY COMPANY OF AMERICA",
+     "naic": "25674",
+     "policies": 2708,
+     "confirmed": 1,
+     "index": 2.24
+    },
+    {
+     "state": "TX",
+     "name": "TRAVELERS INDEMNITY COMPANY OF CONNECTICUT, THE",
+     "naic": "25682",
+     "policies": 950,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "STANDARD FIRE INSURANCE COMPANY, THE",
+     "naic": "19070",
+     "policies": 14,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "PHOENIX INSURANCE COMPANY, THE",
+     "naic": "25623",
+     "policies": 2608,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "CHARTER OAK FIRE INSURANCE COMPANY, THE",
+     "naic": "25615",
+     "policies": 2167,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "AUTOMOBILE INSURANCE COMPANY OF HARTFORD, CONNECTICUT, THE",
+     "naic": "19062",
+     "policies": 3494,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "TRAVELERS PERSONAL SECURITY INSURANCE COMPANY",
+     "naic": "36145",
+     "policies": 106,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "TRAVELERS HOME AND MARINE INSURANCE COMPANY, THE",
+     "naic": "27998",
+     "policies": 8960,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "NY",
+     "name": "Phoenix Insurance Company",
+     "naic": "25623",
+     "premium_millions": 3.6,
+     "upheld": 0,
+     "rank": 33
+    },
+    {
+     "state": "NY",
+     "name": "Automobile Insurance Company of Hartford, Connecticut",
+     "naic": "19062",
+     "premium_millions": 3.0,
+     "upheld": 0,
+     "rank": 37
+    },
+    {
+     "state": "NY",
+     "name": "TravCo Insurance Company",
+     "naic": "28188",
+     "premium_millions": 2.9,
+     "upheld": 0,
+     "rank": 38
+    },
+    {
+     "state": "NY",
+     "name": "Travelers Indemnity Company of Connecticut",
+     "naic": "25682",
+     "premium_millions": 2.6,
+     "upheld": 0,
+     "rank": 40
+    },
+    {
+     "state": "NY",
+     "name": "Charter Oak Fire Insurance Company",
+     "naic": "25615",
+     "premium_millions": 1.7,
+     "upheld": 0,
+     "rank": 45
+    },
+    {
+     "state": "NY",
+     "name": "Travelers Home and Marine Insurance Company",
+     "naic": "27998",
+     "premium_millions": 79.8,
+     "upheld": 1,
+     "rank": 54
+    },
+    {
+     "state": "NY",
+     "name": "Travelers Personal Insurance Company",
+     "naic": "38130",
+     "premium_millions": 520.3,
+     "upheld": 12,
+     "rank": 64
+    },
+    {
+     "state": "NY",
+     "name": "Travelers Personal Security Insurance Company",
+     "naic": "36145",
+     "premium_millions": 49.3,
+     "upheld": 3,
+     "rank": 87
+    },
+    {
+     "state": "NY",
+     "name": "Standard Fire Insurance Company",
+     "naic": "19070",
+     "premium_millions": 114.4,
+     "upheld": 7,
+     "rank": 89
+    },
+    {
+     "state": "NY",
+     "name": "Travelers Commercial Insurance Company",
+     "naic": "36137",
+     "premium_millions": 7.8,
+     "upheld": 1,
+     "rank": 102
+    },
+    {
+     "state": "NY",
+     "name": "Travelers Property Casualty Company of America",
+     "naic": "25674",
+     "premium_millions": 20.3,
+     "upheld": 3,
+     "rank": 106
+    },
+    {
+     "state": "NY",
+     "name": "Travelers Property Casualty Insurance Company",
+     "naic": "36161",
+     "premium_millions": 0.4,
+     "upheld": 1,
+     "rank": 124
+    }
+   ],
+   "tx": {
+    "index_confirmed": 1,
+    "policies": 26116,
+    "index": 0.23,
+    "complaints": 13,
+    "confirmed": 1,
+    "claim_complaints": 11,
+    "claim_paid": 6,
+    "reasons": [
+     {
+      "reason": "Poor claim handling or communication",
+      "count": 9
+     },
+     {
+      "reason": "Claim delays",
+      "count": 8
+     },
+     {
+      "reason": "Claim denied",
+      "count": 4
+     },
+     {
+      "reason": "Disputed who was at fault",
+      "count": 2
+     },
+     {
+      "reason": "Low settlement offer",
+      "count": 2
+     }
+    ]
+   },
+   "ny": {
+    "upheld": 28,
+    "total": 140,
+    "premium_millions": 806.1,
+    "ratio": 0.0347,
+    "index": 1.02
+   }
+  },
+  {
+   "slug": "the-hartford",
+   "name": "The Hartford",
+   "companies": [
+    {
+     "state": "TX",
+     "name": "HARTFORD INSURANCE COMPANY OF THE MIDWEST",
+     "naic": "37478",
+     "policies": 642,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "HARTFORD UNDERWRITERS INSURANCE COMPANY",
+     "naic": "30104",
+     "policies": 165,
+     "confirmed": 2,
+     "index": 73.56
+    },
+    {
+     "state": "TX",
+     "name": "HARTFORD CASUALTY INSURANCE COMPANY",
+     "naic": "29424",
+     "policies": 37,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "TX",
+     "name": "HARTFORD FIRE INSURANCE COMPANY",
+     "naic": "19682",
+     "policies": 42391,
+     "confirmed": 2,
+     "index": 0.29
+    },
+    {
+     "state": "TX",
+     "name": "TRUMBULL INSURANCE COMPANY",
+     "naic": "27120",
+     "policies": 25668,
+     "confirmed": 3,
+     "index": 0.71
+    },
+    {
+     "state": "TX",
+     "name": "SENTINEL INSURANCE COMPANY, LTD.",
+     "naic": "11000",
+     "policies": 9385,
+     "confirmed": 3,
+     "index": 1.94
+    },
+    {
+     "state": "NY",
+     "name": "Hartford Insurance Company of Illinois",
+     "naic": "38288",
+     "premium_millions": 17.8,
+     "upheld": 0,
+     "rank": 12
+    },
+    {
+     "state": "NY",
+     "name": "Hartford Insurance Company of the Midwest",
+     "naic": "37478",
+     "premium_millions": 5.4,
+     "upheld": 0,
+     "rank": 26
+    },
+    {
+     "state": "NY",
+     "name": "Sentinel Insurance Company, Ltd.",
+     "naic": "11000",
+     "premium_millions": 2.2,
+     "upheld": 0,
+     "rank": 43
+    },
+    {
+     "state": "NY",
+     "name": "Hartford Underwriters Insurance Company",
+     "naic": "30104",
+     "premium_millions": 122.5,
+     "upheld": 2,
+     "rank": 59
+    },
+    {
+     "state": "NY",
+     "name": "Hartford Casualty Insurance Company",
+     "naic": "29424",
+     "premium_millions": 43.0,
+     "upheld": 1,
+     "rank": 65
+    },
+    {
+     "state": "NY",
+     "name": "Hartford Fire Insurance Company",
+     "naic": "19682",
+     "premium_millions": 0.9,
+     "upheld": 1,
+     "rank": 122
+    }
+   ],
+   "tx": {
+    "index_confirmed": 10,
+    "policies": 78288,
+    "index": 0.78,
+    "complaints": 19,
+    "confirmed": 9,
+    "claim_complaints": 13,
+    "claim_paid": 8,
+    "reasons": [
+     {
+      "reason": "Poor claim handling or communication",
+      "count": 9
+     },
+     {
+      "reason": "Claim delays",
+      "count": 7
+     },
+     {
+      "reason": "Low settlement offer",
+      "count": 7
+     },
+     {
+      "reason": "Policy service problems",
+      "count": 3
+     },
+     {
+      "reason": "Policy service delays",
+      "count": 2
+     }
+    ]
+   },
+   "ny": {
+    "upheld": 4,
+    "total": 63,
+    "premium_millions": 191.9,
+    "ratio": 0.0208,
+    "index": 0.61
+   }
+  },
+  {
+   "slug": "kemper",
+   "name": "Kemper",
+   "companies": [
+    {
+     "state": "TX",
+     "name": "INFINITY COUNTY MUTUAL INSURANCE COMPANY",
+     "naic": "13820",
+     "policies": 65556,
+     "confirmed": 33,
+     "index": 3.06
+    },
+    {
+     "state": "NY",
+     "name": "Unitrin Preferred Insurance Company",
+     "naic": "25909",
+     "premium_millions": 2.6,
+     "upheld": 0,
+     "rank": 39
+    },
+    {
+     "state": "NY",
+     "name": "Unitrin Direct Insurance Company",
+     "naic": "10226",
+     "premium_millions": 1.7,
+     "upheld": 0,
+     "rank": 46
+    },
+    {
+     "state": "NY",
+     "name": "Unitrin Safeguard Insurance Company",
+     "naic": "40703",
+     "premium_millions": 29.2,
+     "upheld": 4,
+     "rank": 103
+    },
+    {
+     "state": "NY",
+     "name": "Kemper Independence Insurance Company",
+     "naic": "10914",
+     "premium_millions": 19.1,
+     "upheld": 4,
+     "rank": 115
+    },
+    {
+     "state": "NY",
+     "name": "Unitrin Auto and Home Insurance Company",
+     "naic": "16063",
+     "premium_millions": 2.6,
+     "upheld": 1,
+     "rank": 120
+    },
+    {
+     "state": "NY",
+     "name": "Infinity Insurance Company",
+     "naic": "22268",
+     "premium_millions": 0.5,
+     "upheld": 1,
+     "rank": 123
+    }
+   ],
+   "tx": {
+    "index_confirmed": 33,
+    "policies": 65556,
+    "index": 3.06,
+    "complaints": 131,
+    "confirmed": 33,
+    "claim_complaints": 124,
+    "claim_paid": 76,
+    "reasons": [
+     {
+      "reason": "Poor claim handling or communication",
+      "count": 103
+     },
+     {
+      "reason": "Claim delays",
+      "count": 87
+     },
+     {
+      "reason": "Low settlement offer",
+      "count": 40
+     },
+     {
+      "reason": "Claim denied",
+      "count": 18
+     },
+     {
+      "reason": "Disputed who was at fault",
+      "count": 10
+     }
+    ]
+   },
+   "ny": {
+    "upheld": 10,
+    "total": 33,
+    "premium_millions": 55.6,
+    "ratio": 0.1799,
+    "index": 5.27
+   }
+  },
+  {
+   "slug": "mercury",
+   "name": "Mercury",
+   "companies": [
+    {
+     "state": "TX",
+     "name": "MERCURY COUNTY MUTUAL INSURANCE COMPANY",
+     "naic": "29394",
+     "policies": 47087,
+     "confirmed": 7,
+     "index": 0.9
+    },
+    {
+     "state": "NY",
+     "name": "Mercury Casualty Company",
+     "naic": "11908",
+     "premium_millions": 22.4,
+     "upheld": 0,
+     "rank": 9
+    }
+   ],
+   "tx": {
+    "index_confirmed": 7,
+    "policies": 47087,
+    "index": 0.9,
+    "complaints": 26,
+    "confirmed": 7,
+    "claim_complaints": 21,
+    "claim_paid": 14,
+    "reasons": [
+     {
+      "reason": "Poor claim handling or communication",
+      "count": 16
+     },
+     {
+      "reason": "Claim delays",
+      "count": 13
+     },
+     {
+      "reason": "Low settlement offer",
+      "count": 11
+     },
+     {
+      "reason": "Premium or rating",
+      "count": 4
+     },
+     {
+      "reason": "Premium refund",
+      "count": 3
+     }
+    ]
+   },
+   "ny": {
+    "upheld": 0,
+    "total": 12,
+    "premium_millions": 22.4,
+    "ratio": 0.0,
+    "index": 0.0
+   }
+  },
+  {
+   "slug": "erie",
+   "name": "Erie",
+   "companies": [
+    {
+     "state": "NY",
+     "name": "Erie Insurance Company of New York",
+     "naic": "16233",
+     "premium_millions": 126.1,
+     "upheld": 2,
+     "rank": 58
+    },
+    {
+     "state": "NY",
+     "name": "Erie Insurance Company",
+     "naic": "26263",
+     "premium_millions": 102.7,
+     "upheld": 4,
+     "rank": 74
+    }
+   ],
+   "ny": {
+    "upheld": 6,
+    "total": 57,
+    "premium_millions": 228.8,
+    "ratio": 0.0262,
+    "index": 0.77
+   }
+  },
+  {
+   "slug": "amica",
+   "name": "Amica",
+   "companies": [
+    {
+     "state": "TX",
+     "name": "AMICA MUTUAL INSURANCE COMPANY",
+     "naic": "19976",
+     "policies": 40049,
+     "confirmed": 5,
+     "index": 0.76
+    },
+    {
+     "state": "TX",
+     "name": "AMICA PROPERTY AND CASUALTY INSURANCE COMPANY",
+     "naic": "12287",
+     "policies": 2235,
+     "confirmed": 0,
+     "index": 0.0
+    },
+    {
+     "state": "NY",
+     "name": "Amica Property and Casualty Insurance Company",
+     "naic": "12287",
+     "premium_millions": 5.1,
+     "upheld": 0,
+     "rank": 29
+    },
+    {
+     "state": "NY",
+     "name": "Amica Mutual Insurance Company",
+     "naic": "19976",
+     "premium_millions": 92.3,
+     "upheld": 4,
+     "rank": 78
+    }
+   ],
+   "tx": {
+    "index_confirmed": 5,
+    "policies": 42284,
+    "index": 0.72,
+    "complaints": 22,
+    "confirmed": 4,
+    "claim_complaints": 16,
+    "claim_paid": 13,
+    "reasons": [
+     {
+      "reason": "Low settlement offer",
+      "count": 12
+     },
+     {
+      "reason": "Poor claim handling or communication",
+      "count": 11
+     },
+     {
+      "reason": "Claim delays",
+      "count": 10
+     },
+     {
+      "reason": "Premium or rating",
+      "count": 3
+     },
+     {
+      "reason": "Policy service problems",
+      "count": 3
+     }
+    ]
+   },
+   "ny": {
+    "upheld": 4,
+    "total": 17,
+    "premium_millions": 97.4,
+    "ratio": 0.0411,
+    "index": 1.2
+   }
+  },
+  {
+   "slug": "tesla",
+   "name": "Tesla Insurance",
+   "companies": [
+    {
+     "state": "TX",
+     "name": "TESLA PROPERTY & CASUALTY, INC.",
+     "naic": "24821",
+     "policies": 40364,
+     "confirmed": 241,
+     "index": 36.24
+    }
+   ],
+   "tx": {
+    "index_confirmed": 241,
+    "policies": 40364,
+    "index": 36.24,
+    "complaints": 242,
+    "confirmed": 188,
+    "claim_complaints": 225,
+    "claim_paid": 185,
+    "reasons": [
+     {
+      "reason": "Poor claim handling or communication",
+      "count": 212
+     },
+     {
+      "reason": "Claim delays",
+      "count": 206
+     },
+     {
+      "reason": "Low settlement offer",
+      "count": 46
+     },
+     {
+      "reason": "Premium or rating",
+      "count": 13
+     },
+     {
+      "reason": "Policy service problems",
+      "count": 12
+     }
+    ]
+   }
+  }
+ ]
+}
