@@ -80,6 +80,24 @@ function mat_seed_pages() {
 			'content'  => '',
 		),
 		array(
+			'slug'     => 'rental-car-extension-letter',
+			'title'    => __( 'Rental Car Extension Letter', 'myautotriage' ),
+			'template' => 'page-templates/template-rental-extension.php',
+			'content'  => '',
+		),
+		array(
+			'slug'     => 'deductible-recovery-calculator',
+			'title'    => __( 'Deductible Recovery Calculator', 'myautotriage' ),
+			'template' => 'page-templates/template-deductible-recovery.php',
+			'content'  => '',
+		),
+		array(
+			'slug'     => 'recorded-statement-checklist',
+			'title'    => __( 'Recorded Statement Checklist', 'myautotriage' ),
+			'template' => 'page-templates/template-recorded-statement.php',
+			'content'  => '',
+		),
+		array(
 			'slug'     => 'claim-diary',
 			'title'    => __( 'Claim Diary', 'myautotriage' ),
 			'template' => 'page-templates/template-claim-diary.php',

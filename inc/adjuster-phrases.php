@@ -77,6 +77,7 @@ function mat_adjuster_phrases() {
 			),
 			'reply'     => __( "Thank you for reaching out about claim [claim number]. I am not going to give a recorded statement at this time. I am happy to provide a written statement of the facts of the accident, along with the police report number and photos. Please send any specific questions in writing to this email address and I will answer them.", 'myautotriage' ),
 			'tools'     => array(
+				array( 'slug' => 'recorded-statement-checklist', 'label' => __( 'Recorded statement checklist: prepare, what not to say, what to send', 'myautotriage' ) ),
 				array( 'slug' => 'what-to-do-after-a-car-accident-checklist', 'label' => __( 'What to do after a car accident: the step-by-step checklist', 'myautotriage' ) ),
 				array( 'slug' => 'comparative-fault-calculator', 'label' => __( 'See how a share of fault changes your payout', 'myautotriage' ) ),
 			),
@@ -208,6 +209,7 @@ function mat_adjuster_phrases() {
 			),
 			'reply'     => __( "My vehicle is still at [shop] on claim [claim number]. The shop expects repairs to be finished on [date]; the delay is caused by [parts on back order / waiting for your supplement approval], not by me. Please extend the rental until the repairs are complete. If you will not, please tell me in writing the reason and the date you consider reasonable for repairs.", 'myautotriage' ),
 			'tools'     => array(
+				array( 'slug' => 'rental-car-extension-letter', 'label' => __( 'Write a rental extension request', 'myautotriage' ) ),
 				array( 'slug' => 'loss-of-use-calculator', 'label' => __( 'Calculate the loss of use to claim', 'myautotriage' ) ),
 				array( 'slug' => 'property-damage-demand-letter-generator', 'label' => __( 'Add rental or loss of use to a property damage demand', 'myautotriage' ) ),
 			),

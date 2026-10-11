@@ -31,6 +31,8 @@ function mat_claim_triage_situations() {
 			'then'    => array(
 				array( 'slug' => 'should-i-file-a-claim-minor-accident', 'label' => __( 'Decide whether to file or pay yourself', 'myautotriage' ) ),
 				array( 'slug' => 'deductible-vs-premium-calculator', 'label' => __( 'Compare the claim against your deductible and a rate increase', 'myautotriage' ) ),
+				array( 'slug' => 'recorded-statement-checklist', 'label' => __( 'Asked for a recorded statement? Check this first', 'myautotriage' ) ),
+				array( 'slug' => 'deductible-recovery-calculator', 'label' => __( 'Paid your deductible? See how to get it back', 'myautotriage' ) ),
 				array( 'slug' => 'car-accident-lawsuit-deadline-calculator', 'label' => __( 'Note the last day to sue, in case it comes to that', 'myautotriage' ) ),
 			),
 			'phrases' => array( 'we-need-a-recorded-statement', 'file-with-your-own-insurance' ),
@@ -113,6 +115,7 @@ function mat_claim_triage_situations() {
 			'title'   => __( 'Claim every day you\'re without the car', 'myautotriage' ),
 			'first'   => array( 'slug' => 'loss-of-use-calculator', 'label' => __( 'Calculate the loss of use to claim', 'myautotriage' ), 'why' => __( 'Days without a car have a value, at a comparable rental rate, even if you didn\'t rent.', 'myautotriage' ) ),
 			'then'    => array(
+				array( 'slug' => 'rental-car-extension-letter', 'label' => __( 'Rental ending too soon? Ask for an extension in writing', 'myautotriage' ) ),
 				array( 'slug' => 'property-damage-demand-letter-generator', 'label' => __( 'Add it to a property damage demand', 'myautotriage' ) ),
 			),
 			'phrases' => array( 'rental-coverage-is-ending' ),

@@ -232,6 +232,35 @@ function mat_get_tool_extras() {
 			),
 		),
 
+		'rental-car-extension-letter' => array(
+			'next' => array(
+				array( 'slug' => 'loss-of-use-calculator', 'label' => __( 'Rental cut off anyway? Calculate the loss of use to claim', 'myautotriage' ) ),
+				array( 'slug' => 'claim-diary', 'label' => __( 'Log the repair delays in a claim diary', 'myautotriage' ) ),
+				array( 'slug' => 'what-the-adjuster-said', 'label' => __( 'What the adjuster said, decoded', 'myautotriage' ) ),
+			),
+		),
+
+		'deductible-recovery-calculator' => array(
+			'example' => array(
+				'title' => __( 'Worked example', 'myautotriage' ),
+				'html'  => '<p>' . __( 'You paid a $1,000 deductible. The other driver\'s insurer accepted 80% of the fault and paid your insurer 80% of what it was owed.', 'myautotriage' ) . '</p>'
+					. '<p>' . __( 'Your share back: $1,000 × 80% = $800. If your insurer had settled for only 90% of that, you would get $720.', 'myautotriage' ) . '</p>',
+			),
+			'next' => array(
+				array( 'slug' => 'comparative-fault-calculator', 'label' => __( 'Check your state\'s fault rule and payout', 'myautotriage' ) ),
+				array( 'slug' => 'property-damage-demand-letter-generator', 'label' => __( 'Claim the deductible directly from the at-fault insurer', 'myautotriage' ) ),
+				array( 'slug' => 'car-accident-lawsuit-deadline-calculator', 'label' => __( 'Check the deadline to sue for property damage', 'myautotriage' ) ),
+			),
+		),
+
+		'recorded-statement-checklist' => array(
+			'next' => array(
+				array( 'slug' => 'claim-diary', 'label' => __( 'Log the call in a claim diary', 'myautotriage' ) ),
+				array( 'slug' => 'comparative-fault-calculator', 'label' => __( 'See how a share of fault changes your payout', 'myautotriage' ) ),
+				array( 'slug' => 'claim-triage', 'label' => __( 'Not sure what to do next? Use the claim triage', 'myautotriage' ) ),
+			),
+		),
+
 		'claim-diary' => array(
 			'next' => array(
 				array( 'slug' => 'claim-payment-deadline-by-state', 'label' => __( 'Claim deadlines by state, with citations', 'myautotriage' ) ),

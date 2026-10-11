@@ -132,6 +132,27 @@ function mat_get_tools_registry() {
 			'seo_title' => __( 'Insurance Claim Diary: Free Claim Log With Deadline Alerts', 'myautotriage' ),
 		),
 		array(
+			'title'   => __( 'Rental Car Extension Letter', 'myautotriage' ),
+			'excerpt' => __( 'Insurer ending your rental before the car is fixed? Get a letter asking for the extra days, with the reason.', 'myautotriage' ),
+			'slug'    => 'rental-car-extension-letter',
+			'meta'    => __( 'Insurance ending your rental car before repairs are done? Free letter to ask the adjuster for a rental extension, with the extra days, the reason and a check against your policy limit.', 'myautotriage' ),
+			'seo_title' => __( 'Insurance Rental Car Extension Letter (Free Template)', 'myautotriage' ),
+		),
+		array(
+			'title'   => __( 'Deductible Recovery Calculator', 'myautotriage' ),
+			'excerpt' => __( 'Not your fault but you paid the deductible? See how much should come back and what to ask your insurer.', 'myautotriage' ),
+			'slug'    => 'deductible-recovery-calculator',
+			'meta'    => __( 'Paid your deductible after an accident that wasn\'t your fault? See how much you should get back through subrogation, where your claim is in the process, and the message to send your insurer.', 'myautotriage' ),
+			'seo_title' => __( 'How to Get Your Deductible Back: Subrogation Calculator', 'myautotriage' ),
+		),
+		array(
+			'title'   => __( 'Recorded Statement Checklist', 'myautotriage' ),
+			'excerpt' => __( 'Adjuster wants to record your statement? See whether you have to, how to prepare and what not to say.', 'myautotriage' ),
+			'slug'    => 'recorded-statement-checklist',
+			'meta'    => __( 'Insurance adjuster asking for a recorded statement? Find out whether you have to give one, a checklist to prepare, what not to say, and a message to send.', 'myautotriage' ),
+			'seo_title' => __( 'Recorded Statement to Insurance: Checklist and What Not to Say', 'myautotriage' ),
+		),
+		array(
 			'title'   => __( 'Diminished Value (17c) Calculator', 'myautotriage' ),
 			'excerpt' => __( 'Estimate how much value your car lost after an accident, using the same 17c formula insurers reference.', 'myautotriage' ),
 			'slug'    => 'diminished-value-calculator',
