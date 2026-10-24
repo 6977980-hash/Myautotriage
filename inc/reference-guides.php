@@ -33,6 +33,12 @@ function mat_get_reference_guides() {
 			'meta'      => __( 'Does your insurer owe sales tax, title and registration fees on a totaled car? The rule in all 50 states and DC, up front or after you buy, with the regulation.', 'myautotriage' ),
 			'template'  => 'page-templates/template-tax-fees-by-state.php',
 		),
+		'pip-claim-deadlines-by-state' => array(
+			'title'     => __( 'PIP and No-Fault Claim Deadlines by State', 'myautotriage' ),
+			'seo_title' => __( 'PIP Claim Deadlines by State: Notice, Payment, Interest', 'myautotriage' ),
+			'meta'      => __( 'How long do you have to file a PIP claim, and how fast must the insurer pay? Notice deadlines, 30-day payment rules and late interest in every no-fault and PIP state.', 'myautotriage' ),
+			'template'  => 'page-templates/template-pip-deadlines.php',
+		),
 	);
 }
 

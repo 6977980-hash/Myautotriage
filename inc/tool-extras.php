@@ -187,6 +187,7 @@ function mat_get_tool_extras() {
 				),
 			),
 			'next' => array(
+				array( 'slug' => 'pip-claim-deadlines-by-state', 'label' => __( 'Injury claim in a no-fault state? PIP deadlines by state', 'myautotriage' ) ),
 				array( 'slug' => 'how-long-insurance-company-must-pay-claim', 'label' => __( 'Read: how long does an insurance company have to pay your claim?', 'myautotriage' ) ),
 				array( 'slug' => 'demand-letter-generator', 'label' => __( 'Insurer missed a deadline? Send a demand letter', 'myautotriage' ) ),
 				array( 'slug' => 'appeal-letter-generator', 'label' => __( 'Claim denied? Write an appeal letter', 'myautotriage' ) ),

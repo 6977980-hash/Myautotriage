@@ -68,6 +68,12 @@ function mat_seed_pages() {
 			'content'  => '',
 		),
 		array(
+			'slug'     => 'pip-claim-deadlines-by-state',
+			'title'    => __( 'PIP and No-Fault Claim Deadlines by State', 'myautotriage' ),
+			'template' => 'page-templates/template-pip-deadlines.php',
+			'content'  => '',
+		),
+		array(
 			'slug'     => 'total-loss-sales-tax-by-state',
 			'title'    => __( 'Total Loss Sales Tax, Title and Registration Fees by State', 'myautotriage' ),
 			'template' => 'page-templates/template-tax-fees-by-state.php',

@@ -1,0 +1,141 @@
+{
+ "reviewed": "2026-10-24",
+ "note": "Personal injury protection (PIP) and no-fault benefits paid by your own insurer for injuries, regardless of fault. Only states that require PIP are listed.",
+ "states": {
+  "DE": {
+   "system": "PIP required; you can still sue the at-fault driver",
+   "notice": "Medical and other expenses must be incurred within 2 years of the accident.",
+   "pay": "Insurer must pay or explain a denial within 30 days of your written request and documentation (and send a claim form within 10 days of being asked).",
+   "late": "Unpaid benefits grow 1.5% a month from day 31 to 60, then 2% a month.",
+   "suit": "",
+   "cite": "21 Del. C. §§ 2118(a)(2), 2118B",
+   "url": "https://delcode.delaware.gov/title21/c021/sc01/index.html"
+  },
+  "FL": {
+   "system": "No-fault",
+   "notice": "You must get initial medical care within 14 days of the accident, or PIP medical benefits don't apply. Medical benefits are capped at $2,500 unless a doctor finds an emergency medical condition ($10,000).",
+   "pay": "Benefits are overdue if not paid within 30 days after the insurer gets written notice of the loss and its amount.",
+   "late": "Overdue payments carry interest at the statutory judgment rate or the policy rate, whichever is higher.",
+   "suit": "",
+   "cite": "Fla. Stat. § 627.736(1)(a), (4)(b), (4)(d)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.736.html"
+  },
+  "HI": {
+   "system": "No-fault",
+   "notice": "",
+   "pay": "Benefits unpaid 30 days after the insurer gets reasonable proof and a demand for payment are overdue; if it needs more documents it must send an itemised list within those 30 days.",
+   "late": "1.5% a month on overdue benefits.",
+   "suit": "",
+   "cite": "Haw. Rev. Stat. § 431:10C-304",
+   "url": "https://data.capitol.hawaii.gov/hrscurrent/Vol09_Ch0431-0435H/HRS0431/HRS_0431-0010C-0304.htm"
+  },
+  "KS": {
+   "system": "No-fault",
+   "notice": "",
+   "pay": "Benefits are overdue if not paid within 30 days after the insurer gets written notice of the loss and its amount.",
+   "late": "18% a year simple interest.",
+   "suit": "",
+   "cite": "K.S.A. 40-3110",
+   "url": "https://ksrevisor.gov/statutes/chapters/ch40/040_031_0010.html"
+  },
+  "KY": {
+   "system": "No-fault (you can reject it in writing)",
+   "notice": "",
+   "pay": "Benefits are overdue if not paid within 30 days after the insurer gets reasonable proof of the loss and its amount.",
+   "late": "12% a year, or 18% if the delay had no reasonable basis.",
+   "suit": "Sue within 2 years after the loss (and no more than 4 years after the accident) if nothing was paid, or within 2 years of the last payment.",
+   "cite": "KRS 304.39-210, 304.39-230",
+   "url": "https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=57856"
+  },
+  "MD": {
+   "system": "PIP required unless waived; you can still sue the at-fault driver",
+   "notice": "The policy can require your claim within 12 months of the accident, but not less.",
+   "pay": "Insurer must pay within 30 days after it gets satisfactory proof of claim.",
+   "late": "1.5% a month simple interest on overdue payments.",
+   "suit": "",
+   "cite": "Md. Code, Ins. § 19-508",
+   "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gin&section=19-508&enactments=false"
+  },
+  "MA": {
+   "system": "No-fault",
+   "notice": "Submit the PIP claim within 2 years of the accident; medical expenses must be incurred within 2 years.",
+   "pay": "Benefits are due as the loss accrues once you give reasonable proof; after a doctor's notice of disability, the insurer must start medical payments within 10 days or explain in writing why not.",
+   "late": "If benefits stay unpaid for more than 30 days, you (or your medical provider) can sue the insurer for them.",
+   "suit": "",
+   "cite": "M.G.L. c. 90, § 34M",
+   "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXIV/Chapter90/Section34M"
+  },
+  "MI": {
+   "system": "No-fault",
+   "notice": "Give the insurer written notice of injury within 1 year of the accident (or have benefits paid within that year).",
+   "pay": "Benefits are overdue if not paid within 30 days after the insurer gets reasonable proof; provider bills sent later than 90 days after the service get an extra 60 days.",
+   "late": "12% a year simple interest.",
+   "suit": "Sue within 1 year of the accident unless notice was given or benefits paid; then within 1 year of the most recent loss, recovering nothing incurred more than 1 year before suit (paused while a specific claim awaits a formal denial).",
+   "cite": "MCL 500.3142, 500.3145",
+   "url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-500-3145"
+  },
+  "MN": {
+   "system": "No-fault",
+   "notice": "The policy can require notice no sooner than 6 months after the accident, and late notice only costs you benefits if the insurer shows it was actually harmed.",
+   "pay": "Benefits are overdue if not paid within 30 days after reasonable proof (or within 15 days after a monthly accumulation period).",
+   "late": "15% a year simple interest.",
+   "suit": "",
+   "cite": "Minn. Stat. §§ 65B.54, 65B.55",
+   "url": "https://www.revisor.mn.gov/statutes/cite/65B.54"
+  },
+  "NJ": {
+   "system": "No-fault (choice of limited or unlimited right to sue)",
+   "notice": "",
+   "pay": "Benefits are overdue if not paid within 60 days after written notice of the loss and its amount, unless within those 60 days the insurer denies in writing or asks, in writing, for up to 45 more days.",
+   "late": "Overdue benefits carry interest.",
+   "suit": "",
+   "cite": "N.J.S.A. 39:6A-5(g)",
+   "url": "https://www.nj.gov/dobi/pipinfo/promptpay.pdf"
+  },
+  "NY": {
+   "system": "No-fault",
+   "notice": "Written notice of the accident within 30 days (unless you show a reasonable excuse); medical bills within 45 days of treatment; lost-wage proof within 90 days.",
+   "pay": "Benefits are overdue if not paid within 30 days after proof of the loss.",
+   "late": "2% a month interest, plus a reasonable attorney fee on an overdue claim.",
+   "suit": "",
+   "cite": "N.Y. Ins. Law § 5106(a); 11 NYCRR 65-1.1",
+   "url": "https://www.nysenate.gov/legislation/laws/ISC/5106"
+  },
+  "ND": {
+   "system": "No-fault",
+   "notice": "",
+   "pay": "Benefits are overdue if not paid within 30 days after reasonable proof (or within 20 days after a monthly accumulation period).",
+   "late": "",
+   "suit": "Sue within 2 years after the loss (no more than 4 years after the accident) if nothing was paid, or within 4 years of the last payment.",
+   "cite": "N.D.C.C. §§ 26.1-41-15, 26.1-41-19",
+   "url": "https://www.ndlegis.gov/cencode/t26-1c41.pdf"
+  },
+  "OR": {
+   "system": "PIP required; you can still sue the at-fault driver",
+   "notice": "Medical expenses must be incurred within 2 years of the injury (up to $15,000).",
+   "pay": "A provider's bills are presumed reasonable and necessary unless the insurer denies them within 60 days of getting the provider's claim.",
+   "late": "",
+   "suit": "",
+   "cite": "ORS 742.524(1)(a)",
+   "url": "https://oregon.public.law/statutes/ors_742.524"
+  },
+  "PA": {
+   "system": "No-fault (choice of limited or full tort)",
+   "notice": "",
+   "pay": "First-party benefits are overdue if not paid within 30 days after the insurer gets reasonable proof of the amount.",
+   "late": "12% a year interest, plus attorney fees if the insurer acted unreasonably.",
+   "suit": "Generally 4 years to sue for first-party benefits.",
+   "cite": "75 Pa.C.S. §§ 1716, 1721",
+   "url": "https://www.palegis.us/statutes/consolidated/view-statute?txtType=HTM&ttl=75&div=0&chapter=17&section=16&subsctn=0"
+  },
+  "UT": {
+   "system": "No-fault",
+   "notice": "",
+   "pay": "Benefits are overdue if not paid within 30 days after the insurer gets reasonable proof.",
+   "late": "1.5% a month interest, plus attorney fees if you have to sue to get them.",
+   "suit": "",
+   "cite": "Utah Code § 31A-22-309",
+   "url": "https://le.utah.gov/xcode/Title31A/Chapter22/C31A-22-S309_2020051220210101.pdf"
+  }
+ }
+}
