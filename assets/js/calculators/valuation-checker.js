@@ -301,10 +301,13 @@
 		issues.forEach( function ( i ) {
 			html += '<li' + ( i.ok ? ' class="is-ok"' : '' ) + '><strong>' + MAT.escape( i.title ) + ( i.amount ? ' · ' + MAT.usd( i.amount ) : '' ) + '</strong><p>' + MAT.escape( withNote( i.text ) ) + '</p></li>';
 		} );
+		var state = states[ document.getElementById( 'mat-tlv-state' ).value ];
+		if ( state && state.tax ) {
+			html += '<li class="is-ok"><strong>Tax and fees in ' + MAT.escape( state.name ) + '</strong><p>' + MAT.escape( state.tax ) + '</p></li>';
+		}
 		html += '<li class="is-ok"><strong>Can\'t buy a comparable car for the amount paid?</strong><p>' + MAT.escape( withNote( 'Under the model rule, telling the insurer within 35 days of receiving the payment that you can\'t buy a comparable car for that amount should reopen the claim (Section 8A(2)(e)).' ) ) + '</p></li>';
 		html += '</ul>';
 
-		var state = states[ document.getElementById( 'mat-tlv-state' ).value ];
 		if ( state && state.url ) {
 			html += '<p><a href="' + MAT.escape( state.url ) + '">' + MAT.escape( state.name ) + ' claim laws: total loss rule, deadlines and where to complain</a></p>';
 		}

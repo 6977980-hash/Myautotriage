@@ -31,6 +31,7 @@ function mat_state_laws() {
 	$totals    = mat_read_theme_json( 'assets/js/data/total-loss-thresholds.json' );
 	$facts     = mat_read_theme_json( 'assets/js/data/state-claim-facts.json' );
 	$dv        = mat_read_theme_json( 'assets/js/data/diminished-value-rules.json' );
+	$tax_fees  = mat_read_theme_json( 'assets/js/data/total-loss-tax-fees.json' );
 	if ( empty( $deadlines['all_states'] ) ) {
 		return $laws;
 	}
@@ -43,6 +44,7 @@ function mat_state_laws() {
 			'total_loss' => isset( $totals['states'][ $code ] ) ? mat_apply_effective_changes( $totals['states'][ $code ] ) : null,
 			'facts'      => isset( $facts['states'][ $code ] ) ? $facts['states'][ $code ] : array(),
 			'dv'         => isset( $dv['states'][ $code ] ) ? $dv['states'][ $code ] : null,
+			'tax_fees'   => isset( $tax_fees['states'][ $code ] ) ? $tax_fees['states'][ $code ] : null,
 		);
 	}
 	uasort( $laws, function ( $a, $b ) {
@@ -532,4 +534,30 @@ function mat_dv_status_label( $status, $party ) {
 		),
 	);
 	return isset( $labels[ $party ][ $status ] ) ? $labels[ $party ][ $status ] : '';
+}
+
+/**
+ * Short labels for what a total loss settlement must add to the car's
+ * value (see assets/js/data/total-loss-tax-fees.json).
+ */
+function mat_tax_fees_label( $key, $value ) {
+	$labels = array(
+		'tax'         => array(
+			'required'       => __( 'Required in the settlement', 'myautotriage' ),
+			'after_purchase' => __( 'Repaid if you buy a replacement within 30 days', 'myautotriage' ),
+			'dept_view'      => __( 'Expected by the regulator, no written rule', 'myautotriage' ),
+			'policy'         => __( 'No rule; depends on your policy', 'myautotriage' ),
+			'none'           => __( 'No state sales tax', 'myautotriage' ),
+		),
+		'fees'        => array(
+			'yes'        => __( 'Included', 'myautotriage' ),
+			'no'         => __( 'Not required', 'myautotriage' ),
+			'not_stated' => __( 'Not addressed', 'myautotriage' ),
+		),
+		'third_party' => array(
+			'yes'     => __( 'Same rule applies', 'myautotriage' ),
+			'no_rule' => __( 'No specific rule', 'myautotriage' ),
+		),
+	);
+	return isset( $labels[ $key ][ $value ] ) ? $labels[ $key ][ $value ] : '';
 }

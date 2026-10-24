@@ -1,0 +1,369 @@
+{
+ "reviewed": "2026-10-24",
+ "note": "What a total loss settlement must include besides the car's value. First-party = your own insurer; third-party = the at-fault driver's insurer.",
+ "sources": [
+  {
+   "label": "Matthiesen, Wickert & Lehrer, Payment of Sales Tax After Vehicle Total Loss in All 50 States (updated January 21, 2026)",
+   "url": "https://www.mwl-law.com/wp-content/uploads/2018/02/PAYMENT-OF-SALES-TAX-AFTER-VEHICLE-TOTAL-LOSS-CHART.pdf"
+  }
+ ],
+ "states": {
+  "AL": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "no_rule",
+   "note": "Cash settlements must include all applicable taxes, license fees and other fees.",
+   "citation": "Ala. Admin. Code r. 482-1-125-.08"
+  },
+  "AK": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "no_rule",
+   "note": "No state sales tax, but local taxes, license and transfer fees for a comparable car are owed, also if you keep the salvage.",
+   "citation": "3 AAC 26.080; Alaska Bulletin 93-8"
+  },
+  "AZ": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "yes",
+   "note": "Cash settlement must include all applicable taxes, license fees and other fees; same rule for third-party claims.",
+   "citation": "Ariz. Admin. Code R20-6-801(H)(1)"
+  },
+  "AR": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "yes",
+   "note": "Cash settlement must include taxes, license fees and other fees, itemised; same rule for third-party claims.",
+   "citation": "Ark. Admin. Code 054.00.43-10"
+  },
+  "CA": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "yes",
+   "note": "Cash settlement on the cost of a comparable car including all applicable taxes and fees; third-party total losses are evaluated the same way. Part of the vehicle license fee is refundable from the DMV.",
+   "citation": "Cal. Code Regs. tit. 10, § 2695.8(b)"
+  },
+  "CO": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "yes",
+   "note": "Insurers must pay title fees, sales tax and any other transfer or registration fee; applies to third-party claims too.",
+   "citation": "C.R.S. § 10-4-639"
+  },
+  "CT": {
+   "tax": "required",
+   "fees": "not_stated",
+   "third_party": "no_rule",
+   "note": "When the insurer takes title, it adds sales tax at the current rate to the settlement.",
+   "citation": "Conn. Gen. Stat. § 38a-816"
+  },
+  "DE": {
+   "tax": "none",
+   "fees": "not_stated",
+   "third_party": "no_rule",
+   "note": "No state sales tax and no rule on fees; check your policy wording.",
+   "citation": "21 Del. C. § 2118"
+  },
+  "DC": {
+   "tax": "policy",
+   "fees": "not_stated",
+   "third_party": "no_rule",
+   "note": "No statute, regulation or case on tax or fees; check your policy wording.",
+   "citation": ""
+  },
+  "FL": {
+   "tax": "required",
+   "fees": "not_stated",
+   "third_party": "yes",
+   "note": "Settlement must include sales tax, itemised separately from the car's value; same rule for third-party claims.",
+   "citation": "Fla. Stat. § 626.9743"
+  },
+  "GA": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "no_rule",
+   "note": "Cash settlement must include all applicable taxes and other fees.",
+   "citation": "Ga. Comp. R. & Regs. 120-2-52-.06"
+  },
+  "HI": {
+   "tax": "after_purchase",
+   "fees": "yes",
+   "third_party": "no_rule",
+   "note": "Excise tax and ownership fees are repaid if you buy a replacement within 30 days of a cash settlement.",
+   "citation": "Haw. Rev. Stat. § 431:10C-312"
+  },
+  "ID": {
+   "tax": "dept_view",
+   "fees": "yes",
+   "third_party": "no_rule",
+   "note": "No statute or rule, but the Department of Insurance says you can recover sales tax, title fees and release-of-liability fees.",
+   "citation": "Idaho Department of Insurance consumer guidance"
+  },
+  "IL": {
+   "tax": "after_purchase",
+   "fees": "yes",
+   "third_party": "no_rule",
+   "note": "If you buy or lease a replacement within 30 days of the settlement, the insurer pays sales tax, transfer and title fees on up to the total-loss value.",
+   "citation": "Ill. Admin. Code tit. 50, § 919.80(c)"
+  },
+  "IN": {
+   "tax": "required",
+   "fees": "not_stated",
+   "third_party": "yes",
+   "note": "Sales tax must be paid with the settlement, not only after you buy a replacement; the Department applies this to third-party claims too.",
+   "citation": "Indiana Insurance Bulletin 82 (1994)"
+  },
+  "IA": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "no_rule",
+   "note": "Cash settlement on a comparable car must include all applicable taxes, license fees and other fees.",
+   "citation": "Iowa Admin. Code r. 191-15.43"
+  },
+  "KS": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "yes",
+   "note": "Cash settlement must include all taxes, license fees and transfer fees, for all total loss claims.",
+   "citation": "Kan. Admin. Regs. 40-1-34; Bulletin 2013-01"
+  },
+  "KY": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "yes",
+   "note": "Cash settlement must include all applicable taxes, license fees and other fees; the regulation covers third-party claimants too.",
+   "citation": "806 KAR 12:095"
+  },
+  "LA": {
+   "tax": "policy",
+   "fees": "not_stated",
+   "third_party": "yes",
+   "note": "Courts split on first-party claims (no tax under an \"actual cash value\" policy in Clark v. Clarendon, 2003; tax and fees included where ACV is undefined in Cummings v. Allstate, M.D. La. 2023). Against the at-fault driver, damages include sales tax by statute.",
+   "citation": "La. Civ. Code art. 2315"
+  },
+  "ME": {
+   "tax": "required",
+   "fees": "not_stated",
+   "third_party": "no_rule",
+   "note": "Policies must cover the sales tax credit you would have had trading the car in at the highest book value.",
+   "citation": "24-A M.R.S. § 2907"
+  },
+  "MD": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "yes",
+   "note": "Cash settlement on a substantially similar car must include all applicable taxes and transfer fees; third-party settlements too.",
+   "citation": "COMAR 31.15.12.04"
+  },
+  "MA": {
+   "tax": "policy",
+   "fees": "not_stated",
+   "third_party": "no_rule",
+   "note": "The insurer owes the actual cash value on the day of the loss; no rule adds tax or fees.",
+   "citation": "211 CMR 133.05"
+  },
+  "MI": {
+   "tax": "policy",
+   "fees": "not_stated",
+   "third_party": "no_rule",
+   "note": "No statute, rule or case on tax or fees; check your policy wording. Claims against the at-fault driver are limited to the $3,000 mini-tort.",
+   "citation": ""
+  },
+  "MN": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "no_rule",
+   "note": "Cash settlement on a comparable car must include all applicable taxes, license fees and other fees.",
+   "citation": "Minn. Stat. § 72A.201"
+  },
+  "MS": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "yes",
+   "note": "Insurers must pay sales tax, title and license fees unless the policy clearly excludes them; the Department applies this to third-party claims.",
+   "citation": "Mississippi Bulletin 2007-4"
+  },
+  "MO": {
+   "tax": "policy",
+   "fees": "not_stated",
+   "third_party": "no_rule",
+   "note": "No requirement unless the policy says so; you can ask the state Department of Revenue for a sales tax refund instead.",
+   "citation": "Missouri Department of Insurance auto claim guide"
+  },
+  "MT": {
+   "tax": "none",
+   "fees": "not_stated",
+   "third_party": "no_rule",
+   "note": "No state sales tax and no rule on fees; the insurer owes the car's cash value before the accident.",
+   "citation": "Mont. Code Ann. § 27-1-306"
+  },
+  "NE": {
+   "tax": "required",
+   "fees": "not_stated",
+   "third_party": "yes",
+   "note": "Insurers must pay sales tax to put you back where you were; same for third-party claims.",
+   "citation": "Nebraska Bulletin CB-49"
+  },
+  "NV": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "no_rule",
+   "note": "Cash settlement on a comparable car must include all applicable taxes and other fees.",
+   "citation": "Nev. Admin. Code 686A.680"
+  },
+  "NH": {
+   "tax": "none",
+   "fees": "not_stated",
+   "third_party": "no_rule",
+   "note": "No state sales tax and no rule on fees.",
+   "citation": "N.H. Admin. R. Ins 1002.15"
+  },
+  "NJ": {
+   "tax": "required",
+   "fees": "not_stated",
+   "third_party": "yes",
+   "note": "Settlement is the value of a substantially similar car plus sales tax; the rule applies to third-party claims once liability is reasonably clear.",
+   "citation": "N.J.A.C. 11:3-10.4; 11:2-17.10"
+  },
+  "NM": {
+   "tax": "dept_view",
+   "fees": "yes",
+   "third_party": "no_rule",
+   "note": "No statute or rule, but the state regulator says the insurer must repay excise tax, title and registration charges after a cash settlement.",
+   "citation": "New Mexico regulator consumer guidance"
+  },
+  "NY": {
+   "tax": "required",
+   "fees": "no",
+   "third_party": "yes",
+   "note": "Sales tax is added to the car's value; insurers don't have to pay transfer or title fees. Third-party total losses follow the same minimum-offer rules.",
+   "citation": "11 NYCRR 216.6, 216.7"
+  },
+  "NC": {
+   "tax": "policy",
+   "fees": "not_stated",
+   "third_party": "no_rule",
+   "note": "No statute, rule or case on tax or fees; check your policy wording.",
+   "citation": ""
+  },
+  "ND": {
+   "tax": "policy",
+   "fees": "not_stated",
+   "third_party": "no_rule",
+   "note": "No rule; the payment is the actual cash value less your deductible.",
+   "citation": ""
+  },
+  "OH": {
+   "tax": "after_purchase",
+   "fees": "not_stated",
+   "third_party": "yes",
+   "note": "If you buy a replacement within 30 days of a cash settlement, the insurer repays the sales tax, up to the tax on a car worth the settlement amount. Same rules for third-party claimants.",
+   "citation": "Ohio Admin. Code 3901-1-54"
+  },
+  "OK": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "no_rule",
+   "note": "Cash settlement on a comparable car must include all applicable taxes, license fees and other fees.",
+   "citation": "Okla. Stat. tit. 36, § 1250.8"
+  },
+  "OR": {
+   "tax": "none",
+   "fees": "yes",
+   "third_party": "yes",
+   "note": "No state sales tax, but license and other fees must be included, for third-party claims too.",
+   "citation": "Or. Admin. R. 836-080-0240"
+  },
+  "PA": {
+   "tax": "required",
+   "fees": "not_stated",
+   "third_party": "no_rule",
+   "note": "Settlement is the car's pre-loss fair market value plus sales tax on a replacement.",
+   "citation": "31 Pa. Code § 62.3(e)"
+  },
+  "RI": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "yes",
+   "note": "Cash settlement must include all applicable taxes, license fees and other fees; the rule's \"claimant\" includes third parties.",
+   "citation": "R.I. Code R. 11-5-73:8"
+  },
+  "SC": {
+   "tax": "policy",
+   "fees": "not_stated",
+   "third_party": "no_rule",
+   "note": "Not owed unless the policy says so (Schulmeyer v. State Farm, 2003). South Carolina charges a capped Infrastructure Maintenance Fee instead of sales tax.",
+   "citation": "Schulmeyer v. State Farm, 579 S.E.2d 132 (S.C. 2003)"
+  },
+  "SD": {
+   "tax": "policy",
+   "fees": "not_stated",
+   "third_party": "yes",
+   "note": "First-party depends on the policy; the regulator says sales tax is generally payable on third-party total losses.",
+   "citation": ""
+  },
+  "TN": {
+   "tax": "required",
+   "fees": "not_stated",
+   "third_party": "yes",
+   "note": "Sales tax on the car's value at the time of loss is owed on all total losses, including third-party claims, whether or not you replace the car (not leased cars).",
+   "citation": "Tennessee Bulletin 9-1-89C"
+  },
+  "TX": {
+   "tax": "policy",
+   "fees": "not_stated",
+   "third_party": "no_rule",
+   "note": "No rule requires it; under an \"actual cash value\" policy, taxes and fees aren't part of the value (Singleton v. Elephant Ins. Co., 5th Cir. 2020).",
+   "citation": ""
+  },
+  "UT": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "yes",
+   "note": "Cash settlement must include all applicable taxes, license fees and other fees; same for third-party claims.",
+   "citation": "Utah Admin. Code R590-190"
+  },
+  "VT": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "yes",
+   "note": "Cash settlement must include all applicable taxes, license fees and other fees; same for third-party claims.",
+   "citation": "4-3 Vt. Code R. 7:8, 7:9"
+  },
+  "VA": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "no_rule",
+   "note": "Cash settlement must include all applicable taxes, license fees and other fees; insurers have been cited for paying them late.",
+   "citation": "Virginia SCC Insurance Order No. 11607"
+  },
+  "WA": {
+   "tax": "required",
+   "fees": "yes",
+   "third_party": "yes",
+   "note": "Settlement must include taxes and fees (pro-rated where annual), for third-party claims too, whether or not you keep the car.",
+   "citation": "WAC 284-30-391"
+  },
+  "WV": {
+   "tax": "required",
+   "fees": "not_stated",
+   "third_party": "yes",
+   "note": "A cash settlement adds 5% of the car's value for the excise tax; same for third-party claims.",
+   "citation": "W. Va. Code § 33-6-33; W. Va. Code R. 114-14-7"
+  },
+  "WI": {
+   "tax": "dept_view",
+   "fees": "not_stated",
+   "third_party": "no_rule",
+   "note": "No specific rule, but the insurance commissioner has cited insurers for not paying sales tax on total losses.",
+   "citation": "Wis. Admin. Code Ins 6.11"
+  },
+  "WY": {
+   "tax": "dept_view",
+   "fees": "not_stated",
+   "third_party": "no_rule",
+   "note": "No law, but the Department of Insurance's position is that sales tax on the car's value is included.",
+   "citation": ""
+  }
+ }
+}
