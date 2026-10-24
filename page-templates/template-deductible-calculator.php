@@ -16,6 +16,7 @@ wp_enqueue_script( 'mat-ded', MAT_URI . '/assets/js/calculators/deductible-vs-pr
 		</div>
 
 		<form id="mat-ded-form" class="mat-tool-panel" novalidate>
+			<?php mat_noscript_note(); ?>
 			<div class="mat-field-row">
 				<div class="mat-field">
 					<label for="mat-ded-repair"><?php esc_html_e( 'Estimated repair cost (USD)', 'myautotriage' ); ?></label>

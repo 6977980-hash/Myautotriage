@@ -262,9 +262,13 @@
 		},
 		"LA": {
 			"fault": {
-				"rule": "pure_comparative",
-				"citation": "La. Civ. Code art. 2323",
-				"note": "For accidents on or after January 1, 2026, Louisiana bars recovery if you are more than 50% at fault; the pure rule applies only to earlier accidents."
+				"rule": "bar_51",
+				"citation": "La. Civ. Code art. 2323 (as amended by Act 15 of 2025)",
+				"note": "Applies to accidents on or after January 1, 2026; earlier accidents use pure comparative fault.",
+				"before": {
+					"date": "2026-01-01",
+					"rule": "pure_comparative"
+				}
 			},
 			"lawsuit_deadline": {
 				"injury_years": 2,
@@ -453,7 +457,7 @@
 		"NY": {
 			"fault": {
 				"rule": "pure_comparative",
-				"citation": "N.Y. CPLR § 1411",
+				"citation": "CPLR 1411; CPLR 1411(b) added by L. 2026 (S9008-C Part EE) for no-fault injury actions commenced on or after May 26, 2026",
 				"note": "Injury lawsuits under the no-fault law (Insurance Law Article 51) started on or after May 26, 2026 are barred if you are more at fault than the other side."
 			},
 			"lawsuit_deadline": {

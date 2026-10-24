@@ -20,6 +20,7 @@ wp_enqueue_script( 'mat-re', MAT_URI . '/assets/js/generators/rental-extension.j
 		</div>
 
 		<form id="mat-re-form" class="mat-tool-panel" novalidate>
+			<?php mat_noscript_note( 'tool' ); ?>
 			<div class="mat-field">
 				<span class="mat-field__label" id="mat-re-party-label"><?php esc_html_e( 'Who is paying for the rental?', 'myautotriage' ); ?></span>
 				<div class="mat-radio-group" role="radiogroup" aria-labelledby="mat-re-party-label">

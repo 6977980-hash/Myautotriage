@@ -21,6 +21,21 @@
 
 	fetch( dataUrl ).then( function ( r ) { return r.json(); } ).then( function ( json ) {
 		stateData = json;
+		// Fold in rule changes that have taken effect (same as
+		// mat_apply_effective_changes() in inc/state-laws.php).
+		var today = new Date();
+		today = today.getFullYear() + '-' + ( '0' + ( today.getMonth() + 1 ) ).slice( -2 ) + '-' + ( '0' + today.getDate() ).slice( -2 );
+		Object.keys( json.states ).forEach( function ( code ) {
+			( json.states[ code ].effective_changes || [] ).forEach( function ( change ) {
+				if ( change.from && change.from <= today ) {
+					Object.keys( change ).forEach( function ( k ) {
+						if ( k !== 'from' ) {
+							json.states[ code ][ k ] = change[ k ];
+						}
+					} );
+				}
+			} );
+		} );
 		var select = document.getElementById( 'mat-tlt-state' );
 		select.options[0].textContent = 'Choose your state';
 		var codes = Object.keys( json.states ).sort( function ( a, b ) {

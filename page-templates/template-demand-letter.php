@@ -127,6 +127,7 @@ $guide   = isset( $variant_guides[ $slug ] ) ? $variant_guides[ $slug ] : $varia
 		</div>
 
 		<form id="mat-dl-form" class="mat-tool-panel" novalidate>
+			<?php mat_noscript_note( 'tool' ); ?>
 			<div class="mat-field">
 				<label for="mat-dl-type"><?php esc_html_e( 'Letter type', 'myautotriage' ); ?></label>
 				<select id="mat-dl-type">

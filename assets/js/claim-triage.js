@@ -81,8 +81,18 @@
 		if ( party === 'own' && sit.own ) {
 			html += '<p class="mat-triage-result__note">' + esc( sit.own ) + '</p>';
 		}
-		if ( sit.then.length ) {
-			html += '<h3>Then</h3>' + linkList( sit.then );
+		// Appraisal is a clause in your own policy; against the other
+		// driver's insurer the next step is small claims or a complaint.
+		var then = [];
+		sit.then.forEach( function ( item ) {
+			if ( ! item.party || item.party === party ) {
+				then.push( item );
+			} else if ( party === 'unsure' ) {
+				then.push( { url: item.url, label: item.unsure } );
+			}
+		} );
+		if ( then.length ) {
+			html += '<h3>Then</h3>' + linkList( then );
 		}
 		if ( state ) {
 			html += stateFacts( state, sit.show, party );

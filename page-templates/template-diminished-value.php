@@ -22,6 +22,7 @@ wp_enqueue_script( 'mat-dv', MAT_URI . '/assets/js/calculators/diminished-value.
 		}
 		?>
 		<form id="mat-dv-form" class="mat-tool-panel" data-letter-url="<?php echo esc_url( $dv_letter_url ); ?>" novalidate>
+			<?php mat_noscript_note(); ?>
 			<div class="mat-field-row">
 				<div class="mat-field">
 					<label for="mat-dv-value"><?php esc_html_e( 'Pre-accident market value (USD)', 'myautotriage' ); ?></label>
@@ -40,8 +41,8 @@ wp_enqueue_script( 'mat-dv', MAT_URI . '/assets/js/calculators/diminished-value.
 					<option value="severe"><?php esc_html_e( 'Severe structural / frame damage', 'myautotriage' ); ?></option>
 					<option value="major"><?php esc_html_e( 'Major damage to structure and panels', 'myautotriage' ); ?></option>
 					<option value="moderate" selected><?php esc_html_e( 'Moderate damage to structure and panels', 'myautotriage' ); ?></option>
-					<option value="minor"><?php esc_html_e( 'Minor damage, panels only (no structural damage)', 'myautotriage' ); ?></option>
-					<option value="cosmetic"><?php esc_html_e( 'Cosmetic only (bumper, paint, minor panel)', 'myautotriage' ); ?></option>
+					<option value="minor"><?php esc_html_e( 'Minor damage to structure and panels', 'myautotriage' ); ?></option>
+					<option value="none"><?php esc_html_e( 'No structural damage or replaced panels', 'myautotriage' ); ?></option>
 				</select>
 				<span class="mat-field__hint"><?php esc_html_e( 'Base this on the body shop or adjuster damage report, not how it feels to drive.', 'myautotriage' ); ?></span>
 			</div>

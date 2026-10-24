@@ -209,10 +209,38 @@
 			r.field.focus();
 			return;
 		}
+		var dateEl = document.getElementById( 'mat-dl-date' );
+		dateEl.removeAttribute( 'aria-invalid' );
+		var now = new Date();
+		var today = now.getFullYear() + '-' + ( '0' + ( now.getMonth() + 1 ) ).slice( -2 ) + '-' + ( '0' + now.getDate() ).slice( -2 );
+		if ( dateEl.value && dateEl.value > today ) {
+			errorBox.hidden = false;
+			errorBox.textContent = 'The accident date can\'t be in the future.';
+			dateEl.setAttribute( 'aria-invalid', 'true' );
+			dateEl.focus();
+			return;
+		}
 		errorBox.hidden = true;
 		var fields = collectFields( r.values.amount, r.values.deadline );
 		var letter = buildLetter( fields );
 		preview.textContent = letter;
+
+		// Name every [placeholder] still in the letter, so none gets sent.
+		var left = [];
+		( letter.match( /\[[^\]\n]+\]/g ) || [] ).forEach( function ( p ) {
+			if ( left.indexOf( p ) === -1 ) {
+				left.push( p );
+			}
+		} );
+		var note = document.getElementById( 'mat-dl-placeholders' );
+		if ( ! note ) {
+			note = document.createElement( 'p' );
+			note.id = 'mat-dl-placeholders';
+			note.className = 'mat-form-error';
+			preview.parentNode.insertBefore( note, preview );
+		}
+		note.textContent = left.length ? 'Fill these in before you send it: ' + left.join( ', ' ) + '.' : '';
+		note.hidden = ! left.length;
 		previewWrap.hidden = false;
 		previewWrap.scrollIntoView( { behavior: 'smooth', block: 'start' } );
 	} );

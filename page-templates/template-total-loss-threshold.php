@@ -16,6 +16,7 @@ wp_enqueue_script( 'mat-tlt', MAT_URI . '/assets/js/calculators/total-loss-thres
 		</div>
 
 		<form id="mat-tlt-form" class="mat-tool-panel" data-json="<?php echo esc_url( MAT_URI . '/assets/js/data/total-loss-thresholds.json' ); ?>" data-hub-url="<?php echo esc_url( get_page_by_path( MAT_STATE_HUB_SLUG ) ? trailingslashit( mat_state_hub_url() ) : '' ); ?>" data-gap-url="<?php echo esc_url( mat_url_for_slug( 'gap-insurance-shortfall-calculator' ) ); ?>" novalidate>
+			<?php mat_noscript_note(); ?>
 			<div class="mat-field">
 				<label for="mat-tlt-state"><?php esc_html_e( 'Your state', 'myautotriage' ); ?></label>
 				<select id="mat-tlt-state" required>

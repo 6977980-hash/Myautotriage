@@ -63,6 +63,13 @@
 			MAT.showError( resultBox, 'We have not confirmed the fault rule for ' + name + ' yet.' );
 			return;
 		}
+		// A state that changed its rule keeps the old one for earlier
+		// accidents: { "before": { "date": "2026-01-01", "rule": ... } }.
+		var accident = document.getElementById( 'mat-cf-date' ).value;
+		var olderRule = !! ( fault.before && accident && accident < fault.before.date );
+		if ( olderRule ) {
+			fault = { rule: fault.before.rule, citation: fault.citation, note: 'Your accident was before ' + MAT.longDate( fault.before.date ) + ', so the earlier rule applies. ' + ( fault.note || '' ) };
+		}
 
 		var reduced = damages * ( 100 - f ) / 100;
 		var barred = false;
@@ -89,6 +96,7 @@
 		// Michigan: past 50% the economic damages are still recoverable
 		// (reduced); only pain and suffering is barred.
 		var michigan = stateEl.value === 'MI' && f > 50;
+		var miRule = stateEl.value === 'MI';
 
 		var html = '<h3 style="margin-top:0;">' + esc( name ) + ': ' + NAMES[ fault.rule ] + '</h3>';
 		if ( barred && ! michigan ) {
@@ -98,7 +106,7 @@
 		}
 		html += '<p>' + esc( michigan ? 'In Michigan, at more than 50% fault you can still recover your economic damages (such as medical bills and lost wages) reduced by your share, but not pain-and-suffering damages.' : why ) + '</p>';
 		html += '<p style="font-size:.9rem;">' + MAT.usd( damages ) + ' in damages, ' + f + '% your fault. ';
-		if ( fault.rule === 'bar_50' || fault.rule === 'bar_51' ) {
+		if ( ( fault.rule === 'bar_50' || fault.rule === 'bar_51' ) && ! miRule ) {
 			var line = fault.rule === 'bar_50' ? 49 : 50;
 			html += 'At ' + line + '% fault you would still recover ' + MAT.usd( Math.round( damages * ( 100 - line ) / 100 ) ) + '; one more point and it drops to $0.';
 		} else if ( fault.rule === 'pure_contributory' && f > 0 ) {
@@ -107,6 +115,9 @@
 		html += '</p>';
 		if ( fault.note ) {
 			html += '<p style="font-size:.9rem;">' + esc( fault.note ) + '</p>';
+		}
+		if ( miRule ) {
+			html += '<p style="font-size:.9rem;">Damage to your car from the at-fault driver is capped at $3,000 (mini-tort, MCL 500.3135(3)(e)); this calculator\'s reduction applies to economic loss in an injury claim.</p>';
 		}
 		html += '<p style="font-size:.9rem;">Rule: ' + esc( fault.citation ) + '.</p>';
 		if ( hubUrl ) {

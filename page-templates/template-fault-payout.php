@@ -21,6 +21,7 @@ $hub = get_page_by_path( MAT_STATE_HUB_SLUG ) ? trailingslashit( mat_state_hub_u
 		</div>
 
 		<form id="mat-cf-form" class="mat-tool-panel" data-json="<?php echo esc_url( MAT_URI . '/assets/js/data/state-claim-facts.json' ); ?>" data-hub-url="<?php echo esc_url( $hub ); ?>" novalidate>
+			<?php mat_noscript_note(); ?>
 			<div class="mat-field">
 				<label for="mat-cf-state"><?php esc_html_e( 'State where the accident happened', 'myautotriage' ); ?></label>
 				<select id="mat-cf-state" required>
@@ -41,6 +42,11 @@ $hub = get_page_by_path( MAT_STATE_HUB_SLUG ) ? trailingslashit( mat_state_hub_u
 					<input type="number" id="mat-cf-fault" min="0" max="100" step="1" placeholder="e.g. 20" required>
 					<span class="mat-field__hint"><?php esc_html_e( 'What the adjuster says, or your own estimate. Try a few numbers.', 'myautotriage' ); ?></span>
 				</div>
+			</div>
+			<div class="mat-field">
+				<label for="mat-cf-date"><?php esc_html_e( 'Accident date (optional)', 'myautotriage' ); ?></label>
+				<input type="date" id="mat-cf-date">
+				<span class="mat-field__hint"><?php esc_html_e( 'Some states changed their rule recently; Louisiana did on January 1, 2026. Leave blank for today\'s rule.', 'myautotriage' ); ?></span>
 			</div>
 			<p id="mat-cf-error" class="mat-form-error" role="alert" hidden></p>
 			<div class="mat-tool-actions">

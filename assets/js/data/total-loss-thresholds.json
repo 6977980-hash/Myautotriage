@@ -255,7 +255,14 @@
 			"threshold": 0.6,
 			"citation": "47 O.S. § 1111(A)(4), (C)(1)",
 			"source_url": "https://www.oklegislature.gov/cf_pdf/2025-26%20ENR/SB/SB1920%20ENR.PDF",
-			"note": "Oklahoma's threshold rises from 60% to 70% on November 1, 2026 (SB 1920)."
+			"note": "Oklahoma's threshold rises from 60% to 70% on November 1, 2026 (SB 1920).",
+			"effective_changes": [
+				{
+					"from": "2026-11-01",
+					"threshold": 0.7,
+					"note": "70% from November 1, 2026 (SB 1920); 60% before."
+				}
+			]
 		},
 		"OR": {
 			"name": "Oregon",

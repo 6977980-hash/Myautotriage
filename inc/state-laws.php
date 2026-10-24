@@ -39,7 +39,7 @@ function mat_state_laws() {
 			'name'       => $name,
 			'slug'       => sanitize_title( $name ),
 			'deadlines'  => isset( $deadlines['states'][ $code ] ) ? $deadlines['states'][ $code ] : null,
-			'total_loss' => isset( $totals['states'][ $code ] ) ? $totals['states'][ $code ] : null,
+			'total_loss' => isset( $totals['states'][ $code ] ) ? mat_apply_effective_changes( $totals['states'][ $code ] ) : null,
 			'facts'      => isset( $facts['states'][ $code ] ) ? $facts['states'][ $code ] : array(),
 		);
 	}
@@ -47,6 +47,27 @@ function mat_state_laws() {
 		return strcmp( $a['name'], $b['name'] );
 	} );
 	return $laws;
+}
+
+/**
+ * A rule that changes on a known date carries the new values in
+ * "effective_changes": [ { "from": "2026-11-01", "threshold": 0.7, ... } ].
+ * Fold in every change that has taken effect, so the page switches on the
+ * day without a code change. total-loss-threshold.js does the same.
+ */
+function mat_apply_effective_changes( $item ) {
+	if ( empty( $item['effective_changes'] ) ) {
+		return $item;
+	}
+	$today = wp_date( 'Y-m-d' );
+	foreach ( $item['effective_changes'] as $change ) {
+		if ( ! empty( $change['from'] ) && $change['from'] <= $today ) {
+			unset( $change['from'] );
+			$item = array_merge( $item, $change );
+		}
+	}
+	unset( $item['effective_changes'] );
+	return $item;
 }
 
 function mat_read_theme_json( $relative ) {

@@ -16,6 +16,7 @@ wp_enqueue_script( 'mat-gap', MAT_URI . '/assets/js/calculators/gap-shortfall.js
 		</div>
 
 		<form id="mat-gap-form" class="mat-tool-panel" novalidate>
+			<?php mat_noscript_note(); ?>
 			<div class="mat-field-row">
 				<div class="mat-field">
 					<label for="mat-gap-payoff"><?php esc_html_e( 'Remaining loan or lease payoff (USD)', 'myautotriage' ); ?></label>
