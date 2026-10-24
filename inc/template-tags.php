@@ -205,6 +205,13 @@ function mat_get_tools_registry() {
 			'seo_title' => __( 'Comparative Negligence Calculator: Partly at Fault Payout', 'myautotriage' ),
 		),
 		array(
+			'title'   => __( 'Michigan Mini-Tort Calculator', 'myautotriage' ),
+			'excerpt' => __( 'Michigan crash? See how much of your deductible or uncovered damage, up to $3,000, the at-fault driver owes.', 'myautotriage' ),
+			'slug'    => 'michigan-mini-tort-calculator',
+			'meta'    => __( 'Michigan mini-tort calculator: see how much you can recover from the at-fault driver for car damage your insurance didn\'t pay, up to $3,000, after your share of fault.', 'myautotriage' ),
+			'seo_title' => __( 'Michigan Mini-Tort Calculator: Get Your Deductible Back', 'myautotriage' ),
+		),
+		array(
 			'title'   => __( 'Loss of Use Calculator', 'myautotriage' ),
 			'excerpt' => __( 'Work out what the at-fault insurer owes for the days you were without your car, rental or not.', 'myautotriage' ),
 			'slug'    => 'loss-of-use-calculator',

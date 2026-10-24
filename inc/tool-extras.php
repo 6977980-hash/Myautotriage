@@ -228,6 +228,20 @@ function mat_get_tool_extras() {
 			),
 		),
 
+		'michigan-mini-tort-calculator' => array(
+			'short' => __( 'In Michigan you can recover up to $3,000 from the at-fault driver for damage to your car that your own insurance didn\'t pay, usually your collision deductible (MCL 500.3135(3)(e)). The amount is cut by your share of the fault, nothing is owed above 50% fault, and the claim goes to small claims court if the driver\'s insurer won\'t pay.', 'myautotriage' ),
+			'example' => array(
+				'title' => __( 'Worked example', 'myautotriage' ),
+				'html'  => '<p>' . __( 'Repairs cost $4,200. Your collision coverage paid everything except your $1,000 deductible, and the police report puts 20% of the fault on you.', 'myautotriage' ) . '</p>'
+					. '<p>' . __( 'Mini-tort: $1,000 × (100% − 20%) = $800. Without collision coverage the uncovered damage would be the full $4,200, capped at $3,000, so $3,000 × 80% = $2,400; the other $1,800 can\'t be recovered from the other driver.', 'myautotriage' ) . '</p>',
+			),
+			'next' => array(
+				array( 'slug' => 'small-claims-demand-letter-generator', 'label' => __( 'Send a final demand letter before small claims court', 'myautotriage' ) ),
+				array( 'slug' => 'car-insurance-claim-laws/michigan', 'label' => __( 'Michigan claim laws, deadlines and small claims limit', 'myautotriage' ) ),
+				array( 'slug' => 'comparative-fault-calculator', 'label' => __( 'Injury claim too? Check the comparative fault payout', 'myautotriage' ) ),
+			),
+		),
+
 		'loss-of-use-calculator' => array(
 			'short' => __( 'Loss of use is money for the time you are without your car while it is repaired or replaced. If the other driver was at fault, their insurer generally owes a comparable rental for the reasonable repair time, or a daily amount if you didn\'t rent. Your own policy pays only if you bought rental reimbursement coverage.', 'myautotriage' ),
 			'example' => array(

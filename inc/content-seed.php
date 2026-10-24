@@ -68,6 +68,12 @@ function mat_seed_pages() {
 			'content'  => '',
 		),
 		array(
+			'slug'     => 'michigan-mini-tort-calculator',
+			'title'    => __( 'Michigan Mini-Tort Calculator', 'myautotriage' ),
+			'template' => 'page-templates/template-mini-tort.php',
+			'content'  => '',
+		),
+		array(
 			'slug'     => 'loss-of-use-calculator',
 			'title'    => __( 'Loss of Use Calculator', 'myautotriage' ),
 			'template' => 'page-templates/template-loss-of-use.php',
