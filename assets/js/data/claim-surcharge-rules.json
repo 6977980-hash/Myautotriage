@@ -1,0 +1,34 @@
+{
+ "checked": "2026-10-24",
+ "note": "States with a public, state-set rule for surcharging an at-fault car accident. Other states leave the size of the increase to each insurer's filed rating plan. New York's $2,000 rule (Ins. Law 2335) is left out until its July 1, 2026 sunset is confirmed extended. Re-check yearly.",
+ "states": {
+  "CA": {
+   "kind": "threshold",
+   "threshold": 1000,
+   "basis": "total",
+   "text": "California insurers can count an accident against your driving record only if you were at least 51% to blame and it caused an injury, or more than $1,000 of total damage. A property-damage-only accident of $1,000 or less can't raise your rate as an at-fault accident.",
+   "cite": "10 Cal. Code Regs. § 2632.13(b); Cal. Ins. Code § 1861.025",
+   "url": "https://www.law.cornell.edu/regulations/california/Cal-Code-Regs-Tit-10-SS-2632.13"
+  },
+  "MA": {
+   "kind": "threshold",
+   "threshold": 1000,
+   "basis": "payment",
+   "text": "Under the Massachusetts Safe Driver Insurance Plan, an at-fault accident is surchargeable only if the insurer pays more than $1,000 above your deductible on a collision or property damage claim (or more than $1,000 on an injury-only claim). Insurers may use their own approved plan instead, so check which one yours uses.",
+   "cite": "211 CMR 134.03(3)",
+   "url": "https://www.law.cornell.edu/regulations/massachusetts/211-CMR-134-03"
+  },
+  "NC": {
+   "kind": "points",
+   "years": 3,
+   "tiers": [
+    { "max": 2300, "points": 1, "pct": 40 },
+    { "max": 3849.99, "points": 2, "pct": 55 },
+    { "max": null, "points": 3, "pct": 70 }
+   ],
+   "text": "North Carolina's Safe Driver Incentive Plan sets the increase by insurance points for 3 policy years: an at-fault accident with total property damage (including your own car) of $2,300 or less is 1 point (+40%), over $2,300 but under $3,850 is 2 points (+55%), and $3,850 or more, or injury costs over $1,800, is 3 points (+70%). A first $2,300-or-less property-damage-only accident gets no points if nobody licensed in your household has convictions or at-fault accidents in the last 3 years and there was no moving-violation conviction.",
+   "cite": "N.C. Gen. Stat. § 58-36-65; NC Department of Insurance, Safe Driver Incentive Plan",
+   "url": "https://www.ncdoi.gov/consumers/auto-and-vehicle-insurance/safe-driver-incentive-plan"
+  }
+ }
+}

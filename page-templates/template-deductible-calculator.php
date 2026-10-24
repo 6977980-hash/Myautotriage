@@ -2,11 +2,24 @@
 /**
  * Template Name: Tool - File a Claim Break-Even Calculator
  *
+ * State surcharge rules (only where a state sets them publicly) come from
+ * assets/js/data/claim-surcharge-rules.json.
+ *
  * @package MyAutoTriage
  */
 
 get_header();
 wp_enqueue_script( 'mat-ded', MAT_URI . '/assets/js/calculators/deductible-vs-premium.js', array( 'mat-tools' ), MAT_VERSION, true );
+
+$mat_ded_rules  = mat_read_theme_json( 'assets/js/data/claim-surcharge-rules.json' );
+$mat_ded_rules  = isset( $mat_ded_rules['states'] ) ? $mat_ded_rules['states'] : array();
+$mat_ded_states = array();
+foreach ( mat_state_laws() as $mat_ded_state ) {
+	$mat_ded_states[ $mat_ded_state['code'] ] = array_merge(
+		array( 'name' => $mat_ded_state['name'] ),
+		isset( $mat_ded_rules[ $mat_ded_state['code'] ] ) ? $mat_ded_rules[ $mat_ded_state['code'] ] : array()
+	);
+}
 ?>
 <div class="mat-tool">
 	<div class="mat-container mat-narrow">
@@ -16,7 +29,7 @@ wp_enqueue_script( 'mat-ded', MAT_URI . '/assets/js/calculators/deductible-vs-pr
 		</div>
 		<?php mat_tool_short_answer( 'deductible-vs-premium-calculator' ); ?>
 
-		<form id="mat-ded-form" class="mat-tool-panel" novalidate>
+		<form id="mat-ded-form" class="mat-tool-panel" data-states="<?php echo esc_attr( wp_json_encode( $mat_ded_states ) ); ?>" novalidate>
 			<?php mat_noscript_note(); ?>
 			<div class="mat-field-row">
 				<div class="mat-field">
@@ -30,9 +43,26 @@ wp_enqueue_script( 'mat-ded', MAT_URI . '/assets/js/calculators/deductible-vs-pr
 			</div>
 			<div class="mat-field-row">
 				<div class="mat-field">
+					<label for="mat-ded-state"><?php esc_html_e( 'Your state (optional)', 'myautotriage' ); ?></label>
+					<select id="mat-ded-state">
+						<option value=""><?php esc_html_e( 'Choose a state', 'myautotriage' ); ?></option>
+						<?php foreach ( $mat_ded_states as $mat_ded_code => $mat_ded_info ) : ?>
+							<option value="<?php echo esc_attr( $mat_ded_code ); ?>"><?php echo esc_html( $mat_ded_info['name'] ); ?></option>
+						<?php endforeach; ?>
+					</select>
+					<span class="mat-field__hint"><?php esc_html_e( 'California, Massachusetts and North Carolina set public rules for at-fault surcharges; we apply them.', 'myautotriage' ); ?></span>
+				</div>
+				<div class="mat-field">
+					<label for="mat-ded-premium"><?php esc_html_e( 'Current annual premium (USD, optional)', 'myautotriage' ); ?></label>
+					<input type="number" id="mat-ded-premium" min="0" step="1" placeholder="e.g. 1500">
+					<span class="mat-field__hint"><?php esc_html_e( 'Used to estimate the increase in North Carolina.', 'myautotriage' ); ?></span>
+				</div>
+			</div>
+			<div class="mat-field-row">
+				<div class="mat-field">
 					<label for="mat-ded-surcharge"><?php esc_html_e( 'Estimated annual premium increase if you file (USD)', 'myautotriage' ); ?></label>
 					<input type="number" id="mat-ded-surcharge" min="0" step="1" placeholder="e.g. 250">
-					<span class="mat-field__hint"><?php esc_html_e( "Ask your agent, or estimate 10-40% of your current premium — it varies a lot by insurer and state.", 'myautotriage' ); ?></span>
+					<span class="mat-field__hint"><?php esc_html_e( 'Ask your agent: outside North Carolina, the increase depends on your insurer\'s own rating plan. In North Carolina, leave this blank and we estimate it from the state plan.', 'myautotriage' ); ?></span>
 				</div>
 				<div class="mat-field">
 					<label for="mat-ded-years"><?php esc_html_e( 'How many years the increase typically lasts', 'myautotriage' ); ?></label>
