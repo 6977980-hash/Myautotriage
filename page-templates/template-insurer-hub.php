@@ -23,7 +23,7 @@ $mat_ic_cell = function ( $score ) {
 	<div class="mat-container mat-narrow">
 		<div class="mat-tool__intro">
 			<h1><?php the_title(); ?></h1>
-			<p><?php esc_html_e( 'Which car insurance companies do state regulators get the most complaints about, for their size? We compared the biggest auto insurers using the latest official data from the Texas Department of Insurance and the New York Department of Financial Services.', 'myautotriage' ); ?></p>
+			<p><?php esc_html_e( 'Which car insurance companies do state regulators get the most complaints about, for their size? We compared the biggest auto insurers using the latest official data from the Texas Department of Insurance, the New York Department of Financial Services and the California Department of Insurance.', 'myautotriage' ); ?></p>
 			<p class="mat-field__hint">
 				<?php
 				/* translators: %s: date */
@@ -56,6 +56,8 @@ $mat_ic_cell = function ( $score ) {
 							<th scope="col"><?php echo esc_html( sprintf( __( 'Texas %s', 'myautotriage' ), $mat_ic_data['tx_year'] ) ); ?></th>
 							<?php /* translators: %s: year */ ?>
 							<th scope="col"><?php echo esc_html( sprintf( __( 'New York %s', 'myautotriage' ), $mat_ic_data['ny_year'] ) ); ?></th>
+							<?php /* translators: %s: year */ ?>
+							<th scope="col"><?php echo esc_html( sprintf( __( 'California %s', 'myautotriage' ), $mat_ic_data['ca_year'] ) ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -65,6 +67,7 @@ $mat_ic_cell = function ( $score ) {
 								<?php
 								echo $mat_ic_cell( mat_insurer_score( $mat_ic_ins, 'tx' ) ); // phpcs:ignore -- escaped in the closure
 								echo $mat_ic_cell( mat_insurer_score( $mat_ic_ins, 'ny' ) ); // phpcs:ignore
+								echo $mat_ic_cell( mat_insurer_score( $mat_ic_ins, 'ca' ) ); // phpcs:ignore
 								?>
 							</tr>
 						<?php endforeach; ?>
@@ -89,6 +92,8 @@ $mat_ic_cell = function ( $score ) {
 			<ul>
 				<li><?php esc_html_e( 'Texas: the Texas Department of Insurance\'s complaint index. It divides a company\'s share of confirmed auto complaints by its share of auto policies in force. A confirmed complaint is one where TDI has information that the insurer broke an insurance law, rule or policy term, or where the complaint and the insurer\'s answer together suggest the insurer made a mistake or the complaint was valid (28 Tex. Admin. Code § 1.603).', 'myautotriage' ); ?></li>
 				<li><?php esc_html_e( 'New York: the Department of Financial Services ranks insurers by upheld complaints per million dollars of premium over two years. We divided each brand\'s rate by the rate for all ranked insurers, so 1.00 is the New York average too.', 'myautotriage' ); ?></li>
+				<?php /* translators: 1: number of insurers, 2: year */ ?>
+				<li><?php echo esc_html( sprintf( __( 'California: the Department of Insurance lists the %1$s largest auto insurers by justified complaints per 100,000 insured vehicles (earned exposures, motorcycles and motor homes included). We divided each brand\'s rate by the rate for all %1$s, so 1.00 is their average. In %2$s, Tesla Insurance Company and State National Insurance Company (which issues policies for other brands) had over half of all justified complaints between them, which pulls that average up; that is why most big brands score well below 1.00 in California.', 'myautotriage' ), $mat_ic_data['ca_market']['companies'], $mat_ic_data['ca_year'] ) ); ?></li>
 				<li><?php esc_html_e( '"Ended with the claim settled or the insurer paying more" counts complaints about claims (handling, delays, offers, denials, fault) where TDI recorded the result as claim settled, additional money received or additional payment expected.', 'myautotriage' ); ?></li>
 				<li><?php esc_html_e( 'Each brand combines the companies it sells through in that state (for example State Farm Mutual and State Farm County Mutual of Texas). Each insurer\'s page lists the companies included.', 'myautotriage' ); ?></li>
 				<?php /* translators: %d: minimum complaints */ ?>
@@ -110,11 +115,11 @@ $mat_ic_cell = function ( $score ) {
 		mat_faq_block( array(
 			array(
 				'question' => __( 'Which car insurance company has the fewest complaints?', 'myautotriage' ),
-				'answer'   => __( 'It depends on the state. In the table above, look for the lowest score with enough complaints to compare. Big national brands can score very differently in Texas and New York because they sell through different companies and agents in each state.', 'myautotriage' ),
+				'answer'   => __( 'It depends on the state. In the table above, look for the lowest score with enough complaints to compare. Big national brands can score very differently in Texas, New York and California because they sell through different companies and agents in each state.', 'myautotriage' ),
 			),
 			array(
 				'question' => __( 'Where do these numbers come from?', 'myautotriage' ),
-				'answer'   => __( 'From the open-data portals of the Texas Department of Insurance and the New York Department of Financial Services. We don\'t use reviews or our own surveys for these ratings.', 'myautotriage' ),
+				'answer'   => __( 'From the open-data portals of the Texas Department of Insurance and the New York Department of Financial Services, and the California Department of Insurance\'s published auto complaint report. We don\'t use reviews or our own surveys for these ratings.', 'myautotriage' ),
 			),
 			array(
 				'question' => __( 'How do I file a complaint against my car insurance company?', 'myautotriage' ),
@@ -122,7 +127,7 @@ $mat_ic_cell = function ( $score ) {
 			),
 			array(
 				'question' => __( 'Why isn\'t my state shown?', 'myautotriage' ),
-				'answer'   => __( 'Texas and New York publish complaint data per company in a form anyone can reuse. Many states publish only totals, or none at all. We will add more states as their data becomes available.', 'myautotriage' ),
+				'answer'   => __( 'Texas, New York and California publish current complaint data per company that we can compare. Many states publish only totals, an old PDF, or nothing at all. We will add more states as their data becomes available.', 'myautotriage' ),
 			),
 		) );
 		mat_render_sources( mat_insurer_sources() );

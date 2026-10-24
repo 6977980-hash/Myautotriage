@@ -83,6 +83,14 @@
      "premium_millions": 312.8,
      "upheld": 14,
      "rank": 81
+    },
+    {
+     "state": "CA",
+     "name": "STATE FARM MUTUAL AUTOMOBILE INSURANCE COMPANY",
+     "exposures": 3929452,
+     "justified": 121,
+     "ratio": 3.1,
+     "rank": 25
     }
    ],
    "tx": {
@@ -128,6 +136,16 @@
     "premium_millions": 3044.3,
     "ratio": 0.0345,
     "index": 1.01
+   },
+   "ca": {
+    "justified": 121,
+    "exposures": 3929452,
+    "ratio": 3.1,
+    "index": 0.5,
+    "justified_prev": {
+     "2024": 140,
+     "2023": 105
+    }
    }
   },
   {
@@ -189,6 +207,38 @@
      "premium_millions": 24.5,
      "upheld": 3,
      "rank": 101
+    },
+    {
+     "state": "CA",
+     "name": "PROGRESSIVE DIRECT INSURANCE COMPANY",
+     "exposures": 162367,
+     "justified": 1,
+     "ratio": 0.6,
+     "rank": 6
+    },
+    {
+     "state": "CA",
+     "name": "UNITED FINANCIAL CASUALTY COMPANY",
+     "exposures": 1236252,
+     "justified": 35,
+     "ratio": 2.8,
+     "rank": 23
+    },
+    {
+     "state": "CA",
+     "name": "DRIVE INSURANCE COMPANY",
+     "exposures": 556523,
+     "justified": 20,
+     "ratio": 3.6,
+     "rank": 28
+    },
+    {
+     "state": "CA",
+     "name": "PROGRESSIVE SELECT INSURANCE COMPANY",
+     "exposures": 337462,
+     "justified": 15,
+     "ratio": 4.4,
+     "rank": 31
     }
    ],
    "tx": {
@@ -234,6 +284,16 @@
     "premium_millions": 2063.9,
     "ratio": 0.03,
     "index": 0.88
+   },
+   "ca": {
+    "justified": 71,
+    "exposures": 2292604,
+    "ratio": 3.1,
+    "index": 0.5,
+    "justified_prev": {
+     "2024": 49,
+     "2023": 48
+    }
    }
   },
   {
@@ -311,6 +371,30 @@
      "premium_millions": 1187.1,
      "upheld": 17,
      "rank": 56
+    },
+    {
+     "state": "CA",
+     "name": "GEICO INDEMNITY COMPANY",
+     "exposures": 167498,
+     "justified": 0,
+     "ratio": 0.0,
+     "rank": 2
+    },
+    {
+     "state": "CA",
+     "name": "GEICO PROTECTION INSURANCE COMPANY",
+     "exposures": 57344,
+     "justified": 0,
+     "ratio": 0.0,
+     "rank": 4
+    },
+    {
+     "state": "CA",
+     "name": "GEICO GENERAL INSURANCE COMPANY",
+     "exposures": 3456991,
+     "justified": 68,
+     "ratio": 2.0,
+     "rank": 16
     }
    ],
    "tx": {
@@ -356,6 +440,16 @@
     "premium_millions": 5296.6,
     "ratio": 0.0091,
     "index": 0.27
+   },
+   "ca": {
+    "justified": 68,
+    "exposures": 3681833,
+    "ratio": 1.8,
+    "index": 0.3,
+    "justified_prev": {
+     "2024": 72,
+     "2023": 49
+    }
    }
   },
   {
@@ -521,6 +615,22 @@
      "premium_millions": 2.5,
      "upheld": 1,
      "rank": 121
+    },
+    {
+     "state": "CA",
+     "name": "ALLSTATE INSURANCE COMPANY",
+     "exposures": 52021,
+     "justified": 1,
+     "ratio": 1.9,
+     "rank": 15
+    },
+    {
+     "state": "CA",
+     "name": "ALLSTATE NORTHBROOK INDEMNITY COMPANY",
+     "exposures": 1485883,
+     "justified": 39,
+     "ratio": 2.6,
+     "rank": 19
     }
    ],
    "tx": {
@@ -566,6 +676,16 @@
     "premium_millions": 2409.2,
     "ratio": 0.0361,
     "index": 1.06
+   },
+   "ca": {
+    "justified": 40,
+    "exposures": 1537904,
+    "ratio": 2.6,
+    "index": 0.42,
+    "justified_prev": {
+     "2024": 52,
+     "2023": 55
+    }
    }
   },
   {
@@ -635,6 +755,38 @@
      "premium_millions": 113.6,
      "upheld": 18,
      "rank": 108
+    },
+    {
+     "state": "CA",
+     "name": "UNITED SERVICES AUTOMOBILE ASSOCIATION",
+     "exposures": 388762,
+     "justified": 9,
+     "ratio": 2.3,
+     "rank": 17
+    },
+    {
+     "state": "CA",
+     "name": "USAA CASUALTY INSURANCE COMPANY",
+     "exposures": 528111,
+     "justified": 14,
+     "ratio": 2.7,
+     "rank": 20
+    },
+    {
+     "state": "CA",
+     "name": "GARRISON PROPERTY AND CASUALTY INSURANCE COMPANY",
+     "exposures": 308442,
+     "justified": 10,
+     "ratio": 3.2,
+     "rank": 26
+    },
+    {
+     "state": "CA",
+     "name": "USAA GENERAL INDEMNITY COMPANY",
+     "exposures": 357371,
+     "justified": 12,
+     "ratio": 3.4,
+     "rank": 27
     }
    ],
    "tx": {
@@ -680,6 +832,16 @@
     "premium_millions": 548.8,
     "ratio": 0.1039,
     "index": 3.04
+   },
+   "ca": {
+    "justified": 45,
+    "exposures": 1582686,
+    "ratio": 2.8,
+    "index": 0.46,
+    "justified_prev": {
+     "2024": 55,
+     "2023": 45
+    }
    }
   },
   {
@@ -781,6 +943,14 @@
      "premium_millions": 0.5,
      "upheld": 20,
      "rank": 128
+    },
+    {
+     "state": "CA",
+     "name": "LIBERTY MUTUAL FIRE INSURANCE COMPANY",
+     "exposures": 120614,
+     "justified": 13,
+     "ratio": 10.8,
+     "rank": 41
     }
    ],
    "tx": {
@@ -826,6 +996,16 @@
     "premium_millions": 977.8,
     "ratio": 0.092,
     "index": 2.7
+   },
+   "ca": {
+    "justified": 13,
+    "exposures": 120614,
+    "ratio": 10.8,
+    "index": 1.75,
+    "justified_prev": {
+     "2024": 14,
+     "2023": 16
+    }
    }
   },
   {
@@ -967,6 +1147,22 @@
      "premium_millions": 14.2,
      "upheld": 2,
      "rank": 104
+    },
+    {
+     "state": "CA",
+     "name": "MID-CENTURY INSURANCE COMPANY",
+     "exposures": 202638,
+     "justified": 3,
+     "ratio": 1.5,
+     "rank": 12
+    },
+    {
+     "state": "CA",
+     "name": "FARMERS INSURANCE EXCHANGE",
+     "exposures": 944456,
+     "justified": 35,
+     "ratio": 3.7,
+     "rank": 29
     }
    ],
    "tx": {
@@ -1012,6 +1208,16 @@
     "premium_millions": 360.4,
     "ratio": 0.0416,
     "index": 1.22
+   },
+   "ca": {
+    "justified": 38,
+    "exposures": 1147094,
+    "ratio": 3.3,
+    "index": 0.54,
+    "justified_prev": {
+     "2024": 54,
+     "2023": 32
+    }
    }
   },
   {
@@ -1097,6 +1303,14 @@
      "premium_millions": 57.0,
      "upheld": 1,
      "rank": 60
+    },
+    {
+     "state": "CA",
+     "name": "NATIONWIDE INSURANCE COMPANY OF AMERICA",
+     "exposures": 218252,
+     "justified": 1,
+     "ratio": 0.5,
+     "rank": 5
     }
    ],
    "tx": {
@@ -1142,6 +1356,16 @@
     "premium_millions": 240.4,
     "ratio": 0.0083,
     "index": 0.24
+   },
+   "ca": {
+    "justified": 1,
+    "exposures": 218252,
+    "ratio": 0.5,
+    "index": 0.07,
+    "justified_prev": {
+     "2024": 8,
+     "2023": 7
+    }
    }
   },
   {
@@ -1315,6 +1539,14 @@
      "premium_millions": 0.4,
      "upheld": 1,
      "rank": 124
+    },
+    {
+     "state": "CA",
+     "name": "TRAVELERS COMMERCIAL INSURANCE COMPANY",
+     "exposures": 262948,
+     "justified": 7,
+     "ratio": 2.7,
+     "rank": 21
     }
    ],
    "tx": {
@@ -1360,6 +1592,16 @@
     "premium_millions": 806.1,
     "ratio": 0.0347,
     "index": 1.02
+   },
+   "ca": {
+    "justified": 7,
+    "exposures": 262948,
+    "ratio": 2.7,
+    "index": 0.43,
+    "justified_prev": {
+     "2024": 8,
+     "2023": 5
+    }
    }
   },
   {
@@ -1461,6 +1703,14 @@
      "premium_millions": 0.9,
      "upheld": 1,
      "rank": 122
+    },
+    {
+     "state": "CA",
+     "name": "HARTFORD UNDERWRITERS INSURANCE COMPANY",
+     "exposures": 121185,
+     "justified": 8,
+     "ratio": 6.6,
+     "rank": 38
     }
    ],
    "tx": {
@@ -1506,6 +1756,16 @@
     "premium_millions": 191.9,
     "ratio": 0.0208,
     "index": 0.61
+   },
+   "ca": {
+    "justified": 8,
+    "exposures": 121185,
+    "ratio": 6.6,
+    "index": 1.07,
+    "justified_prev": {
+     "2024": 12,
+     "2023": 3
+    }
    }
   },
   {
@@ -1567,6 +1827,14 @@
      "premium_millions": 0.5,
      "upheld": 1,
      "rank": 123
+    },
+    {
+     "state": "CA",
+     "name": "INFINITY INSURANCE COMPANY",
+     "exposures": 1489336,
+     "justified": 39,
+     "ratio": 2.6,
+     "rank": 18
     }
    ],
    "tx": {
@@ -1612,6 +1880,16 @@
     "premium_millions": 55.6,
     "ratio": 0.1799,
     "index": 5.27
+   },
+   "ca": {
+    "justified": 39,
+    "exposures": 1489336,
+    "ratio": 2.6,
+    "index": 0.43,
+    "justified_prev": {
+     "2024": 60,
+     "2023": 93
+    }
    }
   },
   {
@@ -1632,6 +1910,14 @@
      "naic": "11908",
      "premium_millions": 22.4,
      "upheld": 0,
+     "rank": 9
+    },
+    {
+     "state": "CA",
+     "name": "MERCURY INSURANCE COMPANY",
+     "exposures": 1535043,
+     "justified": 19,
+     "ratio": 1.2,
      "rank": 9
     }
    ],
@@ -1678,6 +1964,16 @@
     "premium_millions": 22.4,
     "ratio": 0.0,
     "index": 0.0
+   },
+   "ca": {
+    "justified": 19,
+    "exposures": 1535043,
+    "ratio": 1.2,
+    "index": 0.2,
+    "justified_prev": {
+     "2024": 26,
+     "2023": 36
+    }
    }
   },
   {
@@ -1744,6 +2040,14 @@
      "premium_millions": 92.3,
      "upheld": 4,
      "rank": 78
+    },
+    {
+     "state": "CA",
+     "name": "AMICA MUTUAL INSURANCE COMPANY",
+     "exposures": 67378,
+     "justified": 4,
+     "ratio": 5.9,
+     "rank": 36
     }
    ],
    "tx": {
@@ -1789,6 +2093,16 @@
     "premium_millions": 97.4,
     "ratio": 0.0411,
     "index": 1.2
+   },
+   "ca": {
+    "justified": 4,
+    "exposures": 67378,
+    "ratio": 5.9,
+    "index": 0.96,
+    "justified_prev": {
+     "2024": 2,
+     "2023": 2
+    }
    }
   },
   {
@@ -1802,6 +2116,14 @@
      "policies": 40364,
      "confirmed": 241,
      "index": 36.24
+    },
+    {
+     "state": "CA",
+     "name": "TESLA INSURANCE COMPANY",
+     "exposures": 261688,
+     "justified": 372,
+     "ratio": 142.2,
+     "rank": 49
     }
    ],
    "tx": {
@@ -1840,7 +2162,24 @@
      "policies": 42589,
      "index": 14.28
     }
+   },
+   "ca": {
+    "justified": 372,
+    "exposures": 261688,
+    "ratio": 142.2,
+    "index": 23.08,
+    "justified_prev": {
+     "2024": 2,
+     "2023": 0
+    }
    }
   }
- ]
+ ],
+ "ca_year": "2025",
+ "ca_market": {
+  "justified": 1786,
+  "exposures": 28998865,
+  "ratio": 6.2,
+  "companies": 50
+ }
 }
