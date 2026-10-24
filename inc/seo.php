@@ -78,6 +78,10 @@ function mat_get_meta_description() {
 		if ( $adjuster ) {
 			return $adjuster['meta'];
 		}
+		$guide = mat_current_reference_guide( $post );
+		if ( $guide ) {
+			return $guide['meta'];
+		}
 		$insurer = mat_current_insurer( $post );
 		if ( $insurer ) {
 			return mat_insurer_meta( $insurer );
@@ -179,6 +183,10 @@ function mat_get_seo_title() {
 		}
 		if ( MAT_ADJUSTER_HUB_SLUG === $post->post_name && ! $post->post_parent ) {
 			return mat_brand_title( __( 'What the Insurance Adjuster Said, Decoded: Phrases and Replies', 'myautotriage' ) );
+		}
+		$guide = mat_current_reference_guide( $post );
+		if ( $guide ) {
+			return mat_brand_title( $guide['seo_title'] );
 		}
 		// Tool pages: use the search-phrased title from the tools registry
 		// (what people actually type), not the on-page tool name.

@@ -112,7 +112,7 @@ function mat_adjuster_phrases() {
 			'tools'     => array(
 				array( 'slug' => 'insurance-underpayment-demand-letter-generator', 'label' => __( 'Write a counter-offer to a low settlement', 'myautotriage' ) ),
 				array( 'slug' => 'total-loss-valuation-checker', 'label' => __( 'Totaled? Check the valuation report behind the offer', 'myautotriage' ) ),
-				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'appraisal' ), 'label' => __( 'Invoke your policy\'s appraisal clause', 'myautotriage' ) ),
+				array( 'slug' => 'insurance-appraisal-clause', 'label' => __( 'How to invoke your policy\'s appraisal clause', 'myautotriage' ) ),
 				array( 'slug' => 'how-to-negotiate-insurance-adjuster', 'label' => __( 'Read: how to negotiate with an insurance adjuster', 'myautotriage' ) ),
 			),
 			'faqs'      => array(
