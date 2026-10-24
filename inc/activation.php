@@ -271,7 +271,7 @@ add_action( 'wp_loaded', 'mat_ensure_new_pages' );
  * re-run.
  */
 function mat_apply_content_fixes() {
-	$version = '4';
+	$version = '5';
 	if ( $version === get_option( 'mat_content_fixes_version' ) ) {
 		return;
 	}
@@ -315,7 +315,144 @@ function mat_apply_content_fixes() {
 		}
 	}
 
+	// Audit 2026-10-24 S12: the guides lose filler adverbs and open with an
+	// "At a glance" table. Both steps check for their own result first.
+	foreach ( mat_guide_glance_tables() as $slug => $glance ) {
+		$post = get_page_by_path( $slug, OBJECT, 'post' );
+		if ( ! $post ) {
+			continue;
+		}
+		$content = mat_tidy_guide_text( $post->post_content );
+		if ( false === strpos( $content, 'mat-glance' ) ) {
+			$content = preg_replace( '#</p>#', '</p>' . mat_glance_table_html( $glance ), $content, 1 );
+		}
+		if ( $content && $content !== $post->post_content ) {
+			wp_update_post( array(
+				'ID'           => $post->ID,
+				'post_content' => $content,
+			) );
+		}
+	}
+
 	mat_add_primary_menu_links();
+}
+
+/**
+ * Drop filler words that pad the guides without adding meaning.
+ */
+function mat_tidy_guide_text( $html ) {
+	$rules = array(
+		'#one of the more genuinely close decisions#' => 'one of the closest decisions',
+		'#confident — genuinely confident, not just hopeful —#u' => 'sure, not just hopeful,',
+		'# (genuinely|actually|simply)\b#' => '',
+	);
+	return preg_replace( array_keys( $rules ), array_values( $rules ), $html );
+}
+
+function mat_glance_table_html( $glance ) {
+	$html = '<div class="mat-glance mat-table-wrap"><table class="mat-table"><caption>' . esc_html__( 'At a glance', 'myautotriage' ) . '</caption><thead><tr><th>' . esc_html( $glance['head'][0] ) . '</th><th>' . esc_html( $glance['head'][1] ) . '</th></tr></thead><tbody>';
+	foreach ( $glance['rows'] as $row ) {
+		$html .= '<tr><td>' . esc_html( $row[0] ) . '</td><td>' . esc_html( $row[1] ) . '</td></tr>';
+	}
+	return $html . '</tbody></table></div>';
+}
+
+/**
+ * One summary table per guide, keyed by post slug.
+ */
+function mat_guide_glance_tables() {
+	return array(
+		'what-to-do-after-a-car-accident-checklist' => array(
+			'head' => array( __( 'When', 'myautotriage' ), __( 'What to do', 'myautotriage' ) ),
+			'rows' => array(
+				array( __( 'At the scene', 'myautotriage' ), __( 'Get safe, call 911 if anyone is hurt, photograph the cars, plates and road, and swap names, insurers and policy numbers.', 'myautotriage' ) ),
+				array( __( 'Same day', 'myautotriage' ), __( 'Report it to your insurer, see a doctor if you feel any pain, and write down what happened while you remember it.', 'myautotriage' ) ),
+				array( __( 'First week', 'myautotriage' ), __( 'Get the police report, a repair estimate, and start a claim diary of every call.', 'myautotriage' ) ),
+				array( __( 'Before your state\'s deadline', 'myautotriage' ), __( 'File the claim (and PIP in no-fault states); the lawsuit deadline still runs while you negotiate.', 'myautotriage' ) ),
+			),
+		),
+		'should-i-file-a-claim-minor-accident' => array(
+			'head' => array( __( 'Situation', 'myautotriage' ), __( 'Usually', 'myautotriage' ) ),
+			'rows' => array(
+				array( __( 'The other driver was at fault', 'myautotriage' ), __( 'Claim from their insurer: no deductible, and normally no surcharge on you.', 'myautotriage' ) ),
+				array( __( 'Anyone was hurt', 'myautotriage' ), __( 'Report it to your insurer; injuries can surface days later.', 'myautotriage' ) ),
+				array( __( 'Your fault, damage close to your deductible', 'myautotriage' ), __( 'Paying the shop yourself is often cheaper than the surcharge.', 'myautotriage' ) ),
+				array( __( 'Your fault, damage well above deductible plus surcharge', 'myautotriage' ), __( 'File; run the break-even calculator to be sure.', 'myautotriage' ) ),
+			),
+		),
+		'car-insurance-claim-denied-what-to-do' => array(
+			'head' => array( __( 'Step', 'myautotriage' ), __( 'What to do', 'myautotriage' ) ),
+			'rows' => array(
+				array( __( '1. Get the reason in writing', 'myautotriage' ), __( 'Ask for the exact policy wording and facts the denial relies on.', 'myautotriage' ) ),
+				array( __( '2. Check it against your policy', 'myautotriage' ), __( 'Many denials rest on a wrong fact or an exclusion read too broadly.', 'myautotriage' ) ),
+				array( __( '3. Appeal in writing', 'myautotriage' ), __( 'Answer the stated reason with evidence and set a response date.', 'myautotriage' ) ),
+				array( __( '4. Escalate', 'myautotriage' ), __( 'Complaint to your state insurance department, appraisal (amount disputes only), small claims or a lawyer.', 'myautotriage' ) ),
+			),
+		),
+		'how-to-file-diminished-value-claim' => array(
+			'head' => array( __( 'Question', 'myautotriage' ), __( 'Short answer', 'myautotriage' ) ),
+			'rows' => array(
+				array( __( 'Who pays?', 'myautotriage' ), __( 'Usually the at-fault driver\'s insurer. Your own insurer only in a few states (Georgia, Oregon, Vermont, Washington) unless your policy excludes it.', 'myautotriage' ) ),
+				array( __( 'How much?', 'myautotriage' ), __( 'Insurers start with 17c: at most 10% of the car\'s value, cut for damage and mileage. A market appraisal is often higher.', 'myautotriage' ) ),
+				array( __( 'When?', 'myautotriage' ), __( 'After the repair is finished, within your state\'s property damage deadline.', 'myautotriage' ) ),
+				array( __( 'Evidence', 'myautotriage' ), __( 'Final repair invoice, photos, history report, and an appraisal or dealer quotes.', 'myautotriage' ) ),
+			),
+		),
+		'totaled-car-payout-too-low-negotiate' => array(
+			'head' => array( __( 'Check in the valuation report', 'myautotriage' ), __( 'What to look for', 'myautotriage' ) ),
+			'rows' => array(
+				array( __( 'Comparable cars', 'myautotriage' ), __( 'Same trim, options and mileage band, and nearby; drop ones that aren\'t.', 'myautotriage' ) ),
+				array( __( 'Condition deductions', 'myautotriage' ), __( 'Each one itemised with a dollar amount and evidence.', 'myautotriage' ) ),
+				array( __( 'Negotiation or "projected sold" adjustments', 'myautotriage' ), __( 'Ask for the data behind them; you pay the advertised price to replace the car.', 'myautotriage' ) ),
+				array( __( 'Sales tax, title and registration', 'myautotriage' ), __( 'Owed in most states, up front or after you buy a replacement.', 'myautotriage' ) ),
+			),
+		),
+		'gap-insurance-total-loss-still-owe-money' => array(
+			'head' => array( __( 'Part of what you owe', 'myautotriage' ), __( 'Who usually pays', 'myautotriage' ) ),
+			'rows' => array(
+				array( __( 'The car\'s actual cash value', 'myautotriage' ), __( 'Your insurer, less your deductible', 'myautotriage' ) ),
+				array( __( 'Loan balance above that value', 'myautotriage' ), __( 'GAP, up to its limit (often 125% to 150% of the value)', 'myautotriage' ) ),
+				array( __( 'Your deductible', 'myautotriage' ), __( 'You, unless the GAP contract covers it', 'myautotriage' ) ),
+				array( __( 'Late payments, fees, rolled-in add-ons', 'myautotriage' ), __( 'Usually you', 'myautotriage' ) ),
+			),
+		),
+		'how-to-negotiate-insurance-adjuster' => array(
+			'head' => array( __( 'Do', 'myautotriage' ), __( 'Don\'t', 'myautotriage' ) ),
+			'rows' => array(
+				array( __( 'Ask how the offer was calculated, in writing', 'myautotriage' ), __( 'Accept or reject a number on the first call', 'myautotriage' ) ),
+				array( __( 'Counter with a specific number and evidence', 'myautotriage' ), __( 'Say "this seems low" without support', 'myautotriage' ) ),
+				array( __( 'Confirm every call by email', 'myautotriage' ), __( 'Rely on what was said on the phone', 'myautotriage' ) ),
+				array( __( 'Know your next step if talks stall', 'myautotriage' ), __( 'Sign a release before the full damage is known', 'myautotriage' ) ),
+			),
+		),
+		'uninsured-motorist-claim-guide' => array(
+			'head' => array( __( 'Situation', 'myautotriage' ), __( 'Coverage that usually applies', 'myautotriage' ) ),
+			'rows' => array(
+				array( __( 'At-fault driver had no insurance, you were hurt', 'myautotriage' ), __( 'Uninsured motorist bodily injury (UM)', 'myautotriage' ) ),
+				array( __( 'Their limits are too low for your injuries', 'myautotriage' ), __( 'Underinsured motorist (UIM)', 'myautotriage' ) ),
+				array( __( 'Damage to your car from an uninsured driver', 'myautotriage' ), __( 'UM property damage (UMPD) or your collision coverage', 'myautotriage' ) ),
+				array( __( 'Hit and run', 'myautotriage' ), __( 'UM, often only with physical contact and a prompt police report', 'myautotriage' ) ),
+			),
+		),
+		'how-long-insurance-company-must-pay-claim' => array(
+			'head' => array( __( 'Deadline', 'myautotriage' ), __( 'Common rule', 'myautotriage' ) ),
+			'rows' => array(
+				array( __( 'Acknowledge your claim', 'myautotriage' ), __( 'Often 10 to 15 days; about a quarter of states just say "promptly"', 'myautotriage' ) ),
+				array( __( 'Accept or deny', 'myautotriage' ), __( 'Often 15 to 30 days after proof of loss; some states set no number', 'myautotriage' ) ),
+				array( __( 'Pay', 'myautotriage' ), __( 'From 5 business days after a settlement to 60 days after proof of loss, in states that set a number', 'myautotriage' ) ),
+				array( __( 'If it is late', 'myautotriage' ), __( 'Write, then complain to your state insurance department; some states add interest', 'myautotriage' ) ),
+			),
+		),
+		'small-claims-court-vs-insurance-claim' => array(
+			'head' => array( __( 'Choose', 'myautotriage' ), __( 'When', 'myautotriage' ) ),
+			'rows' => array(
+				array( __( 'Insurance claim', 'myautotriage' ), __( 'The at-fault driver is insured and their insurer is engaging, even slowly.', 'myautotriage' ) ),
+				array( __( 'Small claims court', 'myautotriage' ), __( 'The insurer has stopped moving, the driver is paying out of pocket, or the amount is under your state\'s limit and fault is clear.', 'myautotriage' ) ),
+				array( __( 'Neither yet', 'myautotriage' ), __( 'Fault is disputed with little evidence, or the driver has nothing to collect from.', 'myautotriage' ) ),
+				array( __( 'Either way', 'myautotriage' ), __( 'Watch your state\'s deadline to sue; negotiation doesn\'t pause it.', 'myautotriage' ) ),
+			),
+		),
+	);
 }
 
 /**
