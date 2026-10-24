@@ -255,6 +255,42 @@ function mat_outcomes_stats() {
 	return $stats;
 }
 
+/**
+ * True once the first group (all settled claims) has MAT_OUTCOMES_MIN answers
+ * and the Lowball Index shows real numbers.
+ */
+function mat_outcomes_published() {
+	$stats = mat_outcomes_stats();
+	return ! empty( $stats['all'] );
+}
+
+/**
+ * Until it has numbers, the Lowball Index page is a "collecting answers"
+ * notice: keep it out of search results, the sitemap, IndexNow and llms.txt.
+ * Returns the page IDs to leave out (none once it's published).
+ */
+function mat_outcomes_hidden_ids() {
+	$page = get_page_by_path( MAT_OUTCOMES_INDEX_SLUG );
+	return ( $page && ! mat_outcomes_published() ) ? array( (int) $page->ID ) : array();
+}
+
+function mat_outcomes_robots( $robots ) {
+	if ( is_page() && in_array( get_queried_object_id(), mat_outcomes_hidden_ids(), true ) ) {
+		$robots['noindex'] = true;
+		$robots['follow']  = true;
+	}
+	return $robots;
+}
+add_filter( 'wp_robots', 'mat_outcomes_robots' );
+
+function mat_outcomes_sitemap_args( $args, $post_type ) {
+	if ( 'page' === $post_type && mat_outcomes_hidden_ids() ) {
+		$args['post__not_in'] = array_merge( isset( $args['post__not_in'] ) ? (array) $args['post__not_in'] : array(), mat_outcomes_hidden_ids() );
+	}
+	return $args;
+}
+add_filter( 'wp_sitemaps_posts_query_args', 'mat_outcomes_sitemap_args', 10, 2 );
+
 function mat_outcomes_survey_url() {
 	return home_url( user_trailingslashit( MAT_OUTCOMES_SURVEY_SLUG ) );
 }
@@ -266,7 +302,9 @@ function mat_outcomes_cta() {
 	if ( ! get_page_by_path( MAT_OUTCOMES_SURVEY_SLUG ) ) {
 		return;
 	}
-	echo '<p class="mat-outcomes-cta">' . esc_html__( 'Already settled a claim?', 'myautotriage' ) . ' <a href="' . esc_url( mat_outcomes_survey_url() ) . '">' . esc_html__( 'Share the first offer and what you finally got, anonymously, in 30 seconds', 'myautotriage' ) . '</a>. ' . esc_html__( 'It builds the Lowball Index: real numbers on how much offers move.', 'myautotriage' ) . '</p>';
+	echo '<p class="mat-outcomes-cta">' . esc_html__( 'Already settled a claim?', 'myautotriage' ) . ' <a href="' . esc_url( mat_outcomes_survey_url() ) . '">' . esc_html__( 'Share the first offer and what you finally got, anonymously, in 30 seconds', 'myautotriage' ) . '</a>. ' . ( mat_outcomes_published()
+		? esc_html__( 'It builds the Lowball Index: real numbers on how much offers move.', 'myautotriage' )
+		: esc_html__( 'It helps us build the Lowball Index, which we publish once enough claims are in.', 'myautotriage' ) ) . '</p>';
 }
 
 /**

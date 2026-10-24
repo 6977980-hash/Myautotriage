@@ -83,13 +83,13 @@ function mat_get_meta_description() {
 			return mat_insurer_meta( $insurer );
 		}
 		if ( MAT_INSURER_HUB_SLUG === $post->post_name && ! $post->post_parent ) {
-			return __( 'Which car insurance companies get the most complaints for their size? State Farm, Progressive, GEICO, Allstate, USAA and more, rated with Texas and New York regulator data.', 'myautotriage' );
+			return __( 'Which car insurers get the most complaints for their size? State Farm, Progressive, GEICO, Allstate and more, rated with Texas and New York regulator data.', 'myautotriage' );
 		}
 		if ( MAT_ADJUSTER_HUB_SLUG === $post->post_name && ! $post->post_parent ) {
-			return __( 'What adjusters mean when they say "final offer", "recorded statement", "aftermarket parts", "betterment" and more, with the claim-handling rule behind each and a reply to copy.', 'myautotriage' );
+			return __( 'What adjusters mean by "final offer", "recorded statement", "betterment" and more, with the claim-handling rule behind each phrase and a reply to copy.', 'myautotriage' );
 		}
 		if ( MAT_STATE_HUB_SLUG === $post->post_name ) {
-			return __( 'Car insurance claim laws for all 50 states and DC: how many days insurers have to acknowledge, decide and pay a claim, and each state\'s total loss threshold, with citations.', 'myautotriage' );
+			return __( 'Car insurance claim laws for all 50 states and DC: days insurers have to acknowledge, decide and pay a claim, and each total loss threshold, with citations.', 'myautotriage' );
 		}
 		if ( has_excerpt( $post ) ) {
 			return mat_truncate_meta( wp_strip_all_tags( get_the_excerpt( $post ) ) );
@@ -122,6 +122,20 @@ function mat_get_meta_description() {
 }
 
 /**
+ * Add " | MyAutoTriage" only when the whole title still fits in about 65
+ * characters, the most a search result shows. Long titles keep their words
+ * and drop the brand instead (state and adjuster pages already do this).
+ */
+function mat_brand_title( $title ) {
+	$name  = get_bloginfo( 'name' );
+	$title = preg_replace( '/ \| ' . preg_quote( $name, '/' ) . '$/', '', $title );
+	$full  = $title . ' | ' . $name;
+	$plain = html_entity_decode( $full, ENT_QUOTES | ENT_HTML5, 'UTF-8' );
+	$len   = function_exists( 'mb_strlen' ) ? mb_strlen( $plain ) : strlen( $plain );
+	return $len <= 65 ? $full : $title;
+}
+
+/**
  * The single canonical title string used for both <title> and og:title, so
  * the two never drift apart.
  */
@@ -133,7 +147,7 @@ function mat_get_seo_title() {
 	if ( is_home() && ! is_front_page() ) {
 		$blog_id = (int) get_option( 'page_for_posts' );
 		$custom  = $blog_id ? get_post_meta( $blog_id, '_mat_meta_title', true ) : '';
-		return $custom ?: __( 'Car Insurance Claim Guides & Explainers', 'myautotriage' ) . ' | ' . get_bloginfo( 'name' );
+		return mat_brand_title( $custom ?: __( 'Car Insurance Claim Guides & Explainers', 'myautotriage' ) );
 	}
 	if ( is_front_page() || is_home() ) {
 		return get_bloginfo( 'name' ) . ' — ' . get_bloginfo( 'description' );
@@ -142,7 +156,7 @@ function mat_get_seo_title() {
 		global $post;
 		$custom = get_post_meta( $post->ID, '_mat_meta_title', true );
 		if ( $custom ) {
-			return $custom;
+			return mat_brand_title( $custom );
 		}
 		$state = mat_current_state( $post );
 		if ( $state ) {
@@ -158,25 +172,25 @@ function mat_get_seo_title() {
 		}
 		$insurer = mat_current_insurer( $post );
 		if ( $insurer ) {
-			return mat_insurer_seo_title( $insurer ) . ' | ' . get_bloginfo( 'name' );
+			return mat_brand_title( mat_insurer_seo_title( $insurer ) );
 		}
 		if ( MAT_INSURER_HUB_SLUG === $post->post_name && ! $post->post_parent ) {
-			return __( 'Car Insurance Company Complaint Ratings by State Regulators', 'myautotriage' ) . ' | ' . get_bloginfo( 'name' );
+			return mat_brand_title( __( 'Car Insurance Company Complaint Ratings by State Regulators', 'myautotriage' ) );
 		}
 		if ( MAT_ADJUSTER_HUB_SLUG === $post->post_name && ! $post->post_parent ) {
-			return __( 'What the Insurance Adjuster Said, Decoded: Phrases and Replies', 'myautotriage' ) . ' | ' . get_bloginfo( 'name' );
+			return mat_brand_title( __( 'What the Insurance Adjuster Said, Decoded: Phrases and Replies', 'myautotriage' ) );
 		}
 		// Tool pages: use the search-phrased title from the tools registry
 		// (what people actually type), not the on-page tool name.
 		foreach ( mat_get_tools_registry() as $tool ) {
 			if ( $tool['slug'] === $post->post_name && ! empty( $tool['seo_title'] ) ) {
-				return $tool['seo_title'] . ' | ' . get_bloginfo( 'name' );
+				return mat_brand_title( $tool['seo_title'] );
 			}
 		}
-		return get_the_title( $post ) . ' | ' . get_bloginfo( 'name' );
+		return mat_brand_title( get_the_title( $post ) );
 	}
 	if ( is_category() || is_tag() || is_tax() ) {
-		return single_term_title( '', false ) . ' | ' . get_bloginfo( 'name' );
+		return mat_brand_title( single_term_title( '', false ) );
 	}
 	if ( is_search() ) {
 		/* translators: %s: search query */
@@ -226,7 +240,8 @@ add_action( 'init', 'mat_register_seo_meta' );
  */
 function mat_head_seo() {
 	$title       = mat_get_seo_title();
-	$description = mat_get_meta_description();
+	// Search results cut descriptions at about 160 characters.
+	$description = mat_truncate_meta( mat_get_meta_description(), 160 );
 	$canonical   = mat_get_canonical_url();
 	$site_name   = get_bloginfo( 'name' );
 
@@ -415,6 +430,30 @@ function mat_schema_breadcrumbs() {
 		);
 	}
 
+	// /blog/ and its category pages show "Home / Blog (/ Category)" too.
+	if ( is_home() && ! is_front_page() ) {
+		$items[] = array(
+			'@type'    => 'ListItem',
+			'position' => $position++,
+			'name'     => __( 'Blog', 'myautotriage' ),
+			'item'     => home_url( '/blog/' ),
+		);
+	} elseif ( is_category() || is_tag() || is_tax() ) {
+		$items[] = array(
+			'@type'    => 'ListItem',
+			'position' => $position++,
+			'name'     => __( 'Blog', 'myautotriage' ),
+			'item'     => home_url( '/blog/' ),
+		);
+		$term_link = get_term_link( get_queried_object() );
+		$items[]   = array(
+			'@type'    => 'ListItem',
+			'position' => $position++,
+			'name'     => single_term_title( '', false ),
+			'item'     => is_wp_error( $term_link ) ? mat_get_canonical_url() : $term_link,
+		);
+	}
+
 	if ( count( $items ) < 2 ) {
 		return null;
 	}
@@ -472,7 +511,10 @@ function mat_schema_software_application() {
 	}
 	global $post;
 	$tool_slugs = wp_list_pluck( mat_get_tools_registry(), 'slug' );
-	if ( ! in_array( $post->post_name, $tool_slugs, true ) ) {
+	// The demand letter landing pages (no-injury, property damage, ...) run
+	// the same generator under their own slugs.
+	$is_letter = 'page-templates/template-demand-letter.php' === get_page_template_slug( $post );
+	if ( ! $is_letter && ! in_array( $post->post_name, $tool_slugs, true ) ) {
 		return null;
 	}
 	return array(

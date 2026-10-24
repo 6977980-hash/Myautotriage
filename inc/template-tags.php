@@ -29,7 +29,10 @@ function mat_breadcrumbs() {
 			echo ' <span aria-hidden="true">/</span> <a href="' . esc_url( get_permalink( $ancestor_id ) ) . '">' . esc_html( get_the_title( $ancestor_id ) ) . '</a>';
 		}
 		echo ' <span aria-hidden="true">/</span> <span aria-current="page">' . esc_html( get_the_title() ) . '</span>';
+	} elseif ( is_home() ) {
+		echo ' <span aria-hidden="true">/</span> <span aria-current="page">' . esc_html__( 'Blog', 'myautotriage' ) . '</span>';
 	} elseif ( is_category() || is_tag() || is_tax() ) {
+		echo ' <span aria-hidden="true">/</span> <a href="' . esc_url( home_url( '/blog/' ) ) . '">' . esc_html__( 'Blog', 'myautotriage' ) . '</a>';
 		echo ' <span aria-hidden="true">/</span> <span aria-current="page">' . esc_html( single_term_title( '', false ) ) . '</span>';
 	} elseif ( is_search() ) {
 		echo ' <span aria-hidden="true">/</span> <span aria-current="page">' . esc_html__( 'Search results', 'myautotriage' ) . '</span>';
@@ -128,21 +131,21 @@ function mat_get_tools_registry() {
 			'title'   => __( 'Claim Diary', 'myautotriage' ),
 			'excerpt' => __( 'Log every call and email on your claim, see your state\'s deadlines as dates, and get a timeline for a complaint.', 'myautotriage' ),
 			'slug'    => 'claim-diary',
-			'meta'    => __( 'Free car insurance claim log: record every call, email and promise, see your state\'s claim deadlines as real dates, get warned when the adjuster goes quiet, and export a timeline for a complaint.', 'myautotriage' ),
+			'meta'    => __( 'Free car insurance claim log: record every call and promise, see your state\'s claim deadlines as dates, and export a timeline for a complaint.', 'myautotriage' ),
 			'seo_title' => __( 'Insurance Claim Diary: Free Claim Log With Deadline Alerts', 'myautotriage' ),
 		),
 		array(
 			'title'   => __( 'Rental Car Extension Letter', 'myautotriage' ),
 			'excerpt' => __( 'Insurer ending your rental before the car is fixed? Get a letter asking for the extra days, with the reason.', 'myautotriage' ),
 			'slug'    => 'rental-car-extension-letter',
-			'meta'    => __( 'Insurance ending your rental car before repairs are done? Free letter to ask the adjuster for a rental extension, with the extra days, the reason and a check against your policy limit.', 'myautotriage' ),
+			'meta'    => __( 'Insurance ending your rental car before repairs are done? Free letter asking the adjuster for a rental extension, with the extra days and the reason.', 'myautotriage' ),
 			'seo_title' => __( 'Insurance Rental Car Extension Letter (Free Template)', 'myautotriage' ),
 		),
 		array(
 			'title'   => __( 'Deductible Recovery Calculator', 'myautotriage' ),
 			'excerpt' => __( 'Not your fault but you paid the deductible? See how much should come back and what to ask your insurer.', 'myautotriage' ),
 			'slug'    => 'deductible-recovery-calculator',
-			'meta'    => __( 'Paid your deductible after an accident that wasn\'t your fault? See how much you should get back through subrogation, where your claim is in the process, and the message to send your insurer.', 'myautotriage' ),
+			'meta'    => __( 'Paid your deductible after an accident that wasn\'t your fault? See how much should come back through subrogation and what to send your insurer.', 'myautotriage' ),
 			'seo_title' => __( 'How to Get Your Deductible Back: Subrogation Calculator', 'myautotriage' ),
 		),
 		array(
@@ -212,7 +215,7 @@ function mat_get_tools_registry() {
 			'title'   => __( 'Total Loss Valuation Checker', 'myautotriage' ),
 			'excerpt' => __( 'Check the comparables, adjustments, tax and fees in your total loss valuation report and see how much is in question.', 'myautotriage' ),
 			'slug'    => 'total-loss-valuation-checker',
-			'meta'    => __( 'Total loss offer too low? Enter the numbers from your CCC, Mitchell or Audatex valuation report to find negotiation adjustments, distant comparables, condition deductions and missing tax and fees, then send a counter-offer.', 'myautotriage' ),
+			'meta'    => __( 'Total loss offer too low? Check your CCC, Mitchell or Audatex report for distant comparables, condition deductions and missing tax and fees, then counter.', 'myautotriage' ),
 			'seo_title' => __( 'Total Loss Valuation Checker: Is Your Totaled Car Offer Too Low?', 'myautotriage' ),
 		),
 		array(
