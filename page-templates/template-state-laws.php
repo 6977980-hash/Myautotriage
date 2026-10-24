@@ -232,6 +232,23 @@ $meta  = mat_state_laws_meta();
 					</p>
 				<?php endif; ?>
 
+				<?php if ( ! empty( $state['dv'] ) ) : ?>
+					<h2>
+						<?php
+						/* translators: %s: state name */
+						printf( esc_html__( 'Diminished value in %s', 'myautotriage' ), esc_html( $state['name'] ) );
+						?>
+					</h2>
+					<ul>
+						<li><strong><?php esc_html_e( 'From the at-fault driver\'s insurer:', 'myautotriage' ); ?></strong> <?php echo esc_html( mat_dv_status_label( $state['dv']['third_party'], 'third_party' ) . '. ' . $state['dv']['third_party_note'] ); ?></li>
+						<li><strong><?php esc_html_e( 'From your own insurer:', 'myautotriage' ); ?></strong> <?php echo esc_html( mat_dv_status_label( $state['dv']['first_party'], 'first_party' ) . '. ' . $state['dv']['first_party_note'] ); ?></li>
+					</ul>
+					<?php $mat_dv_url = mat_url_for_slug( 'diminished-value-by-state' ); ?>
+					<?php if ( $mat_dv_url ) : ?>
+						<p><a href="<?php echo esc_url( $mat_dv_url ); ?>"><?php esc_html_e( 'Diminished value rules in every state', 'myautotriage' ); ?></a></p>
+					<?php endif; ?>
+				<?php endif; ?>
+
 				<?php
 				$neighbors = array();
 				$laws      = mat_state_laws();

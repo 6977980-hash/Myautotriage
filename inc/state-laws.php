@@ -30,6 +30,7 @@ function mat_state_laws() {
 	$deadlines = mat_read_theme_json( 'assets/js/data/claim-deadlines.json' );
 	$totals    = mat_read_theme_json( 'assets/js/data/total-loss-thresholds.json' );
 	$facts     = mat_read_theme_json( 'assets/js/data/state-claim-facts.json' );
+	$dv        = mat_read_theme_json( 'assets/js/data/diminished-value-rules.json' );
 	if ( empty( $deadlines['all_states'] ) ) {
 		return $laws;
 	}
@@ -41,6 +42,7 @@ function mat_state_laws() {
 			'deadlines'  => isset( $deadlines['states'][ $code ] ) ? $deadlines['states'][ $code ] : null,
 			'total_loss' => isset( $totals['states'][ $code ] ) ? mat_apply_effective_changes( $totals['states'][ $code ] ) : null,
 			'facts'      => isset( $facts['states'][ $code ] ) ? $facts['states'][ $code ] : array(),
+			'dv'         => isset( $dv['states'][ $code ] ) ? $dv['states'][ $code ] : null,
 		);
 	}
 	uasort( $laws, function ( $a, $b ) {
@@ -510,4 +512,24 @@ function mat_state_rules_block( $heading = '' ) {
 		<?php mat_state_link_list(); ?>
 	</section>
 	<?php
+}
+
+/**
+ * Short labels for the diminished value status of a state (see
+ * assets/js/data/diminished-value-rules.json).
+ */
+function mat_dv_status_label( $status, $party ) {
+	$labels = array(
+		'first_party' => array(
+			'yes'       => __( 'Yes, unless your policy clearly excludes it', 'myautotriage' ),
+			'no'        => __( 'No, under standard "repair or replace" wording', 'myautotriage' ),
+			'unsettled' => __( 'Not settled; depends on your policy', 'myautotriage' ),
+		),
+		'third_party' => array(
+			'yes'       => __( 'Yes, if you can prove it', 'myautotriage' ),
+			'no'        => __( 'Limited: repair cost is the usual measure', 'myautotriage' ),
+			'unsettled' => __( 'No court ruling found; often argued under the general rule', 'myautotriage' ),
+		),
+	);
+	return isset( $labels[ $party ][ $status ] ) ? $labels[ $party ][ $status ] : '';
 }
