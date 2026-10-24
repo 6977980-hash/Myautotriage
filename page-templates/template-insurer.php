@@ -20,8 +20,8 @@ $mat_ins_data = mat_insurer_data();
 			<?php if ( $mat_ins ) : ?>
 				<p class="mat-field__hint">
 					<?php
-					/* translators: %s: date */
-					printf( esc_html__( 'Regulator data last updated %s by the MyAutoTriage Editorial Team.', 'myautotriage' ), esc_html( date_i18n( get_option( 'date_format' ), strtotime( $mat_ins_data['built'] ) ) ) );
+					/* translators: 1: date, 2: editor's name */
+					echo mat_editor_reviewed_line( __( 'Regulator data last updated %1$s. Page edited by %2$s, MyAutoTriage editor.', 'myautotriage' ), $mat_ins_data['built'] ); // phpcs:ignore -- escaped in mat_editor_reviewed_line()
 					?>
 				</p>
 			<?php endif; ?>

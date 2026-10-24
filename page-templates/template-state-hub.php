@@ -18,8 +18,8 @@ $meta = mat_state_laws_meta();
 			<?php if ( $meta['reviewed'] ) : ?>
 				<p class="mat-field__hint">
 					<?php
-					/* translators: %s: date */
-					printf( esc_html__( 'Last reviewed %s by the MyAutoTriage Editorial Team.', 'myautotriage' ), esc_html( date_i18n( get_option( 'date_format' ), strtotime( $meta['reviewed'] ) ) ) );
+					/* translators: 1: date, 2: editor's name */
+					echo mat_editor_reviewed_line( __( 'Last reviewed %1$s by %2$s, MyAutoTriage editor.', 'myautotriage' ), $meta['reviewed'] ); // phpcs:ignore -- escaped in mat_editor_reviewed_line()
 					?>
 				</p>
 			<?php endif; ?>

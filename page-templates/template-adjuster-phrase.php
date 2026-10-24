@@ -17,8 +17,8 @@ $phrase = mat_current_adjuster_phrase();
 			<h1><?php the_title(); ?></h1>
 			<p class="mat-field__hint">
 				<?php
-				/* translators: %s: date */
-				printf( esc_html__( 'Last reviewed %s by the MyAutoTriage Editorial Team.', 'myautotriage' ), esc_html( date_i18n( get_option( 'date_format' ), strtotime( MAT_ADJUSTER_REVIEWED ) ) ) );
+				/* translators: 1: date, 2: editor's name */
+				echo mat_editor_reviewed_line( __( 'Last reviewed %1$s by %2$s, MyAutoTriage editor.', 'myautotriage' ), MAT_ADJUSTER_REVIEWED ); // phpcs:ignore -- escaped in mat_editor_reviewed_line()
 				if ( mat_reviewer_byline() ) {
 					echo ' ' . mat_reviewer_byline() . '.'; // phpcs:ignore -- escaped in mat_reviewer_byline()
 				}
