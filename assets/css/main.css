@@ -413,3 +413,11 @@ button, input, select, textarea { font-family: inherit; font-size: 1rem; }
 .mat-checklist { list-style: none; padding-left: 0; }
 .mat-checklist li { position: relative; padding-left: 1.8em; margin-bottom: .5em; }
 .mat-checklist li::before { content: ""; position: absolute; left: 0; top: .25em; width: 1.05em; height: 1.05em; border: 2px solid var(--mat-brand); border-radius: 4px; }
+
+/* Tools hub grouped by claim stage */
+.mat-stage-nav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 0 0 1.6em; }
+.mat-stage-nav a { display: inline-block; padding: 8px 14px; min-height: 24px; border: 1px solid var(--mat-line); border-radius: 999px; background: #fff; color: var(--mat-brand); text-decoration: none; font-size: .92rem; }
+.mat-stage-nav a:hover, .mat-stage-nav a:focus { border-color: var(--mat-brand); }
+.mat-stage { margin: 0 0 2.4em; scroll-margin-top: 80px; }
+.mat-stage h2 { margin-bottom: .2em; }
+.mat-stage__intro { color: var(--mat-ink-soft); margin: 0 0 1em; max-width: 60ch; }
