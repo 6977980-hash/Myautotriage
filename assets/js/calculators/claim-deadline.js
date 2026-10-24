@@ -40,12 +40,68 @@
 		return m ? new Date( Date.UTC( +m[1], +m[2] - 1, +m[3] ) ) : null;
 	}
 
+	/**
+	 * US federal holidays for a year as "YYYY-MM-DD", on the day they are
+	 * observed: a Saturday holiday moves to Friday, a Sunday one to Monday.
+	 */
+	var holidayCache = {};
+	function federalHolidays( year ) {
+		if ( holidayCache[ year ] ) {
+			return holidayCache[ year ];
+		}
+		var key = function ( d ) {
+			return d.toISOString().slice( 0, 10 );
+		};
+		var fixed = function ( month, day ) {
+			var d = new Date( Date.UTC( year, month, day ) );
+			var dow = d.getUTCDay();
+			if ( dow === 6 ) {
+				d.setUTCDate( day - 1 );
+			} else if ( dow === 0 ) {
+				d.setUTCDate( day + 1 );
+			}
+			return key( d );
+		};
+		// nth weekday (0 = Sunday) of a month; n = -1 for the last one.
+		var nth = function ( month, weekday, n ) {
+			var d;
+			if ( n > 0 ) {
+				d = new Date( Date.UTC( year, month, 1 ) );
+				d.setUTCDate( 1 + ( weekday - d.getUTCDay() + 7 ) % 7 + ( n - 1 ) * 7 );
+			} else {
+				d = new Date( Date.UTC( year, month + 1, 0 ) );
+				d.setUTCDate( d.getUTCDate() - ( d.getUTCDay() - weekday + 7 ) % 7 );
+			}
+			return key( d );
+		};
+		var list = [
+			fixed( 0, 1 ), // New Year's Day
+			nth( 0, 1, 3 ), // Martin Luther King Jr. Day
+			nth( 1, 1, 3 ), // Presidents' Day
+			nth( 4, 1, -1 ), // Memorial Day
+			fixed( 5, 19 ), // Juneteenth
+			fixed( 6, 4 ), // Independence Day
+			nth( 8, 1, 1 ), // Labor Day
+			nth( 9, 1, 2 ), // Columbus Day
+			fixed( 10, 11 ), // Veterans Day
+			nth( 10, 4, 4 ), // Thanksgiving
+			fixed( 11, 25 ), // Christmas
+		];
+		// New Year's Day on a Saturday is observed on December 31 before.
+		var nextNewYear = new Date( Date.UTC( year + 1, 0, 1 ) );
+		if ( nextNewYear.getUTCDay() === 6 ) {
+			list.push( year + '-12-31' );
+		}
+		holidayCache[ year ] = list;
+		return list;
+	}
+
 	function addDays( date, n, businessOnly ) {
 		var d = new Date( date.getTime() );
 		while ( n > 0 ) {
 			d.setUTCDate( d.getUTCDate() + 1 );
 			var dow = d.getUTCDay();
-			if ( ! businessOnly || ( dow !== 0 && dow !== 6 ) ) {
+			if ( ! businessOnly || ( dow !== 0 && dow !== 6 && federalHolidays( d.getUTCFullYear() ).indexOf( d.toISOString().slice( 0, 10 ) ) === -1 ) ) {
 				n--;
 			}
 		}
@@ -85,7 +141,7 @@
 		var business = m[2] === 'business ' || m[2] === 'working ';
 		var due = addDays( start.date, parseInt( m[1], 10 ), business );
 		var late = due < today() ? ' <strong>(passed)</strong>' : '';
-		return '<br><span style="font-size:.9rem;">Due by <strong>' + formatDate( due ) + '</strong>' + late + ', counted from ' + start.from + '.</span>';
+		return '<br><span style="font-size:.9rem;">Due by <strong>' + formatDate( due ) + '</strong>' + late + ', counted from ' + start.from + ( business ? ', not counting weekends or federal holidays' : '' ) + '.</span>';
 	}
 
 	function today() {

@@ -68,7 +68,7 @@
 
 		var html = '<p class="mat-result-box__figure">' + MAT.usd( claim, true ) + '</p>';
 		html += '<table class="mat-result-table"><tbody>';
-		html += '<tr><td>Days without your car</td><td>' + days + '</td></tr>';
+		html += '<tr><td>Days without your car (the day you got the car back isn\'t counted)</td><td>' + days + '</td></tr>';
 		if ( v.paid ) {
 			html += '<tr><td>Rental days already paid by the insurer</td><td>&minus;' + Math.min( v.paid, days ) + '</td></tr>';
 		}

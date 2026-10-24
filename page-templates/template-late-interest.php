@@ -19,6 +19,7 @@ wp_enqueue_script( 'mat-li', MAT_URI . '/assets/js/calculators/late-interest.js'
 		</div>
 
 		<form id="mat-li-form" class="mat-tool-panel" data-deadline-url="<?php echo esc_url( mat_url_for_slug( 'claim-payment-deadline-by-state' ) ); ?>" novalidate>
+			<?php mat_noscript_note(); ?>
 			<div class="mat-field">
 				<label for="mat-li-rule"><?php esc_html_e( 'State rule', 'myautotriage' ); ?></label>
 				<select id="mat-li-rule">

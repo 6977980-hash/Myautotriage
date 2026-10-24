@@ -33,11 +33,17 @@
 		var covered = eligible - overCap;
 		var dedCovered = v.dedCap === null ? 0 : Math.min( v.deductible, v.dedCap );
 		var gapPays = Math.max( 0, covered - v.acv ) + ( covered > v.acv ? dedCovered : 0 );
-		var youOwe = Math.max( 0, v.payoff - insurerPayout - gapPays );
+		// Add-on refunds go to the lender and lower the balance: GAP doesn't
+		// pay that part, but neither do you.
+		var refunds = Math.min( v.addOns, v.payoff );
+		var youOwe = Math.max( 0, v.payoff - refunds - insurerPayout - gapPays );
 		var dedLeft = covered > v.acv ? v.deductible - dedCovered : 0;
 
 		var rows = [];
 		rows.push( [ 'Loan payoff', usd( v.payoff ) ] );
+		if ( refunds > 0 ) {
+			rows.push( [ 'Add-on refunds paid to the lender', '&minus;' + usd( refunds ) ] );
+		}
 		rows.push( [ 'Insurer pays the lender', '&minus;' + usd( insurerPayout ) ] );
 		rows.push( [ 'GAP should pay', '&minus;' + usd( Math.round( gapPays ) ) ] );
 		var html = '<table class="mat-result-table"><tbody>';
@@ -52,7 +58,7 @@
 			why.push( 'Past-due payments and late fees (' + usd( v.pastDue ) + '): GAP contracts exclude them, so bring the loan current if you can.' );
 		}
 		if ( v.addOns > 0 ) {
-			why.push( 'Add-on refunds (' + usd( v.addOns ) + '): GAP subtracts what you get back for cancelling the warranty or service contract. Cancel them right away; the refund normally goes to the lender and lowers the balance.' );
+			why.push( 'Add-on refunds (' + usd( v.addOns ) + '): GAP subtracts what you get back for cancelling the warranty or service contract. Cancel them right away; the refund normally goes to the lender and lowers the balance, so it is taken off above rather than counted as yours to pay.' );
 		}
 		if ( overCap > 0 ) {
 			why.push( 'Loan above the GAP limit (' + usd( Math.round( overCap ) ) + '): your contract covers the loan only up to ' + v.ltv + '% of the car\'s value (' + usd( Math.round( v.acv * v.ltv / 100 ) ) + '). This often comes from negative equity rolled in from a previous car.' );
@@ -103,7 +109,9 @@
 			html += '<p class="mat-result-box__figure">' + usd( Math.round( shortfall ) ) + ' shortfall</p>' + detail;
 			html += '<p>This is the gap between what you owe and what your insurer is paying.</p>';
 			var detailed = v.pastDue > 0 || v.addOns > 0 || v.ltv !== null || v.dedCap !== null;
-			if ( hasGap === 'yes' && detailed ) {
+			if ( hasGap === 'yes' && v.payoff <= v.acv ) {
+				html += '<p style="margin-bottom:0;font-size:.9rem;">This is your deductible. GAP pays only the loan balance above the car\'s value, unless your GAP contract also covers the deductible.</p>';
+			} else if ( hasGap === 'yes' && detailed ) {
 				html += itemise( v, insurerPayout );
 			} else if ( hasGap === 'yes' ) {
 				html += '<p style="margin-bottom:0;font-size:.9rem;">GAP coverage should generally pay this, minus common exclusions in your GAP contract: unpaid finance charges, extended warranties rolled into the loan, past-due payments, and often your deductible (some GAP policies cover the deductible up to a small cap, many don\'t). Read the exclusions section before filing.</p>';

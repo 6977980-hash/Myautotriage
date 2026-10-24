@@ -312,3 +312,14 @@ function mat_post_was_updated( $post = null ) {
 	$modified  = (int) get_post_modified_time( 'U', true, $post );
 	return $modified - $published > DAY_IN_SECONDS;
 }
+
+/**
+ * Shown inside a tool's form when JavaScript is off, since every tool
+ * works in the browser.
+ */
+function mat_noscript_note( $kind = 'calculator' ) {
+	$text = 'tool' === $kind
+		? __( 'This tool needs JavaScript turned on.', 'myautotriage' )
+		: __( 'This calculator needs JavaScript turned on.', 'myautotriage' );
+	echo '<noscript><p class="mat-form-error">' . esc_html( $text ) . '</p></noscript>';
+}

@@ -21,6 +21,7 @@ $hub = get_page_by_path( MAT_STATE_HUB_SLUG ) ? trailingslashit( mat_state_hub_u
 		</div>
 
 		<form id="mat-sol-form" class="mat-tool-panel" data-json="<?php echo esc_url( MAT_URI . '/assets/js/data/state-claim-facts.json' ); ?>" data-hub-url="<?php echo esc_url( $hub ); ?>" novalidate>
+			<?php mat_noscript_note(); ?>
 			<div class="mat-field-row">
 				<div class="mat-field">
 					<label for="mat-sol-state"><?php esc_html_e( 'State where the accident happened', 'myautotriage' ); ?></label>

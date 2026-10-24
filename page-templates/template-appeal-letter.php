@@ -16,6 +16,7 @@ wp_enqueue_script( 'mat-ap', MAT_URI . '/assets/js/generators/appeal-letter.js',
 		</div>
 
 		<form id="mat-ap-form" class="mat-tool-panel" novalidate>
+			<?php mat_noscript_note( 'tool' ); ?>
 			<h2 style="font-size:1.05rem;"><?php esc_html_e( 'Your information', 'myautotriage' ); ?></h2>
 			<div class="mat-field-row">
 				<div class="mat-field">

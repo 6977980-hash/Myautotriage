@@ -31,6 +31,7 @@ foreach ( mat_state_laws() as $mat_tlv_state ) {
 		</div>
 
 		<form id="mat-tlv-form" class="mat-tool-panel" data-letter-url="<?php echo esc_url( $mat_tlv_letter ? add_query_arg( 'type', 'total-loss', $mat_tlv_letter ) : '' ); ?>" data-states="<?php echo esc_attr( wp_json_encode( $mat_tlv_states ) ); ?>" novalidate>
+			<?php mat_noscript_note(); ?>
 			<h2 class="mat-tool-panel__heading"><?php esc_html_e( '1. The valuation summary', 'myautotriage' ); ?></h2>
 			<p class="mat-field__hint"><?php esc_html_e( 'These are usually on the first page of the report, under a heading like "Valuation summary" or "Settlement".', 'myautotriage' ); ?></p>
 			<div class="mat-field-row">

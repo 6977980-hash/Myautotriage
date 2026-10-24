@@ -22,6 +22,7 @@ $mat_rs_phrase = home_url( user_trailingslashit( 'what-the-adjuster-said/we-need
 		</div>
 
 		<form id="mat-rs-form" class="mat-tool-panel" novalidate>
+			<?php mat_noscript_note( 'tool' ); ?>
 			<div class="mat-field">
 				<label for="mat-rs-who"><?php esc_html_e( 'Who wants the recorded statement?', 'myautotriage' ); ?></label>
 				<select id="mat-rs-who">

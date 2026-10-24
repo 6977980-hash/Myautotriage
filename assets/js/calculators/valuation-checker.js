@@ -171,7 +171,7 @@
 		if ( far.length ) {
 			issues.push( {
 				title: plural( far.length, 'comparable is', 'comparables are' ) + ' more than ' + FAR_MILES + ' miles away',
-				text: 'The model rule looks first to comparable cars in your local market area, and to nearby areas only when none are available locally (Section 8A(2)(a)-(b)). Ask why closer cars (' + numberList( far ) + ') weren\'t used, and send local listings if you find them.',
+				text: 'The model rule looks first to comparable cars in your local market area, and to nearby areas only when none are available locally (Section 8A(2)(a)-(b)). Ask why ' + ( far.length === 1 ? 'car ' : 'cars ' ) + numberList( far ) + ( far.length === 1 ? ' was' : ' were' ) + ' used instead of closer ones, and send local listings if you find them.',
 			} );
 			letterPoints.push( sentencePlural( far.length, 'comparable vehicle is', 'comparable vehicles are' ) + ' more than ' + FAR_MILES + ' miles from my home, outside my local market area.' );
 		}
@@ -287,11 +287,21 @@
 			html += '<p style="font-size:.9rem;">That is the most these points support. The insurer may justify some deductions, so treat it as your opening position' + ( v.fees === 0 ? ', and it does not yet include title and registration fees' : '' ) + '.</p>';
 		}
 
+		// Said once, after the first mention of the model rule.
+		var stateNote = ' Your state\'s own rule may differ; see your state page.';
+		var noted = false;
+		var withNote = function ( text ) {
+			if ( noted || text.indexOf( 'model rule' ) === -1 ) {
+				return text;
+			}
+			noted = true;
+			return text + stateNote;
+		};
 		html += '<ul class="mat-tlv-issues">';
 		issues.forEach( function ( i ) {
-			html += '<li' + ( i.ok ? ' class="is-ok"' : '' ) + '><strong>' + MAT.escape( i.title ) + ( i.amount ? ' · ' + MAT.usd( i.amount ) : '' ) + '</strong><p>' + MAT.escape( i.text ) + '</p></li>';
+			html += '<li' + ( i.ok ? ' class="is-ok"' : '' ) + '><strong>' + MAT.escape( i.title ) + ( i.amount ? ' · ' + MAT.usd( i.amount ) : '' ) + '</strong><p>' + MAT.escape( withNote( i.text ) ) + '</p></li>';
 		} );
-		html += '<li class="is-ok"><strong>Can\'t buy a comparable car for the amount paid?</strong><p>Under the model rule, telling the insurer within 35 days of receiving the payment that you can\'t buy a comparable car for that amount should reopen the claim (Section 8A(2)(e)).</p></li>';
+		html += '<li class="is-ok"><strong>Can\'t buy a comparable car for the amount paid?</strong><p>' + MAT.escape( withNote( 'Under the model rule, telling the insurer within 35 days of receiving the payment that you can\'t buy a comparable car for that amount should reopen the claim (Section 8A(2)(e)).' ) ) + '</p></li>';
 		html += '</ul>';
 
 		var state = states[ document.getElementById( 'mat-tlv-state' ).value ];

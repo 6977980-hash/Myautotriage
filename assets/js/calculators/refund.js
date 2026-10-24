@@ -118,6 +118,19 @@
 			html += '<p class="mat-result-box__figure">' + formatUSD( proRata ) + '</p>';
 			html += '<p>Estimated pro-rata refund: the full unused premium' + ( fee ? ', minus a ' + formatUSD( fee ) + ' fee' : '' ) + '.</p>';
 		}
+		// The fee as its own line, between the unused premium and the refund.
+		var row = function ( label, value, total ) {
+			return '<tr' + ( total ? ' class="mat-result-table__total"' : '' ) + '><td>' + label + '</td><td>' + value + '</td></tr>';
+		};
+		html += '<table class="mat-result-table"><tbody>' + row( 'Unused premium', formatUSD( unused ) );
+		if ( method !== 'shortrate' ) {
+			html += row( 'Cancellation fee', '&minus;' + formatUSD( Math.min( fee, unused ) ) ) + row( 'Pro-rata refund', formatUSD( proRata ), true );
+		}
+		if ( method !== 'prorata' ) {
+			html += row( 'Short-rate penalty (' + MAT.pct( penalty ) + ')', '&minus;' + formatUSD( unused * penalty ) );
+			html += row( 'Cancellation fee', '&minus;' + formatUSD( Math.min( fee, unused * ( 1 - penalty ) ) ) ) + row( 'Short-rate refund', formatUSD( shortRate ), true );
+		}
+		html += '</tbody></table>';
 		html += '<p style="margin-bottom:0;font-size:.9rem;">You used ' + usedDays + ' of ' + totalDays + ' days (' + leftDays + ' days left), so ' + formatUSD( unused ) + ' of your ' + formatUSD( premium ) + ' premium is unused.</p>';
 
 		if ( stateNote ) {

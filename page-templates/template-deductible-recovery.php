@@ -20,6 +20,7 @@ wp_enqueue_script( 'mat-dr', MAT_URI . '/assets/js/calculators/deductible-recove
 		</div>
 
 		<form id="mat-dr-form" class="mat-tool-panel" novalidate>
+			<?php mat_noscript_note(); ?>
 			<div class="mat-field-row">
 				<div class="mat-field">
 					<label for="mat-dr-deductible"><?php esc_html_e( 'Deductible you paid (USD)', 'myautotriage' ); ?></label>

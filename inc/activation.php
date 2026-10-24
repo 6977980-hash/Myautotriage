@@ -271,7 +271,7 @@ add_action( 'wp_loaded', 'mat_ensure_new_pages' );
  * re-run.
  */
 function mat_apply_content_fixes() {
-	$version = '2';
+	$version = '3';
 	if ( $version === get_option( 'mat_content_fixes_version' ) ) {
 		return;
 	}
@@ -283,6 +283,17 @@ function mat_apply_content_fixes() {
 		wp_update_post( array(
 			'ID'           => $tools->ID,
 			'post_content' => str_replace( 'Seven free, no-signup tools', 'Free, no-signup tools', $tools->post_content ),
+		) );
+	}
+
+	// "17c" is paragraph 17(c) of the Mabry v. State Farm settlement order,
+	// not a claims-manual paragraph.
+	$dv = get_page_by_path( 'how-to-file-diminished-value-claim', OBJECT, 'post' );
+	$old = 'after the paragraph number in the underlying claims manual';
+	if ( $dv && false !== strpos( $dv->post_content, $old ) ) {
+		wp_update_post( array(
+			'ID'           => $dv->ID,
+			'post_content' => str_replace( $old, 'after paragraph 17(c) of the settlement order in that case', $dv->post_content ),
 		) );
 	}
 

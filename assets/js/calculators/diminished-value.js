@@ -25,9 +25,14 @@
 		severe: { label: 'Severe structural / frame damage', value: 1.0 },
 		major: { label: 'Major damage to structure and panels', value: 0.75 },
 		moderate: { label: 'Moderate damage to structure and panels', value: 0.5 },
-		minor: { label: 'Minor damage, panels only (no structural damage)', value: 0.25 },
-		cosmetic: { label: 'Cosmetic only (bumper, paint, minor panel)', value: 0.125 },
+		minor: { label: 'Minor damage to structure and panels', value: 0.25 },
+		none: { label: 'No structural damage or replaced panels', value: 0 },
 	};
+	// Old share links used "cosmetic" for the bottom row.
+	DAMAGE_MULTIPLIERS.cosmetic = DAMAGE_MULTIPLIERS.none;
+	if ( window.history && window.history.replaceState && /[?&]dv-damage=cosmetic(&|$)/.test( window.location.search ) ) {
+		window.history.replaceState( null, '', window.location.search.replace( 'dv-damage=cosmetic', 'dv-damage=none' ) + window.location.hash );
+	}
 
 	function mileageMultiplier( miles ) {
 		if ( miles < 20000 ) return 1.0;
@@ -59,7 +64,9 @@
 		var html = '';
 		html += '<p class="mat-result-box__figure">' + MAT.usd( diminishedValue ) + '</p>';
 		html += '<p>Estimated diminished value using the 17c formula: ' + MAT.usd( baseCapped ) + ' (10% of the car\'s value) &times; ' + MAT.pct( damage.value ) + ' damage factor &times; ' + MAT.pct( mileageMult ) + ' mileage factor.</p>';
-		if ( mileageMult === 0 ) {
+		if ( damage.value === 0 ) {
+			html += '<p>17c gives $0 here; insurers using 17c will offer nothing. A licensed appraiser may still find market loss.</p>';
+		} else if ( mileageMult === 0 ) {
 			html += '<p>The 17c formula gives nothing at 100,000 miles or more. An independent appraisal based on comparable sales is the only way to show a loss on a high-mileage car.</p>';
 		}
 		html += '<p style="font-size:.9rem;">Many public adjusters and independent appraisers argue the true diminished value on a well-documented claim is higher than this baseline, so use it as your starting point, not your ceiling. If the car already had accident history, expect the insurer to argue for less; there is no standard deduction for that.</p>';

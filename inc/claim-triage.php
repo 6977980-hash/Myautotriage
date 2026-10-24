@@ -18,7 +18,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Keys: label (what the visitor picks), title (headline of the answer),
  * first (the one thing to do now: slug, optional query, label, why),
- * then (later steps), phrases (adjuster phrase slugs), show (which state
+ * then (later steps; a step with party only shows for that answer to
+ * "whose insurance", and its unsure label when the visitor isn't sure), phrases (adjuster phrase slugs), show (which state
  * facts matter: claim, totalloss, fault, lawsuit), own/other (extra note
  * by whose insurer it is).
  */
@@ -58,7 +59,9 @@ function mat_claim_triage_situations() {
 			'then'    => array(
 				array( 'slug' => 'how-to-negotiate-insurance-adjuster', 'label' => __( 'Read: how to negotiate with the adjuster', 'myautotriage' ) ),
 				array( 'slug' => 'total-loss-threshold-calculator', 'label' => __( 'Check whether the car should be totaled instead', 'myautotriage' ) ),
-				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'appraisal' ), 'label' => __( 'Still apart? Invoke the appraisal clause', 'myautotriage' ) ),
+				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'appraisal' ), 'party' => 'own', 'label' => __( 'Still apart? Invoke the appraisal clause', 'myautotriage' ), 'unsure' => __( 'If it\'s your own policy: invoke the appraisal clause', 'myautotriage' ) ),
+				array( 'slug' => 'small-claims-demand-letter-generator', 'party' => 'other', 'label' => __( 'Still apart? Demand payment before small claims court', 'myautotriage' ), 'unsure' => __( 'If it\'s the other driver\'s insurer: demand payment before small claims court', 'myautotriage' ) ),
+				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'doi-complaint' ), 'party' => 'other', 'label' => __( 'Complain to your state insurance department', 'myautotriage' ), 'unsure' => __( 'If it\'s the other driver\'s insurer: complain to your state insurance department', 'myautotriage' ) ),
 			),
 			'phrases' => array( 'this-is-our-final-offer', 'we-use-aftermarket-parts', 'betterment-deduction', 'use-our-preferred-shop' ),
 			'show'    => array( 'claim', 'totalloss' ),
@@ -70,7 +73,9 @@ function mat_claim_triage_situations() {
 			'then'    => array(
 				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'total-loss' ), 'label' => __( 'Send a total loss counter-offer', 'myautotriage' ) ),
 				array( 'slug' => 'gap-insurance-shortfall-calculator', 'label' => __( 'Still owe on the loan? Check the GAP shortfall', 'myautotriage' ) ),
-				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'appraisal' ), 'label' => __( 'Still apart? Invoke the appraisal clause', 'myautotriage' ) ),
+				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'appraisal' ), 'party' => 'own', 'label' => __( 'Still apart? Invoke the appraisal clause', 'myautotriage' ), 'unsure' => __( 'If it\'s your own policy: invoke the appraisal clause', 'myautotriage' ) ),
+				array( 'slug' => 'small-claims-demand-letter-generator', 'party' => 'other', 'label' => __( 'Still apart? Demand payment before small claims court', 'myautotriage' ), 'unsure' => __( 'If it\'s the other driver\'s insurer: demand payment before small claims court', 'myautotriage' ) ),
+				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'doi-complaint' ), 'party' => 'other', 'label' => __( 'Complain to your state insurance department', 'myautotriage' ), 'unsure' => __( 'If it\'s the other driver\'s insurer: complain to your state insurance department', 'myautotriage' ) ),
 			),
 			'phrases' => array( 'this-is-our-final-offer', 'rental-coverage-is-ending', 'sign-this-release' ),
 			'show'    => array( 'totalloss', 'claim' ),
@@ -157,7 +162,15 @@ function mat_claim_triage_data() {
 		if ( $url && ! empty( $item['query'] ) ) {
 			$url = add_query_arg( $item['query'], $url );
 		}
-		return $url ? array( 'url' => $url, 'label' => $item['label'] ) : null;
+		if ( ! $url ) {
+			return null;
+		}
+		$out = array( 'url' => $url, 'label' => $item['label'] );
+		if ( ! empty( $item['party'] ) ) {
+			$out['party']  = $item['party'];
+			$out['unsure'] = $item['unsure'];
+		}
+		return $out;
 	};
 	$phrases = array();
 	if ( function_exists( 'mat_adjuster_phrases' ) && get_page_by_path( MAT_ADJUSTER_HUB_SLUG ) ) {
@@ -234,6 +247,7 @@ function mat_claim_triage_form() {
 	wp_enqueue_script( 'mat-triage', MAT_URI . '/assets/js/claim-triage.js', array(), MAT_VERSION, true );
 	?>
 	<form id="mat-triage-form" class="mat-tool-panel mat-triage" data-triage="<?php echo esc_attr( wp_json_encode( mat_claim_triage_data() ) ); ?>" novalidate>
+		<?php mat_noscript_note( 'tool' ); ?>
 		<div class="mat-field">
 			<label for="mat-triage-situation"><?php esc_html_e( 'What\'s happening with your claim?', 'myautotriage' ); ?></label>
 			<select id="mat-triage-situation" required>

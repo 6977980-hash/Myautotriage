@@ -39,6 +39,7 @@ $mat_diary_letter = mat_url_for_slug( 'demand-letter-generator' );
 			<p class="mat-diary-privacy"><?php esc_html_e( 'Your diary is saved only in this browser on this device. Nothing is sent to us. Use "Download a backup" to keep a copy or move it to another device.', 'myautotriage' ); ?></p>
 
 			<form id="mat-diary-claim" class="mat-tool-panel" novalidate>
+				<?php mat_noscript_note( 'tool' ); ?>
 				<h2 class="mat-tool-panel__heading"><?php esc_html_e( 'Your claim', 'myautotriage' ); ?></h2>
 				<div class="mat-field-row">
 					<div class="mat-field">

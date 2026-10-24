@@ -16,6 +16,7 @@ wp_enqueue_script( 'mat-rf', MAT_URI . '/assets/js/calculators/refund.js', array
 		</div>
 
 		<form id="mat-rf-form" class="mat-tool-panel" novalidate>
+			<?php mat_noscript_note(); ?>
 			<div class="mat-field-row">
 				<div class="mat-field">
 					<label for="mat-rf-premium"><?php esc_html_e( 'Premium you paid for the term (USD)', 'myautotriage' ); ?></label>

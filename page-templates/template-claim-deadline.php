@@ -16,6 +16,7 @@ wp_enqueue_script( 'mat-cd', MAT_URI . '/assets/js/calculators/claim-deadline.js
 		</div>
 
 		<form id="mat-cd-form" class="mat-tool-panel" data-json="<?php echo esc_url( MAT_URI . '/assets/js/data/claim-deadlines.json' ); ?>" data-hub-url="<?php echo esc_url( get_page_by_path( MAT_STATE_HUB_SLUG ) ? trailingslashit( mat_state_hub_url() ) : '' ); ?>" data-appeal-url="<?php echo esc_url( mat_url_for_slug( 'appeal-letter-generator' ) ); ?>" novalidate>
+			<?php mat_noscript_note(); ?>
 			<div class="mat-field">
 				<label for="mat-cd-state"><?php esc_html_e( 'Your state', 'myautotriage' ); ?></label>
 				<select id="mat-cd-state" required>

@@ -19,6 +19,7 @@ wp_enqueue_script( 'mat-lu', MAT_URI . '/assets/js/calculators/loss-of-use.js', 
 		</div>
 
 		<form id="mat-lu-form" class="mat-tool-panel" data-letter-url="<?php echo esc_url( mat_url_for_slug( 'property-damage-demand-letter-generator' ) ); ?>" novalidate>
+			<?php mat_noscript_note(); ?>
 			<div class="mat-field-row">
 				<div class="mat-field">
 					<label for="mat-lu-from"><?php esc_html_e( 'First day without your car', 'myautotriage' ); ?></label>
