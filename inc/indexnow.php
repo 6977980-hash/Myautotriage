@@ -90,6 +90,7 @@ function mat_indexnow_all_urls() {
 		'posts_per_page' => -1,
 		'fields'         => 'ids',
 		'has_password'   => false,
+		'post__not_in'   => mat_outcomes_hidden_ids(),
 	) );
 	foreach ( $ids as $id ) {
 		$urls[] = get_permalink( $id );

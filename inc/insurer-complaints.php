@@ -255,10 +255,10 @@ add_action( 'wp_loaded', 'mat_ensure_insurer_pages' );
 
 function mat_insurer_seo_title( $insurer ) {
 	/* translators: %s: insurer */
-	return sprintf( __( '%s Auto Claim Complaints: Ratings From State Regulators', 'myautotriage' ), $insurer['name'] );
+	return sprintf( __( '%s Auto Claim Complaints: State Regulator Ratings', 'myautotriage' ), $insurer['name'] );
 }
 
 function mat_insurer_meta( $insurer ) {
 	/* translators: %s: insurer */
-	return sprintf( __( 'How many auto claim complaints %s gets compared with other insurers, what people complain about, and how often complaining got them paid. Texas and New York regulator data.', 'myautotriage' ), $insurer['name'] );
+	return sprintf( __( '%s auto claim complaints compared with other insurers: what people complain about and how often it paid off. Texas and New York regulator data.', 'myautotriage' ), $insurer['name'] );
 }

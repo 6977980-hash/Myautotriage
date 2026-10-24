@@ -50,6 +50,52 @@ function mat_sitemap_providers( $provider, $name ) {
 add_filter( 'wp_sitemaps_add_provider', 'mat_sitemap_providers', 10, 2 );
 
 /**
+ * <lastmod> for pages the theme builds: WordPress only knows when the page
+ * row was saved (mostly the day it was created), not when its template,
+ * script or data changed. inc/content-dates.json (bin/build-content-dates.py)
+ * has the last real change per template from git; state pages also move
+ * when their data is reviewed or a dated rule takes effect, and /blog/ when
+ * a post changes.
+ */
+function mat_content_modified( $post ) {
+	static $dates = null;
+	if ( null === $dates ) {
+		$file  = MAT_DIR . '/inc/content-dates.json';
+		$dates = is_readable( $file ) ? json_decode( file_get_contents( $file ), true ) : array(); // phpcs:ignore -- local theme file
+		$dates = is_array( $dates ) ? $dates : array();
+	}
+	$times = array( (int) get_post_modified_time( 'U', true, $post ) );
+	$tpl   = (int) get_option( 'page_on_front' ) === (int) $post->ID ? 'front-page.php' : get_page_template_slug( $post );
+	if ( $tpl && isset( $dates[ $tpl ] ) ) {
+		$times[] = (int) strtotime( $dates[ $tpl ] );
+	}
+	if ( in_array( $tpl, array( 'page-templates/template-state-laws.php', 'page-templates/template-state-hub.php' ), true ) ) {
+		static $meta = null;
+		$meta = $meta ? $meta : mat_state_laws_meta();
+		foreach ( array( $meta['reviewed'], $meta['switched'] ) as $day ) {
+			if ( $day ) {
+				$times[] = (int) strtotime( $day . ' 00:00:00 UTC' );
+			}
+		}
+	}
+	if ( (int) get_option( 'page_for_posts' ) === (int) $post->ID ) {
+		$latest = get_posts( array( 'numberposts' => 1, 'orderby' => 'modified', 'fields' => 'ids' ) );
+		if ( $latest ) {
+			$times[] = (int) get_post_modified_time( 'U', true, $latest[0] );
+		}
+	}
+	return max( $times );
+}
+
+function mat_sitemap_lastmod( $entry, $post, $post_type ) {
+	if ( 'page' === $post_type ) {
+		$entry['lastmod'] = gmdate( 'c', mat_content_modified( $post ) );
+	}
+	return $entry;
+}
+add_filter( 'wp_sitemaps_posts_entry', 'mat_sitemap_lastmod', 10, 3 );
+
+/**
  * Flush rewrite rules once when the theme activates so /sitemap.xml works
  * immediately without the admin needing to re-save permalinks. (Also see
  * inc/activation.php for the rest of first-run setup.)
@@ -135,9 +181,12 @@ function mat_llms_txt() {
 		$lines[] = '';
 	}
 	$lowball = get_page_by_path( MAT_OUTCOMES_INDEX_SLUG );
-	if ( $lowball ) {
+	if ( get_page_by_path( MAT_OUTCOMES_SURVEY_SLUG ) ) {
 		$lines[] = '## ' . __( 'Claim outcome data', 'myautotriage' );
-		$lines[] = '- [' . __( 'The Lowball Index', 'myautotriage' ) . '](' . get_permalink( $lowball ) . '): ' . __( 'How much car insurance claim offers move from the first offer to the final payment, from anonymous reader reports.', 'myautotriage' );
+		// The index is listed only once it has numbers to show.
+		if ( $lowball && mat_outcomes_published() ) {
+			$lines[] = '- [' . __( 'The Lowball Index', 'myautotriage' ) . '](' . get_permalink( $lowball ) . '): ' . __( 'How much car insurance claim offers move from the first offer to the final payment, from anonymous reader reports.', 'myautotriage' );
+		}
 		$lines[] = '- [' . __( 'Claim Outcome Survey', 'myautotriage' ) . '](' . mat_outcomes_survey_url() . ')';
 		$lines[] = '';
 	}

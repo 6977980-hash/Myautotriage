@@ -98,7 +98,7 @@ function mat_adjuster_phrases() {
 			'phrase'    => __( 'This is our final offer.', 'myautotriage' ),
 			'title'     => __( '"This Is Our Final Offer": What It Means and How to Respond', 'myautotriage' ),
 			'seo_title' => __( 'Insurance Says "This Is Our Final Offer": What to Do Next', 'myautotriage' ),
-			'meta'      => __( 'An adjuster calling an offer "final" doesn\'t end your claim. What the rules say, how to ask for the explanation, and your options: counter-offer, appraisal and a complaint.', 'myautotriage' ),
+			'meta'      => __( 'An adjuster calling an offer "final" doesn\'t end your claim. What the rules say, how to ask why, and your options: counter-offer, appraisal, complaint.', 'myautotriage' ),
 			'short'     => __( 'It is a negotiating position, not a legal end to your claim. Ask for a written explanation of how the amount was calculated, send a written counter-offer with evidence, and if that fails use your policy\'s appraisal clause, a complaint to your state insurance department, or small claims court.', 'myautotriage' ),
 			'means'     => array(
 				__( 'Adjusters have settlement authority up to a limit. "Final" often means final at their level, for the evidence they have. New evidence, a supervisor, or a formal step like appraisal can change the number.', 'myautotriage' ),
@@ -327,7 +327,7 @@ function mat_adjuster_phrases() {
 			'phrase'    => __( 'Sign the release and we\'ll send the check.', 'myautotriage' ),
 			'title'     => __( '"Sign the Release and We\'ll Send the Check": Read This First', 'myautotriage' ),
 			'seo_title' => __( 'Insurance Release Form: What You Give Up When You Sign', 'myautotriage' ),
-			'meta'      => __( 'Asked to sign a release to get paid? What a release does, why a property damage release shouldn\'t cover injuries, and the rules on deadlines and "final" checks.', 'myautotriage' ),
+			'meta'      => __( 'Asked to sign a release to get paid? What a release does, why a property damage release shouldn\'t cover injuries, and the rules on "final" checks.', 'myautotriage' ),
 			'short'     => __( 'A release usually ends that part of your claim for good. Read what it covers: a property damage release should be limited to property damage and not release injury claims. Don\'t sign under a deadline you don\'t understand, and don\'t sign until the amount covers everything listed.', 'myautotriage' ),
 			'means'     => array(
 				__( 'Insurers want a release so the claim can\'t be reopened. That is normal at the end of a claim. The problems come when the release is broader than the payment, such as releasing "all claims" when you are only being paid for your car.', 'myautotriage' ),
@@ -360,7 +360,7 @@ function mat_adjuster_phrases() {
 			'phrase'    => __( 'You\'ll need to use one of our preferred shops.', 'myautotriage' ),
 			'title'     => __( '"Use One of Our Preferred Shops": Can You Choose Your Own?', 'myautotriage' ),
 			'seo_title' => __( 'Do I Have to Use the Insurance Company\'s Preferred Body Shop?', 'myautotriage' ),
-			'meta'      => __( 'Adjuster says you must use their preferred body shop? Usually you can choose your own. What happens if your shop\'s estimate is higher, and who guarantees the repair.', 'myautotriage' ),
+			'meta'      => __( 'Adjuster says you must use their preferred body shop? Usually you can pick your own. What if your shop\'s estimate is higher, and who guarantees the repair.', 'myautotriage' ),
 			'short'     => __( 'Generally you can choose your own repair shop, and many states have laws against insurers steering you. If your shop\'s estimate is higher, under the NAIC model rule the insurer must either pay the difference or name a shop that will do the repair for its estimate.', 'myautotriage' ),
 			'means'     => array(
 				__( 'Preferred or direct-repair shops have agreements with the insurer on rates and processes. That can make things faster, but the shop also works with the insurer every day. Your own shop works for you.', 'myautotriage' ),

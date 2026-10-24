@@ -79,10 +79,36 @@ function mat_read_theme_json( $relative ) {
 	return is_array( $data ) ? $data : array();
 }
 
+/**
+ * State pages are built from three data files, so the page was last
+ * reviewed when the newest of them was. "switched" is the latest date a
+ * dated rule change (effective_changes) took effect, which changes the
+ * page without a new review.
+ */
 function mat_state_laws_meta() {
 	$deadlines = mat_read_theme_json( 'assets/js/data/claim-deadlines.json' );
+	$totals    = mat_read_theme_json( 'assets/js/data/total-loss-thresholds.json' );
+	$facts     = mat_read_theme_json( 'assets/js/data/state-claim-facts.json' );
+	$reviewed  = '';
+	foreach ( array( $deadlines, $totals, $facts ) as $data ) {
+		if ( ! empty( $data['reviewed'] ) && $data['reviewed'] > $reviewed ) {
+			$reviewed = $data['reviewed'];
+		}
+	}
+	$today    = wp_date( 'Y-m-d' );
+	$switched = '';
+	foreach ( array( $deadlines, $totals, $facts ) as $data ) {
+		foreach ( isset( $data['states'] ) ? $data['states'] : array() as $item ) {
+			foreach ( isset( $item['effective_changes'] ) ? $item['effective_changes'] : array() as $change ) {
+				if ( ! empty( $change['from'] ) && $change['from'] <= $today && $change['from'] > $switched ) {
+					$switched = $change['from'];
+				}
+			}
+		}
+	}
 	return array(
-		'reviewed' => isset( $deadlines['reviewed'] ) ? $deadlines['reviewed'] : '',
+		'reviewed' => $reviewed,
+		'switched' => $switched,
 		'default'  => isset( $deadlines['default'] ) ? $deadlines['default'] : array(),
 	);
 }
