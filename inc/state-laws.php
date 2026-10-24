@@ -32,6 +32,7 @@ function mat_state_laws() {
 	$facts     = mat_read_theme_json( 'assets/js/data/state-claim-facts.json' );
 	$dv        = mat_read_theme_json( 'assets/js/data/diminished-value-rules.json' );
 	$tax_fees  = mat_read_theme_json( 'assets/js/data/total-loss-tax-fees.json' );
+	$pip       = mat_read_theme_json( 'assets/js/data/pip-deadlines.json' );
 	if ( empty( $deadlines['all_states'] ) ) {
 		return $laws;
 	}
@@ -45,6 +46,7 @@ function mat_state_laws() {
 			'facts'      => isset( $facts['states'][ $code ] ) ? $facts['states'][ $code ] : array(),
 			'dv'         => isset( $dv['states'][ $code ] ) ? $dv['states'][ $code ] : null,
 			'tax_fees'   => isset( $tax_fees['states'][ $code ] ) ? $tax_fees['states'][ $code ] : null,
+			'pip'        => isset( $pip['states'][ $code ] ) ? $pip['states'][ $code ] : null,
 		);
 	}
 	uasort( $laws, function ( $a, $b ) {

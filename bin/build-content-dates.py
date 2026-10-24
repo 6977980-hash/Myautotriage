@@ -24,7 +24,8 @@ OUT = os.path.join(ROOT, 'inc', 'content-dates.json')
 # Pages whose text is written by an inc/ file rather than the template.
 EXTRA = {
     'page-templates/template-state-hub.php': ['inc/state-laws.php'],
-    'page-templates/template-state-laws.php': ['inc/state-laws.php', 'assets/js/data/diminished-value-rules.json', 'assets/js/data/total-loss-tax-fees.json'],
+    'page-templates/template-state-laws.php': ['inc/state-laws.php', 'assets/js/data/diminished-value-rules.json', 'assets/js/data/total-loss-tax-fees.json', 'assets/js/data/pip-deadlines.json'],
+    'page-templates/template-pip-deadlines.php': ['inc/state-laws.php', 'assets/js/data/pip-deadlines.json'],
     'page-templates/template-tax-fees-by-state.php': ['inc/state-laws.php', 'assets/js/data/total-loss-tax-fees.json'],
     'page-templates/template-valuation-checker.php': ['inc/state-laws.php', 'assets/js/data/total-loss-tax-fees.json'],
     'page-templates/template-dv-by-state.php': ['inc/state-laws.php', 'assets/js/data/diminished-value-rules.json'],

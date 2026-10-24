@@ -232,6 +232,32 @@ $meta  = mat_state_laws_meta();
 					</p>
 				<?php endif; ?>
 
+				<?php if ( ! empty( $state['pip'] ) ) : ?>
+					<h2>
+						<?php
+						/* translators: %s: state name */
+						printf( esc_html__( 'PIP (no-fault) claim deadlines in %s', 'myautotriage' ), esc_html( $state['name'] ) );
+						?>
+					</h2>
+					<ul>
+						<?php foreach ( array( 'notice', 'pay', 'late', 'suit' ) as $mat_pip_key ) : ?>
+							<?php if ( ! empty( $state['pip'][ $mat_pip_key ] ) ) : ?>
+								<li><?php echo esc_html( $state['pip'][ $mat_pip_key ] ); ?></li>
+							<?php endif; ?>
+						<?php endforeach; ?>
+					</ul>
+					<p class="mat-field__hint">
+						<?php
+						/* translators: %s: citation */
+						printf( esc_html__( 'Law: %s.', 'myautotriage' ), esc_html( $state['pip']['cite'] ) );
+						$mat_pip_url = mat_url_for_slug( 'pip-claim-deadlines-by-state' );
+						if ( $mat_pip_url ) {
+							echo ' <a href="' . esc_url( $mat_pip_url ) . '">' . esc_html__( 'PIP deadlines in other no-fault states', 'myautotriage' ) . '</a>';
+						}
+						?>
+					</p>
+				<?php endif; ?>
+
 				<?php if ( ! empty( $state['tax_fees'] ) ) : ?>
 					<h2>
 						<?php
