@@ -313,6 +313,7 @@ function mat_get_tool_extras() {
 			'next' => array(
 				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'total-loss' ), 'label' => __( 'Send a total loss counter-offer letter', 'myautotriage' ) ),
 				array( 'slug' => 'insurance-appraisal-clause', 'label' => __( 'Still can\'t agree on the value? How to invoke your policy\'s appraisal clause', 'myautotriage' ) ),
+				array( 'slug' => 'total-loss-sales-tax-by-state', 'label' => __( 'Does your state make the insurer pay sales tax and fees?', 'myautotriage' ) ),
 				array( 'slug' => 'totaled-car-payout-too-low-negotiate', 'label' => __( 'Read: how to negotiate a total loss payout that seems too low', 'myautotriage' ) ),
 				array( 'slug' => 'gap-insurance-shortfall-calculator', 'label' => __( 'Still owe on a loan? Check your GAP shortfall', 'myautotriage' ) ),
 				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'doi-complaint' ), 'label' => __( 'Draft a complaint to your state department of insurance', 'myautotriage' ) ),

@@ -27,6 +27,12 @@ function mat_get_reference_guides() {
 			'meta'      => __( 'Can you claim diminished value from your own insurer or only the at-fault driver\'s? The rule in all 50 states and DC, with the court case or law behind each.', 'myautotriage' ),
 			'template'  => 'page-templates/template-dv-by-state.php',
 		),
+		'total-loss-sales-tax-by-state' => array(
+			'title'     => __( 'Total Loss Sales Tax, Title and Registration Fees by State', 'myautotriage' ),
+			'seo_title' => __( 'Does Insurance Pay Sales Tax on a Totaled Car? By State', 'myautotriage' ),
+			'meta'      => __( 'Does your insurer owe sales tax, title and registration fees on a totaled car? The rule in all 50 states and DC, up front or after you buy, with the regulation.', 'myautotriage' ),
+			'template'  => 'page-templates/template-tax-fees-by-state.php',
+		),
 	);
 }
 

@@ -20,6 +20,7 @@ foreach ( mat_state_laws() as $mat_tlv_state ) {
 	$mat_tlv_states[ $mat_tlv_state['code'] ] = array(
 		'name' => $mat_tlv_state['name'],
 		'url'  => $mat_tlv_hub ? mat_state_url( $mat_tlv_state ) : '',
+		'tax'  => ! empty( $mat_tlv_state['tax_fees'] ) ? trim( $mat_tlv_state['tax_fees']['note'] . ( $mat_tlv_state['tax_fees']['citation'] ? ' (' . $mat_tlv_state['tax_fees']['citation'] . ')' : '' ) ) : '',
 	);
 }
 ?>

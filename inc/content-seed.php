@@ -68,6 +68,12 @@ function mat_seed_pages() {
 			'content'  => '',
 		),
 		array(
+			'slug'     => 'total-loss-sales-tax-by-state',
+			'title'    => __( 'Total Loss Sales Tax, Title and Registration Fees by State', 'myautotriage' ),
+			'template' => 'page-templates/template-tax-fees-by-state.php',
+			'content'  => '',
+		),
+		array(
 			'slug'     => 'diminished-value-by-state',
 			'title'    => __( 'Diminished Value Claim Rules by State', 'myautotriage' ),
 			'template' => 'page-templates/template-dv-by-state.php',

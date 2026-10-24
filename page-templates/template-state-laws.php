@@ -232,6 +232,20 @@ $meta  = mat_state_laws_meta();
 					</p>
 				<?php endif; ?>
 
+				<?php if ( ! empty( $state['tax_fees'] ) ) : ?>
+					<h2>
+						<?php
+						/* translators: %s: state name */
+						printf( esc_html__( 'Sales tax and fees on a total loss in %s', 'myautotriage' ), esc_html( $state['name'] ) );
+						?>
+					</h2>
+					<p><?php echo esc_html( $state['tax_fees']['note'] ); ?><?php echo $state['tax_fees']['citation'] ? ' ' . esc_html( sprintf( /* translators: %s: citation */ __( 'Rule: %s.', 'myautotriage' ), $state['tax_fees']['citation'] ) ) : ''; ?></p>
+					<?php $mat_tax_url = mat_url_for_slug( 'total-loss-sales-tax-by-state' ); ?>
+					<?php if ( $mat_tax_url ) : ?>
+						<p><a href="<?php echo esc_url( $mat_tax_url ); ?>"><?php esc_html_e( 'Total loss tax and fee rules in every state', 'myautotriage' ); ?></a></p>
+					<?php endif; ?>
+				<?php endif; ?>
+
 				<?php if ( ! empty( $state['dv'] ) ) : ?>
 					<h2>
 						<?php
