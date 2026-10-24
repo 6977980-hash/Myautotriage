@@ -34,7 +34,7 @@ get_header();
 			</ul>
 		</div>
 
-		<?php mat_tool_disclaimer( __( 'These pages explain common claim-handling rules in general terms. It is not legal advice, and your state\'s law and your policy decide what applies.', 'myautotriage' ) ); ?>
+		<?php mat_tool_disclaimer( __( 'These pages explain common claim-handling rules in general terms. It is not legal advice, and your state\'s law and your policy decide what applies.', 'myautotriage' ), 'page' ); ?>
 	</div>
 </div>
 <?php

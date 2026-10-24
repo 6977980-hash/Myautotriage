@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Per-tool extras, keyed by page slug. Every key is optional.
  *
+ * - short:   a 40-60 word answer shown above the tool
  * - example: array( 'title' => string, 'html' => trusted HTML )
  * - faqs:    array of array( 'question' => string, 'answer' => string )
  * - next:    array of array( 'slug' => page/post slug, 'label' => string )
@@ -26,6 +27,7 @@ function mat_get_tool_extras() {
 	return array(
 
 		'diminished-value-calculator' => array(
+			'short' => __( 'Diminished value is the drop in a car\'s resale value after an accident, even after a good repair. Insurers often start with the 17c formula: 10% of the car\'s pre-accident value, cut by a damage factor and a mileage factor. It is usually claimed from the at-fault driver\'s insurer; only a few states allow it against your own.', 'myautotriage' ),
 			'example' => array(
 				'title' => __( 'Worked example', 'myautotriage' ),
 				'html'  => '<p>' . __( 'A sedan worth $24,000 before the crash, with 32,000 miles and moderate damage to structure and panels:', 'myautotriage' ) . '</p>'
@@ -59,6 +61,7 @@ function mat_get_tool_extras() {
 		),
 
 		'total-loss-threshold-calculator' => array(
+			'short' => __( 'A car is totaled when repairs cost more than the law or the insurer allows. 25 states set a percentage of the car\'s actual cash value, from 60% to 100%; 5 use the Total Loss Formula (repair cost plus salvage value at or above the car\'s value); in the other 21 the insurer decides, usually with that formula.', 'myautotriage' ),
 			'example' => array(
 				'title' => __( 'Worked example', 'myautotriage' ),
 				'html'  => '<p>' . __( 'Your car\'s actual cash value is $12,000 and the repair estimate is $9,000. That is 75% of its value.', 'myautotriage' ) . '</p>'
@@ -91,6 +94,7 @@ function mat_get_tool_extras() {
 		),
 
 		'gap-insurance-shortfall-calculator' => array(
+			'short' => __( 'GAP coverage pays what you still owe on a loan or lease above your car\'s actual cash value after a total loss. It usually does not pay your deductible, past-due payments, add-ons rolled into the loan, or loan amounts above its limit, often 125% to 150% of the car\'s value. Enter your numbers to see who pays what.', 'myautotriage' ),
 			'example' => array(
 				'title' => __( 'Worked example', 'myautotriage' ),
 				'html'  => '<p>' . __( 'Your loan payoff is $21,500. The insurer values the car at $17,000 and you have a $1,000 deductible, so the insurance check is $16,000.', 'myautotriage' ) . '</p>'
@@ -122,6 +126,7 @@ function mat_get_tool_extras() {
 		),
 
 		'deductible-vs-premium-calculator' => array(
+			'short' => __( 'Filing a small claim pays off only if the repair cost minus your deductible is more than the extra premium you would pay while the claim surcharge lasts, usually three to five years after an at-fault claim. For damage close to your deductible, paying the shop yourself is often cheaper. Enter the repair cost and your premium to see the break-even.', 'myautotriage' ),
 			'example' => array(
 				'title' => __( 'Worked example', 'myautotriage' ),
 				'html'  => '<p>' . __( 'You caused a minor accident. The repair estimate is $1,400 and your deductible is $500. Your insurer is likely to add about $350 a year to your premium for 3 years after an at-fault claim.', 'myautotriage' ) . '</p>'
@@ -149,6 +154,7 @@ function mat_get_tool_extras() {
 		),
 
 		'car-insurance-refund-calculator' => array(
+			'short' => __( 'When you cancel early, most insurers refund the unused premium pro rata: the share of the term you didn\'t use. Some keep a short-rate penalty, often about 10% of the unused premium. Texas has required pro-rata refunds on personal auto policies since September 1, 2026, and Florida caps the penalty at 10% unless the insurer justifies more.', 'myautotriage' ),
 			'example' => array(
 				'title' => __( 'Worked example', 'myautotriage' ),
 				'html'  => '<p>' . __( 'You paid $1,200 for a 12-month policy that started on January 1, 2026, and you cancel on May 1, 2026.', 'myautotriage' ) . '</p>'
@@ -168,6 +174,7 @@ function mat_get_tool_extras() {
 		),
 
 		'claim-payment-deadline-by-state' => array(
+			'short' => __( 'Most states give insurers a set number of days to acknowledge a claim (often 10 to 15) and to accept or deny it once they have proof of loss (often 15 to 30), then a deadline to pay. About 15 states set no number and require only reasonable promptness. Pick your state for its exact days and the rule they come from.', 'myautotriage' ),
 			'faqs' => array(
 				array(
 					'question' => __( 'When does the clock start?', 'myautotriage' ),
@@ -190,6 +197,7 @@ function mat_get_tool_extras() {
 		),
 
 		'car-accident-lawsuit-deadline-calculator' => array(
+			'short' => __( 'Every state limits how long you have to sue after a car accident. For injury claims it is two years in 25 states and three years in 18, and from one to six years in the rest; property damage can have a different limit. The insurer does not have to warn you, and missing the date usually ends the claim.', 'myautotriage' ),
 			'example' => array(
 				'title' => __( 'Worked example', 'myautotriage' ),
 				'html'  => '<p>' . __( 'Your car was hit in Georgia on March 3, 2026. Georgia gives 2 years for injury lawsuits and 4 years for damage to property, so the last day to sue for injuries is March 3, 2028 and for car damage March 3, 2030.', 'myautotriage' ) . '</p>'
@@ -203,6 +211,7 @@ function mat_get_tool_extras() {
 		),
 
 		'comparative-fault-calculator' => array(
+			'short' => __( 'In most states your payout is cut by your share of the fault. In 25 states you get nothing at 51% or more, in 10 states at 50% or more, and 10 states pay something at any share. Alabama, Maryland, North Carolina, Virginia and DC bar recovery if you were even slightly at fault.', 'myautotriage' ),
 			'example' => array(
 				'title' => __( 'Worked example', 'myautotriage' ),
 				'html'  => '<p>' . __( 'You have $15,000 in damages and the adjuster puts you at 30% fault.', 'myautotriage' ) . '</p>'
@@ -220,6 +229,7 @@ function mat_get_tool_extras() {
 		),
 
 		'loss-of-use-calculator' => array(
+			'short' => __( 'Loss of use is money for the time you are without your car while it is repaired or replaced. If the other driver was at fault, their insurer generally owes a comparable rental for the reasonable repair time, or a daily amount if you didn\'t rent. Your own policy pays only if you bought rental reimbursement coverage.', 'myautotriage' ),
 			'example' => array(
 				'title' => __( 'Worked example', 'myautotriage' ),
 				'html'  => '<p>' . __( 'Your car was in the shop from June 2 to June 23 (21 days). The at-fault insurer paid a rental for 14 days, a comparable rental costs $48 a day, and you spent $36 on rideshares before the rental started.', 'myautotriage' ) . '</p>'
@@ -241,6 +251,7 @@ function mat_get_tool_extras() {
 		),
 
 		'deductible-recovery-calculator' => array(
+			'short' => __( 'If the other driver was at fault and your insurer paid for your repairs, it can recover that money from the at-fault driver\'s insurer (subrogation) and should refund your deductible from what it recovers. If only part is recovered, many insurers and some state rules refund the same share of your deductible. You can also claim it from the at-fault insurer yourself.', 'myautotriage' ),
 			'example' => array(
 				'title' => __( 'Worked example', 'myautotriage' ),
 				'html'  => '<p>' . __( 'You paid a $1,000 deductible. The other driver\'s insurer accepted 80% of the fault and paid your insurer 80% of what it was owed.', 'myautotriage' ) . '</p>'
@@ -254,6 +265,7 @@ function mat_get_tool_extras() {
 		),
 
 		'recorded-statement-checklist' => array(
+			'short' => __( 'You usually do not have to give a recorded statement to the other driver\'s insurer; you can decline or answer in writing. Your own policy probably requires you to cooperate, which can include a statement. Either way, stick to facts you know, don\'t guess about speed, distance or fault, and don\'t describe injuries before a doctor has seen you.', 'myautotriage' ),
 			'next' => array(
 				array( 'slug' => 'claim-diary', 'label' => __( 'Log the call in a claim diary', 'myautotriage' ) ),
 				array( 'slug' => 'comparative-fault-calculator', 'label' => __( 'See how a share of fault changes your payout', 'myautotriage' ) ),
@@ -271,6 +283,7 @@ function mat_get_tool_extras() {
 		),
 
 		'total-loss-valuation-checker' => array(
+			'short' => __( 'A total loss offer should match your car\'s actual cash value: what comparable cars (same year, model, trim, mileage and condition) sell for near you, plus sales tax and fees in many states, minus your deductible. Most underpayments come from the comparables, condition ratings and price adjustments in the report, which this checker tests line by line.', 'myautotriage' ),
 			'example' => array(
 				'title' => __( 'Worked example', 'myautotriage' ),
 				'html'  => '<p>' . __( 'A report sets a base value of $16,400 from three comparables advertised at an average of $17,200, each cut by an average $800 "projected sold" adjustment. It takes $650 off for condition, includes no sales tax or fees, and subtracts a $500 deductible: an offer of $15,250.', 'myautotriage' ) . '</p>'
@@ -293,6 +306,7 @@ function mat_get_tool_extras() {
 		),
 
 		'insurance-late-payment-interest-calculator' => array(
+			'short' => __( 'Many states make insurers pay interest when they pay a claim after the legal deadline. Texas adds 18% a year plus reasonable attorney\'s fees (Tex. Ins. Code § 542.060) and Michigan 12% a year; elsewhere the rate depends on the state\'s statute. Interest runs from the date payment was due to the date it was paid.', 'myautotriage' ),
 			'example' => array(
 				'title' => __( 'Worked example', 'myautotriage' ),
 				'html'  => '<p>' . __( 'Your Texas insurer agreed to pay $8,500 and the payment was due on March 1, 2026, but it arrived on May 15, 2026: 75 days late.', 'myautotriage' ) . '</p>'
@@ -367,6 +381,19 @@ function mat_tool_extra_faqs( $slug ) {
 	$extras = mat_get_tool_extras();
 	$key    = mat_tool_extras_key( $slug );
 	return isset( $extras[ $key ]['faqs'] ) ? $extras[ $key ]['faqs'] : array();
+}
+
+/**
+ * The "Short answer" box above a tool, so the page answers the question
+ * before asking for numbers.
+ */
+function mat_tool_short_answer( $slug ) {
+	$extras = mat_get_tool_extras();
+	$key    = mat_tool_extras_key( $slug );
+	if ( empty( $extras[ $key ]['short'] ) ) {
+		return;
+	}
+	echo '<div class="mat-short-answer"><p class="mat-short-answer__label">' . esc_html__( 'Short answer', 'myautotriage' ) . '</p><p>' . esc_html( $extras[ $key ]['short'] ) . '</p></div>';
 }
 
 /**
@@ -494,4 +521,61 @@ function mat_category_intro( $term = null ) {
 	}
 	$intros = mat_category_intros();
 	return isset( $intros[ $term->slug ] ) ? $intros[ $term->slug ] : '';
+}
+
+/**
+ * A second intro paragraph and the tools that fit each category, so a
+ * category with only a few guides still gives the reader somewhere to go.
+ */
+function mat_category_extras() {
+	return array(
+		'accident-basics'             => array(
+			'more'  => __( 'If someone else caused the crash, their insurer usually pays for your repairs, a rental and medical bills; if you caused it, your own collision coverage pays after the deductible. Keep the claim numbers, the adjuster\'s name and every promise in one place from day one, because your state\'s claim deadlines run from the dates you report the claim and send proof of loss.', 'myautotriage' ),
+			'tools' => array( 'claim-triage', 'claim-diary', 'recorded-statement-checklist' ),
+		),
+		'filing-a-claim'              => array(
+			'more'  => __( 'Before you file, compare the repair cost with your deductible and the premium surcharge an at-fault claim can bring for three to five years. Once you file, the insurer has a set number of days in most states to acknowledge and decide the claim, and you can hold it to those dates in writing.', 'myautotriage' ),
+			'tools' => array( 'deductible-vs-premium-calculator', 'claim-triage', 'claim-payment-deadline-by-state' ),
+		),
+		'claim-denials'               => array(
+			'more'  => __( 'A denial letter must give a reason, and a good appeal answers that reason point by point with documents. If the appeal fails, a complaint to your state insurance regulator is free and the insurer has to answer it in writing; for smaller amounts against another driver, small claims court is often faster than arguing with the insurer.', 'myautotriage' ),
+			'tools' => array( 'appeal-letter-generator', 'claim-payment-deadline-by-state', 'claim-diary' ),
+		),
+		'total-loss-diminished-value' => array(
+			'more'  => __( 'The two numbers that decide a total loss are your state\'s threshold and the actual cash value the insurer gives your car. Both can be checked: the threshold against the statute, and the value against comparable cars for sale near you. If the car was repaired instead, an accident on its history report can still cost you resale value that the at-fault insurer may owe.', 'myautotriage' ),
+			'tools' => array( 'total-loss-threshold-calculator', 'total-loss-valuation-checker', 'gap-insurance-shortfall-calculator', 'diminished-value-calculator' ),
+		),
+		'negotiation'                 => array(
+			'more'  => __( 'Adjusters move on evidence, not on frustration. A written counter-offer that names one number, shows how you got it and sets a reply date gets a considered answer far more often than phone calls do. Keep each round in writing so that, if talks stall, you can show a regulator or a judge exactly what was offered and why it fell short.', 'myautotriage' ),
+			'tools' => array( 'demand-letter-generator', 'total-loss-valuation-checker', 'diminished-value-calculator' ),
+		),
+		'claim-timelines'             => array(
+			'more'  => __( 'Most states give insurers a fixed number of days to acknowledge, decide and pay a claim, and some add interest when payment is late. Knowing your state\'s numbers turns "it\'s taking a while" into a dated, checkable delay you can put in a follow-up letter or a complaint.', 'myautotriage' ),
+			'tools' => array( 'claim-payment-deadline-by-state', 'insurance-late-payment-interest-calculator', 'claim-diary' ),
+		),
+	);
+}
+
+/**
+ * Print the category's second paragraph and its tool links.
+ */
+function mat_category_tools_block( $term = null ) {
+	$term   = $term ?: get_queried_object();
+	$extras = mat_category_extras();
+	if ( ! $term || empty( $term->slug ) || empty( $extras[ $term->slug ] ) ) {
+		return;
+	}
+	$links = array();
+	foreach ( $extras[ $term->slug ]['tools'] as $slug ) {
+		$page = get_page_by_path( $slug );
+		if ( $page ) {
+			$links[] = '<li><a href="' . esc_url( get_permalink( $page ) ) . '">' . esc_html( get_the_title( $page ) ) . '</a></li>';
+		}
+	}
+	echo '<section class="mat-page__content mat-next-steps" aria-label="' . esc_attr__( 'Free tools for this', 'myautotriage' ) . '">';
+	echo '<p>' . esc_html( $extras[ $term->slug ]['more'] ) . '</p>';
+	if ( $links ) {
+		echo '<h2>' . esc_html__( 'Free tools for this', 'myautotriage' ) . '</h2><ul>' . implode( '', $links ) . '</ul>'; // phpcs:ignore -- escaped above
+	}
+	echo '</section>';
 }

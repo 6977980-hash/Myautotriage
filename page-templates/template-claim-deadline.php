@@ -14,6 +14,7 @@ wp_enqueue_script( 'mat-cd', MAT_URI . '/assets/js/calculators/claim-deadline.js
 			<h1><?php the_title(); ?></h1>
 			<p><?php esc_html_e( 'Look up how many days your state gives an insurer to acknowledge, decide on, and pay your claim.', 'myautotriage' ); ?></p>
 		</div>
+		<?php mat_tool_short_answer( 'claim-payment-deadline-by-state' ); ?>
 
 		<form id="mat-cd-form" class="mat-tool-panel" data-json="<?php echo esc_url( MAT_URI . '/assets/js/data/claim-deadlines.json' ); ?>" data-hub-url="<?php echo esc_url( get_page_by_path( MAT_STATE_HUB_SLUG ) ? trailingslashit( mat_state_hub_url() ) : '' ); ?>" data-appeal-url="<?php echo esc_url( mat_url_for_slug( 'appeal-letter-generator' ) ); ?>" novalidate>
 			<?php mat_noscript_note(); ?>

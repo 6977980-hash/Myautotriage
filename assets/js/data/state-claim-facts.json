@@ -25,6 +25,10 @@
 				"limit": 10000,
 				"citation": "Alaska Stat. § 22.15.040",
 				"source_url": "https://public.courts.alaska.gov/web/forms/docs/sc-95.pdf"
+			},
+			"regulator": {
+				"name": "Alaska Division of Insurance",
+				"complaint_url": "https://www.commerce.alaska.gov/web/ins/Consumers/Complaints/FileAComplaint.aspx"
 			}
 		},
 		"AL": {
@@ -39,6 +43,10 @@
 			"small_claims": {
 				"limit": 6000,
 				"citation": "Ala. Code § 12-12-31"
+			},
+			"regulator": {
+				"name": "Alabama Department of Insurance",
+				"complaint_url": "https://aldoi.gov/consumers/filecomplaint.aspx"
 			}
 		},
 		"AR": {
@@ -50,6 +58,10 @@
 				"injury_years": 3,
 				"citation": "Ark. Code §§ 16-56-105, 16-116-103",
 				"property_years": 3
+			},
+			"regulator": {
+				"name": "Arkansas Insurance Department",
+				"complaint_url": "https://insurance.arkansas.gov/consumer-assistance/consumer-services/file-a-complaint/"
 			}
 		},
 		"AZ": {
@@ -66,6 +78,10 @@
 				"limit": 5000,
 				"citation": "A.R.S. § 22-503",
 				"source_url": "https://www.azleg.gov/ars/22/00503.htm"
+			},
+			"regulator": {
+				"name": "Arizona Department of Insurance and Financial Institutions",
+				"complaint_url": "https://difi.az.gov/file-a-complaint"
 			}
 		},
 		"CA": {
@@ -83,6 +99,10 @@
 				"citation": "Cal. Civ. Proc. Code § 116.221",
 				"source_url": "https://selfhelp.courts.ca.gov/small-claims-california",
 				"note": "for individuals; $6,250 for businesses"
+			},
+			"regulator": {
+				"name": "California Department of Insurance",
+				"complaint_url": "https://www.insurance.ca.gov/01-consumers/101-help/"
 			}
 		},
 		"CO": {
@@ -100,6 +120,10 @@
 				"limit": 7500,
 				"citation": "C.R.S. § 13-6-403",
 				"source_url": "https://coloradojudicial.gov/sites/default/files/2023-07/JDF248.pdf"
+			},
+			"regulator": {
+				"name": "Colorado Division of Insurance",
+				"complaint_url": "https://doi.colorado.gov/file-a-complaint"
 			}
 		},
 		"CT": {
@@ -116,6 +140,10 @@
 				"limit": 5000,
 				"citation": "Conn. Gen. Stat. § 51-15(d)",
 				"source_url": "https://jud.ct.gov/faq/smallclaims.html"
+			},
+			"regulator": {
+				"name": "Connecticut Insurance Department",
+				"complaint_url": "https://portal.ct.gov/cid/file-a-complaint"
 			}
 		},
 		"DC": {
@@ -133,6 +161,10 @@
 				"limit": 10000,
 				"citation": "D.C. Code § 11-1321",
 				"source_url": "https://code.dccouncil.gov/us/dc/council/code/sections/11-1321"
+			},
+			"regulator": {
+				"name": "DC Department of Insurance, Securities and Banking",
+				"complaint_url": "https://disb.dc.gov/page/consumer-services-division"
 			}
 		},
 		"DE": {
@@ -150,6 +182,10 @@
 				"citation": "10 Del. C. § 9301",
 				"source_url": "https://delcode.delaware.gov/title10/c093/index.html",
 				"note": "in the Justice of the Peace Court"
+			},
+			"regulator": {
+				"name": "Delaware Department of Insurance",
+				"complaint_url": "https://insurance.delaware.gov/services/filecomplaint/"
 			}
 		},
 		"FL": {
@@ -168,6 +204,10 @@
 				"limit": 8000,
 				"citation": "Fla. Sm. Cl. R. 7.010(b)",
 				"source_url": "https://www-media.floridabar.org/uploads/2026/08/2026_01-JUL-Small-Claims-Rules-7-1-2026-1.pdf"
+			},
+			"regulator": {
+				"name": "Florida Department of Financial Services",
+				"complaint_url": "https://www.myfloridacfo.com/division/consumers/needourhelp"
 			}
 		},
 		"GA": {
@@ -179,6 +219,10 @@
 				"injury_years": 2,
 				"citation": "O.C.G.A. §§ 9-3-33, 9-3-31",
 				"property_years": 4
+			},
+			"regulator": {
+				"name": "Georgia Office of Insurance and Safety Fire Commissioner",
+				"complaint_url": "https://oci.georgia.gov/insurance-resources/complaints-fraud"
 			}
 		},
 		"HI": {
@@ -190,6 +234,10 @@
 				"injury_years": 2,
 				"citation": "Haw. Rev. Stat. § 657-7",
 				"property_years": 2
+			},
+			"regulator": {
+				"name": "Hawaii Insurance Division",
+				"complaint_url": "https://cca.hawaii.gov/ins/filing-a-complaint/"
 			}
 		},
 		"IA": {
@@ -201,6 +249,10 @@
 				"injury_years": 2,
 				"citation": "Iowa Code § 614.1(2), (4)",
 				"property_years": 5
+			},
+			"regulator": {
+				"name": "Iowa Insurance Division",
+				"complaint_url": "https://iid.iowa.gov/consumers/filing-complaints"
 			}
 		},
 		"ID": {
@@ -212,6 +264,10 @@
 				"injury_years": 2,
 				"citation": "Idaho Code §§ 5-219, 5-218",
 				"property_years": 3
+			},
+			"regulator": {
+				"name": "Idaho Department of Insurance",
+				"complaint_url": "https://doi.idaho.gov/consumers/file-a-complaint/"
 			}
 		},
 		"IL": {
@@ -223,6 +279,10 @@
 				"injury_years": 2,
 				"citation": "735 ILCS 5/13-202, 5/13-205",
 				"property_years": 5
+			},
+			"regulator": {
+				"name": "Illinois Department of Insurance",
+				"complaint_url": "https://idoi.illinois.gov/consumers/file-a-complaint.html"
 			}
 		},
 		"IN": {
@@ -235,6 +295,10 @@
 				"injury_years": 2,
 				"citation": "Ind. Code § 34-11-2-4",
 				"property_years": 2
+			},
+			"regulator": {
+				"name": "Indiana Department of Insurance",
+				"complaint_url": "https://www.in.gov/idoi/consumer-services/file-an-insurance-company-complaint"
 			}
 		},
 		"KS": {
@@ -246,6 +310,10 @@
 				"injury_years": 2,
 				"citation": "K.S.A. § 60-513",
 				"property_years": 2
+			},
+			"regulator": {
+				"name": "Kansas Insurance Department",
+				"complaint_url": "https://www.insurance.kansas.gov/consumers/file-a-complaint"
 			}
 		},
 		"KY": {
@@ -258,6 +326,10 @@
 				"citation": "KRS §§ 304.39-230(6), 413.125",
 				"property_years": 2,
 				"note": "For car accidents Kentucky's no-fault law gives two years from the accident or from the last no-fault (PIP) payment, whichever is later."
+			},
+			"regulator": {
+				"name": "Kentucky Department of Insurance",
+				"complaint_url": "https://insurance.ky.gov/ppc/new_default.aspx?divid=4"
 			}
 		},
 		"LA": {
@@ -275,6 +347,10 @@
 				"citation": "La. Civ. Code art. 3493.1",
 				"property_years": 2,
 				"note": "Two years applies to accidents after July 1, 2024; earlier accidents had one year."
+			},
+			"regulator": {
+				"name": "Louisiana Department of Insurance",
+				"complaint_url": "https://www.ldi.la.gov/onlineservices/ConsumerComplaintForm"
 			}
 		},
 		"MA": {
@@ -286,6 +362,10 @@
 				"injury_years": 3,
 				"citation": "M.G.L. c. 260, § 2A",
 				"property_years": 3
+			},
+			"regulator": {
+				"name": "Massachusetts Division of Insurance",
+				"complaint_url": "https://www.mass.gov/how-to/filing-an-insurance-complaint"
 			}
 		},
 		"MD": {
@@ -297,6 +377,10 @@
 				"injury_years": 3,
 				"citation": "Md. Code, Cts. & Jud. Proc. § 5-101",
 				"property_years": 3
+			},
+			"regulator": {
+				"name": "Maryland Insurance Administration",
+				"complaint_url": "https://insurance.maryland.gov/Consumer/Pages/FileAComplaint.aspx"
 			}
 		},
 		"ME": {
@@ -308,6 +392,10 @@
 				"injury_years": 6,
 				"citation": "14 M.R.S. § 752",
 				"property_years": 6
+			},
+			"regulator": {
+				"name": "Maine Bureau of Insurance",
+				"complaint_url": "https://www.maine.gov/pfr/insurance/consumers/file-a-complaint-dispute"
 			}
 		},
 		"MI": {
@@ -326,6 +414,10 @@
 				"limit": 7000,
 				"citation": "MCL § 600.8401",
 				"source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-600-8401"
+			},
+			"regulator": {
+				"name": "Michigan Department of Insurance and Financial Services",
+				"complaint_url": "https://www.michigan.gov/difs/consumers/complaint"
 			}
 		},
 		"MN": {
@@ -337,6 +429,10 @@
 				"injury_years": 6,
 				"citation": "Minn. Stat. § 541.05",
 				"property_years": 6
+			},
+			"regulator": {
+				"name": "Minnesota Department of Commerce",
+				"complaint_url": "https://mn.gov/commerce/consumer/file-a-complaint/"
 			}
 		},
 		"MO": {
@@ -348,6 +444,10 @@
 				"injury_years": 5,
 				"citation": "Mo. Rev. Stat. § 516.120",
 				"property_years": 5
+			},
+			"regulator": {
+				"name": "Missouri Department of Commerce and Insurance",
+				"complaint_url": "https://insurance.mo.gov/consumer-complaints/insurance-complaints"
 			}
 		},
 		"MS": {
@@ -359,6 +459,10 @@
 				"injury_years": 3,
 				"citation": "Miss. Code § 15-1-49",
 				"property_years": 3
+			},
+			"regulator": {
+				"name": "Mississippi Insurance Department",
+				"complaint_url": "https://www.mid.ms.gov/mississippi-insurance-department/consumers/file-a-complaint/"
 			}
 		},
 		"MT": {
@@ -370,6 +474,10 @@
 				"injury_years": 3,
 				"citation": "Mont. Code §§ 27-2-204, 27-2-207",
 				"property_years": 2
+			},
+			"regulator": {
+				"name": "Montana Commissioner of Securities and Insurance",
+				"complaint_url": "https://csimt.gov/file-a-complaint/"
 			}
 		},
 		"NC": {
@@ -381,6 +489,10 @@
 				"injury_years": 3,
 				"citation": "N.C. Gen. Stat. § 1-52",
 				"property_years": 3
+			},
+			"regulator": {
+				"name": "North Carolina Department of Insurance",
+				"complaint_url": "https://www.ncdoi.gov/consumers/assistance-or-file-complaint-0"
 			}
 		},
 		"ND": {
@@ -392,6 +504,10 @@
 				"injury_years": 6,
 				"citation": "N.D.C.C. § 28-01-16",
 				"property_years": 6
+			},
+			"regulator": {
+				"name": "North Dakota Insurance Department",
+				"complaint_url": "https://www.insurance.nd.gov/consumers/complaints"
 			}
 		},
 		"NE": {
@@ -408,6 +524,10 @@
 				"limit": 7500,
 				"citation": "Neb. Rev. Stat. § 25-2802",
 				"source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=25-2802"
+			},
+			"regulator": {
+				"name": "Nebraska Department of Insurance",
+				"complaint_url": "https://doi.nebraska.gov/consumer/file-complaint"
 			}
 		},
 		"NH": {
@@ -419,6 +539,10 @@
 				"injury_years": 3,
 				"citation": "RSA 508:4",
 				"property_years": 3
+			},
+			"regulator": {
+				"name": "New Hampshire Insurance Department",
+				"complaint_url": "https://www.insurance.nh.gov/consumers/filing-complaint"
 			}
 		},
 		"NJ": {
@@ -430,6 +554,10 @@
 				"injury_years": 2,
 				"citation": "N.J.S.A. 2A:14-2, 2A:14-1",
 				"property_years": 6
+			},
+			"regulator": {
+				"name": "New Jersey Department of Banking and Insurance",
+				"complaint_url": "https://www.nj.gov/dobi/consumer.htm"
 			}
 		},
 		"NM": {
@@ -441,6 +569,10 @@
 				"injury_years": 3,
 				"citation": "NMSA §§ 37-1-8, 37-1-4",
 				"property_years": 4
+			},
+			"regulator": {
+				"name": "New Mexico Office of Superintendent of Insurance",
+				"complaint_url": "https://osi.state.nm.us/en/consumer-assistance/"
 			}
 		},
 		"NV": {
@@ -452,6 +584,10 @@
 				"injury_years": 2,
 				"citation": "NRS § 11.190",
 				"property_years": 3
+			},
+			"regulator": {
+				"name": "Nevada Division of Insurance",
+				"complaint_url": "https://doi.nv.gov/Consumers/File_a_Complaint/"
 			}
 		},
 		"NY": {
@@ -464,6 +600,10 @@
 				"injury_years": 3,
 				"citation": "N.Y. CPLR § 214",
 				"property_years": 3
+			},
+			"regulator": {
+				"name": "New York Department of Financial Services",
+				"complaint_url": "https://www.dfs.ny.gov/complaint"
 			}
 		},
 		"OH": {
@@ -475,6 +615,10 @@
 				"injury_years": 2,
 				"citation": "Ohio Rev. Code § 2305.10",
 				"property_years": 2
+			},
+			"regulator": {
+				"name": "Ohio Department of Insurance",
+				"complaint_url": "https://insurance.ohio.gov/consumers/file-a-complaint"
 			}
 		},
 		"OK": {
@@ -486,6 +630,10 @@
 				"injury_years": 2,
 				"citation": "12 O.S. § 95",
 				"property_years": 2
+			},
+			"regulator": {
+				"name": "Oklahoma Insurance Department",
+				"complaint_url": "https://www.oid.ok.gov/consumers/file-an-online-complaint/"
 			}
 		},
 		"OR": {
@@ -497,6 +645,10 @@
 				"injury_years": 2,
 				"citation": "ORS 12.110, 12.080",
 				"property_years": 6
+			},
+			"regulator": {
+				"name": "Oregon Division of Financial Regulation",
+				"complaint_url": "https://dfr.oregon.gov/help/complaints-licenses/Pages/file-complaint.aspx"
 			}
 		},
 		"PA": {
@@ -508,6 +660,10 @@
 				"injury_years": 2,
 				"citation": "42 Pa.C.S. § 5524",
 				"property_years": 2
+			},
+			"regulator": {
+				"name": "Pennsylvania Insurance Department",
+				"complaint_url": "https://www.pa.gov/agencies/insurance/consumer-help-center/complaints-questions-help"
 			}
 		},
 		"RI": {
@@ -524,6 +680,10 @@
 				"limit": 5000,
 				"citation": "R.I. Gen. Laws § 10-16-1",
 				"source_url": "https://webserver.rilegislature.gov/Statutes/TITLE10/10-16/10-16-1.htm"
+			},
+			"regulator": {
+				"name": "Rhode Island Department of Business Regulation, Insurance Division",
+				"complaint_url": "https://dbr.ri.gov/insurance/consumers"
 			}
 		},
 		"SC": {
@@ -535,6 +695,10 @@
 				"injury_years": 3,
 				"citation": "S.C. Code § 15-3-530",
 				"property_years": 3
+			},
+			"regulator": {
+				"name": "South Carolina Department of Insurance",
+				"complaint_url": "https://sbs.naic.org/solar-web/pages/public/onlineComplaintForm/onlineComplaintForm.jsf?state=SC"
 			}
 		},
 		"SD": {
@@ -546,6 +710,10 @@
 				"injury_years": 3,
 				"citation": "SDCL §§ 15-2-14, 15-2-13",
 				"property_years": 6
+			},
+			"regulator": {
+				"name": "South Dakota Division of Insurance",
+				"complaint_url": "https://dlr.sd.gov/insurance/doi_complaint.aspx"
 			}
 		},
 		"TN": {
@@ -558,6 +726,10 @@
 				"citation": "Tenn. Code §§ 28-3-104, 28-3-105",
 				"property_years": 3,
 				"note": "Tennessee gives two years for injury instead of one when the at-fault driver is charged with certain crimes, such as vehicular assault or DUI (Tenn. Code § 28-3-104(a)(2))."
+			},
+			"regulator": {
+				"name": "Tennessee Department of Commerce and Insurance",
+				"complaint_url": "https://www.tn.gov/commerce/insurance/consumer-resources/file-a-complaint.html"
 			}
 		},
 		"TX": {
@@ -575,6 +747,10 @@
 				"citation": "Tex. Gov't Code § 27.031",
 				"source_url": "https://statutes.capitol.texas.gov/Docs/GV/htm/GV.27.htm",
 				"note": "in justice court"
+			},
+			"regulator": {
+				"name": "Texas Department of Insurance",
+				"complaint_url": "https://www.tdi.texas.gov/consumer/complfrm.html"
 			}
 		},
 		"UT": {
@@ -591,6 +767,10 @@
 				"limit": 20000,
 				"citation": "Utah Code § 78A-8-102",
 				"source_url": "https://le.utah.gov/xcode/Title78A/Chapter8/78A-8-S102.html"
+			},
+			"regulator": {
+				"name": "Utah Insurance Department",
+				"complaint_url": "https://insurance.utah.gov/complaints/"
 			}
 		},
 		"VA": {
@@ -602,6 +782,10 @@
 				"injury_years": 2,
 				"citation": "Va. Code § 8.01-243",
 				"property_years": 5
+			},
+			"regulator": {
+				"name": "Virginia Bureau of Insurance",
+				"complaint_url": "https://www.scc.virginia.gov/consumers/insurance/resources-ins-consumer/consumer-outreach-and-education/consumer-assistance-outreach-education/"
 			}
 		},
 		"VT": {
@@ -618,6 +802,10 @@
 				"limit": 10000,
 				"citation": "12 V.S.A. § 5531",
 				"source_url": "https://legislature.vermont.gov/statutes/section/12/187/05531"
+			},
+			"regulator": {
+				"name": "Vermont Department of Financial Regulation",
+				"complaint_url": "https://dfr.vermont.gov/file-complaint-or-seek-help-and-other-assistance"
 			}
 		},
 		"WA": {
@@ -629,6 +817,10 @@
 				"injury_years": 3,
 				"citation": "RCW 4.16.080",
 				"property_years": 3
+			},
+			"regulator": {
+				"name": "Washington Office of the Insurance Commissioner",
+				"complaint_url": "https://www.insurance.wa.gov/complaints-appeals-fraud/complaints/file-complaint-or-check-your-complaint-status"
 			}
 		},
 		"WI": {
@@ -640,6 +832,10 @@
 				"injury_years": 3,
 				"citation": "Wis. Stat. §§ 893.54, 893.52(2)",
 				"property_years": 3
+			},
+			"regulator": {
+				"name": "Wisconsin Office of the Commissioner of Insurance",
+				"complaint_url": "https://oci.wi.gov/Pages/Consumers/Filing-a-Complaint.aspx"
 			}
 		},
 		"WV": {
@@ -651,6 +847,10 @@
 				"injury_years": 2,
 				"citation": "W. Va. Code § 55-2-12",
 				"property_years": 2
+			},
+			"regulator": {
+				"name": "West Virginia Offices of the Insurance Commissioner",
+				"complaint_url": "https://sbs.naic.org/solar-web/pages/public/onlineComplaintForm/onlineComplaintForm.jsf?state=WV"
 			}
 		},
 		"WY": {
@@ -662,6 +862,10 @@
 				"injury_years": 4,
 				"citation": "Wyo. Stat. § 1-3-105",
 				"property_years": 4
+			},
+			"regulator": {
+				"name": "Wyoming Department of Insurance",
+				"complaint_url": "https://doi.wyo.gov/consumers"
 			}
 		}
 	}

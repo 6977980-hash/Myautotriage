@@ -254,13 +254,13 @@ function mat_seed_page_about() {
 	return '<p>' . __( 'MyAutoTriage was built around a simple observation: most drivers only learn how car insurance claims actually work in the middle of a stressful one. By then, they\'re trying to understand terms like "diminished value" and "total loss formula" for the first time, often while an adjuster is already waiting for an answer.', 'myautotriage' ) . '</p>'
 	. '<p>' . __( "We built MyAutoTriage to close that gap: a set of free, independent calculators and letter generators, paired with plain-English guides, so you can understand your situation and put your position in writing without needing to hire help for every step.", 'myautotriage' ) . '</p>'
 	. '<h2>' . __( 'What we are — and what we are not', 'myautotriage' ) . '</h2>'
-	. '<p>' . __( 'MyAutoTriage is an independent, ad-supported educational publisher. We are not an insurance company, an insurance agency, a law firm, or a claims adjuster, and we do not handle claims on anyone\'s behalf. The tools on this site produce estimates and drafts based on general formulas and the information you enter — they are a starting point for your own research and decisions, not a substitute for professional advice.', 'myautotriage' ) . '</p>'
+	. '<p>' . __( 'MyAutoTriage is an independent educational publisher. We are not an insurance company, an insurance agency, a law firm, or a claims adjuster, and we do not handle claims on anyone\'s behalf. The tools on this site produce estimates and drafts based on general formulas and the information you enter — they are a starting point for your own research and decisions, not a substitute for professional advice.', 'myautotriage' ) . '</p>'
 	. '<h2>' . __( 'How we make money', 'myautotriage' ) . '</h2>'
-	. '<p>' . __( 'This site is supported by display advertising. Advertising does not influence the content of our guides or the output of our calculators — see our <a href="' . esc_url( home_url( '/editorial-policy/' ) ) . '">Editorial Policy</a> for details.', 'myautotriage' ) . '</p>';
+	. '<p>' . __( 'This site does not show ads yet, and we take no money from insurers, law firms, body shops or lead buyers. We plan to add display advertising (Google AdSense) to pay for running the site; when we do, this page and our Privacy Policy will say so, and advertising will never influence the content of our guides or the output of our calculators — see our <a href="' . esc_url( home_url( '/editorial-policy/' ) ) . '">Editorial Policy</a> for details.', 'myautotriage' ) . '</p>';
 }
 
 function mat_seed_page_contact() {
-	$email = get_theme_mod( 'mat_contact_email', 'hello@myautotriage.com' );
+	$email = get_theme_mod( 'mat_contact_email', 'contact@myautotriage.com' );
 	return '<p>' . __( "Questions, corrections, or feedback on a guide or tool? We'd like to hear from you.", 'myautotriage' ) . '</p>'
 	. '<p><strong>' . __( 'Email:', 'myautotriage' ) . '</strong> <a href="mailto:' . esc_attr( $email ) . '">' . esc_html( $email ) . '</a></p>'
 	. '<p>' . __( 'Please note: we cannot review, adjust, or intervene in your individual insurance claim, and nothing we send you by email is legal or insurance advice. For claim-specific help, contact your insurer, your state department of insurance, or a licensed attorney.', 'myautotriage' ) . '</p>';
@@ -275,7 +275,7 @@ function mat_seed_page_editorial() {
 	. '<h2>' . __( 'Corrections', 'myautotriage' ) . '</h2>'
 	. '<p>' . __( 'Insurance regulations and formulas change. If you spot outdated or incorrect information, please <a href="' . esc_url( home_url( '/contact/' ) ) . '">contact us</a> and we will review and correct it.', 'myautotriage' ) . '</p>'
 	. '<h2>' . __( 'Advertising', 'myautotriage' ) . '</h2>'
-	. '<p>' . __( 'This site displays third-party advertising, including through Google AdSense. Advertisers have no influence over our editorial content, our tool formulas, or our recommendations.', 'myautotriage' ) . '</p>';
+	. '<p>' . __( 'This site does not display advertising yet. If we add third-party ads (we plan to use Google AdSense), advertisers will have no influence over our editorial content, our tool formulas, or our recommendations.', 'myautotriage' ) . '</p>';
 }
 
 function mat_seed_page_privacy() {
@@ -285,7 +285,7 @@ function mat_seed_page_privacy() {
 	. '<h2>' . __( 'Information our tools handle', 'myautotriage' ) . '</h2>'
 	. '<p>' . __( 'Our calculators and letter generators run entirely in your browser. The figures and details you type into them (vehicle values, claim numbers, names, addresses, letter text) are not transmitted to our servers, stored in a database, or shared with anyone — they stay on your device. The one exception is the claim outcome survey described below, which sends only the answers you choose to give it.', 'myautotriage' ) . '</p>'
 	. '<h2>' . __( 'Cookies and advertising', 'myautotriage' ) . '</h2>'
-	. '<p>' . __( 'We may use cookies and similar technologies for basic site analytics and to serve advertising, including through Google AdSense. Google and its partners may use cookies to serve ads based on your prior visits to this or other websites. You can opt out of personalized advertising by visiting Google\'s Ads Settings, or generally by visiting www.aboutads.info.', 'myautotriage' ) . '</p>'
+	. '<p>' . __( 'This site does not yet show ads or run analytics, and it sets no cookies for ordinary visitors. We plan to use Google AdSense in the future; once it is active, Google and its partners may use cookies to serve ads based on your prior visits to this or other websites, and this policy will be updated first. You can opt out of personalized advertising by visiting Google\'s Ads Settings, or generally by visiting www.aboutads.info.', 'myautotriage' ) . '</p>'
 	. '<h2>' . __( 'Third-party links', 'myautotriage' ) . '</h2>'
 	. '<p>' . __( 'Our guides may link to insurers, government resources, or other third-party websites. We are not responsible for the privacy practices of those sites.', 'myautotriage' ) . '</p>'
 	. '<h2>' . __( 'Contact us', 'myautotriage' ) . '</h2>'

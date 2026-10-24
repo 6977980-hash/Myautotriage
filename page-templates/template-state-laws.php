@@ -156,8 +156,10 @@ $meta  = mat_state_laws_meta();
 					<li><?php esc_html_e( 'If the offer is low, answer with evidence: repair estimates, comparable cars for sale, receipts.', 'myautotriage' ); ?></li>
 					<li>
 						<?php
-						/* translators: %s: state name */
-						printf( esc_html__( 'Still stuck? File a free complaint with the %s department of insurance.', 'myautotriage' ), esc_html( $state['name'] ) );
+						$mat_reg_url = mat_state_complaint_url( $state );
+						$mat_reg     = esc_html( mat_state_regulator_name( $state ) );
+						/* translators: %s: state regulator */
+						printf( esc_html__( 'Still stuck? File a free complaint with the %s.', 'myautotriage' ), $mat_reg_url ? '<a href="' . esc_url( $mat_reg_url ) . '" rel="noopener">' . $mat_reg . '</a>' : $mat_reg ); // phpcs:ignore WordPress.Security.EscapeOutput
 						?>
 					</li>
 				</ol>
@@ -278,7 +280,7 @@ $meta  = mat_state_laws_meta();
 				</ul>
 			</div>
 
-			<?php mat_tool_disclaimer( __( 'This page summarizes state rules for general education. Regulations change and some apply only to certain claim types; confirm anything important with your state department of insurance or a licensed attorney.', 'myautotriage' ) ); ?>
+			<?php mat_tool_disclaimer( __( 'Some of these rules apply only to certain claim types.', 'myautotriage' ), 'page' ); ?>
 
 			<?php mat_faq_block( mat_state_faqs( $state ) ); ?>
 

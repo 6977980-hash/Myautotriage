@@ -29,7 +29,7 @@ function mat_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'mat_contact_email', array(
-		'default'           => 'hello@myautotriage.com',
+		'default'           => 'contact@myautotriage.com',
 		'sanitize_callback' => 'sanitize_email',
 	) );
 	$wp_customize->add_control( 'mat_contact_email', array(

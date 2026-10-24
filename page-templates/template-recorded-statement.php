@@ -20,6 +20,7 @@ $mat_rs_phrase = home_url( user_trailingslashit( 'what-the-adjuster-said/we-need
 			<h1><?php the_title(); ?></h1>
 			<p><?php esc_html_e( 'An adjuster wants to record your account of the accident. Answer three questions to see whether you have to, and get a checklist and a message to send. It takes a minute and can save you from a statement that cuts your payout.', 'myautotriage' ); ?></p>
 		</div>
+		<?php mat_tool_short_answer( 'recorded-statement-checklist' ); ?>
 
 		<form id="mat-rs-form" class="mat-tool-panel" novalidate>
 			<?php mat_noscript_note( 'tool' ); ?>

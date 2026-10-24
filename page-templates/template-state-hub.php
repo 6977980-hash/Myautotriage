@@ -55,7 +55,7 @@ $meta = mat_state_laws_meta();
 			<p><?php esc_html_e( '"Total loss formula" states total a car when the repair cost plus its salvage value reaches the car\'s actual cash value. Percentage states use a fixed share of the car\'s value instead. Where state law sets no number, the insurer decides when repairs are uneconomical, and most insurers use the formula.', 'myautotriage' ); ?></p>
 		</div>
 
-		<?php mat_tool_disclaimer( __( 'State rules change and some apply only to certain claim types. Confirm anything important with your state department of insurance or a licensed attorney.', 'myautotriage' ) ); ?>
+		<?php mat_tool_disclaimer( __( 'State rules change and some apply only to certain claim types. Confirm anything important with your state department of insurance or a licensed attorney.', 'myautotriage' ), 'page' ); ?>
 	</div>
 </div>
 <?php
