@@ -271,7 +271,7 @@ add_action( 'wp_loaded', 'mat_ensure_new_pages' );
  * re-run.
  */
 function mat_apply_content_fixes() {
-	$version = '5';
+	$version = '6';
 	if ( $version === get_option( 'mat_content_fixes_version' ) ) {
 		return;
 	}
@@ -313,6 +313,22 @@ function mat_apply_content_fixes() {
 				'post_content' => $content,
 			) );
 		}
+	}
+
+	// October 2026 rewrite: the weakest guides get a new body, excerpt and
+	// meta description. A rewritten body opens with <p class="mat-lede">,
+	// so a post that already has one is left alone.
+	foreach ( mat_guide_rewrites() as $slug => $guide ) {
+		$post = get_page_by_path( $slug, OBJECT, 'post' );
+		if ( ! $post || false !== strpos( $post->post_content, 'mat-lede' ) ) {
+			continue;
+		}
+		wp_update_post( array(
+			'ID'           => $post->ID,
+			'post_content' => mat_guide_rewrite_content( $slug ),
+			'post_excerpt' => $guide['excerpt'],
+		) );
+		update_post_meta( $post->ID, '_mat_meta_description', $guide['meta'] );
 	}
 
 	// Audit 2026-10-24 S12: the guides lose filler adverbs and open with an

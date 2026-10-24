@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MAT_VERSION', '1.0.39' );
+define( 'MAT_VERSION', '1.0.40' );
 define( 'MAT_DIR', get_template_directory() );
 define( 'MAT_URI', get_template_directory_uri() );
 
@@ -94,6 +94,7 @@ require MAT_DIR . '/inc/reference-guides.php';
 require MAT_DIR . '/inc/customizer.php';
 require MAT_DIR . '/inc/template-tags.php';
 require MAT_DIR . '/inc/content-seed.php';
+require MAT_DIR . '/inc/guide-rewrites.php';
 require MAT_DIR . '/inc/seed-articles.php';
 require MAT_DIR . '/inc/adsense-ads-txt.php';
 
