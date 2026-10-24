@@ -109,6 +109,7 @@ $mat_lb_head = '<thead><tr><th scope="col">' . esc_html__( 'Group', 'myautotriag
 				<li><?php esc_html_e( 'Change from first offer = (final payment − first offer) ÷ first offer, for each claim. We show the median, the middle answer, so one huge settlement can\'t skew it.', 'myautotriage' ); ?></li>
 				<li><?php esc_html_e( '"Pushed back" means the claimant reported at least one step: a written counter-offer, their own estimates or comparables, appraisal, a state complaint, a lawyer or public adjuster, or court.', 'myautotriage' ); ?></li>
 				<li><?php esc_html_e( 'Only settled claims count. Answers about claims that are still open are stored but left out of these numbers.', 'myautotriage' ); ?></li>
+				<li><?php esc_html_e( 'Every new answer is checked by hand before it counts, and answers that look scripted or made up are deleted.', 'myautotriage' ); ?></li>
 				<?php /* translators: %d: minimum answers */ ?>
 				<li><?php echo esc_html( sprintf( __( 'A group (a claim type or an insurer) appears only once it has %d settled answers.', 'myautotriage' ), MAT_OUTCOMES_MIN ) ); ?></li>
 				<li><?php esc_html_e( 'The pushed-back and didn\'t-push-back columns show a number once that part of the group has at least 10 answers.', 'myautotriage' ); ?></li>
