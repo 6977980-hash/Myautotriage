@@ -271,7 +271,7 @@ add_action( 'wp_loaded', 'mat_ensure_new_pages' );
  * re-run.
  */
 function mat_apply_content_fixes() {
-	$version = '6';
+	$version = '7';
 	if ( $version === get_option( 'mat_content_fixes_version' ) ) {
 		return;
 	}
