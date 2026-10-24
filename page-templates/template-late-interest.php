@@ -17,6 +17,7 @@ wp_enqueue_script( 'mat-li', MAT_URI . '/assets/js/calculators/late-interest.js'
 			<h1><?php the_title(); ?></h1>
 			<p><?php esc_html_e( 'Insurer paid your claim late? Estimate the interest some state laws add to a late claim payment, and the total to ask for.', 'myautotriage' ); ?></p>
 		</div>
+		<?php mat_tool_short_answer( 'insurance-late-payment-interest-calculator' ); ?>
 
 		<form id="mat-li-form" class="mat-tool-panel" data-deadline-url="<?php echo esc_url( mat_url_for_slug( 'claim-payment-deadline-by-state' ) ); ?>" novalidate>
 			<?php mat_noscript_note(); ?>

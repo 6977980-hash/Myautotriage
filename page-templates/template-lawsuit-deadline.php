@@ -19,6 +19,7 @@ $hub = get_page_by_path( MAT_STATE_HUB_SLUG ) ? trailingslashit( mat_state_hub_u
 			<h1><?php the_title(); ?></h1>
 			<p><?php esc_html_e( 'Find the last day to file a lawsuit after a car accident in your state, for injuries or for damage to your car, and how many days you have left.', 'myautotriage' ); ?></p>
 		</div>
+		<?php mat_tool_short_answer( 'car-accident-lawsuit-deadline-calculator' ); ?>
 
 		<form id="mat-sol-form" class="mat-tool-panel" data-json="<?php echo esc_url( MAT_URI . '/assets/js/data/state-claim-facts.json' ); ?>" data-hub-url="<?php echo esc_url( $hub ); ?>" novalidate>
 			<?php mat_noscript_note(); ?>

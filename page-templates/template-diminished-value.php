@@ -14,6 +14,7 @@ wp_enqueue_script( 'mat-dv', MAT_URI . '/assets/js/calculators/diminished-value.
 			<h1><?php the_title(); ?></h1>
 			<p><?php esc_html_e( "Estimate what your car's resale value dropped after an accident, using the industry-standard 17c formula — the same starting point insurers and independent appraisers use.", 'myautotriage' ); ?></p>
 		</div>
+		<?php mat_tool_short_answer( 'diminished-value-calculator' ); ?>
 
 		<?php
 		$dv_letter_url = mat_url_for_slug( 'diminished-value-demand-letter-generator' );

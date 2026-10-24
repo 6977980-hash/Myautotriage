@@ -29,6 +29,7 @@ foreach ( mat_state_laws() as $mat_tlv_state ) {
 			<h1><?php the_title(); ?></h1>
 			<p><?php esc_html_e( 'Got a total loss valuation report that looks low? Enter its numbers and the comparable cars it used. We check them line by line, show where money was taken off, and turn the result into a counter-offer letter.', 'myautotriage' ); ?></p>
 		</div>
+		<?php mat_tool_short_answer( 'total-loss-valuation-checker' ); ?>
 
 		<form id="mat-tlv-form" class="mat-tool-panel" data-letter-url="<?php echo esc_url( $mat_tlv_letter ? add_query_arg( 'type', 'total-loss', $mat_tlv_letter ) : '' ); ?>" data-states="<?php echo esc_attr( wp_json_encode( $mat_tlv_states ) ); ?>" novalidate>
 			<?php mat_noscript_note(); ?>

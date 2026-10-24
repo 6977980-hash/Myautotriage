@@ -14,6 +14,7 @@ wp_enqueue_script( 'mat-ded', MAT_URI . '/assets/js/calculators/deductible-vs-pr
 			<h1><?php the_title(); ?></h1>
 			<p><?php esc_html_e( 'Compare paying for minor damage yourself against filing a claim, once your deductible and a likely multi-year premium increase are both counted.', 'myautotriage' ); ?></p>
 		</div>
+		<?php mat_tool_short_answer( 'deductible-vs-premium-calculator' ); ?>
 
 		<form id="mat-ded-form" class="mat-tool-panel" novalidate>
 			<?php mat_noscript_note(); ?>

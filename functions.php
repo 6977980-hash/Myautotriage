@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MAT_VERSION', '1.0.27' );
+define( 'MAT_VERSION', '1.0.28' );
 define( 'MAT_DIR', get_template_directory() );
 define( 'MAT_URI', get_template_directory_uri() );
 
@@ -182,10 +182,12 @@ add_shortcode( 'mat_tool_cta', 'mat_tool_cta_shortcode' );
  * A disclaimer box, reused on every calculator/generator page. Centralised
  * so the wording only has to be reviewed/updated in one place.
  */
-function mat_tool_disclaimer( $extra = '' ) {
+function mat_tool_disclaimer( $extra = '', $context = 'tool' ) {
 	echo '<div class="mat-disclaimer" role="note">';
 	echo '<strong>' . esc_html__( 'Not legal, financial, or insurance advice.', 'myautotriage' ) . '</strong> ';
-	echo esc_html__( 'This tool gives a general, educational estimate only. Insurance laws, deadlines, and formulas vary by state, by policy, and by insurer, and they change over time. Verify anything important with your insurance policy, your state department of insurance, or a licensed attorney before relying on it.', 'myautotriage' );
+	echo 'page' === $context
+		? esc_html__( 'This page summarises rules and data for general education only. Insurance laws, deadlines, and formulas vary by state, by policy, and by insurer, and they change over time. Verify anything important with your insurance policy, your state department of insurance, or a licensed attorney before relying on it.', 'myautotriage' )
+		: esc_html__( 'This tool gives a general, educational estimate only. Insurance laws, deadlines, and formulas vary by state, by policy, and by insurer, and they change over time. Verify anything important with your insurance policy, your state department of insurance, or a licensed attorney before relying on it.', 'myautotriage' );
 	if ( $extra ) {
 		echo ' ' . esc_html( $extra );
 	}

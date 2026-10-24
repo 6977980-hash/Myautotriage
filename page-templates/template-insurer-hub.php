@@ -38,7 +38,7 @@ $mat_ic_cell = function ( $score ) {
 				<p>
 					<?php
 					/* translators: 1: year, 2: number of complaints, 3: percentage */
-					echo esc_html( sprintf( __( 'Often, yes. Of the %2$s auto claim complaints the Texas Department of Insurance received in %1$s, %3$s ended with the claim settled or the insurer paying more, according to TDI\'s own record of how each complaint was resolved.', 'myautotriage' ), $mat_ic_data['tx_year'], number_format_i18n( $mat_ic_mkt['claim_complaints'] ), mat_insurer_pct( $mat_ic_mkt['claim_paid'], $mat_ic_mkt['claim_complaints'] ) ) );
+					echo esc_html( sprintf( __( 'Often, yes. Of the %2$s auto claim complaints the Texas Department of Insurance closed in %1$s, %3$s ended with the claim settled or the insurer paying more, according to TDI\'s own record of how each complaint was resolved.', 'myautotriage' ), $mat_ic_data['tx_year'], number_format_i18n( $mat_ic_mkt['claim_complaints'] ), mat_insurer_pct( $mat_ic_mkt['claim_paid'], $mat_ic_mkt['claim_complaints'] ) ) );
 					?>
 				</p>
 			</div>

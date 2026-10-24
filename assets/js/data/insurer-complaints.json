@@ -1,32 +1,32 @@
 {
- "built": "2026-10-11",
+ "built": "2026-10-24",
  "tx_year": "2025",
  "ny_year": "2024",
  "tx_market": {
-  "complaints": 10155,
-  "confirmed": 2537,
-  "claim_complaints": 8180,
-  "claim_paid": 4625,
+  "complaints": 10431,
+  "confirmed": 2777,
+  "claim_complaints": 8429,
+  "claim_paid": 4897,
   "reasons": [
    {
     "reason": "Poor claim handling or communication",
-    "count": 6378
+    "count": 6381
    },
    {
     "reason": "Claim delays",
-    "count": 5074
+    "count": 5217
    },
    {
     "reason": "Low settlement offer",
-    "count": 3199
+    "count": 3231
    },
    {
     "reason": "Claim denied",
-    "count": 1387
+    "count": 1372
    },
    {
     "reason": "Policy service problems",
-    "count": 1246
+    "count": 1180
    }
   ],
   "policies": 15057105,
@@ -89,32 +89,38 @@
     "index_confirmed": 228,
     "policies": 4195397,
     "index": 0.33,
-    "complaints": 1172,
-    "confirmed": 201,
-    "claim_complaints": 991,
-    "claim_paid": 555,
+    "complaints": 1203,
+    "confirmed": 228,
+    "claim_complaints": 1022,
+    "claim_paid": 578,
     "reasons": [
      {
       "reason": "Poor claim handling or communication",
-      "count": 744
+      "count": 747
      },
      {
       "reason": "Low settlement offer",
-      "count": 538
+      "count": 553
      },
      {
       "reason": "Claim delays",
-      "count": 526
+      "count": 540
      },
      {
       "reason": "Claim denied",
-      "count": 119
+      "count": 122
      },
      {
       "reason": "Disputed who was at fault",
-      "count": 117
+      "count": 116
      }
-    ]
+    ],
+    "prev": {
+     "year": "2024",
+     "confirmed": 212,
+     "policies": 4086527,
+     "index": 0.49
+    }
    },
    "ny": {
     "upheld": 105,
@@ -189,32 +195,38 @@
     "index_confirmed": 362,
     "policies": 3306121,
     "index": 0.66,
-    "complaints": 1470,
-    "confirmed": 336,
-    "claim_complaints": 1168,
-    "claim_paid": 657,
+    "complaints": 1453,
+    "confirmed": 362,
+    "claim_complaints": 1142,
+    "claim_paid": 664,
     "reasons": [
      {
       "reason": "Poor claim handling or communication",
-      "count": 885
+      "count": 826
      },
      {
       "reason": "Claim delays",
-      "count": 642
+      "count": 620
      },
      {
       "reason": "Low settlement offer",
-      "count": 511
+      "count": 484
      },
      {
       "reason": "Claim denied",
-      "count": 211
+      "count": 214
      },
      {
       "reason": "Policy service problems",
-      "count": 208
+      "count": 182
      }
-    ]
+    ],
+    "prev": {
+     "year": "2024",
+     "confirmed": 212,
+     "policies": 2968511,
+     "index": 0.67
+    }
    },
    "ny": {
     "upheld": 62,
@@ -305,32 +317,38 @@
     "index_confirmed": 164,
     "policies": 1325576,
     "index": 0.75,
-    "complaints": 736,
-    "confirmed": 183,
-    "claim_complaints": 555,
-    "claim_paid": 317,
+    "complaints": 680,
+    "confirmed": 164,
+    "claim_complaints": 506,
+    "claim_paid": 270,
     "reasons": [
      {
       "reason": "Poor claim handling or communication",
-      "count": 419
+      "count": 374
      },
      {
       "reason": "Claim delays",
-      "count": 291
+      "count": 257
      },
      {
       "reason": "Low settlement offer",
-      "count": 228
+      "count": 222
      },
      {
       "reason": "Policy service problems",
-      "count": 119
+      "count": 100
      },
      {
       "reason": "Claim denied",
-      "count": 101
+      "count": 89
      }
-    ]
+    ],
+    "prev": {
+     "year": "2024",
+     "confirmed": 59,
+     "policies": 1161504,
+     "index": 0.48
+    }
    },
    "ny": {
     "upheld": 48,
@@ -509,32 +527,38 @@
     "index_confirmed": 116,
     "policies": 833109,
     "index": 0.85,
-    "complaints": 547,
-    "confirmed": 108,
-    "claim_complaints": 436,
-    "claim_paid": 226,
+    "complaints": 573,
+    "confirmed": 116,
+    "claim_complaints": 447,
+    "claim_paid": 248,
     "reasons": [
      {
       "reason": "Poor claim handling or communication",
-      "count": 317
+      "count": 299
      },
      {
       "reason": "Low settlement offer",
-      "count": 225
+      "count": 237
      },
      {
       "reason": "Claim delays",
-      "count": 213
-     },
-     {
-      "reason": "Claim denied",
-      "count": 84
+      "count": 203
      },
      {
       "reason": "Policy service problems",
-      "count": 75
+      "count": 83
+     },
+     {
+      "reason": "Claim denied",
+      "count": 73
      }
-    ]
+    ],
+    "prev": {
+     "year": "2024",
+     "confirmed": 90,
+     "policies": 942112,
+     "index": 0.89
+    }
    },
    "ny": {
     "upheld": 87,
@@ -617,32 +641,38 @@
     "index_confirmed": 211,
     "policies": 886549,
     "index": 1.44,
-    "complaints": 581,
-    "confirmed": 191,
-    "claim_complaints": 514,
-    "claim_paid": 293,
+    "complaints": 612,
+    "confirmed": 211,
+    "claim_complaints": 536,
+    "claim_paid": 326,
     "reasons": [
      {
       "reason": "Poor claim handling or communication",
-      "count": 399
+      "count": 414
      },
      {
       "reason": "Claim delays",
-      "count": 305
+      "count": 325
      },
      {
       "reason": "Low settlement offer",
-      "count": 261
+      "count": 272
      },
      {
       "reason": "Claim denied",
-      "count": 63
+      "count": 56
      },
      {
       "reason": "Policy service problems",
       "count": 48
      }
-    ]
+    ],
+    "prev": {
+     "year": "2024",
+     "confirmed": 174,
+     "policies": 886833,
+     "index": 1.84
+    }
    },
    "ny": {
     "upheld": 57,
@@ -757,32 +787,38 @@
     "index_confirmed": 53,
     "policies": 230394,
     "index": 1.4,
-    "complaints": 212,
-    "confirmed": 38,
-    "claim_complaints": 169,
-    "claim_paid": 91,
+    "complaints": 241,
+    "confirmed": 53,
+    "claim_complaints": 197,
+    "claim_paid": 108,
     "reasons": [
      {
       "reason": "Poor claim handling or communication",
-      "count": 129
+      "count": 151
      },
      {
       "reason": "Claim delays",
-      "count": 90
+      "count": 107
      },
      {
       "reason": "Low settlement offer",
-      "count": 83
-     },
-     {
-      "reason": "Policy service problems",
-      "count": 32
+      "count": 88
      },
      {
       "reason": "Claim denied",
-      "count": 28
+      "count": 32
+     },
+     {
+      "reason": "Policy service problems",
+      "count": 30
      }
-    ]
+    ],
+    "prev": {
+     "year": "2024",
+     "confirmed": 24,
+     "policies": 294003,
+     "index": 0.76
+    }
    },
    "ny": {
     "upheld": 90,
@@ -937,32 +973,38 @@
     "index_confirmed": 80,
     "policies": 689828,
     "index": 0.7,
-    "complaints": 281,
-    "confirmed": 63,
-    "claim_complaints": 212,
-    "claim_paid": 105,
+    "complaints": 292,
+    "confirmed": 80,
+    "claim_complaints": 218,
+    "claim_paid": 112,
     "reasons": [
      {
       "reason": "Poor claim handling or communication",
-      "count": 147
+      "count": 142
      },
      {
       "reason": "Low settlement offer",
-      "count": 108
+      "count": 109
      },
      {
       "reason": "Claim delays",
-      "count": 93
-     },
-     {
-      "reason": "Claim denied",
-      "count": 52
+      "count": 88
      },
      {
       "reason": "Policy service problems",
-      "count": 45
+      "count": 49
+     },
+     {
+      "reason": "Premium refund",
+      "count": 47
      }
-    ]
+    ],
+    "prev": {
+     "year": "2024",
+     "confirmed": 57,
+     "policies": 660618,
+     "index": 0.81
+    }
    },
    "ny": {
     "upheld": 15,
@@ -1061,10 +1103,10 @@
     "index_confirmed": 1,
     "policies": 15034,
     "index": 0.4,
-    "complaints": 5,
+    "complaints": 6,
     "confirmed": 1,
-    "claim_complaints": 3,
-    "claim_paid": 1,
+    "claim_complaints": 4,
+    "claim_paid": 2,
     "reasons": [
      {
       "reason": "Premium refund",
@@ -1075,18 +1117,24 @@
       "count": 2
      },
      {
-      "reason": "Claim Recoding/Bundling",
-      "count": 1
-     },
-     {
-      "reason": "Low settlement offer",
-      "count": 1
-     },
-     {
       "reason": "Claim delays",
+      "count": 2
+     },
+     {
+      "reason": "Policy cancelled",
+      "count": 1
+     },
+     {
+      "reason": "Policy service problems",
       "count": 1
      }
-    ]
+    ],
+    "prev": {
+     "year": "2024",
+     "confirmed": 2,
+     "policies": 18537,
+     "index": 1.01
+    }
    },
    "ny": {
     "upheld": 2,
@@ -1273,32 +1321,38 @@
     "index_confirmed": 1,
     "policies": 26116,
     "index": 0.23,
-    "complaints": 13,
+    "complaints": 14,
     "confirmed": 1,
-    "claim_complaints": 11,
+    "claim_complaints": 13,
     "claim_paid": 6,
     "reasons": [
      {
       "reason": "Poor claim handling or communication",
-      "count": 9
+      "count": 8
      },
      {
       "reason": "Claim delays",
-      "count": 8
+      "count": 7
      },
      {
       "reason": "Claim denied",
       "count": 4
      },
      {
-      "reason": "Disputed who was at fault",
-      "count": 2
+      "reason": "Low settlement offer",
+      "count": 3
      },
      {
-      "reason": "Low settlement offer",
+      "reason": "Disputed who was at fault",
       "count": 2
      }
-    ]
+    ],
+    "prev": {
+     "year": "2024",
+     "confirmed": 0,
+     "policies": 28672,
+     "index": 0.0
+    }
    },
    "ny": {
     "upheld": 28,
@@ -1413,32 +1467,38 @@
     "index_confirmed": 10,
     "policies": 78288,
     "index": 0.78,
-    "complaints": 19,
-    "confirmed": 9,
-    "claim_complaints": 13,
-    "claim_paid": 8,
+    "complaints": 26,
+    "confirmed": 10,
+    "claim_complaints": 21,
+    "claim_paid": 14,
     "reasons": [
      {
       "reason": "Poor claim handling or communication",
-      "count": 9
+      "count": 16
      },
      {
       "reason": "Claim delays",
-      "count": 7
+      "count": 11
      },
      {
       "reason": "Low settlement offer",
-      "count": 7
+      "count": 11
      },
      {
-      "reason": "Policy service problems",
-      "count": 3
+      "reason": "Claim denied",
+      "count": 2
      },
      {
-      "reason": "Policy service delays",
+      "reason": "Disputed who was at fault",
       "count": 2
      }
-    ]
+    ],
+    "prev": {
+     "year": "2024",
+     "confirmed": 3,
+     "policies": 88011,
+     "index": 0.32
+    }
    },
    "ny": {
     "upheld": 4,
@@ -1513,32 +1573,38 @@
     "index_confirmed": 33,
     "policies": 65556,
     "index": 3.06,
-    "complaints": 131,
+    "complaints": 137,
     "confirmed": 33,
-    "claim_complaints": 124,
+    "claim_complaints": 127,
     "claim_paid": 76,
     "reasons": [
      {
       "reason": "Poor claim handling or communication",
-      "count": 103
+      "count": 98
      },
      {
       "reason": "Claim delays",
-      "count": 87
+      "count": 93
      },
      {
       "reason": "Low settlement offer",
-      "count": 40
+      "count": 39
      },
      {
       "reason": "Claim denied",
-      "count": 18
+      "count": 20
      },
      {
       "reason": "Disputed who was at fault",
-      "count": 10
+      "count": 13
      }
-    ]
+    ],
+    "prev": {
+     "year": "2024",
+     "confirmed": 21,
+     "policies": 63889,
+     "index": 3.07
+    }
    },
    "ny": {
     "upheld": 10,
@@ -1576,7 +1642,7 @@
     "complaints": 26,
     "confirmed": 7,
     "claim_complaints": 21,
-    "claim_paid": 14,
+    "claim_paid": 13,
     "reasons": [
      {
       "reason": "Poor claim handling or communication",
@@ -1591,14 +1657,20 @@
       "count": 11
      },
      {
-      "reason": "Premium or rating",
+      "reason": "Disputed who was at fault",
       "count": 4
      },
      {
-      "reason": "Premium refund",
+      "reason": "Premium or rating",
       "count": 3
      }
-    ]
+    ],
+    "prev": {
+     "year": "2024",
+     "confirmed": 2,
+     "policies": 46439,
+     "index": 0.4
+    }
    },
    "ny": {
     "upheld": 0,
@@ -1678,32 +1750,38 @@
     "index_confirmed": 5,
     "policies": 42284,
     "index": 0.72,
-    "complaints": 22,
-    "confirmed": 4,
-    "claim_complaints": 16,
-    "claim_paid": 13,
+    "complaints": 21,
+    "confirmed": 5,
+    "claim_complaints": 17,
+    "claim_paid": 12,
     "reasons": [
-     {
-      "reason": "Low settlement offer",
-      "count": 12
-     },
      {
       "reason": "Poor claim handling or communication",
       "count": 11
      },
      {
+      "reason": "Low settlement offer",
+      "count": 9
+     },
+     {
       "reason": "Claim delays",
-      "count": 10
+      "count": 7
      },
      {
-      "reason": "Premium or rating",
-      "count": 3
+      "reason": "Claim denied",
+      "count": 4
      },
      {
-      "reason": "Policy service problems",
+      "reason": "Disputed who was at fault",
       "count": 3
      }
-    ]
+    ],
+    "prev": {
+     "year": "2024",
+     "confirmed": 4,
+     "policies": 48475,
+     "index": 0.77
+    }
    },
    "ny": {
     "upheld": 4,
@@ -1730,32 +1808,38 @@
     "index_confirmed": 241,
     "policies": 40364,
     "index": 36.24,
-    "complaints": 242,
-    "confirmed": 188,
-    "claim_complaints": 225,
-    "claim_paid": 185,
+    "complaints": 297,
+    "confirmed": 241,
+    "claim_complaints": 282,
+    "claim_paid": 237,
     "reasons": [
      {
       "reason": "Poor claim handling or communication",
-      "count": 212
+      "count": 267
      },
      {
       "reason": "Claim delays",
-      "count": 206
+      "count": 257
      },
      {
       "reason": "Low settlement offer",
-      "count": 46
-     },
-     {
-      "reason": "Premium or rating",
-      "count": 13
+      "count": 52
      },
      {
       "reason": "Policy service problems",
-      "count": 12
+      "count": 11
+     },
+     {
+      "reason": "Premium or rating",
+      "count": 10
      }
-    ]
+    ],
+    "prev": {
+     "year": "2024",
+     "confirmed": 65,
+     "policies": 42589,
+     "index": 14.28
+    }
    }
   }
  ]

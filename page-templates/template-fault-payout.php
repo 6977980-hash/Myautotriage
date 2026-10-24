@@ -19,6 +19,7 @@ $hub = get_page_by_path( MAT_STATE_HUB_SLUG ) ? trailingslashit( mat_state_hub_u
 			<h1><?php the_title(); ?></h1>
 			<p><?php esc_html_e( 'Partly at fault for the accident? See how much of your damages you can still recover from the other driver under your state\'s fault rule.', 'myautotriage' ); ?></p>
 		</div>
+		<?php mat_tool_short_answer( 'comparative-fault-calculator' ); ?>
 
 		<form id="mat-cf-form" class="mat-tool-panel" data-json="<?php echo esc_url( MAT_URI . '/assets/js/data/state-claim-facts.json' ); ?>" data-hub-url="<?php echo esc_url( $hub ); ?>" novalidate>
 			<?php mat_noscript_note(); ?>

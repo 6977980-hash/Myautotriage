@@ -5,6 +5,8 @@ Sources (both public open-data portals, no key needed):
   * Texas Department of Insurance, data.texas.gov
       pa9u-9s9w  complaint index and policies in force by company, auto line
       ubdr-4uff  every complaint, with reason and how it was resolved
+                 (counted by the year TDI closed it, as the complaint index
+                 does, so both datasets agree on the confirmed count)
   * New York DFS, data.ny.gov
       h2wd-9xfe  auto insurer complaint ranking (upheld complaints per $1M premium)
 
@@ -76,14 +78,18 @@ def get(url, params):
 def main():
     tx_idx = get('https://data.texas.gov/resource/pa9u-9s9w.json', {
         '$where': "type_cd='Automobile' AND year='%s'" % TX_YEAR, '$limit': 50000})
+    tx_prev = get('https://data.texas.gov/resource/pa9u-9s9w.json', {
+        '$where': "type_cd='Automobile' AND year='%d'" % (int(TX_YEAR) - 1), '$limit': 50000})
     tx_c = get('https://data.texas.gov/resource/ubdr-4uff.json', {
         '$select': 'respondent_id,reason,complaint_confirmed_code,disposition',
-        '$where': "coverage_type='Automobile' AND received_date>='%s-01-01' AND received_date<'%d-01-01'" % (TX_YEAR, int(TX_YEAR) + 1),
+        '$where': "coverage_type='Automobile' AND closed_date>='%s-01-01' AND closed_date<'%d-01-01'" % (TX_YEAR, int(TX_YEAR) + 1),
         '$limit': 100000})
     ny = get('https://data.ny.gov/resource/h2wd-9xfe.json', {'$where': "filing_year='%s'" % NY_YEAR, '$limit': 50000})
 
     tx_total_c = sum(int(r.get('col1', 0)) for r in tx_idx)
     tx_total_p = sum(int(r.get('col2', 0)) for r in tx_idx)
+    prev_total_c = sum(int(r.get('col1', 0)) for r in tx_prev)
+    prev_total_p = sum(int(r.get('col2', 0)) for r in tx_prev)
     ny_total_u = sum(int(r.get('upheld_complaints', 0)) for r in ny)
     ny_total_p = sum(float(r.get('premiums_written_in_millions', 0)) for r in ny)
 
@@ -126,6 +132,11 @@ def main():
             }
             rows = [x for r in tx_rows for x in by_org.get(r.get('org_id'), [])]
             g['tx'].update(outcome_stats(rows))
+            prev_rows = [r for r in tx_prev if r.get('naic_id') in codes]
+            pc = sum(int(r.get('col1', 0)) for r in prev_rows)
+            pp = sum(int(r.get('col2', 0)) for r in prev_rows)
+            if pp:
+                g['tx']['prev'] = {'year': str(int(TX_YEAR) - 1), 'confirmed': pc, 'policies': pp, 'index': round((pc / prev_total_c) / (pp / prev_total_p), 2)}
             g['companies'] += [{'state': 'TX', 'name': r['company_name'], 'naic': r['naic_id'], 'policies': int(r.get('col2', 0)), 'confirmed': int(r.get('col1', 0)), 'index': float(r.get('col3', 0))} for r in tx_rows]
         if ny_rows:
             u = sum(int(r.get('upheld_complaints', 0)) for r in ny_rows)

@@ -53,7 +53,7 @@ $mat_ins_data = mat_insurer_data();
 								<?php
 								echo esc_html( 'tx' === $mat_ins_key
 									/* translators: 1: confirmed complaints, 2: policies */
-									? sprintf( __( '%1$s confirmed complaints, %2$s auto policies. Average = 1.00.', 'myautotriage' ), number_format_i18n( $mat_ins['tx']['index_confirmed'] ), number_format_i18n( $mat_ins['tx']['policies'] ) )
+									? sprintf( __( '%1$s confirmed complaints, %2$s auto policies. Average = 1.00.', 'myautotriage' ), number_format_i18n( $mat_ins['tx']['index_confirmed'] ), number_format_i18n( $mat_ins['tx']['policies'] ) ) . ( $mat_ins['tx']['index'] > 5 ? ' ' . __( 'As published by TDI.', 'myautotriage' ) : '' )
 									/* translators: 1: upheld complaints, 2: premium */
 									: sprintf( __( '%1$s upheld complaints on $%2$s million of premium. Average = 1.00.', 'myautotriage' ), number_format_i18n( $mat_ins['ny']['upheld'] ), number_format_i18n( $mat_ins['ny']['premium_millions'] ) ) );
 								?>
@@ -66,19 +66,27 @@ $mat_ins_data = mat_insurer_data();
 			</div>
 
 			<div class="mat-page__content">
+				<?php $mat_ins_profile = mat_insurer_profile( $mat_ins ); ?>
+				<?php if ( $mat_ins_profile ) : ?>
+					<?php /* translators: %s: insurer */ ?>
+					<h2><?php echo esc_html( sprintf( __( 'What stands out in %s numbers', 'myautotriage' ), mat_insurer_possessive( $mat_ins['name'] ) ) ); ?></h2>
+					<?php foreach ( $mat_ins_profile as $mat_ins_para ) : ?>
+						<p><?php echo esc_html( $mat_ins_para ); ?></p>
+					<?php endforeach; ?>
+				<?php endif; ?>
 				<?php the_content(); ?>
 				<?php if ( ! empty( $mat_ins['tx']['complaints'] ) ) : ?>
 					<?php /* translators: 1: insurer, 2: year */ ?>
 					<h2><?php echo esc_html( sprintf( __( 'What Texas drivers complained about (%2$s)', 'myautotriage' ), $mat_ins['name'], $mat_ins_data['tx_year'] ) ); ?></h2>
 					<?php /* translators: 1: number of complaints, 2: insurer, 3: year */ ?>
-					<p><?php echo esc_html( sprintf( _n( 'In %3$s the Texas Department of Insurance received %1$s auto complaint about %2$s. The most common reasons:', 'In %3$s the Texas Department of Insurance received %1$s auto complaints about %2$s. The most common reasons:', $mat_ins['tx']['complaints'], 'myautotriage' ), number_format_i18n( $mat_ins['tx']['complaints'] ), $mat_ins['name'], $mat_ins_data['tx_year'] ) ); ?></p>
+					<p><?php echo esc_html( sprintf( _n( 'In %3$s the Texas Department of Insurance closed %1$s auto complaint about %2$s. The most common reasons:', 'In %3$s the Texas Department of Insurance closed %1$s auto complaints about %2$s. The most common reasons:', $mat_ins['tx']['complaints'], 'myautotriage' ), number_format_i18n( $mat_ins['tx']['complaints'] ), $mat_ins['name'], $mat_ins_data['tx_year'] ) ); ?></p>
 					<ol>
 						<?php foreach ( $mat_ins['tx']['reasons'] as $mat_ins_r ) : ?>
 							<?php /* translators: 1: reason, 2: share of complaints */ ?>
 							<li><?php echo esc_html( sprintf( __( '%1$s (%2$s of complaints)', 'myautotriage' ), $mat_ins_r['reason'], mat_insurer_pct( $mat_ins_r['count'], $mat_ins['tx']['complaints'] ) ) ); ?></li>
 						<?php endforeach; ?>
 					</ol>
-					<p class="mat-field__hint"><?php esc_html_e( 'One complaint can list more than one reason. These counts include every complaint received, not only confirmed ones.', 'myautotriage' ); ?></p>
+					<p class="mat-field__hint"><?php esc_html_e( 'One complaint can list more than one reason. These counts include every complaint TDI closed that year, not only confirmed ones, and count by closing year the way TDI\'s complaint index does.', 'myautotriage' ); ?></p>
 
 					<?php if ( $mat_ins['tx']['claim_complaints'] >= MAT_INSURER_MIN_COMPLAINTS ) : ?>
 						<h2><?php esc_html_e( 'Did complaining get people paid?', 'myautotriage' ); ?></h2>
@@ -129,13 +137,8 @@ $mat_ins_data = mat_insurer_data();
 					'answer'   => mat_insurer_summary( $mat_ins ),
 				),
 				array(
-					/* translators: %s: insurer */
-					'question' => sprintf( __( 'How do I file a complaint against %s?', 'myautotriage' ), $mat_ins['name'] ),
-					'answer'   => __( 'First ask for a supervisor or the claims manager in writing and keep a copy. If that doesn\'t fix it, file a free complaint with the insurance department in the state where your policy was issued or the accident happened. Include your claim number, a dated timeline and what you want the insurer to do.', 'myautotriage' ),
-				),
-				array(
 					'question' => __( 'What does a complaint index of 1.00 mean?', 'myautotriage' ),
-					'answer'   => __( '1.00 is the average for all auto insurers in that state, adjusted for size. A score of 0.50 means half as many complaints as expected for the company\'s size; 2.00 means twice as many.', 'myautotriage' ),
+					'answer'   => mat_insurer_index_faq( $mat_ins ),
 				),
 			) );
 			mat_render_sources( mat_insurer_sources() );
@@ -155,7 +158,7 @@ $mat_ins_data = mat_insurer_data();
 			<?php mat_outcomes_cta(); ?>
 		<?php endif; ?>
 
-		<?php mat_tool_disclaimer( __( 'Complaint ratings come from state regulators\' published data and describe past complaints, not how any one claim will go. They are not a recommendation to buy or avoid any insurer.', 'myautotriage' ) ); ?>
+		<?php mat_tool_disclaimer( __( 'Complaint ratings come from state regulators\' published data and describe past complaints, not how any one claim will go. They are not a recommendation to buy or avoid any insurer.', 'myautotriage' ), 'page' ); ?>
 	</div>
 </div>
 <?php

@@ -128,6 +128,9 @@ function mat_insurer_company_name( $name ) {
 	if ( strtoupper( $name ) !== $name ) {
 		return $name;
 	}
+	if ( ', THE' === substr( $name, -5 ) ) {
+		$name = 'THE ' . substr( $name, 0, -5 );
+	}
 	$name = ucwords( strtolower( $name ), " \t-(" );
 	$name = preg_replace_callback( '/\b(Usaa|Geico|Lm)\b/', function ( $m ) {
 		return strtoupper( $m[1] );
@@ -135,6 +138,13 @@ function mat_insurer_company_name( $name ) {
 	return preg_replace_callback( '/(?<=\s)(Of|And|The|For)\b/', function ( $m ) {
 		return strtolower( $m[1] );
 	}, $name );
+}
+
+/**
+ * "State Farm's", "Farmers'".
+ */
+function mat_insurer_possessive( $name ) {
+	return "s" === substr( $name, -1 ) ? $name . "'" : $name . "'s";
 }
 
 function mat_insurer_pct( $part, $whole ) {
@@ -150,18 +160,125 @@ function mat_insurer_summary( $insurer ) {
 	$tx    = mat_insurer_score( $insurer, 'tx' );
 	$ny    = mat_insurer_score( $insurer, 'ny' );
 	if ( $tx && 'few' !== $tx['verdict'] ) {
-		/* translators: 1: year, 2: insurer, 3: comparison, 4: complaints */
-		$parts[] = sprintf( __( 'In Texas in %1$s, %2$s\'s rate of confirmed auto complaints per policy was %3$s for all auto insurers (%4$s confirmed complaints).', 'myautotriage' ), $data['tx_year'], $insurer['name'], mat_insurer_index_words( $tx['index'] ), number_format_i18n( $tx['count'] ) );
+		/* translators: 1: year, 2: insurer's (possessive), 3: comparison, 4: complaints */
+		$parts[] = sprintf( __( 'In Texas in %1$s, %2$s rate of confirmed auto complaints per policy was %3$s for all auto insurers (%4$s confirmed complaints).', 'myautotriage' ), $data['tx_year'], mat_insurer_possessive( $insurer['name'] ), mat_insurer_index_words( $tx['index'] ), number_format_i18n( $tx['count'] ) );
 	}
 	if ( $ny && 'few' !== $ny['verdict'] ) {
-		/* translators: 1: year, 2: insurer, 3: comparison, 4: complaints */
-		$parts[] = sprintf( __( 'In New York\'s %1$s ranking, %2$s\'s rate of upheld complaints per premium dollar was %3$s (%4$s upheld complaints).', 'myautotriage' ), $data['ny_year'], $insurer['name'], mat_insurer_index_words( $ny['index'] ), number_format_i18n( $ny['count'] ) );
+		/* translators: 1: year, 2: insurer's (possessive), 3: comparison, 4: complaints */
+		$parts[] = sprintf( __( 'In New York\'s %1$s ranking, %2$s rate of upheld complaints per premium dollar was %3$s (%4$s upheld complaints).', 'myautotriage' ), $data['ny_year'], mat_insurer_possessive( $insurer['name'] ), mat_insurer_index_words( $ny['index'] ), number_format_i18n( $ny['count'] ) );
 	}
 	if ( ! $parts ) {
 		/* translators: %s: insurer */
 		return sprintf( __( '%s had too few complaints in the Texas and New York data to compare fairly with other insurers.', 'myautotriage' ), $insurer['name'] );
 	}
 	return implode( ' ', $parts );
+}
+
+/**
+ * Facts only this insurer's numbers support, so each page says something
+ * the others can't: which companies are counted, how its complaint mix
+ * differs from the market, how the index moved, and where its New York
+ * companies rank. Returns paragraphs of plain text.
+ */
+function mat_insurer_profile( $insurer ) {
+	$data  = mat_insurer_data();
+	$paras = array();
+	$tx_co = array();
+	$ny_co = array();
+	foreach ( $insurer['companies'] as $co ) {
+		if ( 'TX' === $co['state'] ) {
+			$tx_co[] = $co;
+		} else {
+			$ny_co[] = $co;
+		}
+	}
+
+	if ( $tx_co ) {
+		usort( $tx_co, function ( $a, $b ) {
+			return $b['policies'] - $a['policies'];
+		} );
+		$total = max( 1, (int) $insurer['tx']['policies'] );
+		$drives = $tx_co[0]['policies'] * 2 > $total;
+		/* translators: 1: number of companies, 2: insurer, 3: largest company, 4: its share, 5: policies */
+		$paras[] = sprintf( 1 === count( $tx_co ) ? __( 'In Texas this page counts 1 company selling as %2$s: %3$s, with %5$s auto policies in force.', 'myautotriage' ) : ( $drives ? __( 'In Texas this page counts %1$s companies selling as %2$s. The largest, %3$s, holds %4$s of the brand\'s %5$s auto policies in force there, so its record drives the score.', 'myautotriage' ) : __( 'In Texas this page counts %1$s companies selling as %2$s, with %5$s auto policies in force between them; the largest, %3$s, holds %4$s.', 'myautotriage' ) ), number_format_i18n( count( $tx_co ) ), $insurer['name'], mat_insurer_company_name( $tx_co[0]['name'] ), mat_insurer_pct( $tx_co[0]['policies'], $total ), number_format_i18n( $total ) );
+	}
+
+	$tx = isset( $insurer['tx'] ) ? $insurer['tx'] : null;
+	if ( $tx && ! empty( $tx['complaints'] ) && $tx['complaints'] >= MAT_INSURER_MIN_COMPLAINTS ) {
+		$market = array();
+		foreach ( $data['tx_market']['reasons'] as $r ) {
+			$market[ $r['reason'] ] = $r['count'];
+		}
+		foreach ( $tx['reasons'] as $r ) {
+			if ( ! isset( $market[ $r['reason'] ] ) ) {
+				continue;
+			}
+			$own = $r['count'] / $tx['complaints'];
+			$all = $market[ $r['reason'] ] / $data['tx_market']['complaints'];
+			if ( abs( $own - $all ) < 0.05 ) {
+				continue;
+			}
+			/* translators: 1: reason, 2: share for insurer, 3: insurer, 4: market share */
+			$paras[] = sprintf( __( '"%1$s" came up in %2$s of Texas complaints about %3$s, against %4$s for all Texas auto insurers.', 'myautotriage' ), $r['reason'], mat_insurer_pct( $r['count'], $tx['complaints'] ), $insurer['name'], mat_insurer_pct( $market[ $r['reason'] ], $data['tx_market']['complaints'] ) );
+			break;
+		}
+	}
+
+	if ( $tx && ! empty( $tx['prev'] ) && $tx['index_confirmed'] >= MAT_INSURER_MIN_COMPLAINTS && $tx['prev']['confirmed'] >= MAT_INSURER_MIN_COMPLAINTS ) {
+		$diff = $tx['index'] - $tx['prev']['index'];
+		if ( abs( $diff ) < 0.1 ) {
+			/* translators: 1: insurer's (possessive), 2: earlier year, 3: earlier index, 4: year, 5: index */
+			$paras[] = sprintf( __( '%1$s Texas complaint index barely moved: %3$s in %2$s and %5$s in %4$s.', 'myautotriage' ), mat_insurer_possessive( $insurer['name'] ), $tx['prev']['year'], number_format_i18n( $tx['prev']['index'], 2 ), $data['tx_year'], number_format_i18n( $tx['index'], 2 ) );
+		} else {
+			/* translators: 1: insurer's (possessive), 2: rose or fell, 3: earlier year, 4: earlier index, 5: year, 6: index, 7: earlier complaints, 8: complaints */
+			$paras[] = sprintf( __( '%1$s Texas complaint index %2$s from %4$s in %3$s to %6$s in %5$s (%7$s confirmed complaints, then %8$s).', 'myautotriage' ), mat_insurer_possessive( $insurer['name'] ), $diff > 0 ? __( 'rose', 'myautotriage' ) : __( 'fell', 'myautotriage' ), $tx['prev']['year'], number_format_i18n( $tx['prev']['index'], 2 ), $data['tx_year'], number_format_i18n( $tx['index'], 2 ), number_format_i18n( $tx['prev']['confirmed'] ), number_format_i18n( $tx['index_confirmed'] ) );
+		}
+	}
+
+	if ( $tx && $tx['index'] > 5 ) {
+		$next = null;
+		foreach ( mat_insurers() as $other ) {
+			$score = $other['slug'] !== $insurer['slug'] ? mat_insurer_score( $other, 'tx' ) : null;
+			if ( $score && 'few' !== $score['verdict'] && ( ! $next || $score['index'] > $next[1] ) ) {
+				$next = array( $other['name'], $score['index'] );
+			}
+		}
+		/* translators: 1: index, 2: confirmed complaints, 3: policies */
+		$line = sprintf( __( 'An index of %1$s is far above any other brand on this site. It is the figure as published by the Texas Department of Insurance, and it rests on %2$s confirmed complaints against %3$s policies, so it is not a small-sample swing.', 'myautotriage' ), number_format_i18n( $tx['index'], 2 ), number_format_i18n( $tx['index_confirmed'] ), number_format_i18n( $tx['policies'] ) );
+		if ( $next ) {
+			/* translators: 1: insurer, 2: index */
+			$line .= ' ' . sprintf( __( 'The next highest is %1$s at %2$s.', 'myautotriage' ), $next[0], number_format_i18n( $next[1], 2 ) );
+		}
+		$paras[] = $line;
+	}
+
+	if ( $ny_co ) {
+		$ranks = wp_list_pluck( $ny_co, 'rank' );
+		$min   = min( $ranks );
+		$max   = max( $ranks );
+		$paras[] = $min === $max
+			/* translators: 1: insurer's (possessive), 2: rank, 3: companies ranked, 4: year */
+			? sprintf( __( 'In New York\'s %4$s ranking, %1$s company placed %2$s of %3$s auto insurers (1 = fewest upheld complaints for its premium).', 'myautotriage' ), mat_insurer_possessive( $insurer['name'] ), number_format_i18n( $min ), number_format_i18n( $data['ny_market']['companies'] ), $data['ny_year'] )
+			/* translators: 1: number of companies, 2: insurer, 3: best rank, 4: worst rank, 5: companies ranked, 6: year */
+			: sprintf( __( 'In New York\'s %6$s ranking, the %1$s companies selling as %2$s placed between %3$s and %4$s of %5$s auto insurers (1 = fewest upheld complaints for its premium).', 'myautotriage' ), number_format_i18n( count( $ny_co ) ), $insurer['name'], number_format_i18n( $min ), number_format_i18n( $max ), number_format_i18n( $data['ny_market']['companies'] ), $data['ny_year'] );
+	}
+
+	return $paras;
+}
+
+/**
+ * The index FAQ, read with this insurer's own score.
+ */
+function mat_insurer_index_faq( $insurer ) {
+	$answer = __( '1.00 is the average for all auto insurers in that state, adjusted for size. A score of 0.50 means half as many complaints as expected for the company\'s size; 2.00 means twice as many.', 'myautotriage' );
+	$tx     = mat_insurer_score( $insurer, 'tx' );
+	$ny     = mat_insurer_score( $insurer, 'ny' );
+	$score  = $tx && 'few' !== $tx['verdict'] ? array( __( 'Texas', 'myautotriage' ), $tx ) : ( $ny && 'few' !== $ny['verdict'] ? array( __( 'New York', 'myautotriage' ), $ny ) : null );
+	if ( $score ) {
+		/* translators: 1: insurer's (possessive), 2: state, 3: index, 4: comparison */
+		$answer .= ' ' . sprintf( __( '%1$s %2$s score of %3$s means %4$s.', 'myautotriage' ), mat_insurer_possessive( $insurer['name'] ), $score[0], number_format_i18n( $score[1]['index'], 2 ), mat_insurer_index_words( $score[1]['index'] ) );
+	}
+	return $answer;
 }
 
 function mat_insurer_sources() {

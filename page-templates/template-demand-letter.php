@@ -45,6 +45,7 @@ $variants = array(
 // copies of one another.
 $variant_guides = array(
 	'demand-letter-generator' => array(
+		'excerpt' => __( 'On [date], your insured, [name], rear-ended my car at [place]. Your company has accepted liability under claim [number]. I am requesting $4,850: $4,120 for repairs under the attached estimate from [shop], $230 for five days of rental at $46 a day, and $500 for towing and storage. Please respond in writing within 21 days.', 'myautotriage' ),
 		'heading' => __( 'What a strong demand letter includes', 'myautotriage' ),
 		'tips'    => array(
 			__( 'The accident date, place and the other driver\'s name, so the claim can be matched to the right file.', 'myautotriage' ),
@@ -54,6 +55,7 @@ $variant_guides = array(
 		'faqs'    => array(),
 	),
 	'no-injury-demand-letter-generator' => array(
+		'excerpt' => __( 'No one was injured in this accident, and this claim is for property damage only. I am requesting $2,976: $2,640 for repairs under the attached estimate and $336 for seven days without my car, at the $48 daily rate of a comparable rental.', 'myautotriage' ),
 		'heading' => __( 'When to use a no-injury demand letter', 'myautotriage' ),
 		'tips'    => array(
 			__( 'Nobody was hurt and you only want the car fixed, a rental covered and your out-of-pocket costs paid.', 'myautotriage' ),
@@ -66,6 +68,7 @@ $variant_guides = array(
 		),
 	),
 	'property-damage-demand-letter-generator' => array(
+		'excerpt' => __( 'The attached estimate from [shop], dated [date], puts the repair cost at $3,410, including $1,280 in labor (20 hours at the shop\'s posted rate of $64 an hour). Photos of the damage and police report [number] are enclosed. Please pay $3,410 within 21 days.', 'myautotriage' ),
 		'heading' => __( 'Evidence that supports a property damage demand', 'myautotriage' ),
 		'tips'    => array(
 			__( 'At least one written repair estimate from a shop you choose, not only the insurer\'s estimate.', 'myautotriage' ),
@@ -78,6 +81,7 @@ $variant_guides = array(
 		),
 	),
 	'insurance-underpayment-demand-letter-generator' => array(
+		'excerpt' => __( 'Your offer of $8,200 under claim [number] leaves out the rear bumper reinforcement and the blend panels on page 2 of the attached estimate, and uses a labor rate of $52 an hour where shops in my area charge $68. Correcting those items brings the amount owed to $9,640. Please send a revised payment, or a written explanation of each difference, within 21 days.', 'myautotriage' ),
 		'heading' => __( 'How to dispute an underpaid settlement', 'myautotriage' ),
 		'tips'    => array(
 			__( 'Quote the offer and claim number, then show line by line where it falls short: labor rate, parts, missed damage or a low car value.', 'myautotriage' ),
@@ -90,6 +94,7 @@ $variant_guides = array(
 		),
 	),
 	'diminished-value-demand-letter-generator' => array(
+		'excerpt' => __( 'My car was worth about $31,000 before the crash. Even after a proper repair, the accident on its history report lowers its resale value. The 17c method gives at least $1,240 ($3,100 cap × 0.50 for moderate damage to structure and panels × 0.80 for 20,000 to 39,999 miles), and the enclosed independent appraisal puts the loss at $2,900. I am requesting $2,900.', 'myautotriage' ),
 		'heading' => __( 'What makes a diminished value claim stronger', 'myautotriage' ),
 		'tips'    => array(
 			__( 'The car\'s value before the accident and an estimate of what it is worth now, repaired, with an accident on its history report.', 'myautotriage' ),
@@ -102,6 +107,7 @@ $variant_guides = array(
 		),
 	),
 	'small-claims-demand-letter-generator' => array(
+		'excerpt' => __( 'This is my final request before I file in [county] small claims court. I am asking for $3,850 for repairs and rental, as documented in my letter of [date], which has not been answered. If I have not received payment or a written offer by [date 14 days from now], I will file a claim against [at-fault driver] without further notice.', 'myautotriage' ),
 		'heading' => __( 'Before you file in small claims court', 'myautotriage' ),
 		'tips'    => array(
 			__( 'Check your state\'s small claims limit and the deadline to sue; both are on our state pages.', 'myautotriage' ),
@@ -231,12 +237,17 @@ $guide   = isset( $variant_guides[ $slug ] ) ? $variant_guides[ $slug ] : $varia
 					<li><?php echo esc_html( $tip ); ?></li>
 				<?php endforeach; ?>
 			</ul>
+			<h2><?php esc_html_e( 'Example: how this letter could read', 'myautotriage' ); ?></h2>
+			<blockquote><p><?php echo esc_html( $guide['excerpt'] ); ?></p></blockquote>
+			<p class="mat-field__hint"><?php esc_html_e( 'Made-up numbers; the generator fills in your own.', 'myautotriage' ); ?></p>
 		</div>
 
 		<?php mat_tool_extras( get_post_field( 'post_name' ) ); ?>
 
 		<?php
-		mat_faq_block( array_merge( $guide['faqs'], array(
+		// The general questions live on the main generator; each variant
+		// keeps its own two plus how to send the letter.
+		$shared_faqs = array(
 			array(
 				'question' => __( 'How should I send my demand letter?', 'myautotriage' ),
 				'answer'   => __( 'Send it by email and by certified mail with return receipt requested, so you have proof of delivery and a timestamp for your deadline.', 'myautotriage' ),
@@ -249,7 +260,12 @@ $guide   = isset( $variant_guides[ $slug ] ) ? $variant_guides[ $slug ] : $varia
 				'question' => __( "What if the insurer doesn't respond by my deadline?", 'myautotriage' ),
 				'answer'   => __( 'Follow up in writing, consider filing a complaint with your state department of insurance, and — for larger or disputed amounts — consult a consumer or personal injury attorney about next steps, including small claims court.', 'myautotriage' ),
 			),
-		), mat_tool_extra_faqs( get_post_field( 'post_name' ) ) ) );
+		);
+		if ( 'demand-letter-generator' === $slug ) {
+			mat_faq_block( array_merge( $guide['faqs'], $shared_faqs, mat_tool_extra_faqs( $slug ) ) );
+		} else {
+			mat_faq_block( array_merge( $guide['faqs'], array_slice( $shared_faqs, 0, 1 ) ) );
+		}
 		?>
 	</div>
 </div>

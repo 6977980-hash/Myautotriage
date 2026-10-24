@@ -492,7 +492,7 @@
 			"acknowledge": "10 business days",
 			"decide": "30 calendar days after notice of claim (from Oct 18, 2026)",
 			"pay": "15 business days after settlement documents",
-			"citation": "WAC 284-30-360(1), (3); WAC 284-30-370; WAC 284-30-380(1), (3); WAC 284-30-330(16)",
+			"citation": "WAC 284-30-360(1), (3); WAC 284-30-370 (as amended by WSR 26-17-089, effective October 18, 2026); WAC 284-30-380(1), (3); WAC 284-30-330(16)",
 			"source_url": "https://app.leg.wa.gov/WAC/default.aspx?cite=284-30-380",
 			"verified": true,
 			"note": "Before October 18, 2026 the rule was 15 working days after a complete proof of loss."
@@ -525,5 +525,5 @@
 			"verified": true
 		}
 	},
-	"reviewed": "2026-10-09"
+	"reviewed": "2026-10-24"
 }

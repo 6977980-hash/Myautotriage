@@ -36,7 +36,7 @@ if ( ! $tagline ) {
 <section class="mat-section" aria-label="<?php esc_attr_e( 'Free tools', 'myautotriage' ); ?>">
 	<div class="mat-container">
 		<h2 class="mat-section__title"><?php esc_html_e( 'Start with a free tool', 'myautotriage' ); ?></h2>
-		<p class="mat-section__lead"><?php esc_html_e( 'Every tool below runs instantly in your browser. Nothing is saved or sent anywhere.', 'myautotriage' ); ?></p>
+		<p class="mat-section__lead"><?php esc_html_e( 'Every tool below runs in your browser, and what you type stays on your device. The claim diary saves only in your own browser; nothing is sent to us unless you choose to answer the optional claim outcome survey.', 'myautotriage' ); ?></p>
 		<div class="mat-tool-card-grid">
 			<?php
 			$icon_map = array(
@@ -132,7 +132,7 @@ if ( ! $tagline ) {
 $home_faqs = array(
 	array(
 		'question' => __( 'Is MyAutoTriage affiliated with any insurance company?', 'myautotriage' ),
-		'answer'   => __( 'No. MyAutoTriage is an independent, ad-supported educational resource. We do not sell insurance, adjust claims, or represent insurers or policyholders.', 'myautotriage' ),
+		'answer'   => __( 'No. MyAutoTriage is an independent educational resource. We do not sell insurance, adjust claims, or represent insurers or policyholders.', 'myautotriage' ),
 	),
 	array(
 		'question' => __( 'Are the calculators free to use?', 'myautotriage' ),

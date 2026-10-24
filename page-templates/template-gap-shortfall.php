@@ -14,6 +14,7 @@ wp_enqueue_script( 'mat-gap', MAT_URI . '/assets/js/calculators/gap-shortfall.js
 			<h1><?php the_title(); ?></h1>
 			<p><?php esc_html_e( "Find the gap between what you still owe on your car and what your insurer is offering — and whether GAP coverage should close it.", 'myautotriage' ); ?></p>
 		</div>
+		<?php mat_tool_short_answer( 'gap-insurance-shortfall-calculator' ); ?>
 
 		<form id="mat-gap-form" class="mat-tool-panel" novalidate>
 			<?php mat_noscript_note(); ?>

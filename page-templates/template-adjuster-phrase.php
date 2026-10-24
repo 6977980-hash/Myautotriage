@@ -95,7 +95,7 @@ $phrase = mat_current_adjuster_phrase();
 			<?php mat_render_sources( mat_adjuster_sources( $phrase ) ); ?>
 		<?php endif; ?>
 
-		<?php mat_tool_disclaimer( __( 'This page explains common claim-handling rules in general terms. It is not legal advice. For an injury claim or a large dispute, talk to a licensed attorney.', 'myautotriage' ) ); ?>
+		<?php mat_tool_disclaimer( __( 'This page explains common claim-handling rules in general terms. It is not legal advice. For an injury claim or a large dispute, talk to a licensed attorney.', 'myautotriage' ), 'page' ); ?>
 	</div>
 </div>
 <?php

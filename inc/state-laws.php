@@ -359,10 +359,26 @@ function mat_state_faqs( $state ) {
 	$faqs[] = array(
 		/* translators: %s: state name */
 		'question' => sprintf( __( 'What can I do if my insurer misses a deadline in %s?', 'myautotriage' ), $state['name'] ),
-		/* translators: %s: state name */
-		'answer'   => sprintf( __( 'Send a written follow-up citing the rule and asking for a decision by a specific date. If that fails, file a free complaint with the %s department of insurance; a pattern of missed deadlines can also support a bad-faith claim.', 'myautotriage' ), $state['name'] ),
+		/* translators: %s: state regulator */
+		'answer'   => sprintf( __( 'Send a written follow-up citing the rule and asking for a decision by a specific date. If that fails, file a free complaint with the %s; a pattern of missed deadlines can also support a bad-faith claim.', 'myautotriage' ), mat_state_regulator_name( $state ) ),
 	);
 	return $faqs;
+}
+
+/**
+ * The state's insurance regulator, e.g. "New York Department of Financial
+ * Services", and the page where consumers file a complaint.
+ */
+function mat_state_regulator_name( $state ) {
+	if ( ! empty( $state['facts']['regulator']['name'] ) ) {
+		return $state['facts']['regulator']['name'];
+	}
+	/* translators: %s: state name */
+	return sprintf( __( '%s department of insurance', 'myautotriage' ), $state['name'] );
+}
+
+function mat_state_complaint_url( $state ) {
+	return empty( $state['facts']['regulator']['complaint_url'] ) ? '' : $state['facts']['regulator']['complaint_url'];
 }
 
 /**
@@ -393,6 +409,13 @@ function mat_state_sources( $state ) {
 		if ( ! empty( $facts[ $key ] ) && ! empty( $all['sources'][ $key ] ) ) {
 			$sources[] = $all['sources'][ $key ];
 		}
+	}
+	if ( mat_state_complaint_url( $state ) ) {
+		$sources[] = array(
+			/* translators: %s: state regulator */
+			'label' => sprintf( __( '%s: file a complaint', 'myautotriage' ), mat_state_regulator_name( $state ) ),
+			'url'   => mat_state_complaint_url( $state ),
+		);
 	}
 	$sources[] = array(
 		'label' => __( 'NAIC: How to file a complaint with your state insurance department', 'myautotriage' ),

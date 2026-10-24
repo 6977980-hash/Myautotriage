@@ -95,7 +95,7 @@
 			if ( method !== 'prorata' ) {
 				method = 'prorata';
 			}
-			stateNote = 'Texas: for personal auto policies cancelled on or after September 1, 2026 the refund must be the full unearned premium, calculated pro rata, so a short-rate penalty is not allowed (28 TAC § 5.7015). The insurer may still keep a minimum retained premium that is in its filed rates; enter that as the flat fee.';
+			stateNote = 'Texas: for personal auto policies cancelled on or after September 1, 2026 the refund must be the full unearned premium, calculated pro rata, so a short-rate penalty is not allowed (28 TAC § 5.7015, adopted by the Texas Department of Insurance effective September 1, 2026). The insurer may still keep a minimum retained premium that is in its filed rates; enter that as the flat fee.';
 		} else if ( state === 'TX' ) {
 			stateNote = 'Texas: the pro-rata requirement (28 TAC § 5.7015) applies to cancellations on or after September 1, 2026. Before that date your policy\'s cancellation clause decides.';
 		} else if ( state === 'FL' && method !== 'prorata' && penalty > 0.1 ) {

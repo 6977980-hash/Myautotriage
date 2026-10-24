@@ -17,6 +17,7 @@ wp_enqueue_script( 'mat-lu', MAT_URI . '/assets/js/calculators/loss-of-use.js', 
 			<h1><?php the_title(); ?></h1>
 			<p><?php esc_html_e( 'Work out what to claim from the at-fault driver\'s insurer for the days you were without your car, whether or not you rented one.', 'myautotriage' ); ?></p>
 		</div>
+		<?php mat_tool_short_answer( 'loss-of-use-calculator' ); ?>
 
 		<form id="mat-lu-form" class="mat-tool-panel" data-letter-url="<?php echo esc_url( mat_url_for_slug( 'property-damage-demand-letter-generator' ) ); ?>" novalidate>
 			<?php mat_noscript_note(); ?>

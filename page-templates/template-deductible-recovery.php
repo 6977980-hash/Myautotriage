@@ -18,6 +18,7 @@ wp_enqueue_script( 'mat-dr', MAT_URI . '/assets/js/calculators/deductible-recove
 			<h1><?php the_title(); ?></h1>
 			<p><?php esc_html_e( 'You used your own collision coverage, paid the deductible, and the accident wasn\'t (all) your fault. Your insurer can now collect from the other driver\'s insurer, and your deductible should come back with it. See how much to expect, where you are in the process, and what to send.', 'myautotriage' ); ?></p>
 		</div>
+		<?php mat_tool_short_answer( 'deductible-recovery-calculator' ); ?>
 
 		<form id="mat-dr-form" class="mat-tool-panel" novalidate>
 			<?php mat_noscript_note(); ?>

@@ -14,6 +14,7 @@ wp_enqueue_script( 'mat-rf', MAT_URI . '/assets/js/calculators/refund.js', array
 			<h1><?php the_title(); ?></h1>
 			<p><?php esc_html_e( 'Estimate how much of your prepaid car insurance premium you should get back when you cancel early, with a pro-rata or short-rate cancellation.', 'myautotriage' ); ?></p>
 		</div>
+		<?php mat_tool_short_answer( 'car-insurance-refund-calculator' ); ?>
 
 		<form id="mat-rf-form" class="mat-tool-panel" novalidate>
 			<?php mat_noscript_note(); ?>
@@ -86,7 +87,7 @@ wp_enqueue_script( 'mat-rf', MAT_URI . '/assets/js/calculators/refund.js', array
 			<p><?php esc_html_e( 'Which one applies is set by your policy and state rules. Short-rate usually only applies when you cancel; when the insurer cancels or non-renews, the refund is normally pro-rata.', 'myautotriage' ); ?></p>
 			<h2><?php esc_html_e( 'States that limit short-rate refunds', 'myautotriage' ); ?></h2>
 			<ul>
-				<li><?php esc_html_e( 'Texas: for personal auto policies cancelled on or after September 1, 2026, the insurer must refund the full unearned premium, calculated pro rata. Short-rate penalties are not allowed, though an insurer may keep a minimum retained premium that is part of its filed rates (28 TAC § 5.7015).', 'myautotriage' ); ?></li>
+				<li><?php esc_html_e( 'Texas: for personal auto policies cancelled on or after September 1, 2026, the insurer must refund the full unearned premium, calculated pro rata. Short-rate penalties are not allowed, though an insurer may keep a minimum retained premium that is part of its filed rates (28 TAC § 5.7015, adopted by the Texas Department of Insurance effective September 1, 2026).', 'myautotriage' ); ?></li>
 				<li><?php esc_html_e( 'Florida: short-rate tables that return less than 90% of the pro-rata unearned premium are prohibited unless the insurer has filed actuarial or other justification (Fla. Admin. Code R. 69O-170.010).', 'myautotriage' ); ?></li>
 			</ul>
 			<p><?php esc_html_e( 'In other states, the cancellation clause in your policy and the insurer\'s filed rules decide. Ask the insurer which method it uses before you cancel.', 'myautotriage' ); ?></p>
