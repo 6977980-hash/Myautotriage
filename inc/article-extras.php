@@ -62,12 +62,24 @@ function mat_get_article_extras() {
 			),
 		),
 		'how-to-file-diminished-value-claim' => array(
-			'tools'        => array( 'diminished-value-calculator', 'diminished-value-demand-letter-generator' ),
-			'short_answer' => 'Diminished value is the resale value a car loses because an accident is on its history report, even after a perfect repair. Most states only allow it as a claim against the at-fault driver\'s insurer. Get an independent appraisal or use the 17c formula as a floor, then send a written demand with your evidence.',
+			'tools'        => array( 'diminished-value-calculator', 'diminished-value-demand-letter-generator', 'diminished-value-by-state' ),
+			'short_answer' => 'Diminished value is the resale value a car loses because an accident is on its history report, even after a good repair. Claim it from the at-fault driver\'s insurer; your own insurer pays it only in Georgia, Oregon, Vermont and Washington. Insurers start from the 17c formula, so back a higher number with an appraisal or dealer quotes.',
 			'sources'      => array(
 				array(
 					'label' => 'State Farm Mutual Automobile Insurance Co. v. Mabry, 556 S.E.2d 114 (Ga. 2001), the Georgia case behind the 17c formula',
 					'url'   => '',
+				),
+				array(
+					'label' => 'Matthiesen, Wickert & Lehrer, Diminution in Value Cases in All 50 States (updated March 16, 2022)',
+					'url'   => 'https://www.mwl-law.com/wp-content/uploads/2018/02/DIMINUTION-IN-VALUE-IN-ALL-50-STATES.pdf',
+				),
+				array(
+					'label' => 'Journal of Insurance Regulation (NAIC), Automobile Diminished Value Claims (2023)',
+					'url'   => 'https://content.naic.org/sites/default/files/cipr-jir-2023-5.pdf',
+				),
+				array(
+					'label' => 'N.C. Gen. Stat. § 20-279.21(d1)',
+					'url'   => 'https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_20/GS_20-279.21.html',
 				),
 				$naic_complaint,
 			),
