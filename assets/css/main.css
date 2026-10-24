@@ -421,3 +421,6 @@ button, input, select, textarea { font-family: inherit; font-size: 1rem; }
 .mat-stage { margin: 0 0 2.4em; scroll-margin-top: 80px; }
 .mat-stage h2 { margin-bottom: .2em; }
 .mat-stage__intro { color: var(--mat-ink-soft); margin: 0 0 1em; max-width: 60ch; }
+
+/* Guide "At a glance" tables */
+.mat-glance caption { text-align: left; font-weight: 700; padding: 0 0 .4em; }
