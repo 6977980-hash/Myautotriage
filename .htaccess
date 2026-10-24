@@ -1,0 +1,12 @@
+# Keep developer files out of public reach: notes, build scripts and the
+# licence text aren't part of the site. Theme PHP, CSS, JS, JSON data and
+# images are untouched.
+<FilesMatch "\.(md|py|sh)$|^LICENSE$|^\.gitignore$">
+	<IfModule mod_authz_core.c>
+		Require all denied
+	</IfModule>
+	<IfModule !mod_authz_core.c>
+		Order allow,deny
+		Deny from all
+	</IfModule>
+</FilesMatch>

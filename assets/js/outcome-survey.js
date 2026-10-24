@@ -1,7 +1,7 @@
 /**
  * Claim Outcome Survey: check the answers, then send them to the
- * mat/v1/outcome endpoint. The time spent on the form goes along so the
- * server can turn away instant bot posts.
+ * mat/v1/outcome endpoint. A signed one-use token, fetched when the page
+ * loads, goes along so the server can turn away instant or replayed posts.
  */
 (function () {
 	'use strict';
@@ -10,7 +10,17 @@
 	if ( ! form ) {
 		return;
 	}
-	var started = Date.now();
+	var token = null;
+
+	function getToken() {
+		return fetch( form.getAttribute( 'data-token' ), { credentials: 'omit', cache: 'no-store' } ).then( function ( r ) {
+			return r.json();
+		} ).then( function ( res ) {
+			token = res && res.token ? res.token : null;
+			return token;
+		} );
+	}
+	getToken().catch( function () {} );
 	var errorBox = document.getElementById( 'mat-out-error' );
 	var thanks = document.getElementById( 'mat-out-thanks' );
 	var button = form.querySelector( 'button[type="submit"]' );
@@ -69,16 +79,19 @@
 			steps: steps,
 			insurer: f.insurer.value,
 			state: f.state.value,
-			website: f.website.value,
-			elapsed: Date.now() - started
+			website: f.website.value
 		};
 
 		button.disabled = true;
-		fetch( form.getAttribute( 'data-endpoint' ), {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			credentials: 'omit',
-			body: JSON.stringify( payload )
+		( token ? Promise.resolve( token ) : getToken() ).then( function ( t ) {
+			payload.token = t;
+			token = null; // One use only; a retry fetches a fresh one.
+			return fetch( form.getAttribute( 'data-endpoint' ), {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				credentials: 'omit',
+				body: JSON.stringify( payload )
+			} );
 		} ).then( function ( r ) {
 			return r.json().catch( function () {
 				return { ok: false };
@@ -86,6 +99,7 @@
 		} ).then( function ( res ) {
 			button.disabled = false;
 			if ( ! res || ! res.ok ) {
+				getToken().catch( function () {} );
 				return fail( ( res && res.message ) || 'Sorry, that didn\'t send. Please try again in a minute.' );
 			}
 			var change = final - first;

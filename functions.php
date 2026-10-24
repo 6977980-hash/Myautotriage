@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MAT_VERSION', '1.0.28' );
+define( 'MAT_VERSION', '1.0.29' );
 define( 'MAT_DIR', get_template_directory() );
 define( 'MAT_URI', get_template_directory_uri() );
 
@@ -122,13 +122,14 @@ remove_action( 'template_redirect', 'wp_shortlink_header', 11 );
 // Lazy-load is native in modern WordPress core; make sure it stays on.
 add_filter( 'wp_lazy_loading_enabled', '__return_true' );
 
-// Baseline security response headers. Conservative on purpose: no CSP or
-// HSTS here, since either can silently break the AdSense ad script or lock
-// the site into HTTPS-only in a way that needs hosting-level testing first
-// — those two are left for the host's control panel / .htaccess, reviewed
-// by a human before being turned on. These four are safe defaults with no
+// Baseline security response headers. Conservative on purpose: no CSP here,
+// since it can silently break the AdSense ad script. HSTS is on for this
+// host only (no includeSubDomains, no preload): every page and asset has
+// been HTTPS-only behind a single 301 since launch, and browsers ignore the
+// header on plain-HTTP responses. The rest are safe defaults with no
 // realistic downside for a content site with no third-party iframe embeds.
 function mat_security_headers( $wp ) {
+	header( 'Strict-Transport-Security: max-age=31536000' );
 	header( 'X-Content-Type-Options: nosniff' );
 	header( 'X-Frame-Options: SAMEORIGIN' );
 	header( 'Referrer-Policy: strict-origin-when-cross-origin' );

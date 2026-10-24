@@ -322,6 +322,8 @@ button, input, select, textarea { font-family: inherit; font-size: 1rem; }
 .mat-tlv-comp legend { font-weight: 700; padding: 0 .3em; }
 .mat-field--check label { display: inline-flex; align-items: flex-start; gap: .5em; font-weight: 500; }
 .mat-field--check input { margin-top: .3em; }
+/* Checkboxes get a 24 x 24 px hit area (WCAG 2.5.8 target size). */
+.mat-field--check input[type="checkbox"], .mat-out-steps input[type="checkbox"] { width: 24px; height: 24px; margin: 0; flex-shrink: 0; accent-color: var(--mat-brand); }
 .mat-tlv-issues { list-style: none; padding: 0; margin: .75rem 0; display: flex; flex-direction: column; gap: .6rem; }
 .mat-tlv-issues li { background: #fff; color: var(--mat-ink); border: 1px solid var(--mat-line); border-left: 4px solid #b54708; border-radius: var(--mat-radius-sm); padding: .7rem .9rem; }
 .mat-tlv-issues li.is-ok { border-left-color: #2e7d32; }

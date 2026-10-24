@@ -23,7 +23,7 @@ $mat_out_index   = home_url( user_trailingslashit( MAT_OUTCOMES_INDEX_SLUG ) );
 
 		<p class="mat-diary-privacy"><?php esc_html_e( 'Anonymous: no name, email, claim number or IP address is stored. We publish only totals for groups of at least 30 answers.', 'myautotriage' ); ?> <a href="<?php echo esc_url( get_privacy_policy_url() ?: home_url( '/privacy-policy/' ) ); ?>"><?php esc_html_e( 'Privacy policy', 'myautotriage' ); ?></a></p>
 
-		<form id="mat-out-form" class="mat-tool-panel" novalidate data-endpoint="<?php echo esc_url( rest_url( 'mat/v1/outcome' ) ); ?>">
+		<form id="mat-out-form" class="mat-tool-panel" novalidate data-endpoint="<?php echo esc_url( rest_url( 'mat/v1/outcome' ) ); ?>" data-token="<?php echo esc_url( rest_url( 'mat/v1/outcome-token' ) ); ?>">
 			<?php mat_noscript_note( 'tool' ); ?>
 			<div class="mat-field-row">
 				<div class="mat-field">
