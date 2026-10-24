@@ -28,6 +28,10 @@ function mat_guide_rewrites() {
 			'meta'    => 'Total loss offer too low? What the payout must cover, sales tax rules by state, how to check the valuation report, and how to counter, step by step.',
 			'excerpt' => 'What a total loss payout has to cover, how to find the money taken off in the valuation report, and how to counter it in writing.',
 		),
+		'should-i-file-a-claim-minor-accident' => array(
+			'meta'    => 'Should you file a claim for minor car damage? The break-even math, state surcharge rules (NC, CA, MA), and the claims that usually don\'t raise your rate.',
+			'excerpt' => 'The break-even math for a small claim, the states that set surcharge rules, and the claims that usually don\'t raise your rate.',
+		),
 	);
 }
 
@@ -193,6 +197,66 @@ function mat_guide_rewrite_content( $slug ) {
 
 				. '<p>The first offer is the software\'s number, not a final one. A complete report, three solid listings and a written counter are what move it.</p>';
 
+		case 'should-i-file-a-claim-minor-accident':
+			return '<p class="mat-lede">Filing a claim for minor damage isn\'t free even when the insurer pays. An at-fault claim usually raises your premium for several years, and that increase can cost more than the insurer pays out. The decision comes down to one comparison: the repair cost against your deductible plus the surcharge. This guide shows the math, the states that set the surcharge rules, and the claims that usually don\'t count against you.</p>'
+				. $glance
+
+				. '<h2>The math</h2>'
+				. '<p><strong>Cost of filing</strong> = your deductible + (yearly premium increase × years it lasts).<br><strong>Cost of paying yourself</strong> = the repair bill.</p>'
+				. '<p>Whichever is lower wins. Two examples with round numbers:</p>'
+				. mat_guide_table(
+					'Two small claims, side by side',
+					array( '', 'Parking-lot scrape', 'Backed into a pillar' ),
+					array(
+						array( 'Repair estimate', '$640', '$2,300' ),
+						array( 'Deductible', '$500', '$1,000' ),
+						array( 'Insurer pays', '$140', '$1,300' ),
+						array( 'Premium increase', '$264 a year for 3 years = $792', '$420 a year for 3 years = $1,260' ),
+						array( 'Cost if you file', '$1,292', '$2,260' ),
+						array( 'Cost if you pay', '$640', '$2,300' ),
+						array( 'Verdict', 'Pay it yourself', 'Close call: about $40 either way' ),
+					)
+				)
+				. '<p>The <a href="' . $url( 'deductible-vs-premium-calculator' ) . '">file-a-claim break-even calculator</a> runs this for your numbers. In North Carolina it estimates the increase from the state plan; in California and Massachusetts it tells you when a small claim can\'t be surcharged.</p>'
+
+				. '<h2>Where the state sets the rules</h2>'
+				. '<p>Most states leave the size of the increase to each insurer\'s filed rating plan. A few set it, or set when a claim can count at all:</p>'
+				. mat_guide_table(
+					'State surcharge rules for an at-fault accident',
+					array( 'State', 'Rule', 'Source' ),
+					array(
+						array( 'North Carolina', 'Insurance points by total property damage: $2,300 or less is 1 point (+40%), over $2,300 but under $3,850 is 2 points (+55%), $3,850 or more is 3 points (+70%), for 3 policy years. A first property-damage-only accident of $2,300 or less gets no points if no licensed driver in the household has convictions or at-fault accidents in the last 3 years.', 'N.C. Gen. Stat. § 58-36-65; NC Department of Insurance' ),
+						array( 'California', 'An accident counts against your driving record only if you were at least 51% to blame and someone was hurt or total damage was over $1,000.', '10 Cal. Code Regs. § 2632.13(b)' ),
+						array( 'Massachusetts', 'Under the Safe Driver Insurance Plan, an at-fault accident is surchargeable only if the insurer pays more than $1,000 above your deductible. Insurers may use their own approved plan instead.', '211 CMR 134.03(3)' ),
+					)
+				)
+				. '<p>New York has had a $2,000 property damage rule (Insurance Law § 2335), but the law carried a July 1, 2026 expiry date; check its current status with the Department of Financial Services before relying on it. Your <a href="' . $url( 'car-insurance-claim-laws' ) . '">state claim law page</a> has the regulator\'s contact details.</p>'
+
+				. '<h2>Claims that usually don\'t raise your rate</h2>'
+				. '<ul><li><strong>The other driver was at fault.</strong> Claim from their liability insurer: no deductible, and it isn\'t an at-fault claim on your record. If you used your own collision coverage first, your insurer should try to recover your deductible from theirs; the <a href="' . $url( 'deductible-recovery-calculator' ) . '">deductible recovery calculator</a> shows what you should get back. For a no-injury claim, the <a href="' . $url( 'no-injury-demand-letter-generator' ) . '">no-injury demand letter</a> puts it in writing.</li>'
+				. '<li><strong>Comprehensive losses</strong> such as glass, hail, theft, fire or hitting an animal aren\'t at-fault accidents. Many policies have a low or zero glass deductible. Some insurers still look at how many claims you file, so ask.</li>'
+				. '<li><strong>Accidents you weren\'t mainly to blame for.</strong> California bans counting them (above). Elsewhere it depends on the insurer\'s rating plan; if you are partly at fault, the <a href="' . $url( 'comparative-fault-calculator' ) . '">comparative fault calculator</a> shows how your state splits the damage.</li></ul>'
+
+				. '<h2>Costs that don\'t show on the estimate</h2>'
+				. '<ul><li><strong>Your claim history follows you.</strong> Paid claims go into the CLUE database that insurers check when you shop for a policy; LexisNexis keeps up to seven years of claims. A new insurer can price for the claim after your current surcharge ends.</li>'
+				. '<li><strong>Lost discounts.</strong> A claim can end a claim-free or good-driver discount, which works like a surcharge.</li>'
+				. '<li><strong>A second claim costs more.</strong> If you already have a claim inside its surcharge period, another one usually adds to it.</li></ul>'
+
+				. '<h2>When to file anyway</h2>'
+				. '<ul><li><strong>Anyone could be hurt.</strong> Injuries can show up days later. In no-fault states, your own PIP coverage pays medical bills first and has short deadlines; see <a href="' . $url( 'pip-claim-deadlines-by-state' ) . '">PIP claim deadlines by state</a>.</li>'
+				. '<li><strong>The damage may be worse than it looks.</strong> Sensors, brackets and alignment problems often surface after the car is taken apart. Get a written estimate from a shop before deciding.</li>'
+				. '<li><strong>The other driver might claim against you.</strong> If they could file a claim or a lawsuit, you need your insurer involved.</li>'
+				. '<li><strong>The repair cost is well above the break-even.</strong> Then the insurance you have been paying for is doing its job.</li></ul>'
+
+				. '<h2>Reporting is not the same as filing</h2>'
+				. '<p>Most policies require you to tell your insurer about an accident promptly, even if you don\'t plan to claim. Missing that notice can cost you coverage if the other driver claims later. Telling your insurer an accident happened is not the same as asking it to pay, but some insurers record reported accidents too, so ask how yours treats a report with no payment.</p>'
+
+				. '<h2>Questions for your agent before you decide</h2>'
+				. '<ol><li>How much would an at-fault claim of this size raise my premium, and for how many years?</li>'
+				. '<li>Do I have accident forgiveness, and would this claim use it?</li>'
+				. '<li>Is there a dollar amount below which a claim isn\'t surcharged?</li>'
+				. '<li>Would the claim end any discount I have now?</li></ol>'
+				. '<p>Asking these questions doesn\'t open a claim. With the answers, the calculator gives you a clear choice.</p>';
 	}
 	return '';
 }

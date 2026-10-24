@@ -45,9 +45,21 @@ function mat_get_article_extras() {
 			),
 		),
 		'should-i-file-a-claim-minor-accident' => array(
-			'tools'        => array( 'deductible-vs-premium-calculator', 'no-injury-demand-letter-generator' ),
-			'short_answer' => 'Compare what the insurer would actually pay (repair cost minus your deductible) with the rate increase an at-fault claim usually brings, which often lasts three to five years. If the surcharge over that period is larger, paying out of pocket is usually cheaper. Injuries or the other driver being at fault change the answer.',
+			'tools'        => array( 'deductible-vs-premium-calculator', 'deductible-recovery-calculator', 'no-injury-demand-letter-generator' ),
+			'short_answer' => 'Compare what the insurer would pay (repair cost minus your deductible) with the rate increase an at-fault claim brings, which often lasts three years or more. If the increase over that time is larger, paying yourself is cheaper. North Carolina, California and Massachusetts set public surcharge rules; injuries or the other driver being at fault change the answer.',
 			'sources'      => array(
+				array(
+					'label' => 'North Carolina Department of Insurance: Safe Driver Incentive Plan',
+					'url'   => 'https://www.ncdoi.gov/consumers/auto-and-vehicle-insurance/safe-driver-incentive-plan',
+				),
+				array(
+					'label' => 'California Code of Regulations, title 10, § 2632.13: Determination of "principally at-fault" accidents',
+					'url'   => 'https://www.law.cornell.edu/regulations/california/Cal-Code-Regs-Tit-10-SS-2632.13',
+				),
+				array(
+					'label' => '211 CMR 134.03: Massachusetts Safe Driver Insurance Plan, surchargeable accidents',
+					'url'   => 'https://www.law.cornell.edu/regulations/massachusetts/211-CMR-134-03',
+				),
 				$iii_file,
 			),
 		),
