@@ -307,6 +307,76 @@ function mat_author_name() {
 }
 
 /**
+ * The site's founder and editor: the named person who checks the guides,
+ * state pages and tools. Shown in bylines, the author box, the About and
+ * Editorial Policy pages, and as a schema.org Person.
+ */
+function mat_editor() {
+	return array(
+		'name'     => 'Ali Ahmad',
+		'job'      => __( 'Founder and Editor', 'myautotriage' ),
+		'linkedin' => 'https://www.linkedin.com/in/ali-ahmad-chaudhry-12777486/',
+		'bio'      => __( 'Ali Ahmad founded MyAutoTriage and edits its guides, state law pages and free claim tools. Each page is checked against the state insurance codes, regulator data and published claim-handling rules it cites, and updated when those rules change. MyAutoTriage is an independent educational site, so nothing here is legal or insurance advice.', 'myautotriage' ),
+	);
+}
+
+/**
+ * Where the editor's profile lives on this site: the card on the About page.
+ */
+function mat_editor_url() {
+	$about = mat_url_for_slug( 'about-us' );
+	return ( $about ? $about : home_url( '/about-us/' ) ) . '#editor';
+}
+
+/**
+ * The editor's name linked to their profile on the About page.
+ */
+function mat_editor_link() {
+	$e = mat_editor();
+	return '<a href="' . esc_url( mat_editor_url() ) . '">' . esc_html( $e['name'] ) . '</a>';
+}
+
+/**
+ * "Last reviewed <date> by Ali Ahmad, editor." for the state, insurer and
+ * adjuster-phrase pages. $format is a translated sprintf string with the
+ * date as %1$s and the editor's name as %2$s.
+ */
+function mat_editor_reviewed_line( $format, $date ) {
+	return sprintf( esc_html( $format ), esc_html( date_i18n( get_option( 'date_format' ), strtotime( $date ) ) ), mat_editor_link() );
+}
+
+/**
+ * Profile card for the editor (About page, Editorial Policy page).
+ */
+function mat_editor_card() {
+	$e = mat_editor();
+	return '<aside id="editor" class="mat-author-box mat-editor-card" aria-label="' . esc_attr__( 'Who edits MyAutoTriage', 'myautotriage' ) . '">'
+		. '<h2 class="mat-author-box__name">' . esc_html( $e['name'] ) . '</h2>'
+		. '<p class="mat-editor-card__job">' . esc_html( $e['job'] . ', MyAutoTriage' ) . '</p>'
+		. '<p>' . esc_html( $e['bio'] ) . '</p>'
+		. '<p><a href="' . esc_url( $e['linkedin'] ) . '" rel="noopener me" target="_blank">' . esc_html__( 'Ali Ahmad on LinkedIn', 'myautotriage' ) . '</a></p>'
+		. '</aside>';
+}
+
+/**
+ * Add the editor card to the About and Editorial Policy pages. Those pages
+ * live in the database, so adding it here keeps one bio in one place.
+ */
+function mat_editor_card_on_pages( $content ) {
+	if ( ! is_page( array( 'about-us', 'editorial-policy' ) ) || ! in_the_loop() || ! is_main_query() ) {
+		return $content;
+	}
+	if ( is_page( 'editorial-policy' ) ) {
+		$intro = '<h2>' . esc_html__( 'Who edits our content', 'myautotriage' ) . '</h2>'
+			. '<p>' . esc_html__( 'Every guide, state law page and tool on MyAutoTriage is checked and kept up to date by our editor before and after it goes live.', 'myautotriage' ) . '</p>';
+		// The card on the About page carries id="editor"; don't repeat the id.
+		return $content . $intro . str_replace( ' id="editor"', '', mat_editor_card() );
+	}
+	return $content . '<h2>' . esc_html__( 'Who runs MyAutoTriage', 'myautotriage' ) . '</h2>' . mat_editor_card();
+}
+add_filter( 'the_content', 'mat_editor_card_on_pages', 15 );
+
+/**
  * True when a post was edited at least a day after it was published, so
  * the byline shows "Updated <date>" only for real revisions.
  */

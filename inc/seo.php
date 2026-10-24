@@ -343,7 +343,63 @@ function mat_schema_organization() {
 	if ( $same_as ) {
 		$org['sameAs'] = $same_as;
 	}
+	$org['founder'] = array( '@id' => mat_editor_url() );
 	return $org;
+}
+
+/**
+ * schema.org Person for the site's founder and editor (see mat_editor()).
+ */
+function mat_schema_editor() {
+	$e = mat_editor();
+	return array(
+		'@type'       => 'Person',
+		'@id'         => mat_editor_url(),
+		'name'        => $e['name'],
+		'url'         => mat_editor_url(),
+		'jobTitle'    => $e['job'],
+		'description' => $e['bio'],
+		'worksFor'    => array( '@id' => home_url( '/#organization' ) ),
+		'sameAs'      => array( $e['linkedin'] ),
+	);
+}
+
+/**
+ * WebPage node for pages the editor reviews (state, insurer and adjuster
+ * phrase pages) and for the About and Editorial Policy pages, which are
+ * about the people behind the site.
+ */
+function mat_schema_webpage() {
+	if ( ! is_page() || is_front_page() ) {
+		return null;
+	}
+	global $post;
+	$reviewed = array(
+		'page-templates/template-state-laws.php',
+		'page-templates/template-state-hub.php',
+		'page-templates/template-insurer.php',
+		'page-templates/template-adjuster-phrase.php',
+	);
+	$is_reviewed = in_array( get_page_template_slug( $post ), $reviewed, true );
+	$is_about    = 'about-us' === $post->post_name;
+	if ( ! $is_reviewed && ! $is_about && 'editorial-policy' !== $post->post_name ) {
+		return null;
+	}
+	$page = array(
+		'@type'     => $is_about ? 'AboutPage' : 'WebPage',
+		'@id'       => get_permalink( $post ),
+		'url'       => get_permalink( $post ),
+		'name'      => get_the_title( $post ),
+		'isPartOf'  => array( '@id' => home_url( '/#website' ) ),
+		'publisher' => array( '@id' => home_url( '/#organization' ) ),
+	);
+	if ( $is_reviewed ) {
+		$page['reviewedBy'] = array( '@id' => mat_editor_url() );
+	} else {
+		$page['about']    = array( '@id' => home_url( '/#organization' ) );
+		$page['mentions'] = array( '@id' => mat_editor_url() );
+	}
+	return $page;
 }
 
 /**
@@ -488,10 +544,11 @@ function mat_schema_article() {
 			'@id'   => get_permalink( $post ),
 		),
 	);
+	$article['editor'] = array( '@id' => mat_editor_url() );
 	$reviewer = mat_schema_reviewer();
-	if ( $reviewer ) {
-		$article['mainEntityOfPage']['reviewedBy'] = $reviewer;
-	}
+	$article['mainEntityOfPage']['reviewedBy'] = $reviewer
+		? array( array( '@id' => mat_editor_url() ), $reviewer )
+		: array( '@id' => mat_editor_url() );
 	$citations = mat_article_citations( $post );
 	if ( $citations ) {
 		$article['citation'] = $citations;
@@ -582,7 +639,9 @@ function mat_schema_plain_text( $value ) {
 function mat_output_schema() {
 	$graph = array_filter( array(
 		mat_schema_organization(),
+		mat_schema_editor(),
 		mat_schema_website(),
+		mat_schema_webpage(),
 		mat_schema_breadcrumbs(),
 		mat_schema_article(),
 		mat_schema_software_application(),
