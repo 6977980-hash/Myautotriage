@@ -5,7 +5,8 @@
  *
  * The numbers come from assets/js/data/insurer-complaints.json, built by
  * bin/build-insurer-complaints.py from the Texas Department of Insurance
- * and New York DFS open-data portals. Rerun it once a year.
+ * and New York DFS open-data portals and the California Department of
+ * Insurance's auto complaint report. Rerun it once a year.
  *
  * @package MyAutoTriage
  */
@@ -80,7 +81,12 @@ function mat_insurer_score( $insurer, $state ) {
 		return null;
 	}
 	$s     = $insurer[ $state ];
-	$count = 'tx' === $state ? (int) $s['index_confirmed'] : (int) $s['upheld'];
+	$keys  = array(
+		'tx' => 'index_confirmed',
+		'ny' => 'upheld',
+		'ca' => 'justified',
+	);
+	$count = (int) $s[ $keys[ $state ] ];
 	$index = (float) $s['index'];
 	if ( $count < MAT_INSURER_MIN_COMPLAINTS ) {
 		$verdict = 'few';
@@ -159,6 +165,7 @@ function mat_insurer_summary( $insurer ) {
 	$parts = array();
 	$tx    = mat_insurer_score( $insurer, 'tx' );
 	$ny    = mat_insurer_score( $insurer, 'ny' );
+	$ca    = mat_insurer_score( $insurer, 'ca' );
 	if ( $tx && 'few' !== $tx['verdict'] ) {
 		/* translators: 1: year, 2: insurer's (possessive), 3: comparison, 4: complaints */
 		$parts[] = sprintf( __( 'In Texas in %1$s, %2$s rate of confirmed auto complaints per policy was %3$s for all auto insurers (%4$s confirmed complaints).', 'myautotriage' ), $data['tx_year'], mat_insurer_possessive( $insurer['name'] ), mat_insurer_index_words( $tx['index'] ), number_format_i18n( $tx['count'] ) );
@@ -167,9 +174,13 @@ function mat_insurer_summary( $insurer ) {
 		/* translators: 1: year, 2: insurer's (possessive), 3: comparison, 4: complaints */
 		$parts[] = sprintf( __( 'In New York\'s %1$s ranking, %2$s rate of upheld complaints per premium dollar was %3$s (%4$s upheld complaints).', 'myautotriage' ), $data['ny_year'], mat_insurer_possessive( $insurer['name'] ), mat_insurer_index_words( $ny['index'] ), number_format_i18n( $ny['count'] ) );
 	}
+	if ( $ca && 'few' !== $ca['verdict'] ) {
+		/* translators: 1: year, 2: insurer's (possessive), 3: comparison, 4: complaints */
+		$parts[] = sprintf( __( 'In California\'s %1$s report on the 50 largest auto insurers, %2$s rate of justified complaints per insured vehicle was %3$s (%4$s justified complaints).', 'myautotriage' ), $data['ca_year'], mat_insurer_possessive( $insurer['name'] ), mat_insurer_index_words( $ca['index'] ), number_format_i18n( $ca['count'] ) );
+	}
 	if ( ! $parts ) {
 		/* translators: %s: insurer */
-		return sprintf( __( '%s had too few complaints in the Texas and New York data to compare fairly with other insurers.', 'myautotriage' ), $insurer['name'] );
+		return sprintf( __( '%s had too few complaints in the Texas, New York and California data to compare fairly with other insurers.', 'myautotriage' ), $insurer['name'] );
 	}
 	return implode( ' ', $parts );
 }
@@ -178,18 +189,21 @@ function mat_insurer_summary( $insurer ) {
  * Facts only this insurer's numbers support, so each page says something
  * the others can't: which companies are counted, how its complaint mix
  * differs from the market, how the index moved, and where its New York
- * companies rank. Returns paragraphs of plain text.
+ * and California companies rank. Returns paragraphs of plain text.
  */
 function mat_insurer_profile( $insurer ) {
 	$data  = mat_insurer_data();
 	$paras = array();
 	$tx_co = array();
 	$ny_co = array();
+	$ca_co = array();
 	foreach ( $insurer['companies'] as $co ) {
 		if ( 'TX' === $co['state'] ) {
 			$tx_co[] = $co;
-		} else {
+		} elseif ( 'NY' === $co['state'] ) {
 			$ny_co[] = $co;
+		} else {
+			$ca_co[] = $co;
 		}
 	}
 
@@ -263,6 +277,23 @@ function mat_insurer_profile( $insurer ) {
 			: sprintf( __( 'In New York\'s %6$s ranking, the %1$s companies selling as %2$s placed between %3$s and %4$s of %5$s auto insurers (1 = fewest upheld complaints for its premium).', 'myautotriage' ), number_format_i18n( count( $ny_co ) ), $insurer['name'], number_format_i18n( $min ), number_format_i18n( $max ), number_format_i18n( $data['ny_market']['companies'] ), $data['ny_year'] );
 	}
 
+	if ( $ca_co ) {
+		$ranks = wp_list_pluck( $ca_co, 'rank' );
+		$min   = min( $ranks );
+		$max   = max( $ranks );
+		$paras[] = $min === $max
+			/* translators: 1: insurer's (possessive), 2: rank, 3: companies ranked, 4: year */
+			? sprintf( __( 'In California\'s %4$s report, %1$s company placed %2$s of the %3$s largest auto insurers (1 = fewest justified complaints for the vehicles it insures).', 'myautotriage' ), mat_insurer_possessive( $insurer['name'] ), number_format_i18n( $min ), number_format_i18n( $data['ca_market']['companies'] ), $data['ca_year'] )
+			/* translators: 1: number of companies, 2: insurer, 3: best rank, 4: worst rank, 5: companies ranked, 6: year */
+			: sprintf( __( 'In California\'s %6$s report, the %1$s companies selling as %2$s placed between %3$s and %4$s of the %5$s largest auto insurers (1 = fewest justified complaints for the vehicles it insures).', 'myautotriage' ), number_format_i18n( count( $ca_co ) ), $insurer['name'], number_format_i18n( $min ), number_format_i18n( $max ), number_format_i18n( $data['ca_market']['companies'] ), $data['ca_year'] );
+		$ca   = $insurer['ca'];
+		$prev = (int) reset( $ca['justified_prev'] );
+		if ( max( $prev, $ca['justified'] ) >= MAT_INSURER_MIN_COMPLAINTS && abs( $ca['justified'] - $prev ) >= max( 10, $prev ) ) {
+			/* translators: 1: insurer's (possessive), 2: complaints, 3: year, 4: earlier complaints, 5: earlier year */
+			$paras[] = sprintf( __( 'The California Department of Insurance counted %2$s justified complaints against %1$s California companies in %3$s, against %4$s in %5$s.', 'myautotriage' ), mat_insurer_possessive( $insurer['name'] ), number_format_i18n( $ca['justified'] ), $data['ca_year'], number_format_i18n( $prev ), key( $ca['justified_prev'] ) );
+		}
+	}
+
 	return $paras;
 }
 
@@ -272,8 +303,18 @@ function mat_insurer_profile( $insurer ) {
 function mat_insurer_index_faq( $insurer ) {
 	$answer = __( '1.00 is the average for all auto insurers in that state, adjusted for size. A score of 0.50 means half as many complaints as expected for the company\'s size; 2.00 means twice as many.', 'myautotriage' );
 	$tx     = mat_insurer_score( $insurer, 'tx' );
-	$ny     = mat_insurer_score( $insurer, 'ny' );
-	$score  = $tx && 'few' !== $tx['verdict'] ? array( __( 'Texas', 'myautotriage' ), $tx ) : ( $ny && 'few' !== $ny['verdict'] ? array( __( 'New York', 'myautotriage' ), $ny ) : null );
+	$score  = null;
+	foreach ( array(
+		'tx' => __( 'Texas', 'myautotriage' ),
+		'ny' => __( 'New York', 'myautotriage' ),
+		'ca' => __( 'California', 'myautotriage' ),
+	) as $key => $state ) {
+		$s = mat_insurer_score( $insurer, $key );
+		if ( $s && 'few' !== $s['verdict'] ) {
+			$score = array( $state, $s );
+			break;
+		}
+	}
 	if ( $score ) {
 		/* translators: 1: insurer's (possessive), 2: state, 3: index, 4: comparison */
 		$answer .= ' ' . sprintf( __( '%1$s %2$s score of %3$s means %4$s.', 'myautotriage' ), mat_insurer_possessive( $insurer['name'] ), $score[0], number_format_i18n( $score[1]['index'], 2 ), mat_insurer_index_words( $score[1]['index'] ) );
@@ -297,6 +338,11 @@ function mat_insurer_sources() {
 			/* translators: %s: year */
 			'label' => sprintf( __( 'New York Department of Financial Services, Automobile Insurance Company Complaint Rankings (filing year %s)', 'myautotriage' ), $data['ny_year'] ),
 			'url'   => 'https://data.ny.gov/Government-Finance/Automobile-Insurance-Company-Complaint-Rankings-Be/h2wd-9xfe',
+		),
+		array(
+			/* translators: %s: year */
+			'label' => sprintf( __( 'California Department of Insurance, Automobile Complaint Composite Report (complaint year %s)', 'myautotriage' ), $data['ca_year'] ),
+			'url'   => 'https://www.insurance.ca.gov/01-consumers/120-company/03-concmplt/autocomposite.cfm',
 		),
 		array(
 			'label' => __( 'NAIC, How to file a complaint with your state insurance department', 'myautotriage' ),
@@ -377,5 +423,5 @@ function mat_insurer_seo_title( $insurer ) {
 
 function mat_insurer_meta( $insurer ) {
 	/* translators: %s: insurer */
-	return sprintf( __( '%s auto claim complaints compared with other insurers: what people complain about and how often it paid off. Texas and New York regulator data.', 'myautotriage' ), $insurer['name'] );
+	return sprintf( __( '%s auto claim complaints vs other insurers: what people complain about and how often it paid off. Texas, New York and California data.', 'myautotriage' ), $insurer['name'] );
 }

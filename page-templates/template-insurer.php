@@ -2,7 +2,7 @@
 /**
  * Template Name: Insurer Complaints
  *
- * One insurer's complaint record with the Texas and New York regulators:
+ * One insurer's complaint record with the Texas, New York and California regulators:
  * how it compares, what people complained about, and how often a
  * complaint got them paid. Data: inc/insurer-complaints.php.
  *
@@ -31,6 +31,7 @@ $mat_ins_data = mat_insurer_data();
 			<?php
 			$mat_ins_tx = mat_insurer_score( $mat_ins, 'tx' );
 			$mat_ins_ny = mat_insurer_score( $mat_ins, 'ny' );
+			$mat_ins_ca = mat_insurer_score( $mat_ins, 'ca' );
 			?>
 			<div class="mat-short-answer">
 				<p class="mat-short-answer__label"><?php esc_html_e( 'Short answer', 'myautotriage' ); ?></p>
@@ -42,6 +43,7 @@ $mat_ins_data = mat_insurer_data();
 				foreach ( array(
 					'tx' => array( __( 'Texas', 'myautotriage' ), $mat_ins_data['tx_year'], $mat_ins_tx ),
 					'ny' => array( __( 'New York', 'myautotriage' ), $mat_ins_data['ny_year'], $mat_ins_ny ),
+					'ca' => array( __( 'California', 'myautotriage' ), $mat_ins_data['ca_year'], $mat_ins_ca ),
 				) as $mat_ins_key => $mat_ins_card ) :
 					?>
 					<div class="mat-ic-card">
@@ -51,15 +53,21 @@ $mat_ins_data = mat_insurer_data();
 							<p><span class="mat-ic-badge mat-ic-badge--<?php echo esc_attr( $mat_ins_card[2]['verdict'] ); ?>"><?php echo esc_html( $mat_ins_card[2]['label'] ); ?></span></p>
 							<p class="mat-field__hint">
 								<?php
-								echo esc_html( 'tx' === $mat_ins_key
+								if ( 'tx' === $mat_ins_key ) {
 									/* translators: 1: confirmed complaints, 2: policies */
-									? sprintf( __( '%1$s confirmed complaints, %2$s auto policies. Average = 1.00.', 'myautotriage' ), number_format_i18n( $mat_ins['tx']['index_confirmed'] ), number_format_i18n( $mat_ins['tx']['policies'] ) ) . ( $mat_ins['tx']['index'] > 5 ? ' ' . __( 'As published by TDI.', 'myautotriage' ) : '' )
+									$mat_ins_hint = sprintf( __( '%1$s confirmed complaints, %2$s auto policies. Average = 1.00.', 'myautotriage' ), number_format_i18n( $mat_ins['tx']['index_confirmed'] ), number_format_i18n( $mat_ins['tx']['policies'] ) ) . ( $mat_ins['tx']['index'] > 5 ? ' ' . __( 'As published by TDI.', 'myautotriage' ) : '' );
+								} elseif ( 'ny' === $mat_ins_key ) {
 									/* translators: 1: upheld complaints, 2: premium */
-									: sprintf( __( '%1$s upheld complaints on $%2$s million of premium. Average = 1.00.', 'myautotriage' ), number_format_i18n( $mat_ins['ny']['upheld'] ), number_format_i18n( $mat_ins['ny']['premium_millions'] ) ) );
+									$mat_ins_hint = sprintf( __( '%1$s upheld complaints on $%2$s million of premium. Average = 1.00.', 'myautotriage' ), number_format_i18n( $mat_ins['ny']['upheld'] ), number_format_i18n( $mat_ins['ny']['premium_millions'] ) );
+								} else {
+									/* translators: 1: justified complaints, 2: insured vehicles, 3: number of insurers */
+									$mat_ins_hint = sprintf( __( '%1$s justified complaints, %2$s insured vehicles. Average of the %3$s largest insurers = 1.00.', 'myautotriage' ), number_format_i18n( $mat_ins['ca']['justified'] ), number_format_i18n( $mat_ins['ca']['exposures'] ), $mat_ins_data['ca_market']['companies'] );
+								}
+								echo esc_html( $mat_ins_hint );
 								?>
 							</p>
 						<?php else : ?>
-							<p><?php esc_html_e( 'Not in this state\'s data.', 'myautotriage' ); ?></p>
+							<p><?php 'ca' === $mat_ins_key ? esc_html_e( 'Not among the largest insurers in this state\'s report.', 'myautotriage' ) : esc_html_e( 'Not in this state\'s data.', 'myautotriage' ); ?></p>
 						<?php endif; ?>
 					</div>
 				<?php endforeach; ?>
@@ -124,7 +132,7 @@ $mat_ins_data = mat_insurer_data();
 				<ul>
 					<?php foreach ( $mat_ins['companies'] as $mat_ins_co ) : ?>
 						<?php /* translators: 1: company, 2: state, 3: NAIC code */ ?>
-						<li><?php echo esc_html( sprintf( __( '%1$s (%2$s, NAIC %3$s)', 'myautotriage' ), mat_insurer_company_name( $mat_ins_co['name'] ), $mat_ins_co['state'], $mat_ins_co['naic'] ) ); ?></li>
+						<li><?php echo esc_html( empty( $mat_ins_co['naic'] ) ? sprintf( '%1$s (%2$s)', mat_insurer_company_name( $mat_ins_co['name'] ), $mat_ins_co['state'] ) : sprintf( __( '%1$s (%2$s, NAIC %3$s)', 'myautotriage' ), mat_insurer_company_name( $mat_ins_co['name'] ), $mat_ins_co['state'], $mat_ins_co['naic'] ) ); ?></li>
 					<?php endforeach; ?>
 				</ul>
 			</details>
