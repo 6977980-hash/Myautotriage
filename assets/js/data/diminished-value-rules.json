@@ -1,0 +1,326 @@
+{
+ "reviewed": "2026-10-24",
+ "note": "Inherent (post-repair) diminished value. First-party = your own collision/comprehensive coverage; third-party = claim against the at-fault driver. Summarised from the cases cited; most rulings turn on standard \"repair or replace\" policy wording, and many policies now exclude diminished value expressly.",
+ "sources": [
+  {
+   "label": "Matthiesen, Wickert & Lehrer, Diminution in Value Cases in All 50 States (updated March 16, 2022)",
+   "url": "https://www.mwl-law.com/wp-content/uploads/2018/02/DIMINUTION-IN-VALUE-IN-ALL-50-STATES.pdf"
+  },
+  {
+   "label": "Journal of Insurance Regulation (NAIC), Automobile Diminished Value Claims (2023)",
+   "url": "https://content.naic.org/sites/default/files/cipr-jir-2023-5.pdf"
+  },
+  {
+   "label": "N.C. Gen. Stat. 20-279.21(d1)",
+   "url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_20/GS_20-279.21.html"
+  }
+ ],
+ "states": {
+  "AL": {
+   "first_party": "no",
+   "first_party_note": "Pritchett v. State Farm, 834 So.2d 785 (Ala. Civ. App. 2002): \"repair or replace\" pays repairs only.",
+   "third_party": "unsettled",
+   "third_party_note": "No appellate decision found allowing post-repair diminished value."
+  },
+  "AK": {
+   "first_party": "unsettled",
+   "first_party_note": "No Alaska decision on auto policies.",
+   "third_party": "unsettled",
+   "third_party_note": "No direct ruling; Willett v. State, 826 P.2d 1142 (Alaska 1992) cites the Restatement rule that allows it."
+  },
+  "AZ": {
+   "first_party": "no",
+   "first_party_note": "Johnson v. State Farm, 754 P.2d 330 (Ariz. Ct. App. 1988).",
+   "third_party": "yes",
+   "third_party_note": "Farmers Ins. Co. v. R.B.L. Inv. Co., 675 P.2d 1381 (Ariz. Ct. App. 1983); Oliver v. Henry, 260 P.3d 314 (Ariz. Ct. App. 2011): repair cost plus remaining loss in value."
+  },
+  "AR": {
+   "first_party": "unsettled",
+   "first_party_note": "No ruling on auto policy wording.",
+   "third_party": "yes",
+   "third_party_note": "MFA Ins. Co. v. Citizens Nat. Bank, 545 S.W.2d 70 (Ark. 1977): if repairs don't restore value, the before-and-after difference."
+  },
+  "CA": {
+   "first_party": "no",
+   "first_party_note": "Ray v. Farmers Ins. Exch., 200 Cal. App. 3d 1411 (1988): a proper repair ends the insurer's duty.",
+   "third_party": "yes",
+   "third_party_note": "California jury instruction CACI 3903J allows the post-repair loss in value plus repair cost, up to the pre-accident value."
+  },
+  "CO": {
+   "first_party": "unsettled",
+   "first_party_note": "Hyden v. Farmers Ins. Exch., 20 P.3d 1222 (Colo. App. 2000) says \"like kind and quality\" means similar in function and value; no ruling on post-repair diminished value.",
+   "third_party": "yes",
+   "third_party_note": "Trujillo v. Wilson, 189 P.2d 147 (Colo. 1948)."
+  },
+  "CT": {
+   "first_party": "unsettled",
+   "first_party_note": "No ruling on auto policies.",
+   "third_party": "yes",
+   "third_party_note": "Littlejohn v. Elionsky, 36 A.2d 52 (Conn. 1944); Cassella v. Lenches (2010): repair cost plus remaining loss in value."
+  },
+  "DE": {
+   "first_party": "no",
+   "first_party_note": "O'Brien v. Progressive N. Ins. Co., 785 A.2d 281 (Del. 2001).",
+   "third_party": "unsettled",
+   "third_party_note": "No decision found on post-repair diminished value."
+  },
+  "DC": {
+   "first_party": "unsettled",
+   "first_party_note": "No ruling on auto policies.",
+   "third_party": "yes",
+   "third_party_note": "American Service Center Assocs. v. Helton, 867 A.2d 235 (D.C. 2005): repair cost plus remaining loss in value, up to the total loss in value."
+  },
+  "FL": {
+   "first_party": "no",
+   "first_party_note": "Siegle v. Progressive Consumers Ins. Co., 819 So.2d 732 (Fla. 2002).",
+   "third_party": "yes",
+   "third_party_note": "McHale v. Farm Bureau Mut. Ins. Co., 409 So.2d 238 (Fla. 3d DCA 1982)."
+  },
+  "GA": {
+   "first_party": "yes",
+   "first_party_note": "State Farm v. Mabry, 556 S.E.2d 114 (Ga. 2001): insurers must assess and pay diminished value on physical damage claims under policies like State Farm's.",
+   "third_party": "yes",
+   "third_party_note": "Perma Ad Ideas v. Mayville, 282 S.E.2d 128 (Ga. Ct. App. 1981)."
+  },
+  "HI": {
+   "first_party": "unsettled",
+   "first_party_note": "No ruling on auto policies.",
+   "third_party": "unsettled",
+   "third_party_note": "No decision found on post-repair diminished value."
+  },
+  "ID": {
+   "first_party": "unsettled",
+   "first_party_note": "No ruling on auto policies.",
+   "third_party": "unsettled",
+   "third_party_note": "No decision found on post-repair diminished value."
+  },
+  "IL": {
+   "first_party": "no",
+   "first_party_note": "Sims v. Allstate Ins. Co., 851 N.E.2d 701 (Ill. App. Ct. 2006).",
+   "third_party": "yes",
+   "third_party_note": "Trailmobile Div. v. Higgs, 297 N.E.2d 598 (Ill. App. Ct. 1973)."
+  },
+  "IN": {
+   "first_party": "no",
+   "first_party_note": "Allgood v. Meridian Sec. Ins. Co., 836 N.E.2d 243 (Ind. 2005).",
+   "third_party": "yes",
+   "third_party_note": "Wiese-GMC, Inc. v. Wells, 626 N.E.2d 595 (Ind. Ct. App. 1993). Also owed under uninsured/underinsured motorist coverage: Dunn v. Meridian Mut. Ins. Co., 836 N.E.2d 249 (Ind. 2005)."
+  },
+  "IA": {
+   "first_party": "unsettled",
+   "first_party_note": "No ruling on auto policy wording.",
+   "third_party": "yes",
+   "third_party_note": "Hawkeye Motors v. McDowell, 541 N.W.2d 914 (Iowa Ct. App. 1995), if proven with evidence."
+  },
+  "KS": {
+   "first_party": "unsettled",
+   "first_party_note": "No ruling on personal auto policy wording.",
+   "third_party": "yes",
+   "third_party_note": "Broadie v. Randall, 216 P. 1103 (Kan. 1923)."
+  },
+  "KY": {
+   "first_party": "no",
+   "first_party_note": "Tomes v. Nationwide Ins. Co., 825 S.W.2d 284 (Ky. Ct. App. 1991).",
+   "third_party": "yes",
+   "third_party_note": "Muncie v. Wiesemann, 548 S.W.3d 877 (Ky. Ct. App. 2018); Conrad v. Shrout (Ky. Ct. App. 2018)."
+  },
+  "LA": {
+   "first_party": "no",
+   "first_party_note": "Campbell v. Markel Am. Ins. Co., 822 So.2d 617 (La. Ct. App. 2001); Townsend v. State Farm, 793 So.2d 473 (La. Ct. App. 2001).",
+   "third_party": "yes",
+   "third_party_note": "By statute, La. R.S. 9:2800.17, up to the vehicle's pre-accident value."
+  },
+  "ME": {
+   "first_party": "no",
+   "first_party_note": "Hall v. Acadia Ins. Co., 801 A.2d 993 (Me. 2002).",
+   "third_party": "unsettled",
+   "third_party_note": "No decision found on post-repair diminished value."
+  },
+  "MD": {
+   "first_party": "unsettled",
+   "first_party_note": "No ruling on auto policies.",
+   "third_party": "yes",
+   "third_party_note": "Fred Frederick Motors v. Krause, 277 A.2d 464 (Md. Ct. Spec. App. 1971)."
+  },
+  "MA": {
+   "first_party": "no",
+   "first_party_note": "Given v. Commerce Ins. Co., 440 Mass. 207 (2003); Division of Insurance advisory opinion (May 2002): the standard policy doesn't cover it.",
+   "third_party": "yes",
+   "third_party_note": "McGilloway v. Safety Ins. Co., 174 N.E.3d 1191 (Mass. 2021): owed under Part 4 of the standard policy."
+  },
+  "MI": {
+   "first_party": "no",
+   "first_party_note": "Driscoll v. State Farm, 227 F. Supp. 2d 696 (E.D. Mich. 2002).",
+   "third_party": "unsettled",
+   "third_party_note": "Car damage claims against the at-fault driver are limited to the $3,000 mini-tort (MCL 500.3135(3)(e)); no decision found on diminished value inside it."
+  },
+  "MN": {
+   "first_party": "unsettled",
+   "first_party_note": "Only an old ruling allowing it (Ciresi v. Globe & Rutgers, 244 N.W. 688 (Minn. 1932)); modern policies untested.",
+   "third_party": "unsettled",
+   "third_party_note": "No decision found on post-repair diminished value."
+  },
+  "MS": {
+   "first_party": "unsettled",
+   "first_party_note": "Older rulings allowed it (Potomac Ins. Co. v. Wilkinson, 57 So.2d 158 (Miss. 1952)); modern policy wording untested.",
+   "third_party": "yes",
+   "third_party_note": "Thomas v. Global Boat Builders, 482 So.2d 1112 (Miss. 1986), with proper proof."
+  },
+  "MO": {
+   "first_party": "no",
+   "first_party_note": "Lupo v. Shelter Mut. Ins. Co., 70 S.W.3d 16 (Mo. Ct. App. 2002), where the policy is clear; if repairs fall short of restoring value, Williams v. Farm Bureau, 299 S.W.2d 587 (Mo. Ct. App. 1957).",
+   "third_party": "yes",
+   "third_party_note": "Rook v. John F. Oliver Trucking, 556 S.W.2d 200 (Mo. Ct. App. 1977)."
+  },
+  "MT": {
+   "first_party": "unsettled",
+   "first_party_note": "Eby v. Foremost Ins. Co., 374 P.2d 857 (Mont. 1962) suggests yes; the Supreme Court called it open in Hop v. Safeco, 261 P.3d 981 (Mont. 2011).",
+   "third_party": "unsettled",
+   "third_party_note": "Open question (Hop v. Safeco, 2011)."
+  },
+  "NE": {
+   "first_party": "unsettled",
+   "first_party_note": "No ruling on auto policies.",
+   "third_party": "no",
+   "third_party_note": "Chlopek v. Schmall, 396 N.W.2d 103 (Neb. 1986): if the car is repaired, the measure is repair cost and loss of use; lost market value only if not repaired."
+  },
+  "NV": {
+   "first_party": "no",
+   "first_party_note": "Nev. Admin. Code 686A.680 requires only restoring the car to its condition before the loss.",
+   "third_party": "unsettled",
+   "third_party_note": "No decision found on post-repair diminished value."
+  },
+  "NH": {
+   "first_party": "unsettled",
+   "first_party_note": "No ruling on auto policies.",
+   "third_party": "unsettled",
+   "third_party_note": "No decision found on post-repair diminished value."
+  },
+  "NJ": {
+   "first_party": "no",
+   "first_party_note": "Kieffer v. High Point Ins. Co., 25 A.3d 1206 (N.J. Super. Ct. App. Div. 2011), where the policy excludes it.",
+   "third_party": "yes",
+   "third_party_note": "Fanfarillo v. East End Motor Co., 411 A.2d 1167 (N.J. Super. Ct. App. Div. 1980)."
+  },
+  "NM": {
+   "first_party": "no",
+   "first_party_note": "Davis v. Farmers Ins. Co. of Ariz., 142 P.3d 17 (N.M. Ct. App. 2006).",
+   "third_party": "yes",
+   "third_party_note": "Hubbard v. Albuquerque Truck Ctr., 958 P.2d 111 (N.M. Ct. App. 1998)."
+  },
+  "NY": {
+   "first_party": "unsettled",
+   "first_party_note": "Only an old theft-claim ruling (Edwards v. Maryland Motor Car Ins. Co., 1922).",
+   "third_party": "yes",
+   "third_party_note": "Mostly for new, rare or appreciating cars: Rosenfield v. Choberka, 529 N.Y.S.2d 455 (1988); Parkoff v. Stavsky (App. Div. 2013)."
+  },
+  "NC": {
+   "first_party": "unsettled",
+   "first_party_note": "No ruling that standard collision coverage pays it.",
+   "third_party": "yes",
+   "third_party_note": "Measured as the before-and-after difference in value (DeLaney v. Henderson-Gilmer, 135 S.E. 791 (N.C. 1926)). Liability policies must offer appraisal when you and the insurer are more than $2,000 or 25% apart on it (N.C.G.S. 20-279.21(d1)); a release for repairs doesn't bar a diminished value claim made within 30 days after repair (11 NCAC 04.0421)."
+  },
+  "ND": {
+   "first_party": "unsettled",
+   "first_party_note": "No ruling on auto policies.",
+   "third_party": "no",
+   "third_party_note": "By statute the measure is presumed to be repair cost plus loss of use (N.D.C.C. 32-03-09.1); value loss only if repair is impossible or impracticable."
+  },
+  "OH": {
+   "first_party": "no",
+   "first_party_note": "Nationwide v. Shah, 2004-Ohio-1291 (Ohio Ct. App.).",
+   "third_party": "yes",
+   "third_party_note": "Rakich v. Anthem, 875 N.E.2d 993 (Ohio Ct. App. 2007); State Farm v. Cheeks (Ohio Ct. App. 2014)."
+  },
+  "OK": {
+   "first_party": "unsettled",
+   "first_party_note": "Phoenix Ins. Co. v. Diffie, 270 P.2d 634 (Okla. 1954) used the before-and-after value measure; modern policies untested.",
+   "third_party": "yes",
+   "third_party_note": "Brennen v. Aston, 84 P.3d 99 (Okla. 2003)."
+  },
+  "OR": {
+   "first_party": "yes",
+   "first_party_note": "Gonzales v. Farmers Ins. Co. of Or., 196 P.3d 1 (Or. 2008): if repair can't restore the car to its pre-loss condition, the remaining loss in value is covered.",
+   "third_party": "yes",
+   "third_party_note": "EAM Advertising Agency v. Helies, 954 P.2d 812 (Or. Ct. App. 1998), with proof."
+  },
+  "PA": {
+   "first_party": "no",
+   "first_party_note": "Lobozzo v. Adam Eidemiller, Inc., 263 A.2d 432 (Pa. 1970): payment for diminished value is not something the public can reasonably expect.",
+   "third_party": "yes",
+   "third_party_note": "Holt v. Pariser, 54 A.2d 89 (Pa. Super. Ct. 1947)."
+  },
+  "RI": {
+   "first_party": "unsettled",
+   "first_party_note": "Cazabat v. Metropolitan (R.I. Super. Ct. 2000): the policy wording was ambiguous, a question for a jury.",
+   "third_party": "unsettled",
+   "third_party_note": "No decision found; Rhode Island's appraisal law (R.I. Gen. Laws 27-10.4-1) lets a claimant dispute the amount of loss."
+  },
+  "SC": {
+   "first_party": "no",
+   "first_party_note": "Schulmeyer v. State Farm, 579 S.E.2d 132 (S.C. 2003).",
+   "third_party": "yes",
+   "third_party_note": "Newman v. Brown, 90 S.E.2d 649 (S.C. 1955)."
+  },
+  "SD": {
+   "first_party": "no",
+   "first_party_note": "Culhane v. Western Nat'l Mut. Ins. Co., 704 N.W.2d 287 (S.D. 2005).",
+   "third_party": "unsettled",
+   "third_party_note": "No decision found on post-repair diminished value."
+  },
+  "TN": {
+   "first_party": "no",
+   "first_party_note": "Black v. State Farm, 101 S.W.3d 427 (Tenn. Ct. App. 2002).",
+   "third_party": "unsettled",
+   "third_party_note": "Repair cost or the before-and-after difference, not both; post-repair loss not clearly recognised (GEICO v. Bloodworth, Tenn. Ct. App. 2007)."
+  },
+  "TX": {
+   "first_party": "no",
+   "first_party_note": "American Mfrs. Mut. Ins. Co. v. Schaefer, 124 S.W.3d 154 (Tex. 2003); TDI Bulletin B-0027-00.",
+   "third_party": "yes",
+   "third_party_note": "TDI Bulletin B-0027-00 says a liability insurer may owe a third-party claimant the loss of market value even after a complete repair; courts allow repair cost or value loss without double recovery."
+  },
+  "UT": {
+   "first_party": "unsettled",
+   "first_party_note": "No ruling on auto policies.",
+   "third_party": "yes",
+   "third_party_note": "Metcalf v. Mellen, 192 P. 676 (Utah 1920)."
+  },
+  "VT": {
+   "first_party": "yes",
+   "first_party_note": "Vermont Insurance Bulletin 164 (2011): absent specific policy language to the contrary, the policy must pay diminished value.",
+   "third_party": "yes",
+   "third_party_note": "Kinney v. Cloutier, 211 A.2d 246 (Vt. 1965)."
+  },
+  "VA": {
+   "first_party": "no",
+   "first_party_note": "Bickel v. Nationwide, 143 S.E.2d 903 (Va. 1965).",
+   "third_party": "yes",
+   "third_party_note": "Averett v. Shircliff, 237 S.E.2d 92 (Va. 1977)."
+  },
+  "WA": {
+   "first_party": "yes",
+   "first_party_note": "Moeller v. Farmers Ins. Co. of Wash., 267 P.3d 998 (Wash. 2011): \"repair or replace\" covers diminished value unless the policy clearly excludes it.",
+   "third_party": "unsettled",
+   "third_party_note": "The pattern jury instruction uses the lesser of repair cost or the before-and-after difference; no decision on post-repair loss."
+  },
+  "WV": {
+   "first_party": "unsettled",
+   "first_party_note": "No authority for first-party claims (Insurance Commissioner informational letters, 2001).",
+   "third_party": "yes",
+   "third_party_note": "Only with structural damage on a car of significant value: Ellis v. King, 400 S.E.2d 235 (W. Va. 1990); Brooks v. City of Huntington, 768 S.E.2d 97 (W. Va. 2014)."
+  },
+  "WI": {
+   "first_party": "no",
+   "first_party_note": "Wildin v. American Family, 638 N.W.2d 87 (Wis. Ct. App. 2001).",
+   "third_party": "yes",
+   "third_party_note": "Hellenbrand v. Hilliard, 687 N.W.2d 37 (Wis. Ct. App. 2004), if repairs didn't restore the value."
+  },
+  "WY": {
+   "first_party": "unsettled",
+   "first_party_note": "No ruling on auto policies.",
+   "third_party": "unsettled",
+   "third_party_note": "No decision found on post-repair diminished value."
+  }
+ }
+}

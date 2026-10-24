@@ -21,6 +21,12 @@ function mat_get_reference_guides() {
 			'meta'      => __( 'Can\'t agree with your own insurer on the repair cost or total loss value? How the appraisal clause works, the steps, who pays the appraisers and umpire, and state rules.', 'myautotriage' ),
 			'template'  => 'page-templates/template-appraisal-guide.php',
 		),
+		'diminished-value-by-state' => array(
+			'title'     => __( 'Diminished Value Claim Rules by State', 'myautotriage' ),
+			'seo_title' => __( 'Diminished Value Claims by State: Own Insurer vs At-Fault', 'myautotriage' ),
+			'meta'      => __( 'Can you claim diminished value from your own insurer or only the at-fault driver\'s? The rule in all 50 states and DC, with the court case or law behind each.', 'myautotriage' ),
+			'template'  => 'page-templates/template-dv-by-state.php',
+		),
 	);
 }
 

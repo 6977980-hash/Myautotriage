@@ -55,6 +55,7 @@ function mat_get_tool_extras() {
 			),
 			'next' => array(
 				array( 'slug' => 'diminished-value-demand-letter-generator', 'label' => __( 'Turn your number into a diminished value demand letter', 'myautotriage' ) ),
+				array( 'slug' => 'diminished-value-by-state', 'label' => __( 'Can you claim it from your own insurer? Diminished value rules by state', 'myautotriage' ) ),
 				array( 'slug' => 'how-to-file-diminished-value-claim', 'label' => __( 'Read: how to file a diminished value claim, step by step', 'myautotriage' ) ),
 				array( 'slug' => 'loss-of-use-calculator', 'label' => __( 'Were you without your car? Add loss of use to the claim', 'myautotriage' ) ),
 			),

@@ -68,6 +68,12 @@ function mat_seed_pages() {
 			'content'  => '',
 		),
 		array(
+			'slug'     => 'diminished-value-by-state',
+			'title'    => __( 'Diminished Value Claim Rules by State', 'myautotriage' ),
+			'template' => 'page-templates/template-dv-by-state.php',
+			'content'  => '',
+		),
+		array(
 			'slug'     => 'insurance-appraisal-clause',
 			'title'    => __( 'Car Insurance Appraisal Clause: How to Invoke It', 'myautotriage' ),
 			'template' => 'page-templates/template-appraisal-guide.php',
