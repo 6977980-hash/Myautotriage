@@ -87,7 +87,7 @@ function mat_get_tool_extras() {
 				array( 'slug' => 'totaled-car-payout-too-low-negotiate', 'label' => __( 'Read: how to negotiate a total loss payout that seems too low', 'myautotriage' ) ),
 				array( 'slug' => 'insurance-underpayment-demand-letter-generator', 'label' => __( 'Dispute a low offer with an underpayment demand letter', 'myautotriage' ) ),
 				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'total-loss' ), 'label' => __( 'Counter a low total loss valuation with comparable cars', 'myautotriage' ) ),
-				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'appraisal' ), 'label' => __( 'Still can\'t agree on the value? Invoke your policy\'s appraisal clause', 'myautotriage' ) ),
+				array( 'slug' => 'insurance-appraisal-clause', 'label' => __( 'Still can\'t agree on the value? How to invoke your policy\'s appraisal clause', 'myautotriage' ) ),
 				array( 'slug' => 'gap-insurance-shortfall-calculator', 'label' => __( 'Still owe on a loan? Check your GAP shortfall', 'myautotriage' ) ),
 				array( 'slug' => 'car-insurance-claim-laws', 'label' => __( 'See your state\'s total loss rule and claim deadlines, with citations', 'myautotriage' ) ),
 			),
@@ -311,7 +311,7 @@ function mat_get_tool_extras() {
 			),
 			'next' => array(
 				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'total-loss' ), 'label' => __( 'Send a total loss counter-offer letter', 'myautotriage' ) ),
-				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'appraisal' ), 'label' => __( 'Still can\'t agree on the value? Invoke your policy\'s appraisal clause', 'myautotriage' ) ),
+				array( 'slug' => 'insurance-appraisal-clause', 'label' => __( 'Still can\'t agree on the value? How to invoke your policy\'s appraisal clause', 'myautotriage' ) ),
 				array( 'slug' => 'totaled-car-payout-too-low-negotiate', 'label' => __( 'Read: how to negotiate a total loss payout that seems too low', 'myautotriage' ) ),
 				array( 'slug' => 'gap-insurance-shortfall-calculator', 'label' => __( 'Still owe on a loan? Check your GAP shortfall', 'myautotriage' ) ),
 				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'doi-complaint' ), 'label' => __( 'Draft a complaint to your state department of insurance', 'myautotriage' ) ),

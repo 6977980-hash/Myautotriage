@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MAT_VERSION', '1.0.32' );
+define( 'MAT_VERSION', '1.0.33' );
 define( 'MAT_DIR', get_template_directory() );
 define( 'MAT_URI', get_template_directory_uri() );
 
@@ -90,6 +90,7 @@ require MAT_DIR . '/inc/adjuster-phrases.php';
 require MAT_DIR . '/inc/claim-triage.php';
 require MAT_DIR . '/inc/claim-outcomes.php';
 require MAT_DIR . '/inc/insurer-complaints.php';
+require MAT_DIR . '/inc/reference-guides.php';
 require MAT_DIR . '/inc/customizer.php';
 require MAT_DIR . '/inc/template-tags.php';
 require MAT_DIR . '/inc/content-seed.php';

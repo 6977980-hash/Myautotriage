@@ -68,6 +68,12 @@ function mat_seed_pages() {
 			'content'  => '',
 		),
 		array(
+			'slug'     => 'insurance-appraisal-clause',
+			'title'    => __( 'Car Insurance Appraisal Clause: How to Invoke It', 'myautotriage' ),
+			'template' => 'page-templates/template-appraisal-guide.php',
+			'content'  => '',
+		),
+		array(
 			'slug'     => 'michigan-mini-tort-calculator',
 			'title'    => __( 'Michigan Mini-Tort Calculator', 'myautotriage' ),
 			'template' => 'page-templates/template-mini-tort.php',
