@@ -15,6 +15,7 @@
 	var resultBox = document.getElementById( 'mat-cf-result' );
 	var errorBox = document.getElementById( 'mat-cf-error' );
 	var hubUrl = form.getAttribute( 'data-hub-url' );
+	var miniTortUrl = form.getAttribute( 'data-mini-tort-url' );
 	var facts = null;
 	var esc = MAT.escape;
 
@@ -117,7 +118,7 @@
 			html += '<p style="font-size:.9rem;">' + esc( fault.note ) + '</p>';
 		}
 		if ( miRule ) {
-			html += '<p style="font-size:.9rem;">Damage to your car from the at-fault driver is capped at $3,000 (mini-tort, MCL 500.3135(3)(e)); this calculator\'s reduction applies to economic loss in an injury claim.</p>';
+			html += '<p style="font-size:.9rem;">Damage to your car from the at-fault driver is capped at $3,000 (mini-tort, MCL 500.3135(3)(e)); this calculator\'s reduction applies to economic loss in an injury claim.' + ( miniTortUrl ? ' <a href="' + esc( miniTortUrl ) + '">Work out your mini-tort claim</a>.' : '' ) + '</p>';
 		}
 		html += '<p style="font-size:.9rem;">Rule: ' + esc( fault.citation ) + '.</p>';
 		if ( hubUrl ) {

@@ -21,7 +21,7 @@ $hub = get_page_by_path( MAT_STATE_HUB_SLUG ) ? trailingslashit( mat_state_hub_u
 		</div>
 		<?php mat_tool_short_answer( 'comparative-fault-calculator' ); ?>
 
-		<form id="mat-cf-form" class="mat-tool-panel" data-json="<?php echo esc_url( MAT_URI . '/assets/js/data/state-claim-facts.json' ); ?>" data-hub-url="<?php echo esc_url( $hub ); ?>" novalidate>
+		<form id="mat-cf-form" class="mat-tool-panel" data-json="<?php echo esc_url( MAT_URI . '/assets/js/data/state-claim-facts.json' ); ?>" data-hub-url="<?php echo esc_url( $hub ); ?>" data-mini-tort-url="<?php echo esc_url( mat_url_for_slug( 'michigan-mini-tort-calculator' ) ); ?>" novalidate>
 			<?php mat_noscript_note(); ?>
 			<div class="mat-field">
 				<label for="mat-cf-state"><?php esc_html_e( 'State where the accident happened', 'myautotriage' ); ?></label>

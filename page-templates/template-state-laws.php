@@ -268,6 +268,13 @@ $meta  = mat_state_laws_meta();
 						'diminished-value-calculator'     => __( 'Diminished value calculator', 'myautotriage' ),
 						'gap-insurance-shortfall-calculator' => __( 'GAP shortfall calculator', 'myautotriage' ),
 					);
+					// Tools that only apply in one state go first on that state's page.
+					$state_tools = array(
+						'MI' => array( 'michigan-mini-tort-calculator' => __( 'Michigan mini-tort calculator (car damage up to $3,000)', 'myautotriage' ) ),
+					);
+					if ( isset( $state_tools[ $state['code'] ] ) ) {
+						$tool_links = $state_tools[ $state['code'] ] + $tool_links;
+					}
 					foreach ( $tool_links as $slug => $label ) :
 						$url = mat_url_for_slug( $slug );
 						if ( ! $url ) {
