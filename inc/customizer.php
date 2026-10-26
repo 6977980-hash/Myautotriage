@@ -39,12 +39,12 @@ function mat_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'mat_ga_measurement_id', array(
-		'default'           => '',
+		'default'           => MAT_GA_MEASUREMENT_ID,
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'mat_ga_measurement_id', array(
 		'label'       => __( 'Google Analytics 4 Measurement ID (e.g. G-XXXXXXX)', 'myautotriage' ),
-		'description' => __( 'Leave blank until you have created a GA4 property.', 'myautotriage' ),
+		'description' => __( 'Leave blank to use the site\'s own GA4 property.', 'myautotriage' ),
 		'section'     => 'mat_site_settings',
 		'type'        => 'text',
 	) );
@@ -182,9 +182,15 @@ function mat_brand_same_as() {
 }
 
 /**
- * Output GA4 / Search Console / AdSense snippets. Each is genuinely
- * optional and only prints once a value has been entered — a fresh install
- * has zero third-party scripts, by design.
+ * The site's GA4 property, used when the Customizer field is blank.
+ */
+define( 'MAT_GA_MEASUREMENT_ID', 'G-ENWMCYMSG2' );
+
+/**
+ * Output GA4 / Search Console / AdSense snippets. Search Console and
+ * AdSense only print once a value has been entered; GA4 falls back to the
+ * site's own property. Logged-in editors aren't tracked, so their own
+ * visits don't skew the numbers.
  */
 function mat_head_thirdparty() {
 	$search_console = get_theme_mod( 'mat_search_console_meta' );
@@ -193,7 +199,10 @@ function mat_head_thirdparty() {
 	}
 
 	$ga_id = get_theme_mod( 'mat_ga_measurement_id' );
-	if ( $ga_id ) {
+	if ( ! $ga_id ) {
+		$ga_id = MAT_GA_MEASUREMENT_ID;
+	}
+	if ( $ga_id && ! current_user_can( 'edit_posts' ) ) {
 		?>
 		<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_attr( $ga_id ); ?>"></script>
 		<script>

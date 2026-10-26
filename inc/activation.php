@@ -271,7 +271,7 @@ add_action( 'wp_loaded', 'mat_ensure_new_pages' );
  * re-run.
  */
 function mat_apply_content_fixes() {
-	$version = '8';
+	$version = '9';
 	if ( $version === get_option( 'mat_content_fixes_version' ) ) {
 		return;
 	}
@@ -494,6 +494,10 @@ function mat_content_fixes_2026_10_24() {
 		array( 'privacy-policy', 'page', '#Blog comments are retained until you or we remove them\\.#s', 'Comments are turned off on this site. Claim outcome survey answers are kept so they can be counted in the Lowball Index; they hold no name, email or IP address.' ),
 		array( 'privacy-policy', 'page', '#You may ask us to delete a comment you left, or ask what information we hold about you,#s', 'You may ask what information we hold about you,' ),
 		array( 'privacy-policy', 'page', '#September 18, 2026#s', 'October 24, 2026' ),
+		// 2026-10-26: Google Analytics 4 is on, so the policy describes it.
+		array( 'privacy-policy', 'page', '#The site sets no cookies for ordinary visitors \\(site administrators who log in get the standard WordPress login cookies\\)\\.#s', 'Google Analytics, described below, sets its own cookies to count visits. Apart from that, the site sets no cookies for ordinary visitors (site administrators who log in get the standard WordPress login cookies).' ),
+		array( 'privacy-policy', 'page', '#We do not currently run any analytics or tracking software on this site\\..*?how to opt out\\.#s', 'We use Google Analytics 4 to understand how the site is used, such as which pages are read, how visitors arrive, and roughly where they are and what device they use. Google Analytics sets cookies in your browser and sends this usage information to Google, which processes it under its own <a href="https://policies.google.com/technologies/partner-sites">privacy terms</a>. We see only aggregate reports, not who you are. What you type into our calculators and letter generators is not sent to Google Analytics. You can block it with the <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics opt-out browser add-on</a>, or by blocking cookies in your browser.' ),
+		array( 'privacy-policy', 'page', '#October 24, 2026#s', 'October 26, 2026' ),
 	);
 }
 
