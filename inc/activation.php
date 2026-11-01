@@ -271,7 +271,7 @@ add_action( 'wp_loaded', 'mat_ensure_new_pages' );
  * re-run.
  */
 function mat_apply_content_fixes() {
-	$version = '9';
+	$version = '10';
 	if ( $version === get_option( 'mat_content_fixes_version' ) ) {
 		return;
 	}
@@ -485,6 +485,7 @@ function mat_content_fixes_2026_10_24() {
 		array( 'how-to-file-diminished-value-claim', 'post', '#If the response still doesn.t move, the appraisal clause discussed elsewhere.*?total-loss valuation disputes\\.#s', 'If the response still doesn\'t move, your next step depends on whose insurer you\'re claiming against. Most diminished value claims are third-party claims against the at-fault driver\'s insurer, and there the appraisal clause doesn\'t apply, because it is part of your own policy, not theirs: the usual options are a complaint to your state department of insurance or a small claims case against the at-fault driver. If you\'re claiming under your own policy (where your state allows first-party diminished value), check whether its appraisal clause covers this kind of dispute; some policies limit appraisal to the amount of a covered loss, and some insurers argue diminished value isn\'t covered at all.' ),
 		array( 'how-to-file-diminished-value-claim', 'post', '#support a demand letter or, if needed, an appraisal-clause dispute\\.#s', 'support a demand letter, a small claims case or, on a claim under your own policy, an appraisal-clause dispute.' ),
 		array( 'how-to-negotiate-insurance-adjuster', 'post', '#appraisal clause, if the dispute is fundamentally about value;#s', 'appraisal clause, if the dispute is about value on a claim under your own policy;' ),
+		array( 'totaled-car-payout-too-low-negotiate', 'post', '#Oklahoma moves from 60% to 70% on November 1, 2026\\.#s', 'Oklahoma\'s rose from 60% to 70% on November 1, 2026.' ),
 		array( 'about-us', 'page', '#MyAutoTriage is an independent, ad-supported educational publisher\\.#s', 'MyAutoTriage is an independent educational publisher.' ),
 		array( 'about-us', 'page', '#This site is supported by display advertising\\. Advertising does not influence#s', 'This site does not show ads yet, and we take no money from insurers, law firms, body shops or lead buyers. We plan to add display advertising (Google AdSense) to pay for running the site; when we do, this page and our Privacy Policy will say so, and advertising will never influence' ),
 		array( 'editorial-policy', 'page', '#This site displays third-party advertising, including through Google AdSense\\. Advertisers have no influence#s', 'This site does not display advertising yet. If we add third-party ads (we plan to use Google AdSense), advertisers will have no influence' ),
