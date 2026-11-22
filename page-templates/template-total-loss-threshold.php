@@ -11,8 +11,8 @@ wp_enqueue_script( 'mat-tlt', MAT_URI . '/assets/js/calculators/total-loss-thres
 <div class="mat-tool">
 	<div class="mat-container mat-narrow">
 		<div class="mat-tool__intro">
-			<h1><?php the_title(); ?></h1>
-			<p><?php esc_html_e( "See whether your car is likely to be declared a total loss, using your state's actual rule: a percentage threshold, the Total Loss Formula, or (where state law sets no number) the test most insurers use.", 'myautotriage' ); ?></p>
+			<h1><?php esc_html_e( 'Is My Car Totaled? Total Loss Threshold Calculator', 'myautotriage' ); ?></h1>
+			<p><?php esc_html_e( "Is my car totaled? Enter the repair estimate and the car's value to see whether it is likely to be declared a total loss, using your state's actual rule: a percentage threshold, the Total Loss Formula, or (where state law sets no number) the test most insurers use.", 'myautotriage' ); ?></p>
 		</div>
 		<?php mat_tool_short_answer( 'total-loss-threshold-calculator' ); ?>
 

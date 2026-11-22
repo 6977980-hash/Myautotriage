@@ -79,6 +79,12 @@ $phrase = mat_current_adjuster_phrase();
 				</section>
 			<?php endif; ?>
 
+			<?php
+			if ( 'we-use-aftermarket-parts' === $phrase['slug'] ) {
+				mat_aftermarket_laws_block();
+			}
+			?>
+
 			<?php mat_faq_block( $phrase['faqs'] ); ?>
 
 			<section class="mat-page__content mat-next-steps" aria-label="<?php esc_attr_e( 'Other things adjusters say', 'myautotriage' ); ?>">

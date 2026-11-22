@@ -62,7 +62,7 @@ function mat_get_tool_extras() {
 		),
 
 		'total-loss-threshold-calculator' => array(
-			'short' => __( 'A car is totaled when repairs cost more than the law or the insurer allows. 25 states set a percentage of the car\'s actual cash value, from 60% to 100%; 5 use the Total Loss Formula (repair cost plus salvage value at or above the car\'s value); in the other 21 the insurer decides, usually with that formula.', 'myautotriage' ),
+			'short' => __( 'Is your car totaled? It is when repairs cost more than the law or the insurer allows. 25 states set a percentage of the car\'s actual cash value, from 65% to 100%; 5 use the Total Loss Formula (repair cost plus salvage value at or above the car\'s value); in the other 21 the insurer decides, usually with that formula.', 'myautotriage' ),
 			'example' => array(
 				'title' => __( 'Worked example', 'myautotriage' ),
 				'html'  => '<p>' . __( 'Your car\'s actual cash value is $12,000 and the repair estimate is $9,000. That is 75% of its value.', 'myautotriage' ) . '</p>'
@@ -74,6 +74,14 @@ function mat_get_tool_extras() {
 					. '<p>' . __( 'Insurers can usually choose to total a car below the threshold if repairing it is not economical. The threshold tells you when they must, which matters most when you think a car is being repaired that should have been totaled, or the other way round.', 'myautotriage' ) . '</p>',
 			),
 			'faqs' => array(
+				array(
+					'question' => __( 'How do I know if my car is totaled?', 'myautotriage' ),
+					'answer'   => __( 'Compare the repair estimate with the car\'s actual cash value (what it was worth just before the crash). In a percentage state, the car is totaled once repairs reach that share of the value, for example 75%. In a Total Loss Formula state, add the salvage value to the repair cost and compare the total with the value. Enter the three numbers above to see the result for your state.', 'myautotriage' ),
+				),
+				array(
+					'question' => __( 'How much will insurance pay for my totaled car?', 'myautotriage' ),
+					'answer'   => __( 'The payout is the car\'s actual cash value, minus your deductible, plus sales tax and fees in states that require them, minus the salvage value if you keep the car. This calculator tells you whether the car should be totaled; to check the value the insurer used, run its valuation report through the total loss valuation checker.', 'myautotriage' ),
+				),
 				array(
 					'question' => __( 'Can I keep my car if it is declared a total loss?', 'myautotriage' ),
 					'answer'   => __( 'Often yes. The insurer deducts the salvage value from your payout and you keep the car, but it will usually get a salvage title, which affects registration, insurance and resale. Rules differ by state.', 'myautotriage' ),
@@ -90,6 +98,7 @@ function mat_get_tool_extras() {
 				array( 'slug' => 'demand-letter-generator', 'query' => array( 'type' => 'total-loss' ), 'label' => __( 'Counter a low total loss valuation with comparable cars', 'myautotriage' ) ),
 				array( 'slug' => 'insurance-appraisal-clause', 'label' => __( 'Still can\'t agree on the value? How to invoke your policy\'s appraisal clause', 'myautotriage' ) ),
 				array( 'slug' => 'gap-insurance-shortfall-calculator', 'label' => __( 'Still owe on a loan? Check your GAP shortfall', 'myautotriage' ) ),
+				array( 'slug' => 'car-insurance-refund-calculator', 'label' => __( 'Cancelling the policy on a totaled car? Car insurance refund calculator', 'myautotriage' ) ),
 				array( 'slug' => 'car-insurance-claim-laws', 'label' => __( 'See your state\'s total loss rule and claim deadlines, with citations', 'myautotriage' ) ),
 			),
 		),
@@ -118,6 +127,7 @@ function mat_get_tool_extras() {
 			),
 			'next' => array(
 				array( 'slug' => 'gap-insurance-total-loss-still-owe-money', 'label' => __( 'Read: GAP insurance and total loss, will you still owe money?', 'myautotriage' ) ),
+				array( 'slug' => 'car-insurance-refund-calculator', 'label' => __( 'Car totaled? Work out the premium refund when you cancel the policy', 'myautotriage' ) ),
 				array( 'slug' => 'total-loss-valuation-checker', 'label' => __( 'Check the total loss valuation for money taken off', 'myautotriage' ) ),
 				array( 'slug' => 'total-loss-threshold-calculator', 'label' => __( 'Check whether your car should be totaled', 'myautotriage' ) ),
 				array( 'slug' => 'totaled-car-payout-too-low-negotiate', 'label' => __( 'Read: how to push back on a low total loss payout', 'myautotriage' ) ),

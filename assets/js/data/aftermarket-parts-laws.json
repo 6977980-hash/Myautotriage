@@ -1,0 +1,265 @@
+{
+	"reviewed": "2026-11-22",
+	"source": {
+		"label": "NAIC After Market Parts Model Regulation (#891), state page, Fall 2022",
+		"url": "https://content.naic.org/sites/default/files/model-law-state-page-891.pdf"
+	},
+	"note": "Status follows the NAIC Legal Division chart. \"none\" means the NAIC lists no state law on the topic; general unfair-claims rules and your policy still apply.",
+	"states": {
+		"AL": {
+			"status": "related",
+			"citation": "Ala. Code §§ 32-17A-1 to 32-17A-3",
+			"note": ""
+		},
+		"AK": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"AZ": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"AR": {
+			"status": "adopted",
+			"citation": "Ark. Code Ann. §§ 4-90-302 to 4-90-307",
+			"note": "portions of the model"
+		},
+		"CA": {
+			"status": "related",
+			"citation": "Cal. Bus. & Prof. Code §§ 9875 to 9875.2",
+			"note": ""
+		},
+		"CO": {
+			"status": "adopted",
+			"citation": "Colo. Rev. Stat. §§ 10-3-1301 to 10-3-1307",
+			"note": "portions of the model"
+		},
+		"CT": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"DE": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"DC": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"FL": {
+			"status": "adopted",
+			"citation": "Fla. Stat. §§ 501.30 to 501.34",
+			"note": "portions of the model"
+		},
+		"GA": {
+			"status": "adopted",
+			"citation": "Ga. Code Ann. § 33-6-5(13); Ga. Comp. R. & Regs. 120-2-52",
+			"note": "disclosure rule plus portions of the model"
+		},
+		"HI": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"ID": {
+			"status": "adopted",
+			"citation": "Idaho Code §§ 41-1328A to 41-1328D",
+			"note": "portions of the model"
+		},
+		"IL": {
+			"status": "adopted",
+			"citation": "215 ILCS 5/155.29; Ill. Admin. Code tit. 50, § 919.80(d)(5)",
+			"note": "portions of the model"
+		},
+		"IN": {
+			"status": "adopted",
+			"citation": "Ind. Code §§ 27-4-1.5-1 to 27-4-1.5-13",
+			"note": ""
+		},
+		"IA": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"KS": {
+			"status": "related",
+			"citation": "Kan. Stat. Ann. §§ 50-660 to 50-661",
+			"note": "disclosure only"
+		},
+		"KY": {
+			"status": "related",
+			"citation": "806 Ky. Admin. Regs. 12:095",
+			"note": ""
+		},
+		"LA": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"ME": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"MD": {
+			"status": "related",
+			"citation": "Md. Code Ann., Ins. § 27-906",
+			"note": "insurer must give you a copy of the non-OEM part warranty"
+		},
+		"MA": {
+			"status": "adopted",
+			"citation": "Mass. Gen. Laws ch. 90, § 34R",
+			"note": "portions of the model"
+		},
+		"MI": {
+			"status": "related",
+			"citation": "Mich. Comp. Laws §§ 257.1361 to 257.1364",
+			"note": "notice requirement"
+		},
+		"MN": {
+			"status": "related",
+			"citation": "Minn. Stat. § 72A.201 subd. 6",
+			"note": "insurer may not require non-OEM parts"
+		},
+		"MS": {
+			"status": "related",
+			"citation": "Miss. Code Ann. §§ 63-27-1 to 63-27-7",
+			"note": "notice requirement"
+		},
+		"MO": {
+			"status": "adopted",
+			"citation": "Mo. Rev. Stat. § 407.295; 20 CSR 100-1.050",
+			"note": ""
+		},
+		"MT": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"NE": {
+			"status": "adopted",
+			"citation": "210 Neb. Admin. Code ch. 45",
+			"note": ""
+		},
+		"NV": {
+			"status": "related",
+			"citation": "Nev. Admin. Code § 686A.240",
+			"note": "disclosure"
+		},
+		"NH": {
+			"status": "adopted",
+			"citation": "N.H. Rev. Stat. §§ 407-D:1 to 407-D:5; Bulletin 99-014-AB",
+			"note": ""
+		},
+		"NJ": {
+			"status": "adopted",
+			"citation": "N.J. Admin. Code §§ 11:2-17.3, 11:2-17.10 to 11:2-17.13",
+			"note": ""
+		},
+		"NM": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"NY": {
+			"status": "adopted",
+			"citation": "11 NYCRR § 216.7 (Regulation 64)",
+			"note": ""
+		},
+		"NC": {
+			"status": "adopted",
+			"citation": "11 NCAC 4.0425 to 4.0427; N.C. Gen. Stat. §§ 58-36-95, 58-36-41",
+			"note": "portions of the model; disclosure; insurers may sell OEM-only policies"
+		},
+		"ND": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"OH": {
+			"status": "adopted",
+			"citation": "Ohio Rev. Code § 1345.81",
+			"note": "portions of the model"
+		},
+		"OK": {
+			"status": "adopted",
+			"citation": "Okla. Stat. tit. 15, §§ 951 to 956",
+			"note": ""
+		},
+		"OR": {
+			"status": "related",
+			"citation": "Or. Rev. Stat. §§ 746.287 to 746.292; Or. Admin. R. 836-080-0210 to 836-080-0240",
+			"note": ""
+		},
+		"PA": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"RI": {
+			"status": "related",
+			"citation": "R.I. Gen. Laws §§ 27-10.2-1 to 27-10.2-3",
+			"note": ""
+		},
+		"SC": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"SD": {
+			"status": "adopted",
+			"citation": "S.D. Codified Laws §§ 58-33-70 to 58-33-71",
+			"note": "portions of the model"
+		},
+		"TN": {
+			"status": "unlisted",
+			"citation": "",
+			"note": ""
+		},
+		"TX": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"UT": {
+			"status": "adopted",
+			"citation": "Utah Code §§ 31A-22-316 to 31A-22-319",
+			"note": "portions of the model"
+		},
+		"VT": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"VA": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"WA": {
+			"status": "none",
+			"citation": "",
+			"note": ""
+		},
+		"WV": {
+			"status": "related",
+			"citation": "W. Va. Code §§ 46A-6B-1 to 46A-6B-6",
+			"note": "notice requirement"
+		},
+		"WI": {
+			"status": "related",
+			"citation": "Wis. Stat. § 632.38",
+			"note": "notice requirement"
+		},
+		"WY": {
+			"status": "adopted",
+			"citation": "Wyo. Admin. Code 044.0002.19",
+			"note": ""
+		}
+	}
+}
