@@ -97,7 +97,7 @@ function mat_get_article_extras() {
 			),
 		),
 		'totaled-car-payout-too-low-negotiate' => array(
-			'tools'        => array( 'total-loss-valuation-checker', 'total-loss-threshold-calculator', 'total-loss-sales-tax-by-state', 'gap-insurance-shortfall-calculator' ),
+			'tools'        => array( 'total-loss-valuation-checker', 'total-loss-threshold-calculator', 'total-loss-sales-tax-by-state', 'gap-insurance-shortfall-calculator', 'car-insurance-refund-calculator' ),
 			'states'       => true,
 			'short_answer' => 'Ask for the full valuation report and check its comparable cars, projected sold and condition deductions, options, and whether your state requires sales tax and fees. Find three or more comparable listings near you and send a written counter-offer. If you still disagree, your policy\'s appraisal clause lets each side hire an appraiser, with an umpire deciding.',
 			'sources'      => array(
@@ -117,7 +117,7 @@ function mat_get_article_extras() {
 			),
 		),
 		'gap-insurance-total-loss-still-owe-money' => array(
-			'tools'        => array( 'gap-insurance-shortfall-calculator', 'total-loss-threshold-calculator' ),
+			'tools'        => array( 'gap-insurance-shortfall-calculator', 'total-loss-threshold-calculator', 'car-insurance-refund-calculator' ),
 			'short_answer' => 'Your insurer pays the car\'s actual cash value, not your loan balance. Subtract the settlement (after your deductible) from your payoff amount to see the shortfall. GAP coverage is meant to pay that difference, but many contracts exclude the deductible, past-due payments or add-ons rolled into the loan, and you usually can\'t buy GAP after a loss.',
 			'sources'      => array(
 				array(
