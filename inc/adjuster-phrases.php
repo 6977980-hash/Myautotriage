@@ -34,6 +34,10 @@ function mat_adjuster_sources_common() {
 			'label' => __( 'NAIC Unfair Claims Settlement Practices Act (Model 900)', 'myautotriage' ),
 			'url'   => 'https://content.naic.org/sites/default/files/model-law-900.pdf',
 		),
+		'891' => array(
+			'label' => __( 'NAIC After Market Parts Model Regulation (Model 891): state adoption chart', 'myautotriage' ),
+			'url'   => 'https://content.naic.org/sites/default/files/model-law-state-page-891.pdf',
+		),
 		'maine' => array(
 			'label' => __( 'Maine Bureau of Insurance: Auto claims FAQ', 'myautotriage' ),
 			'url'   => 'https://www.maine.gov/pfr/insurance/frequently-asked-questions/auto-claims',
@@ -263,7 +267,7 @@ function mat_adjuster_phrases() {
 					'answer'   => __( 'No. Recycled or "LKQ" parts are original-manufacturer parts taken from another car. Estimates often mix new OEM, recycled and aftermarket parts, so read each line.', 'myautotriage' ),
 				),
 			),
-			'sources'   => array( '902', 'maine' ),
+			'sources'   => array( '902', '891', 'maine' ),
 		),
 		array(
 			'slug'      => 'betterment-deduction',
@@ -483,3 +487,65 @@ function mat_ensure_adjuster_pages() {
 	}
 }
 add_action( 'wp_loaded', 'mat_ensure_adjuster_pages' );
+
+/**
+ * State-by-state table of aftermarket (non-OEM) crash parts laws, shown on
+ * the "We use aftermarket parts" page. Data: assets/js/data/aftermarket-parts-laws.json,
+ * taken from the NAIC Model 891 state chart.
+ */
+function mat_aftermarket_laws_block() {
+	$data = mat_read_theme_json( 'assets/js/data/aftermarket-parts-laws.json' );
+	if ( empty( $data['states'] ) ) {
+		return;
+	}
+	$labels = array(
+		'adopted'  => __( 'Follows the NAIC model', 'myautotriage' ),
+		'related'  => __( 'Has its own law', 'myautotriage' ),
+		'none'     => __( 'No specific law', 'myautotriage' ),
+		'unlisted' => __( 'No citation listed', 'myautotriage' ),
+	);
+	$counts = array_count_values( wp_list_pluck( $data['states'], 'status' ) );
+	$with   = ( isset( $counts['adopted'] ) ? $counts['adopted'] : 0 ) + ( isset( $counts['related'] ) ? $counts['related'] : 0 );
+	?>
+	<section class="mat-page__content" aria-labelledby="mat-aftermarket-laws-title">
+		<h2 id="mat-aftermarket-laws-title"><?php esc_html_e( 'Aftermarket parts laws by state', 'myautotriage' ); ?></h2>
+		<p>
+			<?php
+			$adopted = isset( $counts['adopted'] ) ? (int) $counts['adopted'] : 0;
+			/* translators: 1: number of states with a law, 2: number following the NAIC model */
+			printf( esc_html__( '%1$d states have a law on aftermarket (non-OEM) crash parts in repair estimates, and %2$d of them follow all or part of the NAIC model, under which the estimate must identify each non-OEM part and those parts must be at least equal to the original in fit, quality and performance. Others only require notice or disclosure, and Minnesota bars the insurer from requiring non-OEM parts. In states with no specific law, your policy and the general fair-claims rules decide.', 'myautotriage' ), (int) $with, $adopted );
+			?>
+		</p>
+		<div class="mat-table-wrap">
+			<table class="mat-table">
+				<thead><tr>
+					<th scope="col"><?php esc_html_e( 'State', 'myautotriage' ); ?></th>
+					<th scope="col"><?php esc_html_e( 'Aftermarket parts law', 'myautotriage' ); ?></th>
+					<th scope="col"><?php esc_html_e( 'Law', 'myautotriage' ); ?></th>
+				</tr></thead>
+				<tbody>
+					<?php foreach ( mat_state_laws() as $code => $state ) : ?>
+						<?php
+						if ( empty( $data['states'][ $code ] ) ) {
+							continue;
+						}
+						$row = $data['states'][ $code ];
+						?>
+						<tr>
+							<td><a href="<?php echo esc_url( mat_state_url( $state ) ); ?>"><?php echo esc_html( $state['name'] ); ?></a></td>
+							<td><?php echo esc_html( $labels[ $row['status'] ] . ( $row['note'] ? ' (' . $row['note'] . ')' : '' ) ); ?></td>
+							<td><?php echo esc_html( $row['citation'] ? $row['citation'] : '-' ); ?></td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+		</div>
+		<p class="mat-field__hint">
+			<?php
+			/* translators: %s: source name */
+			printf( esc_html__( 'Source: %s. Laws change, so check the citation for your state before you rely on it.', 'myautotriage' ), '<a href="' . esc_url( $data['source']['url'] ) . '" rel="noopener">' . esc_html( $data['source']['label'] ) . '</a>' ); // phpcs:ignore WordPress.Security.EscapeOutput
+			?>
+		</p>
+	</section>
+	<?php
+}
