@@ -108,6 +108,15 @@ $mat_ins_data = mat_insurer_data();
 				<?php endif; ?>
 
 				<?php /* translators: %s: insurer */ ?>
+				<h2><?php echo esc_html( sprintf( __( 'Filing a %s auto claim, including as a third party', 'myautotriage' ), $mat_ins['name'] ) ); ?></h2>
+				<p><?php echo esc_html( sprintf( /* translators: %s: insurer */ __( 'If you are insured with %s, you file on your own policy: collision for your car, plus any rental, medical or uninsured motorist coverage you have. You can also start a claim with %s when a driver it insures hit you, even if you have never been its customer. That is a third-party claim, paid from the other driver\'s liability coverage, and it costs you no deductible.', 'myautotriage' ), $mat_ins['name'], $mat_ins['name'] ) ); ?></p>
+				<p><?php esc_html_e( 'Either way, report the claim promptly, get the claim number and the adjuster\'s name in writing, and send photos, the police report number and repair estimates by email so every document has a date.', 'myautotriage' ); ?></p>
+
+				<?php /* translators: %s: insurer */ ?>
+				<h2><?php echo esc_html( sprintf( __( 'If %s denied your claim', 'myautotriage' ), $mat_ins['name'] ) ); ?></h2>
+				<p><?php esc_html_e( 'Ask for the denial in writing with the exact policy language or fact it relies on; the claims rules most states follow require the insurer to give it. Then answer it point by point with evidence, and set a date for a reply. If the denial stands and you think it is wrong, an appeal letter and a complaint to your state insurance department are free next steps.', 'myautotriage' ); ?></p>
+
+				<?php /* translators: %s: insurer */ ?>
 				<h2><?php echo esc_html( sprintf( __( 'If %s is stalling or lowballing your claim', 'myautotriage' ), $mat_ins['name'] ) ); ?></h2>
 				<ol>
 					<li><?php esc_html_e( 'Put it in writing. Ask the adjuster by email for the reason for any delay or offer, and the policy language or valuation report behind it.', 'myautotriage' ); ?></li>
@@ -143,6 +152,17 @@ $mat_ins_data = mat_insurer_data();
 					/* translators: %s: insurer */
 					'question' => sprintf( __( 'Does %s have a lot of complaints?', 'myautotriage' ), $mat_ins['name'] ),
 					'answer'   => mat_insurer_summary( $mat_ins ),
+				),
+				array(
+					/* translators: %s: insurer */
+					'question' => sprintf( __( 'Can I file a claim with %s if I am not a customer?', 'myautotriage' ), $mat_ins['name'] ),
+					/* translators: %s: insurer */
+					'answer'   => sprintf( __( 'Yes. If the driver who caused the crash is insured with %s, you can file a third-party claim against their liability coverage. You pay no deductible, but the insurer only pays once it accepts that its driver was at fault. If that takes too long, you can claim on your own collision coverage and let your insurer recover the money.', 'myautotriage' ), $mat_ins['name'] ),
+				),
+				array(
+					/* translators: %s: insurer */
+					'question' => sprintf( __( 'What can I do if %s denied my claim?', 'myautotriage' ), $mat_ins['name'] ),
+					'answer'   => __( 'Ask for the reason in writing, with the policy wording it relies on, then reply in writing with your evidence. If that fails, file a free complaint with your state insurance department; for a value dispute, check your policy for an appraisal clause.', 'myautotriage' ),
 				),
 				array(
 					'question' => __( 'What does a complaint index of 1.00 mean?', 'myautotriage' ),

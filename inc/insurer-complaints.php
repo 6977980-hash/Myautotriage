@@ -360,6 +360,7 @@ function mat_insurer_next_steps() {
 		array( mat_url_for_slug( 'claim-triage' ), __( 'Not sure what to do next? Answer three questions in the claim triage', 'myautotriage' ) ),
 		array( mat_url_for_slug( 'claim-diary' ), __( 'Log every call and promise in a claim diary with deadline alerts', 'myautotriage' ) ),
 		array( $letter ? add_query_arg( 'type', 'doi-complaint', $letter ) : '', __( 'Write a complaint to your state insurance department', 'myautotriage' ) ),
+		array( mat_url_for_slug( 'appeal-letter-generator' ), __( 'Claim denied? Write an appeal letter', 'myautotriage' ) ),
 		array( mat_url_for_slug( 'total-loss-valuation-checker' ), __( 'Check a total loss valuation report for errors', 'myautotriage' ) ),
 		array( function_exists( 'mat_adjuster_hub_url' ) ? mat_adjuster_hub_url() : '', __( 'What the adjuster\'s words really mean, with replies to copy', 'myautotriage' ) ),
 	);
@@ -418,7 +419,7 @@ add_action( 'wp_loaded', 'mat_ensure_insurer_pages' );
 
 function mat_insurer_seo_title( $insurer ) {
 	/* translators: %s: insurer */
-	return sprintf( __( '%s Auto Claim Complaints: State Regulator Ratings', 'myautotriage' ), $insurer['name'] );
+	return sprintf( __( '%s Auto Claims & Complaints: Regulator Ratings', 'myautotriage' ), $insurer['name'] );
 }
 
 function mat_insurer_meta( $insurer ) {
