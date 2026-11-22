@@ -229,7 +229,7 @@ function mat_adjuster_phrases() {
 			'slug'      => 'we-use-aftermarket-parts',
 			'phrase'    => __( 'The estimate uses aftermarket parts.', 'myautotriage' ),
 			'title'     => __( '"We Use Aftermarket Parts": Can You Insist on OEM Parts?', 'myautotriage' ),
-			'seo_title' => __( 'Insurance Using Aftermarket Parts? Your Rights on OEM Parts', 'myautotriage' ),
+			'seo_title' => __( 'Can Insurance Make You Use Aftermarket or Used Parts? Your Rights', 'myautotriage' ),
 			'meta'      => __( 'Insurance estimate lists aftermarket or non-OEM parts? When that\'s allowed, the quality standard they must meet, and how to ask for OEM parts.', 'myautotriage' ),
 			'short'     => __( 'Usually yes, unless your policy promises OEM parts. But under the NAIC model rule, an insurer can\'t require aftermarket crash parts unless they are at least equal to the original in fit, quality and performance, and some states require the estimate to identify them. You can pay the difference for OEM parts.', 'myautotriage' ),
 			'means'     => array(
@@ -246,6 +246,14 @@ function mat_adjuster_phrases() {
 				array( 'slug' => 'diminished-value-calculator', 'label' => __( 'Estimate your car\'s diminished value after repairs', 'myautotriage' ) ),
 			),
 			'faqs'      => array(
+				array(
+					'question' => __( 'Does car insurance cover aftermarket parts?', 'myautotriage' ),
+					'answer'   => __( 'That can mean two things. On a repair after a crash, many policies let the insurer write the estimate with aftermarket parts, so those are what it pays for. If you mean custom parts you added to the car yourself, a standard policy may pay little or nothing for them unless you bought custom equipment coverage, so check your policy or ask your agent.', 'myautotriage' ),
+				),
+				array(
+					'question' => __( 'Can an insurance company make you use used parts?', 'myautotriage' ),
+					'answer'   => __( 'Often the estimate can include them if your policy allows it, so read the policy\'s repair section first. You can usually still choose new parts and pay the difference. If a used part does not fit or work like the original, have your shop document it and ask the insurer in writing to approve a replacement. Rules differ by state.', 'myautotriage' ),
+				),
 				array(
 					'question' => __( 'Does using aftermarket parts void my car\'s warranty?', 'myautotriage' ),
 					'answer'   => __( 'Federal law generally stops a manufacturer from voiding a whole warranty just because non-OEM parts were used, but it can refuse to cover damage those parts cause. Ask the shop and the insurer who stands behind the part.', 'myautotriage' ),

@@ -52,6 +52,33 @@ wp_enqueue_script( 'mat-tlt', MAT_URI . '/assets/js/calculators/total-loss-thres
 
 		<?php mat_tool_extras( 'total-loss-threshold-calculator' ); ?>
 
+		<section class="mat-page__content">
+			<h2><?php esc_html_e( 'Total loss threshold by state', 'myautotriage' ); ?></h2>
+			<p><?php esc_html_e( 'The rule each state uses to decide when a car is a total loss. Open a state for the law behind it.', 'myautotriage' ); ?></p>
+			<div class="mat-table-wrap">
+				<table class="mat-table">
+					<thead><tr>
+						<th><?php esc_html_e( 'State', 'myautotriage' ); ?></th>
+						<th><?php esc_html_e( 'When the car is a total loss', 'myautotriage' ); ?></th>
+					</tr></thead>
+					<tbody>
+						<?php foreach ( mat_state_laws() as $mat_state ) : ?>
+							<?php
+							$mat_rule = mat_state_total_loss_rule( $mat_state );
+							if ( ! $mat_rule ) {
+								continue;
+							}
+							?>
+							<tr>
+								<td><a href="<?php echo esc_url( mat_state_url( $mat_state ) ); ?>"><?php echo esc_html( $mat_state['name'] ); ?></a></td>
+								<td><?php echo esc_html( $mat_rule ); ?></td>
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
 		<?php mat_state_rules_block( __( 'Total loss rules by state', 'myautotriage' ) ); ?>
 
 		<?php
