@@ -229,6 +229,54 @@ function mat_years( $years ) {
 }
 
 /**
+ * Whether a state is no-fault, and one plain sentence saying so, built from
+ * pip-deadlines.json (which lists every state that requires PIP) and the
+ * state's fault rule. States not in that file are at-fault (tort) states.
+ *
+ * @return array { type: no_fault|add_on|at_fault, label, answer }
+ */
+function mat_state_fault_system( $state ) {
+	$name   = $state['name'];
+	$system = empty( $state['pip']['system'] ) ? '' : $state['pip']['system'];
+	if ( 0 === stripos( $system, 'No-fault' ) ) {
+		$extra = '';
+		if ( false !== stripos( $system, 'reject' ) ) {
+			$extra = ' ' . __( 'You can reject the no-fault limits in writing, which keeps your full right to sue but removes that protection from lawsuits.', 'myautotriage' );
+		} elseif ( false !== stripos( $system, 'choice' ) ) {
+			$extra = ' ' . __( 'You choose on your policy between a limited and a full right to sue the at-fault driver for pain and suffering.', 'myautotriage' );
+		}
+		return array(
+			'type'   => 'no_fault',
+			'label'  => __( 'No-fault state', 'myautotriage' ),
+			/* translators: %s: state name */
+			'answer' => sprintf( __( 'Yes. %s is a no-fault state: your own personal injury protection (PIP) pays your medical bills and lost wages after a crash, whoever caused it, and you can sue the at-fault driver for injuries only above the state\'s threshold. Damage to your car is still claimed from the at-fault driver\'s insurer or your own collision coverage.', 'myautotriage' ), $name ) . $extra,
+		);
+	}
+	if ( $system ) {
+		return array(
+			'type'   => 'add_on',
+			'label'  => __( 'At-fault state with required PIP', 'myautotriage' ),
+			/* translators: %s: state name */
+			'answer' => sprintf( __( 'No. %s is an at-fault state, but it requires personal injury protection (PIP), which pays your own injury costs first whoever caused the crash. You keep the full right to claim against the at-fault driver\'s insurer.', 'myautotriage' ), $name ),
+		);
+	}
+	$answer = sprintf(
+		/* translators: %s: state name */
+		__( 'No. %s is an at-fault (tort) state: the driver who caused the crash, through their liability insurance, pays for the other people\'s injuries and car damage.', 'myautotriage' ),
+		$name
+	);
+	if ( mat_state_fault_rule( $state ) ) {
+		/* translators: %s: fault rule name */
+		$answer .= ' ' . sprintf( __( 'Fault is shared under %s.', 'myautotriage' ), lcfirst( mat_state_fault_rule( $state ) ) );
+	}
+	return array(
+		'type'   => 'at_fault',
+		'label'  => __( 'At-fault (tort) state', 'myautotriage' ),
+		'answer' => $answer,
+	);
+}
+
+/**
  * Turn a deadline value into a phrase that follows a verb:
  * "15 calendar days" -> "within 15 calendar days",
  * "No fixed deadline (a reasonable time)" -> "with no fixed deadline (a reasonable time)".
@@ -248,14 +296,21 @@ function mat_state_within( $text ) {
 
 function mat_state_seo_title( $state ) {
 	/* translators: %s: state name */
-	return sprintf( __( '%s Car Insurance Claim Laws: Deadlines & Total Loss', 'myautotriage' ), $state['name'] );
+	return sprintf( __( '%s Car Insurance Laws: Fault, Claims & Total Loss', 'myautotriage' ), $state['name'] );
 }
 
 function mat_state_meta_description( $state ) {
 	$d = $state['deadlines'];
 	if ( $d ) {
 		/* translators: 1: state name, 2: decision deadline, 3: total loss rule */
-		return mat_truncate_meta( sprintf( __( '%1$s car insurance claim rules: insurers must accept or deny a claim %2$s. Total loss rule: %3$s. With legal citations.', 'myautotriage' ), $state['name'], mat_state_within( $d['decide'] ), lcfirst( mat_state_total_loss_label( $state ) ) ) );
+		$sys = mat_state_fault_system( $state );
+		$sys_phrase = array(
+			'no_fault' => __( 'a no-fault state', 'myautotriage' ),
+			'add_on'   => __( 'an at-fault state with required PIP', 'myautotriage' ),
+			'at_fault' => __( 'an at-fault state', 'myautotriage' ),
+		);
+		/* translators: 1: state name, 2: fault system, 3: decision deadline, 4: total loss rule */
+		return mat_truncate_meta( sprintf( __( '%1$s is %2$s. Insurers must accept or deny a claim %3$s; total loss rule: %4$s. With legal citations.', 'myautotriage' ), $state['name'], $sys_phrase[ $sys['type'] ], mat_state_within( $d['decide'] ), lcfirst( mat_state_total_loss_label( $state ) ) ) );
 	}
 	/* translators: %s: state name */
 	return sprintf( __( '%s car insurance claim rules: how long insurers have to handle your claim, when a car is a total loss, and free tools to back up your claim.', 'myautotriage' ), $state['name'] );
@@ -313,8 +368,14 @@ add_action( 'wp_loaded', 'mat_ensure_state_pages' );
  * FAQ entries for a state page, built from its data.
  */
 function mat_state_faqs( $state ) {
-	$faqs = array();
-	$d    = $state['deadlines'];
+	$faqs   = array();
+	$d      = $state['deadlines'];
+	$sys    = mat_state_fault_system( $state );
+	$faqs[] = array(
+		/* translators: %s: state name */
+		'question' => sprintf( __( 'Is %s a no-fault state?', 'myautotriage' ), $state['name'] ),
+		'answer'   => $sys['answer'],
+	);
 	if ( $d ) {
 		$faqs[] = array(
 			/* translators: %s: state name */
@@ -331,6 +392,14 @@ function mat_state_faqs( $state ) {
 			'answer'   => sprintf( __( 'In %1$s: %2$s.', 'myautotriage' ), $state['name'], lcfirst( mat_state_total_loss_rule( $state ) ) )
 				. ( empty( $state['total_loss']['note'] ) ? '' : ' ' . $state['total_loss']['note'] )
 				. ' ' . __( 'You can challenge the actual cash value the insurer uses.', 'myautotriage' ),
+		);
+	}
+	if ( ! empty( $state['dv'] ) ) {
+		$faqs[] = array(
+			/* translators: %s: state name */
+			'question' => sprintf( __( 'Can I claim diminished value in %s?', 'myautotriage' ), $state['name'] ),
+			/* translators: 1: third-party status, 2: third-party note, 3: first-party status, 4: first-party note */
+			'answer'   => sprintf( __( 'From the at-fault driver\'s insurer: %1$s. %2$s From your own insurer: %3$s. %4$s', 'myautotriage' ), lcfirst( mat_dv_status_label( $state['dv']['third_party'], 'third_party' ) ), $state['dv']['third_party_note'], lcfirst( mat_dv_status_label( $state['dv']['first_party'], 'first_party' ) ), $state['dv']['first_party_note'] ),
 		);
 	}
 	$facts = $state['facts'];

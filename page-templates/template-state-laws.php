@@ -20,7 +20,7 @@ $meta  = mat_state_laws_meta();
 				<p>
 					<?php
 					/* translators: %s: state name */
-					printf( esc_html__( 'How long insurers have to handle your car insurance claim in %s, when a car counts as a total loss, and what to do if the insurer falls behind.', 'myautotriage' ), esc_html( $state['name'] ) );
+					printf( esc_html__( 'Whether %1$s is a no-fault state, how long insurers have to handle your car insurance claim there, when a car counts as a total loss, and what to do if the insurer falls behind.', 'myautotriage' ), esc_html( $state['name'] ) );
 					?>
 				</p>
 				<?php if ( $meta['reviewed'] ) : ?>
@@ -44,6 +44,8 @@ $meta  = mat_state_laws_meta();
 				<p class="mat-short-answer__label"><?php esc_html_e( 'Short answer', 'myautotriage' ); ?></p>
 				<p>
 					<?php
+					$mat_sys = mat_state_fault_system( $state );
+					echo esc_html( preg_replace( '/^(Yes|No)\. /', '', $mat_sys['answer'] ) ) . ' ';
 					$has_days = $d && ( preg_match( '/^\d/', $d['acknowledge'] ) || preg_match( '/^\d/', $d['decide'] ) || preg_match( '/^\d/', $d['pay'] ) );
 					if ( $d && ! $has_days ) {
 						/* translators: %s: state */
